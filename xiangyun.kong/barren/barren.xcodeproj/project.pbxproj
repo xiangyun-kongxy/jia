@@ -1,0 +1,331 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		267BBFA91E18980000C6F0EE /* barren.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 267BBFA71E18980000C6F0EE /* barren.cpp */; };
+		267BBFAA1E18980000C6F0EE /* barren.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 267BBFA81E18980000C6F0EE /* barren.hpp */; };
+		267BBFAD1E1899DA00C6F0EE /* liblib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 267BBFAC1E1899DA00C6F0EE /* liblib.dylib */; };
+		267BBFED1E29119B00C6F0EE /* barren_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 267BBFEB1E29119B00C6F0EE /* barren_io.cpp */; };
+		267BBFEE1E29119B00C6F0EE /* barren_io.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 267BBFEC1E29119B00C6F0EE /* barren_io.hpp */; };
+		267BC0171E29354C00C6F0EE /* libplugin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 267BC0161E29354C00C6F0EE /* libplugin.dylib */; };
+		267BC0191E29384600C6F0EE /* libbus.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 267BC0181E29384600C6F0EE /* libbus.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		267BBF991E18957B00C6F0EE /* libbarren.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libbarren.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		267BBFA71E18980000C6F0EE /* barren.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = barren.cpp; sourceTree = "<group>"; };
+		267BBFA81E18980000C6F0EE /* barren.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = barren.hpp; sourceTree = "<group>"; };
+		267BBFAC1E1899DA00C6F0EE /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
+		267BBFEB1E29119B00C6F0EE /* barren_io.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = barren_io.cpp; path = util/barren_io.cpp; sourceTree = "<group>"; };
+		267BBFEC1E29119B00C6F0EE /* barren_io.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = barren_io.hpp; path = util/barren_io.hpp; sourceTree = "<group>"; };
+		267BC0161E29354C00C6F0EE /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
+		267BC0181E29384600C6F0EE /* libbus.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbus.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libbus.dylib"; sourceTree = "<group>"; };
+		51F542461E31C31F00D9D18D /* predefined_barren.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = predefined_barren.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		267BBF961E18957B00C6F0EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				267BC0191E29384600C6F0EE /* libbus.dylib in Frameworks */,
+				267BC0171E29354C00C6F0EE /* libplugin.dylib in Frameworks */,
+				267BBFAD1E1899DA00C6F0EE /* liblib.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		267BBF901E18957B00C6F0EE = {
+			isa = PBXGroup;
+			children = (
+				267BBF9B1E18957B00C6F0EE /* barren */,
+				267BBF9A1E18957B00C6F0EE /* Products */,
+				267BBFAB1E1899DA00C6F0EE /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		267BBF9A1E18957B00C6F0EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				267BBF991E18957B00C6F0EE /* libbarren.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		267BBF9B1E18957B00C6F0EE /* barren */ = {
+			isa = PBXGroup;
+			children = (
+				267BBFDB1E21EEFB00C6F0EE /* data */,
+				267BBFB31E1BD9A900C6F0EE /* util */,
+				267BBFA71E18980000C6F0EE /* barren.cpp */,
+				267BBFA81E18980000C6F0EE /* barren.hpp */,
+				51F542461E31C31F00D9D18D /* predefined_barren.h */,
+			);
+			path = barren;
+			sourceTree = "<group>";
+		};
+		267BBFAB1E1899DA00C6F0EE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				267BC0181E29384600C6F0EE /* libbus.dylib */,
+				267BC0161E29354C00C6F0EE /* libplugin.dylib */,
+				267BBFAC1E1899DA00C6F0EE /* liblib.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		267BBFB31E1BD9A900C6F0EE /* util */ = {
+			isa = PBXGroup;
+			children = (
+				267BBFEB1E29119B00C6F0EE /* barren_io.cpp */,
+				267BBFEC1E29119B00C6F0EE /* barren_io.hpp */,
+			);
+			name = util;
+			sourceTree = "<group>";
+		};
+		267BBFDB1E21EEFB00C6F0EE /* data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = data;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		267BBF971E18957B00C6F0EE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				267BBFAA1E18980000C6F0EE /* barren.hpp in Headers */,
+				267BBFEE1E29119B00C6F0EE /* barren_io.hpp in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		267BBF981E18957B00C6F0EE /* barren */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 267BBFA41E18957B00C6F0EE /* Build configuration list for PBXNativeTarget "barren" */;
+			buildPhases = (
+				267BBF951E18957B00C6F0EE /* Sources */,
+				267BBF961E18957B00C6F0EE /* Frameworks */,
+				267BBF971E18957B00C6F0EE /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = barren;
+			productName = barren;
+			productReference = 267BBF991E18957B00C6F0EE /* libbarren.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		267BBF911E18957B00C6F0EE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "孔祥云";
+				TargetAttributes = {
+					267BBF981E18957B00C6F0EE = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = V26S23V64D;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 267BBF941E18957B00C6F0EE /* Build configuration list for PBXProject "barren" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 267BBF901E18957B00C6F0EE;
+			productRefGroup = 267BBF9A1E18957B00C6F0EE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				267BBF981E18957B00C6F0EE /* barren */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		267BBF951E18957B00C6F0EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				267BBFA91E18980000C6F0EE /* barren.cpp in Sources */,
+				267BBFED1E29119B00C6F0EE /* barren_io.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		267BBFA21E18957B00C6F0EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		267BBFA31E18957B00C6F0EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		267BBFA51E18957B00C6F0EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = V26S23V64D;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../lib/lib",
+					"$(SRCROOT)/../barren_cache",
+					"$(SRCROOT)/../plugin/src/include",
+					"$(SRCROOT)/../plugin/src",
+					"$(SRCROOT)/../bus",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		267BBFA61E18957B00C6F0EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = V26S23V64D;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../lib/lib",
+					"$(SRCROOT)/../barren_cache",
+					"$(SRCROOT)/../plugin/src/include",
+					"$(SRCROOT)/../plugin/src",
+					"$(SRCROOT)/../bus",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		267BBF941E18957B00C6F0EE /* Build configuration list for PBXProject "barren" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				267BBFA21E18957B00C6F0EE /* Debug */,
+				267BBFA31E18957B00C6F0EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		267BBFA41E18957B00C6F0EE /* Build configuration list for PBXNativeTarget "barren" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				267BBFA51E18957B00C6F0EE /* Debug */,
+				267BBFA61E18957B00C6F0EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 267BBF911E18957B00C6F0EE /* Project object */;
+}

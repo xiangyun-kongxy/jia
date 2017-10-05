@@ -1,0 +1,36 @@
+plugin manager
+lifecycle manager
+    plugin status
+    hot upgrade
+version controller
+    object has version
+    version compatibility
+    online version
+    package management
+    loadable version
+    adapter version combination
+ACL manager
+    ACL attributes:
+        dst
+        src
+        type
+        policy
+        event
+        task
+    verifying
+event bus
+    message routing
+    response routing
+    sync
+    async
+event manager
+    provider
+    consumer
+dependency manager
+    function depend on function
+    function depend on plugin
+    plugin depend on function
+    plugin depend on plugin
+thread manager
+    function status
+    process status

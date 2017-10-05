@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:xiangyun.kong/spl/spl.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:xiangyun.kong/attestor/attestor.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:xiangyun.kong/config_center/config_center.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:xiangyun.kong/barren_cache/barren_cache.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:xiangyun.kong/memory/memory.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:xiangyun.kong/barren/barren.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:xiangyun.kong/leveldb/leveldb.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:xiangyun.kong/console/console.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:xiangyun.kong/loader/loader.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:xiangyun.kong/bus/bus.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:xiangyun.kong/lifecycle/lifecycle.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:xiangyun.kong/lib/lib.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:xiangyun.kong/plugin/plugin.xcodeproj">
+   </FileRef>
+</Workspace>

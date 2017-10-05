@@ -1,0 +1,168 @@
+* project structure
+array
+class
+enum
+file
+func
+interface
+macro
+namespace
+package
+parameter
+reference
+struct
+symbol
+template_class
+template_func
+template_parameter
+type
+union
+variable
+
+
+CPP definition:
+
+program
+	package
+		file
+			#pragma
+			#include
+				system path file
+					<>string
+				all path file
+					string
+			#line
+				number
+			#file
+				string
+			#error
+				string
+			#if
+				const expression
+				    number
+				    number math operator number
+				    defined(name)
+				    undefined(name)
+			#ifdef
+				name
+			#ifndef
+				name
+			#define
+				macro
+					macro name
+					macro body
+			#undef
+				macro name
+			comment
+			    //
+			    /* */
+			declaration:
+                declare structure
+                    structure head
+                declare class
+                    class head
+                declare enum
+                    enum head
+                declare union
+                    union head
+                declare function
+                    function head
+                declare variable
+                    type
+                        declared type
+                        declare structure
+                        declare class
+                        declare enum
+                        declare union
+                        function type
+                        array type
+                    name
+                declare template class
+                    template head
+                    declare class
+                declare template function
+                    template head
+                    declare function
+                declare typedef
+                    type
+                    name
+            definition
+                define structure
+                    structure head
+                    structure body
+                        structure declare variable
+                            define variable
+                            variable bit count
+                define class
+                    class head
+                    class body
+                        privacy
+                        declare variable
+                        declare function
+                        declare template function
+                        define function
+                        define template function
+                define enum
+                    enum head
+                    enum body
+                        key value
+                            name
+                            value
+                define union
+                    union head
+                    structure body
+                define function
+                    function head
+                        type
+                        function name
+                            scope
+                            name
+                        parameter list
+                            parameter
+                                declare variable
+                    function body
+                        compound statement
+                            expression statement
+                                assignment operator
+                                    = += -= *= /= %= &= |= >>= <<=
+                                math operator
+                                    + - * / % & | ~ ^ >> << > < ! == != >= <=
+                                calling function
+                                    calling member function
+                                    calling common function
+                                addressing
+                                    array address
+                                    variable address
+                                    structure member
+                                    class data member
+                            if statement
+                                expression
+                                statement
+                            ? : statement
+                            switch statement
+                                expression
+                                case statement
+                            for statement
+                            while statement
+                            do statement
+                            go to statement
+                            label statement
+                            compound statement
+                        declaration
+                        definition
+                define variable
+                    declare variable
+                    initialization
+                define template class
+                    template head
+                    define class
+                define template function
+                    template head
+                    define function
+	config
+
+---------------------------------------------------------------------------
+
+JAVA definition:
+
+program

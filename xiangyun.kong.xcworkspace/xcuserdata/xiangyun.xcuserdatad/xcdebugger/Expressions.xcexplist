@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "void kxy::serializable::save&lt;long&gt;(long):serializable.hpp">
+      </ContextState>
+      <ContextState
+         contextName = "kxy::ptr&lt;kxy::serializable&gt; pf::call_plugin&lt;std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt; &gt;(kxy::ptr&lt;kxy::identifier&gt;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;):ipc.hpp">
+      </ContextState>
+      <ContextState
+         contextName = "pf::do_task(kxy::ptr&lt;pf::task&gt;):bridge.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "kxy::identifier::match(kxy::ptr&lt;kxy::object&gt;):identifier.h">
+      </ContextState>
+      <ContextState
+         contextName = "kxy::id_name::match(kxy::ptr&lt;kxy::object&gt;):id_name.h">
+      </ContextState>
+      <ContextState
+         contextName = "kxy::serializable&amp; kxy::serializable::operator&gt;&gt;&lt;kxy::object&gt;(kxy::ptr&lt;kxy::object&gt;&amp;):serializable.hpp">
+      </ContextState>
+      <ContextState
+         contextName = "kxy::ptr&lt;kxy::object&gt;::operator=(kxy::object*):ptr.h">
+      </ContextState>
+      <ContextState
+         contextName = "kxy::serializable::operator&lt;&lt;(char const*):serializable.hpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "str[i]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "kxy::thread::resume():thread.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "kxy::thread::start():thread.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "pf::plugin::do_task(kxy::ptr&lt;pf::task&gt;):plugin.cpp">
+      </ContextState>
+      <ContextState
+         contextName = "pf::plugin_thread::run():plugin_thread.hpp">
+      </ContextState>
+      <ContextState
+         contextName = "pf::loader::load():loader.cpp">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

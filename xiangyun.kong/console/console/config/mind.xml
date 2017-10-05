@@ -1,0 +1,4 @@
+<plugins>
+    <plugin name="memory" lib_path="libmemory.dylib" init_func="init_memory"/>
+    <plugin name="barren_cache" lib_path="libbarren_cache.dylib" init_func="init_barren_cache"/>
+</plugins>
