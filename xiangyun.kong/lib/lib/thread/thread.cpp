@@ -30,7 +30,7 @@ namespace kxy {
             if (obj->get_status() == running) {
                 obj->run_once();
             } else {
-                usleep(12);
+                usleep(16);
             }
         }
         return nullptr;
