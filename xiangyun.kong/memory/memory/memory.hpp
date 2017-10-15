@@ -10,7 +10,6 @@
 #define memory_hpp
 
 #include <plugin/plugin.h>
-#include <leveldb/db.h>
 #include <object/ptr.h>
 #include <barren/barren.hpp>
 
@@ -29,7 +28,7 @@ namespace mind {
         
     public:
         void write(ptr<barren> obj);
-        ptr<barren> read(const string& id);
+        ptr<barren> read(long id);
         
     private:
         static const string m_path;

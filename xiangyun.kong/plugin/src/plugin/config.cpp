@@ -7,7 +7,7 @@
 //
 
 #include "config.hpp"
-#include <constants.h>
+#include <names.h>
 
 namespace pf {
     
@@ -27,7 +27,7 @@ namespace pf {
             return "";
     }
     
-    string config::get_plugin_name() const {
+    string config::get_name() const {
         xml_attribute<>* attr = m_xml->first_attribute(CFG_PLUGIN_NAME.c_str());
         if(attr != nullptr)
             return attr->value();

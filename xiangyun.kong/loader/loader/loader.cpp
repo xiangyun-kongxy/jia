@@ -11,10 +11,10 @@
 #include <plugin/plugin.h>
 #include <bus/bus/bus.h>
 #include <lifecycle/src/lifecycle.hpp>
-#include <lifecycle/src/lifecycle_function.h>
 #include <task/simple_task.h>
 #include <manager/plugin_manager.hpp>
 #include <identifier/id_name.h>
+#include <functions.h>
 
 using namespace kxy;
 namespace pf {

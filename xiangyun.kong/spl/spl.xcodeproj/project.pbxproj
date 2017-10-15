@@ -272,7 +272,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = V26S23V64D;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/../lib/lib";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../lib/lib",
+					"$(SRCROOT)/../include",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -281,7 +284,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = V26S23V64D;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/../lib/lib";
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/../lib/lib",
+					"$(SRCROOT)/../include",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

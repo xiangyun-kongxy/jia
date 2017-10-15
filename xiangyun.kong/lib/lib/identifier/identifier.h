@@ -14,6 +14,7 @@
 
 #include <object/object.h>
 #include <object/ptr.h>
+#include <names.h>
 
 namespace kxy {
 
@@ -44,11 +45,11 @@ namespace kxy {
         }
         
         virtual string type() const override {
-            return "identifier";
+            return OBJ_IDENTIFIER;
         }
 
         virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == "identifier" || object::is_kind_of(type_name);
+            return type_name == OBJ_IDENTIFIER || object::is_kind_of(type_name);
         }
         
     protected:

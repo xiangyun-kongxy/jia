@@ -17,7 +17,7 @@ namespace kxy {
     
     class file_util {
     public:
-        static const char* read(const string& path) {
+        static string read(const string& path) {
             FILE* pf = fopen(path.c_str(), "r");
             if (pf != nullptr) {
                 fseek(pf, 0, SEEK_END);
@@ -33,7 +33,7 @@ namespace kxy {
                 fclose(pf);
                 delete[] buf;
                 
-                return result.c_str();
+                return result;
             }
             return nullptr;
         }

@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		267BBE461E178DC500C6F0EE /* libbus.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 267BBE411E178DC500C6F0EE /* libbus.dylib */; };
 		267BBE471E178DC500C6F0EE /* liblib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 267BBE421E178DC500C6F0EE /* liblib.dylib */; };
-		267BBE481E178DC500C6F0EE /* liblifecycle.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 267BBE431E178DC500C6F0EE /* liblifecycle.dylib */; };
 		267BBE491E178DC500C6F0EE /* libloader.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 267BBE441E178DC500C6F0EE /* libloader.dylib */; };
-		267BBE4A1E178DC500C6F0EE /* libplugin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 267BBE451E178DC500C6F0EE /* libplugin.dylib */; };
 		267BBE4C1E178E2E00C6F0EE /* console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 267BBE4B1E178E2E00C6F0EE /* console.cpp */; };
 /* End PBXBuildFile section */
 
@@ -43,11 +40,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				267BBE461E178DC500C6F0EE /* libbus.dylib in Frameworks */,
 				267BBE471E178DC500C6F0EE /* liblib.dylib in Frameworks */,
-				267BBE481E178DC500C6F0EE /* liblifecycle.dylib in Frameworks */,
 				267BBE491E178DC500C6F0EE /* libloader.dylib in Frameworks */,
-				267BBE4A1E178DC500C6F0EE /* libplugin.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,7 +252,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = V26S23V64D;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/..";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../loader";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -268,7 +262,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = V26S23V64D;
-				HEADER_SEARCH_PATHS = "$(SRCROOT)/..";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../loader";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -293,6 +287,7 @@
 				267BBE3F1E178DAE00C6F0EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -272,7 +272,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../lib/lib",
-					"$(SRCROOT)/../plugin/src/include",
+					"$(SRCROOT)/../include",
 					"$(SRCROOT)/../plugin/src",
 					"$(SRCROOT)/../barren",
 				);
@@ -292,7 +292,7 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../lib/lib",
-					"$(SRCROOT)/../plugin/src/include",
+					"$(SRCROOT)/../include",
 					"$(SRCROOT)/../plugin/src",
 					"$(SRCROOT)/../barren",
 				);
@@ -319,6 +319,7 @@
 				26D02E2D1E7973F100472610 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

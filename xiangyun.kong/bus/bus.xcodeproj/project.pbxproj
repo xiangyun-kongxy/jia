@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		26036D0D1E0E7090005D4D02 /* bridge.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26036D0C1E0E7090005D4D02 /* bridge.cpp */; };
 		26036D3E1E0EBE32005D4D02 /* liblib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26036D3D1E0EBE32005D4D02 /* liblib.dylib */; };
 		266E1A621E0D703200FA8F01 /* libplugin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 266E1A611E0D703200FA8F01 /* libplugin.dylib */; };
 		26DC67C01E02D78700A68FDF /* bus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26DC67BE1E02D78700A68FDF /* bus.cpp */; };
@@ -16,16 +15,13 @@
 
 /* Begin PBXFileReference section */
 		26036D091E0E6F23005D4D02 /* trigger_on_response.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = trigger_on_response.h; path = trigger/trigger_on_response.h; sourceTree = "<group>"; };
-		26036D0A1E0E6F5C005D4D02 /* trigger_on_routing_event.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = trigger_on_routing_event.h; path = trigger/trigger_on_routing_event.h; sourceTree = "<group>"; };
-		26036D0C1E0E7090005D4D02 /* bridge.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bridge.cpp; path = interface/bridge.cpp; sourceTree = "<group>"; };
-		26036D1B1E0E8067005D4D02 /* bus_functions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = bus_functions.h; sourceTree = "<group>"; };
+		26036D0A1E0E6F5C005D4D02 /* trigger_on_route.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = trigger_on_route.h; path = trigger/trigger_on_route.h; sourceTree = "<group>"; };
 		26036D3B1E0EBE20005D4D02 /* liblifecycle.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblifecycle.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/liblifecycle.dylib"; sourceTree = "<group>"; };
 		26036D3D1E0EBE32005D4D02 /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
 		266E1A611E0D703200FA8F01 /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
 		26784E111E003C8D00FCE82B /* libbus.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libbus.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		26DC67BE1E02D78700A68FDF /* bus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bus.cpp; sourceTree = "<group>"; };
 		26DC67BF1E02D78700A68FDF /* bus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bus.h; sourceTree = "<group>"; };
-		ADEA57C41F838FB3002CC56A /* ipc.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ipc.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,17 +41,9 @@
 			isa = PBXGroup;
 			children = (
 				26036D091E0E6F23005D4D02 /* trigger_on_response.h */,
-				26036D0A1E0E6F5C005D4D02 /* trigger_on_routing_event.h */,
+				26036D0A1E0E6F5C005D4D02 /* trigger_on_route.h */,
 			);
 			name = trigger;
-			sourceTree = "<group>";
-		};
-		26036D0B1E0E7037005D4D02 /* interface */ = {
-			isa = PBXGroup;
-			children = (
-				26036D0C1E0E7090005D4D02 /* bridge.cpp */,
-			);
-			name = interface;
 			sourceTree = "<group>";
 		};
 		26036D1C1E0E81AB005D4D02 /* schedule */ = {
@@ -95,14 +83,11 @@
 		26784E131E003C8D00FCE82B /* src */ = {
 			isa = PBXGroup;
 			children = (
-				26036D0B1E0E7037005D4D02 /* interface */,
 				519AA7C51E1122CA007D1A90 /* executor */,
 				26036D1C1E0E81AB005D4D02 /* schedule */,
 				26036D081E0E6EF4005D4D02 /* trigger */,
 				26DC67BE1E02D78700A68FDF /* bus.cpp */,
 				26DC67BF1E02D78700A68FDF /* bus.h */,
-				26036D1B1E0E8067005D4D02 /* bus_functions.h */,
-				ADEA57C41F838FB3002CC56A /* ipc.hpp */,
 			);
 			name = src;
 			path = bus;
@@ -184,7 +169,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26036D0D1E0E7090005D4D02 /* bridge.cpp in Sources */,
 				26DC67C01E02D78700A68FDF /* bus.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -295,7 +279,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../lib/lib",
 					"$(SRCROOT)/../plugin/src",
-					"$(SRCROOT)/../plugin/src/include",
+					"$(SRCROOT)/../include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -315,7 +299,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../lib/lib",
 					"$(SRCROOT)/../plugin/src",
-					"$(SRCROOT)/../plugin/src/include",
+					"$(SRCROOT)/../include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

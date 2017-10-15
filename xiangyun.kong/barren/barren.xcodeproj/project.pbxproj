@@ -13,7 +13,9 @@
 		267BBFED1E29119B00C6F0EE /* barren_io.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 267BBFEB1E29119B00C6F0EE /* barren_io.cpp */; };
 		267BBFEE1E29119B00C6F0EE /* barren_io.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 267BBFEC1E29119B00C6F0EE /* barren_io.hpp */; };
 		267BC0171E29354C00C6F0EE /* libplugin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 267BC0161E29354C00C6F0EE /* libplugin.dylib */; };
-		267BC0191E29384600C6F0EE /* libbus.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 267BC0181E29384600C6F0EE /* libbus.dylib */; };
+		268A6D221F91B113000B6648 /* barren_set.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 268A6D201F91B113000B6648 /* barren_set.cpp */; };
+		268A6D231F91B113000B6648 /* barren_set.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 268A6D211F91B113000B6648 /* barren_set.hpp */; };
+		268A6D621F91F5BC000B6648 /* libipc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 268A6D611F91F5BC000B6648 /* libipc.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +27,9 @@
 		267BBFEC1E29119B00C6F0EE /* barren_io.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = barren_io.hpp; path = util/barren_io.hpp; sourceTree = "<group>"; };
 		267BC0161E29354C00C6F0EE /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
 		267BC0181E29384600C6F0EE /* libbus.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbus.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libbus.dylib"; sourceTree = "<group>"; };
-		51F542461E31C31F00D9D18D /* predefined_barren.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = predefined_barren.h; sourceTree = "<group>"; };
+		268A6D201F91B113000B6648 /* barren_set.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = barren_set.cpp; path = data/barren_set.cpp; sourceTree = "<group>"; };
+		268A6D211F91B113000B6648 /* barren_set.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = barren_set.hpp; path = data/barren_set.hpp; sourceTree = "<group>"; };
+		268A6D611F91F5BC000B6648 /* libipc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libipc.dylib; path = ../ipc/build/Debug/libipc.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				267BC0191E29384600C6F0EE /* libbus.dylib in Frameworks */,
+				268A6D621F91F5BC000B6648 /* libipc.dylib in Frameworks */,
 				267BC0171E29354C00C6F0EE /* libplugin.dylib in Frameworks */,
 				267BBFAD1E1899DA00C6F0EE /* liblib.dylib in Frameworks */,
 			);
@@ -62,11 +66,10 @@
 		267BBF9B1E18957B00C6F0EE /* barren */ = {
 			isa = PBXGroup;
 			children = (
-				267BBFDB1E21EEFB00C6F0EE /* data */,
+				267BBFDB1E21EEFB00C6F0EE /* types */,
 				267BBFB31E1BD9A900C6F0EE /* util */,
 				267BBFA71E18980000C6F0EE /* barren.cpp */,
 				267BBFA81E18980000C6F0EE /* barren.hpp */,
-				51F542461E31C31F00D9D18D /* predefined_barren.h */,
 			);
 			path = barren;
 			sourceTree = "<group>";
@@ -74,6 +77,7 @@
 		267BBFAB1E1899DA00C6F0EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				268A6D611F91F5BC000B6648 /* libipc.dylib */,
 				267BC0181E29384600C6F0EE /* libbus.dylib */,
 				267BC0161E29354C00C6F0EE /* libplugin.dylib */,
 				267BBFAC1E1899DA00C6F0EE /* liblib.dylib */,
@@ -90,11 +94,13 @@
 			name = util;
 			sourceTree = "<group>";
 		};
-		267BBFDB1E21EEFB00C6F0EE /* data */ = {
+		267BBFDB1E21EEFB00C6F0EE /* types */ = {
 			isa = PBXGroup;
 			children = (
+				268A6D201F91B113000B6648 /* barren_set.cpp */,
+				268A6D211F91B113000B6648 /* barren_set.hpp */,
 			);
-			name = data;
+			name = types;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,6 +110,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				268A6D231F91B113000B6648 /* barren_set.hpp in Headers */,
 				267BBFAA1E18980000C6F0EE /* barren.hpp in Headers */,
 				267BBFEE1E29119B00C6F0EE /* barren_io.hpp in Headers */,
 			);
@@ -169,6 +176,7 @@
 			files = (
 				267BBFA91E18980000C6F0EE /* barren.cpp in Sources */,
 				267BBFED1E29119B00C6F0EE /* barren_io.cpp in Sources */,
+				268A6D221F91B113000B6648 /* barren_set.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,10 +282,9 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../lib/lib",
-					"$(SRCROOT)/../barren_cache",
-					"$(SRCROOT)/../plugin/src/include",
 					"$(SRCROOT)/../plugin/src",
-					"$(SRCROOT)/../bus",
+					"$(SRCROOT)/../id_service",
+					"$(SRCROOT)/../include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -295,10 +302,9 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../lib/lib",
-					"$(SRCROOT)/../barren_cache",
-					"$(SRCROOT)/../plugin/src/include",
 					"$(SRCROOT)/../plugin/src",
-					"$(SRCROOT)/../bus",
+					"$(SRCROOT)/../id_service",
+					"$(SRCROOT)/../include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

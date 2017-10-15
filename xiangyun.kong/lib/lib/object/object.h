@@ -16,6 +16,7 @@
 #include <uuid/uuid.h>
 #include <object/reference.h>
 #include <object/type_info.h>
+#include <names.h>
 
 using namespace std;
 namespace kxy {
@@ -23,11 +24,11 @@ namespace kxy {
     class object : public reference, public type_info {
     public:
         virtual string type() const {
-            return "object";
+            return OBJECT;
         }
 
         virtual bool is_kind_of(const string& type_name) const {
-            return type_name == "object" || type_info::is_kind_of(type_name);
+            return type_name == OBJECT || type_info::is_kind_of(type_name);
         }
 
     public:
@@ -40,9 +41,6 @@ namespace kxy {
         }
         
     public:
-        // TODO: objects management support
-        // TODO: compiler time objects management switcher support
-        // TODO: call stack for ref() and reduce for debugging
         object() {
             unsigned char uuid[sizeof(uuid_t) + 1] = {0};
             uuid_generate(uuid);

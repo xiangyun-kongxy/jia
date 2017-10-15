@@ -17,11 +17,11 @@ namespace pf {
         virtual void occur(ptr<plugin>,ptr<event>) = 0;
 
         virtual string type() const override {
-            return "trigger";
+            return OBJ_TRIGGER;
         }
         
         virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == "trigger" || object::is_kind_of(type_name);
+            return type_name == OBJ_TRIGGER || object::is_kind_of(type_name);
         }
 
     };

@@ -41,11 +41,11 @@ namespace pf {
         virtual ptr<serializable> param() const = 0;
 
         virtual string type() const override {
-            return "task";
+            return OBJ_TASK;
         }
         
         virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == "task" || object::is_kind_of(type_name);
+            return type_name == OBJ_TASK || object::is_kind_of(type_name);
         }
 
     };

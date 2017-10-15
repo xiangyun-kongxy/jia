@@ -24,7 +24,7 @@ namespace pf {
         xml_node<>* get_private_param() const;
         
         string get_lib_path() const;
-        string get_plugin_name() const;
+        string get_name() const;
         string get_init_func() const;
         
     private:

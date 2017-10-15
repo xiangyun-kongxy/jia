@@ -33,11 +33,11 @@ namespace pf {
         
     public:
         virtual string type() const override {
-            return "simple_task";
+            return OBJ_SIMPLE_TASK;
         }
         
         virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == "simple_task" || task::is_kind_of(type_name);
+            return type_name == OBJ_SIMPLE_TASK || task::is_kind_of(type_name);
         }
         
     private:

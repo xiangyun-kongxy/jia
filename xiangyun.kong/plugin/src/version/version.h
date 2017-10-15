@@ -5,7 +5,6 @@
 #ifndef PLUGIN_VERSION_H
 #define PLUGIN_VERSION_H
 
-#include <constants.h>
 
 namespace pf {
 

@@ -10,6 +10,7 @@
 #define id_name_h
 
 #include "identifier.h"
+#include <names.h>
 
 namespace kxy {
     
@@ -26,11 +27,11 @@ namespace kxy {
         }
         
         virtual string type() const override {
-            return "id_name";
+            return OBJ_ID_NAME;
         }
         
         virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == "id_name" || identifier::is_kind_of(type_name);
+            return type_name == OBJ_ID_NAME || identifier::is_kind_of(type_name);
         }
         
     protected:

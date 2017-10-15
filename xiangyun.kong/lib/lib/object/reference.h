@@ -10,6 +10,7 @@
 #define reference_h
 
 #include <atomic>
+#include <stdio.h>
 
 using namespace std;
 
@@ -22,8 +23,9 @@ class reference {
         }
         
         void reduce() {
-            if(atomic_fetch_sub(&m_ref, 1L) < 1L)
+            if(atomic_fetch_sub(&m_ref, 1L) == 1L) {
                 delete this;
+            }
         }
         
         long ref_count() const {
@@ -33,16 +35,22 @@ class reference {
     public:
         reference() :
         m_ref(0L) {
-            
+#ifdef _DEBUG
+                printf("%016lx is creating\n", (long)this);
+#endif
         }
         
         reference(long cur_ref) :
         m_ref(cur_ref) {
-            
+#ifdef _DEBUG
+                printf("%016lx is creating\n", (long)this);
+#endif
         }
         
         virtual ~reference() {
-            
+#ifdef _DEBUG
+                printf(".\t.\t.\t%016lx is deleting\n", (long)this);
+#endif
         }
         
     private:

@@ -22,6 +22,7 @@ namespace kxy {
         char* split = strtok_r(copy, SS1, &context);
         while (split != nullptr) {
             m_buf.push_back(split);
+            split = strtok_r(NULL, SS1, &context);
         }
     }
     

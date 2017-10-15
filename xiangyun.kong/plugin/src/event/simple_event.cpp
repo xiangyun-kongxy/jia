@@ -33,10 +33,6 @@ namespace pf {
         m_dst = dst;
     }
 
-    string simple_event::type() const {
-        return "simple_event";
-    }
-
     ptr<plugin> simple_event::deliver() const {
         return m_deliver;
     }
@@ -53,8 +49,12 @@ namespace pf {
         return m_param;
     }
 
+    string simple_event::type() const {
+        return OBJ_SIMPLE_EVENT;
+    }
+
     bool simple_event::is_kind_of(const string &type_name) const {
-        return type_name == "simple_event" || event::is_kind_of(type_name);
+        return type_name == OBJ_SIMPLE_EVENT || event::is_kind_of(type_name);
     }
 }
 

@@ -20,6 +20,8 @@
 #include <plugin/plugin.h>
 #include <unistd.h>
 
+#include <functions.h>
+
 using namespace std;
 using namespace kxy;
 
@@ -41,7 +43,7 @@ namespace pf {
             ptr<object> tsk = m_pool->pop();
             if(tsk == nullptr) {
                 usleep(12);
-            } else if (tsk->is_kind_of("task")) {
+            } else if (tsk->is_kind_of(OBJ_TASK)) {
                 ptr<response> rsp = m_owner->do_task((ptr<task>)tsk);
 
                 extern ptr<plugin> g_bus;
@@ -49,9 +51,9 @@ namespace pf {
                 ptr<simple_event> evt;
                 data = new serializable;
                 data << tsk << rsp;
-                evt = new simple_event("response", data);
+                evt = new simple_event(F_RESPONSE, data);
                 g_bus->on_event(evt);
-            } else if (tsk->is_kind_of("event")) {
+            } else if (tsk->is_kind_of(OBJ_EVENT)) {
                 m_owner->on_event((ptr<event>)tsk);
             }
             return 0;
@@ -67,11 +69,11 @@ namespace pf {
 
     public:
         virtual bool is_kind_of(const string &name) const override {
-            return name == "plugin_thread" || thread::is_kind_of(name);
+            return name == OBJ_PLUGIN_THREAD || thread::is_kind_of(name);
         }
 
         virtual string type() const override {
-            return "plugin_thread";
+            return OBJ_PLUGIN_THREAD;
         }
 
     protected:

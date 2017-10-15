@@ -10,13 +10,14 @@
 #define serializable_hpp
 
 #include "../convert/basic_type_convert.h"
-#include "../object/reference.h"
+#include "../object/object.h"
 #include "decl_serializable.h"
 #include "../object/ptr.h"
 
 #include <stdio.h>
 #include <sstream>
 #include <map>
+#include <set>
 #include <list>
 #include <queue>
 #include <stack>
@@ -27,10 +28,19 @@ using namespace std;
 
 namespace kxy {
 
-    class serializable : public reference {
+    class serializable : public object {
     public:
         serializable();
         serializable(const char* buf);
+        
+    public:
+        virtual string type() const {
+            return OBJ_SERIALIZABLE;
+        }
+        
+        virtual bool is_kind_of(const string& type_name) const {
+            return type_name == OBJ_SERIALIZABLE || object::is_kind_of(type_name);
+        }
         
     public:
         string buf() {
@@ -208,6 +218,8 @@ namespace kxy {
 
         template<class type>
         serializable& operator << (ptr<type> data) {
+            m_hold_reference.insert(data);
+            
             long p = (long)*data;
             *this << p;
             return *this;
@@ -218,6 +230,8 @@ namespace kxy {
             long p;
             *this >> p;
             data = (type*)p;
+            
+            m_hold_reference.erase(data);
             return *this;
         }
         
@@ -267,6 +281,7 @@ namespace kxy {
 
     private:
         list<string> m_buf;
+        set<ptr<reference>> m_hold_reference;
     };
     
     

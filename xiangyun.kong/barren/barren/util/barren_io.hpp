@@ -18,8 +18,8 @@ using namespace kxy;
 
 namespace mind {
     
-    ptr<barren> get_barren(long id);
-    void put_barren(ptr<barren> obj);
+    ptr<barren> load_barren(long id);
+    void save_barren(ptr<barren> obj);
     
 }
 

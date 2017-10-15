@@ -15,7 +15,7 @@
 
 namespace pf {
     
-    class trigger_on_response : public trigger {
+    class on_response : public trigger {
     public:
         virtual void occur(ptr<plugin> owner, ptr<event> evt) override {
             ptr<serializable> data = evt->param();
@@ -26,11 +26,11 @@ namespace pf {
         }
         
         virtual string type() const override {
-            return "trigger_on_response";
+            return TRIGGER_ON_RESPONSE;
         }
         
         virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == "trigger_on_response" || trigger::is_kind_of(type_name);
+            return type_name == TRIGGER_ON_RESPONSE || trigger::is_kind_of(type_name);
         }
     };
     

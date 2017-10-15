@@ -9,6 +9,8 @@
 #ifndef type_info_h
 #define type_info_h
 
+#include <names.h>
+
 namespace kxy {
     
     class type_info {
@@ -19,11 +21,11 @@ namespace kxy {
         
     public:
         virtual string type() const {
-            return "type_info";
+            return TYPE_INFO;
         }
         
         virtual bool is_kind_of(const string& type_name) const {
-            return type_name == "type_info";
+            return type_name == TYPE_INFO;
         }
     };
     

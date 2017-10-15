@@ -12,7 +12,7 @@
 #include <sys/fcntl.h>
 #include <semaphore.h>
 #include <lock/auto_lock.h>
-#include <object/reference.h>
+#include <object/object.h>
 #include <pthread.h>
 #include <queue>
 #include <string>
@@ -22,7 +22,7 @@ using namespace std;
 namespace kxy {
     
     template<typename ty>
-    class cqueue : public reference {
+    class cqueue : public object {
     public:
         cqueue() {
             m_sem = sem_open(to_string((long)this).c_str(), O_CREAT, 0644, 0);
@@ -31,6 +31,15 @@ namespace kxy {
         
         virtual ~cqueue() {
             pthread_mutex_destroy(&m_mutex);
+        }
+        
+    public:
+        virtual string type() const {
+            return OBJ_CQUEUE;
+        }
+        
+        virtual bool is_kind_of(const string& type_name) const {
+            return type_name == OBJ_CQUEUE || type_info::is_kind_of(type_name);
         }
         
     public:

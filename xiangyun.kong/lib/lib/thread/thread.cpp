@@ -37,11 +37,11 @@ namespace kxy {
     }
     
     string thread::type() const {
-        return "thread";
+        return OBJ_THREAD;
     }
     
     bool thread::is_kind_of(const string &type_name) const {
-        return type_name == "thread" || object::is_kind_of(type_name);
+        return type_name == OBJ_THREAD || object::is_kind_of(type_name);
     }
     
     long thread::start() {

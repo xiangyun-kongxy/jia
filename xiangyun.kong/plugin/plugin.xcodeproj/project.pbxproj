@@ -16,8 +16,6 @@
 		26036D421E0EBF0F005D4D02 /* simple_task.h in Headers */ = {isa = PBXBuildFile; fileRef = 26036D401E0EBF0F005D4D02 /* simple_task.h */; };
 		266BFDD81DB26E6600E0FA0F /* event.h in Headers */ = {isa = PBXBuildFile; fileRef = 266BFD8E1DB26E6600E0FA0F /* event.h */; };
 		266BFDDB1DB26E6600E0FA0F /* executor.h in Headers */ = {isa = PBXBuildFile; fileRef = 266BFD931DB26E6600E0FA0F /* executor.h */; };
-		266BFDE41DB26E6600E0FA0F /* constants.h in Headers */ = {isa = PBXBuildFile; fileRef = 266BFDA11DB26E6600E0FA0F /* constants.h */; };
-		266BFDE61DB26E6600E0FA0F /* errors.h in Headers */ = {isa = PBXBuildFile; fileRef = 266BFDA31DB26E6600E0FA0F /* errors.h */; };
 		266BFDEC1DB26E6600E0FA0F /* plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 266BFDAC1DB26E6600E0FA0F /* plugin.cpp */; };
 		266BFDED1DB26E6600E0FA0F /* plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 266BFDAD1DB26E6600E0FA0F /* plugin.h */; };
 		266BFDF71DB26E6600E0FA0F /* response.h in Headers */ = {isa = PBXBuildFile; fileRef = 266BFDBD1DB26E6600E0FA0F /* response.h */; };
@@ -44,8 +42,6 @@
 		266BFCFA1DB26DD700E0FA0F /* task.list */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = task.list; path = doc/task.list; sourceTree = "<group>"; };
 		266BFD8E1DB26E6600E0FA0F /* event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = event.h; sourceTree = "<group>"; };
 		266BFD931DB26E6600E0FA0F /* executor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = executor.h; sourceTree = "<group>"; };
-		266BFDA11DB26E6600E0FA0F /* constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = constants.h; sourceTree = "<group>"; };
-		266BFDA31DB26E6600E0FA0F /* errors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = errors.h; sourceTree = "<group>"; };
 		266BFDAC1DB26E6600E0FA0F /* plugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = plugin.cpp; sourceTree = "<group>"; };
 		266BFDAD1DB26E6600E0FA0F /* plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = plugin.h; sourceTree = "<group>"; };
 		266BFDBD1DB26E6600E0FA0F /* response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = response.h; sourceTree = "<group>"; };
@@ -83,10 +79,10 @@
 		266BFCE11DB26A3200E0FA0F = {
 			isa = PBXGroup;
 			children = (
-				266BFD7F1DB26E5800E0FA0F /* src */,
 				266BFCF81DB26DBD00E0FA0F /* doc */,
-				266BFCEB1DB26A3200E0FA0F /* Products */,
 				26036D241E0E882E005D4D02 /* Frameworks */,
+				266BFCEB1DB26A3200E0FA0F /* Products */,
+				266BFD7F1DB26E5800E0FA0F /* src */,
 			);
 			sourceTree = "<group>";
 		};
@@ -113,7 +109,6 @@
 				AD7E2BC31F83D030002DAA7C /* manager */,
 				266BFD8C1DB26E6600E0FA0F /* event */,
 				266BFD921DB26E6600E0FA0F /* executor */,
-				266BFD9F1DB26E6600E0FA0F /* include */,
 				266BFDAB1DB26E6600E0FA0F /* plugin */,
 				266BFDB81DB26E6600E0FA0F /* response */,
 				266BFDBE1DB26E6600E0FA0F /* task */,
@@ -141,16 +136,6 @@
 			);
 			name = executor;
 			path = src/executor;
-			sourceTree = "<group>";
-		};
-		266BFD9F1DB26E6600E0FA0F /* include */ = {
-			isa = PBXGroup;
-			children = (
-				266BFDA11DB26E6600E0FA0F /* constants.h */,
-				266BFDA31DB26E6600E0FA0F /* errors.h */,
-			);
-			name = include;
-			path = src/include;
 			sourceTree = "<group>";
 		};
 		266BFDAB1DB26E6600E0FA0F /* plugin */ = {
@@ -229,13 +214,11 @@
 				266BFDDB1DB26E6600E0FA0F /* executor.h in Headers */,
 				26DA2D9E1DB32455000C9B04 /* config.hpp in Headers */,
 				266BFDF81DB26E6600E0FA0F /* task.h in Headers */,
-				266BFDE41DB26E6600E0FA0F /* constants.h in Headers */,
 				266BFDF71DB26E6600E0FA0F /* response.h in Headers */,
 				26036D131E0E7264005D4D02 /* simple_event.h in Headers */,
 				266BFE011DB26E6600E0FA0F /* trigger.h in Headers */,
 				266BFDD81DB26E6600E0FA0F /* event.h in Headers */,
 				26036D181E0E7518005D4D02 /* simple_response.h in Headers */,
-				266BFDE61DB26E6600E0FA0F /* errors.h in Headers */,
 				AD7E2BC71F83D08C002DAA7C /* plugin_manager.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,9 +397,8 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/src",
-					"$(SRCROOT)/src/include",
 					"$(SRCROOT)/../lib/lib",
-					"$(SRCROOT)/..",
+					"$(SRCROOT)/../include",
 				);
 				OTHER_CFLAGS = "-fPIC";
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
@@ -438,9 +420,8 @@
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/src",
-					"$(SRCROOT)/src/include",
 					"$(SRCROOT)/../lib/lib",
-					"$(SRCROOT)/..",
+					"$(SRCROOT)/../include",
 				);
 				OTHER_CFLAGS = "-fPIC";
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";

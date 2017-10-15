@@ -9,16 +9,17 @@
 #include "loader.hpp"
 #include <fs/file_util.h>
 #include <dlfcn.h>
-#include "../lifecycle_function.h"
+#include <functions.h>
+#include <names.h>
 
 using namespace kxy;
 using namespace rapidxml;
 
 namespace pf {
     
-    list<config*> loader::read_config_file(const string &path) {
+    list<config*> loader::read_config_file(const string &path, char*& buf) {
         string conf = file_util::read(path);
-        char* buf = new char[conf.length() + 1];
+        buf = new char[conf.length() + 1];
         strcpy(buf, conf.c_str());
         
         list<config*> confs;
@@ -33,6 +34,7 @@ namespace pf {
                 child = child->next_sibling(CFG_PLUGIN.c_str());
             }
         }
+        
         return confs;
     }
     
@@ -41,9 +43,13 @@ namespace pf {
         string init_func_name = conf->get_init_func();
 
         void* lib = dlopen(lib_path.c_str(), RTLD_NOW);
-        void* init_func = dlsym(lib, init_func_name.c_str());
-        
-        return ((plugin_init_func)init_func)(conf->get_private_param());
+        if (lib != nullptr) {
+            void* init_func = dlsym(lib, init_func_name.c_str());
+            if (init_func != nullptr) {
+                return ((plugin_init_func)init_func)(conf->get_private_param());
+            }
+        }
+        return nullptr;
     }
     
 }

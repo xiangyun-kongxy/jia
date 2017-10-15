@@ -3,14 +3,14 @@
 //
 
 #include "bus.h"
-#include "bus_functions.h"
-#include <constants.h>
+#include <functions.h>
+#include <names.h>
 #include <lock/auto_lock.h>
 #include <unistd.h>
 #include <sys/fcntl.h>
 #include <executor/executor.h>
 #include <identifier/id_name.h>
-#include "trigger/trigger_on_routing_event.h"
+#include "trigger/trigger_on_route.h"
 #include "trigger/trigger_on_response.h"
 
 using namespace kxy;
@@ -22,8 +22,8 @@ namespace pf {
         m_sem = sem_open("plugin.bus.pending.task.sem", O_CREAT, 0644, 0);
         pthread_mutex_init(&m_mutex, nullptr);
         
-        m_event_processor[F_ROUTE_EVENT]    = new trigger_on_routing_event;
-        m_event_processor[F_RESPONSE]       = new trigger_on_response;
+        m_event_processor[F_ROUTE]    = new on_route;
+        m_event_processor[F_RESPONSE]       = new on_response;
         
     }
     
@@ -84,14 +84,11 @@ namespace pf {
     }
     
     string bus::type() const {
-        return "bus";
+        return PLUGIN_BUS;
     }
     
     bool bus::is_kind_of(const string &type_name) const {
-        return type_name == "bus" || plugin::is_kind_of(type_name);
+        return type_name == PLUGIN_BUS || plugin::is_kind_of(type_name);
     }
 
-    ptr<serializable> pack_data() {
-        return new serializable;
-    }
 }

@@ -13,6 +13,7 @@
 		267BBE281E17890800C6F0EE /* liblib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 267BBE271E17890800C6F0EE /* liblib.dylib */; };
 		267BBE2A1E17890E00C6F0EE /* liblifecycle.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 267BBE291E17890E00C6F0EE /* liblifecycle.dylib */; };
 		267BBE2C1E17891300C6F0EE /* libplugin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 267BBE2B1E17891300C6F0EE /* libplugin.dylib */; };
+		268A6D671F91F63A000B6648 /* libipc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 268A6D661F91F63A000B6648 /* libipc.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		267BBE271E17890800C6F0EE /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
 		267BBE291E17890E00C6F0EE /* liblifecycle.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblifecycle.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/liblifecycle.dylib"; sourceTree = "<group>"; };
 		267BBE2B1E17891300C6F0EE /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
+		268A6D661F91F63A000B6648 /* libipc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libipc.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libipc.dylib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				268A6D671F91F63A000B6648 /* libipc.dylib in Frameworks */,
 				267BBE2C1E17891300C6F0EE /* libplugin.dylib in Frameworks */,
 				267BBE2A1E17890E00C6F0EE /* liblifecycle.dylib in Frameworks */,
 				267BBE281E17890800C6F0EE /* liblib.dylib in Frameworks */,
@@ -69,6 +72,7 @@
 		267BBE241E17890300C6F0EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				268A6D661F91F63A000B6648 /* libipc.dylib */,
 				267BBE2B1E17891300C6F0EE /* libplugin.dylib */,
 				267BBE291E17890E00C6F0EE /* liblifecycle.dylib */,
 				267BBE271E17890800C6F0EE /* liblib.dylib */,
@@ -253,8 +257,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../",
 					"$(SRCROOT)/../lib/lib",
-					"$(SRCROOT)/../plugin/src/include",
 					"$(SRCROOT)/../plugin/src",
+					"$(SRCROOT)/../include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -273,8 +277,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../",
 					"$(SRCROOT)/../lib/lib",
-					"$(SRCROOT)/../plugin/src/include",
 					"$(SRCROOT)/../plugin/src",
+					"$(SRCROOT)/../include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -299,6 +303,7 @@
 				267BBE231E17876000C6F0EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

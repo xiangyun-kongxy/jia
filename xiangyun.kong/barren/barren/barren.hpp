@@ -32,33 +32,38 @@ namespace mind {
         
     public:
         long id() const;
+        long size() const;
         long operator[] (long i);
         
     public:
-        static void set_gid(long id);
-        static long get_gid();
-        static long get_add_gid();
+        void lock();
+        void unlock();
+        
+    public:
         
         DECL_SERIALIZE(barren, ar, ins, {
             ar << ins.m_ids[0];
-            for (long i = 0; i <= ins.m_ids[0]; ++i) {
-                ar << ins.m_ids[0];
+            for (long i = 1; i < ins.m_ids[0]; ++i) {
+                ar << ins.m_ids[i];
             }
-        })
+        });
         DECL_DESERIALIZE(barren, ar, ins, {
+            delete[] ins.m_ids;
+            
             long size;
             ar >> size;
-            ins.m_ids = new long[size + 1];
+            ins.m_ids = new long[size];
             ins.m_ids[0] = size;
-            for (long i = 1; i <= size; ++i) {
+            for (long i = 1; i < size; ++i) {
                 ar >> ins.m_ids[i];
             }
-        })
+        });
         
     private:
-        long* m_ids;
+        long get_guid();
         
-        static atomic_long s_cur_id;
+    protected:
+        long* m_ids;
     };
     
 }

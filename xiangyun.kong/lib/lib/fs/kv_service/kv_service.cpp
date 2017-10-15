@@ -8,6 +8,10 @@
 
 #include "kv_service.hpp"
 
+#include <iostream>
+
+using namespace std;
+
 namespace kxy {
     
     map<string, kv_service*> g_kv_services;
@@ -15,7 +19,12 @@ namespace kxy {
     kv_service::kv_service(const string& name) {
         m_name = name;
         Options opt;
-        DB::Open(opt, m_name, &m_db);
+        opt.create_if_missing = true;
+        Status status = DB::Open(opt, "/leveldb/data/" + m_name, &m_db);
+        if (!status.ok()) {
+            string info = status.ToString();
+            cout << info << endl;
+        }
     }
     
     kv_service::~kv_service() {

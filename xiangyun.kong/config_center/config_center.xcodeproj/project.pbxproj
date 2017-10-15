@@ -19,9 +19,8 @@
 		267BC03D1E2B566C00C6F0EE /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
 		267BC03F1E2B569B00C6F0EE /* config_center.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = config_center.cpp; sourceTree = "<group>"; };
 		267BC0401E2B569B00C6F0EE /* config_center.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = config_center.hpp; sourceTree = "<group>"; };
-		267BC0461E2B7DC700C6F0EE /* exe_on_get_config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = exe_on_get_config.h; path = executor/exe_on_get_config.h; sourceTree = "<group>"; };
-		267BC0471E2B7EC000C6F0EE /* config_functions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config_functions.h; sourceTree = "<group>"; };
-		267BC0481E2B7F9000C6F0EE /* trigger_on_put_config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = trigger_on_put_config.h; path = trigger/trigger_on_put_config.h; sourceTree = "<group>"; };
+		267BC0461E2B7DC700C6F0EE /* exe_get_config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = exe_get_config.h; path = executor/exe_get_config.h; sourceTree = "<group>"; };
+		267BC0481E2B7F9000C6F0EE /* trigger_put_config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = trigger_put_config.h; path = trigger/trigger_put_config.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +60,6 @@
 				267BC0441E2B7D5100C6F0EE /* trigger */,
 				267BC03F1E2B569B00C6F0EE /* config_center.cpp */,
 				267BC0401E2B569B00C6F0EE /* config_center.hpp */,
-				267BC0471E2B7EC000C6F0EE /* config_functions.h */,
 			);
 			path = config_center;
 			sourceTree = "<group>";
@@ -78,7 +76,7 @@
 		267BC0441E2B7D5100C6F0EE /* trigger */ = {
 			isa = PBXGroup;
 			children = (
-				267BC0481E2B7F9000C6F0EE /* trigger_on_put_config.h */,
+				267BC0481E2B7F9000C6F0EE /* trigger_put_config.h */,
 			);
 			name = trigger;
 			sourceTree = "<group>";
@@ -86,7 +84,7 @@
 		267BC0451E2B7D5800C6F0EE /* executor */ = {
 			isa = PBXGroup;
 			children = (
-				267BC0461E2B7DC700C6F0EE /* exe_on_get_config.h */,
+				267BC0461E2B7DC700C6F0EE /* exe_get_config.h */,
 			);
 			name = executor;
 			sourceTree = "<group>";
@@ -265,9 +263,9 @@
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../plugin/src/include",
 					"$(SRCROOT)/../plugin/src",
 					"$(SRCROOT)/../lib/lib",
+					"$(SRCROOT)/../include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -284,9 +282,9 @@
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../plugin/src/include",
 					"$(SRCROOT)/../plugin/src",
 					"$(SRCROOT)/../lib/lib",
+					"$(SRCROOT)/../include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -311,6 +309,7 @@
 				267BC0391E2A2E7500C6F0EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

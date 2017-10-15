@@ -9,7 +9,7 @@
 #include <sys/semaphore.h>
 #include <pthread.h>
 #include <object/ptr.h>
-#include "ipc.hpp"
+#include <ipc.hpp>
 
 namespace pf {
     

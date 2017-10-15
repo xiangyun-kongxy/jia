@@ -9,6 +9,9 @@
 #ifndef ptr_h
 #define ptr_h
 
+#include <stdio.h>
+#include <pthread.h>
+
 namespace kxy {
     
     /**
@@ -41,6 +44,16 @@ namespace kxy {
         }
         
         const ptr& operator=(ty* _val) {
+#ifdef _DEBUG
+            if (_val != nullptr) {
+                printf("%016lx: %016lx +++ %016lx(%ld)\n", (long)pthread_self(),
+                       (long)this, (long)_val, _val->ref_count());
+            }
+            if (m_ref != nullptr) {
+                printf("%016lx: .\t%016lx --- %016lx(%ld)\n", (long)pthread_self(),
+                       (long)this, (long)m_ref, m_ref->ref_count());
+            }
+#endif
             if(_val != nullptr)
                 _val->ref();
             if(m_ref != nullptr)
@@ -50,6 +63,12 @@ namespace kxy {
         }
         
         ~ptr() {
+#ifdef _DEBUG
+            if (m_ref != nullptr) {
+                printf("%016lx .\t.\t%016lx xxx %016lx(%ld)\n", (long)pthread_self(),
+                       (long)this, (long)m_ref, m_ref->ref_count());
+            }
+#endif
             if(m_ref != nullptr)
                 m_ref->reduce();
         }
@@ -62,7 +81,7 @@ namespace kxy {
         ty* operator->() const {
             return m_ref;
         }
-        
+
         bool operator==(const ty* _cmp) const {
             return m_ref == _cmp;
         }

@@ -19,7 +19,7 @@ namespace pf {
     
     class loader {
     public:
-        static list<config*> read_config_file(const string& path);
+        static list<config*> read_config_file(const string& path, char*& buf);
         static ptr<plugin> load_plugin(const config* conf);
         
     };

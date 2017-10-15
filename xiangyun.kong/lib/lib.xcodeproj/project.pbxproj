@@ -409,6 +409,7 @@
 				HEADER_SEARCH_PATHS = (
 					"${SRCROOT}/lib",
 					"$(SRCROOT)/../leveldb/leveldb/include",
+					"$(SRCROOT)/../include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -427,6 +428,7 @@
 				HEADER_SEARCH_PATHS = (
 					"${SRCROOT}/lib",
 					"$(SRCROOT)/../leveldb/leveldb/include",
+					"$(SRCROOT)/../include",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

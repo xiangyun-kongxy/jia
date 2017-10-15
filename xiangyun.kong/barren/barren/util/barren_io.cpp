@@ -7,32 +7,33 @@
 //
 
 #include "barren_io.hpp"
-#include <barren_cache/cache_function.h>
 #include <task/simple_task.h>
 #include <event/simple_event.h>
 #include <identifier/id_name.h>
 #include <response/response.h>
-#include <bus/ipc.hpp>
+
+#include <ipc.hpp>
+#include <functions.h>
+#include <names.h>
 
 using namespace pf;
 
 namespace mind {
     
-    ptr<identifier> g_barren_provider = new id_name("barren_cache");
+    ptr<identifier> g_barren_provider = new id_name(PLUGIN_BARREN_CACHE);
     
-    ptr<barren> get_barren(long id) {
-        ptr<serializable> rsp;
-        rsp = call_plugin(g_barren_provider, F_ON_GET_BARREN, id);
+    ptr<barren> load_barren(long id) {
         ptr<barren> barren;
-        rsp >> barren;
+        ptr<serializable> rsp;
+        rsp = call_plugin(g_barren_provider, F_LOAD_CACHE_BARREN, id);
+        if (rsp != nullptr) {
+            rsp >> barren;
+        }
         return barren;
     }
     
-    void put_barren(ptr<barren> obj) {
-        ptr<serializable> param;
-        param << obj;
-        ptr<event> evt = new simple_event(F_ON_PUT_BARREN, param, g_barren_provider);
-        send_message(evt);
+    void save_barren(ptr<barren> obj) {
+        send_to(g_barren_provider, F_SAVE_CACHE_BARREN, obj);
     }
     
 }

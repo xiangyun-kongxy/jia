@@ -8,8 +8,8 @@
 #include <identifier/id_name.h>
 #include <event/simple_event.h>
 #include <pthread.h>
-#include <constants.h>
 #include <task/simple_task.h>
+#include <errors.h>
 
 using namespace kxy;
 
@@ -21,7 +21,7 @@ namespace pf {
     void plugin::on_event(ptr<event> evt) {
         ptr<trigger> trigger = nullptr;
         if (evt != nullptr) {
-            if (evt->type() == "simple_event")
+            if (evt->type() == OBJ_SIMPLE_EVENT)
                 trigger = m_event_processor[((ptr<simple_event>)evt)->event_type()];
             else
                 trigger = m_event_processor[evt->type()];
@@ -33,7 +33,7 @@ namespace pf {
     ptr<response> plugin::do_task(ptr<task> tsk) {
         ptr<executor> executor = nullptr;
         if (tsk != nullptr) {
-            if(tsk->is_kind_of("simple_task"))
+            if(tsk->is_kind_of(OBJ_SIMPLE_TASK))
                 executor = m_task_processor[((ptr<simple_task>)tsk)->task_name()];
             else
                 executor = m_task_processor[tsk->type()];
@@ -70,11 +70,11 @@ namespace pf {
     }
 
     string plugin::type() const {
-        return "plugin";
+        return OBJ_PLUGIN;
     }
     
     bool plugin::is_kind_of(const string &type_name) const {
-        return type_name == "plugin" || object::is_kind_of(type_name);
+        return type_name == OBJ_PLUGIN || object::is_kind_of(type_name);
     }
 
 }

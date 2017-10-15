@@ -21,16 +21,16 @@ namespace mind {
         barren_cache();
         
     public:
-        ptr<barren> get_barren(long id);
-        void put_barren(ptr<barren> obj);
+        ptr<barren> load_barren(long id);
+        void save_barren(ptr<barren> obj);
         
     public:
         virtual string type() const override;
         virtual bool is_kind_of(const string &type_name) const override ;
         
     private:
-        ptr<barren> load_barren(long id);
-        void save_barren(ptr<barren> obj);
+        ptr<barren> load_barren_from_memory(long id);
+        void save_barren_to_memory(ptr<barren> obj);
        
     private:
         ptr<identifier> m_provider;
