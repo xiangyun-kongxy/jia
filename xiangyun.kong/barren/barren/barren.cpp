@@ -7,14 +7,18 @@
 //
 
 #include "barren.hpp"
-#include "util/barren_io.hpp"
+
+#include <set>
+#include <semaphore.h>
+
+#include <lib/identifier/id_name.h>
+#include <lib/lock/auto_lock.h>
+
+#include <barren/util/barren_io.hpp>
+
 #include <ipc.hpp>
 #include <functions.h>
 #include <names.h>
-#include <identifier/id_name.h>
-#include <lock/auto_lock.h>
-#include <set>
-#include <semaphore.h>
 
 using namespace kxy;
 using namespace pf;

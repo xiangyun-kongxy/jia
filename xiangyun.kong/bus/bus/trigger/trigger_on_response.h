@@ -9,20 +9,21 @@
 #ifndef trigger_on_response_h
 #define trigger_on_response_h
 
-#include <trigger/trigger.h>
-#include <plugin/plugin.h>
-#include <event/simple_event.h>
+#include <plugin/trigger/trigger.h>
+#include <plugin/plugin/plugin.h>
+#include <plugin/event/simple_event.h>
 
 namespace pf {
     
     class on_response : public trigger {
     public:
         virtual void occur(ptr<plugin> owner, ptr<event> evt) override {
+            ptr<bus> bus = owner;
             ptr<serializable> data = evt->param();
             ptr<task> tsk;
             ptr<response> rsp;
             data >> tsk >> rsp;
-            ((ptr<bus>)owner)->add_response(tsk,rsp);
+            bus->set_object(rsp);
         }
         
         virtual string type() const override {

@@ -9,13 +9,13 @@
 #ifndef barren_hpp
 #define barren_hpp
 
-#include <object/reference.h>
-#include <object/ptr.h>
 #include <atomic>
 #include <string>
 #include <list>
 
-#include <serialize/serializable.hpp>
+#include <lib/object/reference.h>
+#include <lib/object/ptr.h>
+#include <lib/serialize/serializable.hpp>
 
 using namespace kxy;
 using namespace std;

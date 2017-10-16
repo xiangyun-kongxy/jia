@@ -9,10 +9,12 @@
 #ifndef exe_get_cur_guid_h
 #define exe_get_cur_guid_h
 
-#include <executor/executor.h>
-#include <response/simple_response.h>
+#include <id_service/id_service.hpp>
+
+#include <plugin/executor/executor.h>
+#include <plugin/response/simple_response.h>
+
 #include <errors.h>
-#include "../id_service.hpp"
 
 using namespace pf;
 
@@ -25,7 +27,7 @@ namespace kxy {
             ptr<serializable> result = new serializable;
             
             result << id_service->get_guid();
-            return new simple_response(EC_OK, EM_OK, result);
+            return new simple_response(tsk, EC_OK, EM_OK, result);
         }
         
         virtual string type() const override {

@@ -34,8 +34,6 @@ static const string OBJ_EXECUTOR                    = "executor";
 static const string OBJ_TRIGGER                     = "trigger";
 static const string OBJ_PLUGIN                      = "plugin";
 static const string OBJ_IDENTIFIER                  = "identifier";
-static const string OBJ_ID_ANY                      = "id_any";
-static const string OBJ_ID_NAME                     = "id_name";
 static const string OBJ_THREAD                      = "thread";
 static const string OBJ_PLUGIN_THREAD               = "plugin_thread";
 static const string OBJ_SERIALIZABLE                = "serializable";
@@ -57,7 +55,6 @@ static const string EXE_GET_CONFIG                  = "get_config";
 static const string EXE_FETCH_ADD_GUID              = "fetch_add_guid";
 static const string EXE_GET_CUR_GUID                = "get_cur_guid";
 static const string EXE_LOAD_BARREN                 = "load_barren";
-static const string EXE_LOAD_PLUGIN                 = "load_plugin";
 
 // event processors(task without response)
 static const string TRIGGER_SAVE_CACHE_BARREN       = "save_cache_barren";
@@ -69,6 +66,12 @@ static const string TRIGGER_NEW_BARREN_FUNCTION     = "new_barren_function";
 static const string TRIGGER_NEW_COMPOUND_FUNCTION   = "new_compound_function";
 static const string TRIGGER_SET_GUID                = "set_guid";
 static const string TRIGGER_SAVE_BARREN             = "save_barren";
+static const string TRIGGER_START_FRAMEWORK         = "start_framework";
 
+// identifiers
+static const string ID_ANY                          = "id_any";
+static const string ID_NAME                         = "id_name";
+static const string ID_TASK_RESPONSE                = "id_task_response";
+static const string ID_SIMPLE_EVENT                 = "id_simple_event";
 
 #endif //NAMES_H

@@ -7,21 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		26036D1F1E0E83A9005D4D02 /* lifecycle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26036D1D1E0E83A9005D4D02 /* lifecycle.cpp */; };
-		26036D201E0E83A9005D4D02 /* lifecycle.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 26036D1E1E0E83A9005D4D02 /* lifecycle.hpp */; };
 		26036D231E0E83DE005D4D02 /* libplugin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26036D221E0E83DE005D4D02 /* libplugin.dylib */; };
-		26036D2D1E0E894E005D4D02 /* loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26036D2B1E0E894E005D4D02 /* loader.cpp */; };
-		26036D2E1E0E894E005D4D02 /* loader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 26036D2C1E0E894E005D4D02 /* loader.hpp */; };
+		AD5F03CE1F94F523002742B9 /* exe_load_plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03CD1F94F523002742B9 /* exe_load_plugin.h */; };
+		AD5F03D11F94F535002742B9 /* lifecycle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F03CF1F94F535002742B9 /* lifecycle.cpp */; };
+		AD5F03D21F94F535002742B9 /* lifecycle.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03D01F94F535002742B9 /* lifecycle.hpp */; };
+		AD5F03D51F94F565002742B9 /* loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F03D31F94F565002742B9 /* loader.cpp */; };
+		AD5F03D61F94F565002742B9 /* loader.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03D41F94F565002742B9 /* loader.hpp */; };
+		AD5F04021F9501DF002742B9 /* liblib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5F04011F9501DF002742B9 /* liblib.dylib */; };
+		AD5F04051F9501FD002742B9 /* libipc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AD5F04031F9501E5002742B9 /* libipc.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		26036D1D1E0E83A9005D4D02 /* lifecycle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = lifecycle.cpp; path = src/lifecycle.cpp; sourceTree = "<group>"; };
-		26036D1E1E0E83A9005D4D02 /* lifecycle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = lifecycle.hpp; path = src/lifecycle.hpp; sourceTree = "<group>"; };
 		26036D221E0E83DE005D4D02 /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
-		26036D2B1E0E894E005D4D02 /* loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = loader.cpp; path = src/load/loader.cpp; sourceTree = "<group>"; };
-		26036D2C1E0E894E005D4D02 /* loader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = loader.hpp; path = src/load/loader.hpp; sourceTree = "<group>"; };
-		26036D371E0EB504005D4D02 /* exe_load_plugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = exe_load_plugin.h; path = src/executor/exe_load_plugin.h; sourceTree = "<group>"; };
 		26784DF91E003A9700FCE82B /* liblifecycle.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = liblifecycle.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD5F03CC1F94F509002742B9 /* trigger_start_framework.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = trigger_start_framework.hpp; path = lifecycle/trigger/trigger_start_framework.hpp; sourceTree = "<group>"; };
+		AD5F03CD1F94F523002742B9 /* exe_load_plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = exe_load_plugin.h; path = lifecycle/executor/exe_load_plugin.h; sourceTree = "<group>"; };
+		AD5F03CF1F94F535002742B9 /* lifecycle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = lifecycle.cpp; path = lifecycle/lifecycle.cpp; sourceTree = "<group>"; };
+		AD5F03D01F94F535002742B9 /* lifecycle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = lifecycle.hpp; path = lifecycle/lifecycle.hpp; sourceTree = "<group>"; };
+		AD5F03D31F94F565002742B9 /* loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = loader.cpp; path = lifecycle/load/loader.cpp; sourceTree = "<group>"; };
+		AD5F03D41F94F565002742B9 /* loader.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = loader.hpp; path = lifecycle/load/loader.hpp; sourceTree = "<group>"; };
+		AD5F03D71F94F979002742B9 /* trigger_load_plugin.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = trigger_load_plugin.hpp; path = lifecycle/trigger/trigger_load_plugin.hpp; sourceTree = "<group>"; };
+		AD5F04011F9501DF002742B9 /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-dumkzocnaldwwnavyrkilehtiwxv/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
+		AD5F04031F9501E5002742B9 /* libipc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libipc.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-dumkzocnaldwwnavyrkilehtiwxv/Build/Products/Debug/libipc.dylib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +36,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD5F04051F9501FD002742B9 /* libipc.dylib in Frameworks */,
+				AD5F04021F9501DF002742B9 /* liblib.dylib in Frameworks */,
 				26036D231E0E83DE005D4D02 /* libplugin.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -39,6 +48,8 @@
 		26036D211E0E83DE005D4D02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AD5F04031F9501E5002742B9 /* libipc.dylib */,
+				AD5F04011F9501DF002742B9 /* liblib.dylib */,
 				26036D221E0E83DE005D4D02 /* libplugin.dylib */,
 			);
 			name = Frameworks;
@@ -47,8 +58,8 @@
 		26036D2A1E0E88E9005D4D02 /* load */ = {
 			isa = PBXGroup;
 			children = (
-				26036D2B1E0E894E005D4D02 /* loader.cpp */,
-				26036D2C1E0E894E005D4D02 /* loader.hpp */,
+				AD5F03D31F94F565002742B9 /* loader.cpp */,
+				AD5F03D41F94F565002742B9 /* loader.hpp */,
 			);
 			name = load;
 			sourceTree = "<group>";
@@ -56,7 +67,7 @@
 		26036D361E0EB4BE005D4D02 /* executor */ = {
 			isa = PBXGroup;
 			children = (
-				26036D371E0EB504005D4D02 /* exe_load_plugin.h */,
+				AD5F03CD1F94F523002742B9 /* exe_load_plugin.h */,
 			);
 			name = executor;
 			sourceTree = "<group>";
@@ -64,7 +75,7 @@
 		26784DF01E003A9700FCE82B = {
 			isa = PBXGroup;
 			children = (
-				26784E071E003B2400FCE82B /* src */,
+				26784E071E003B2400FCE82B /* lifecycle */,
 				26784DFA1E003A9700FCE82B /* Products */,
 				26036D211E0E83DE005D4D02 /* Frameworks */,
 			);
@@ -78,15 +89,25 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		26784E071E003B2400FCE82B /* src */ = {
+		26784E071E003B2400FCE82B /* lifecycle */ = {
 			isa = PBXGroup;
 			children = (
+				AD5F03CF1F94F535002742B9 /* lifecycle.cpp */,
+				AD5F03D01F94F535002742B9 /* lifecycle.hpp */,
+				AD5F03CB1F94F4A2002742B9 /* trigger */,
 				26036D361E0EB4BE005D4D02 /* executor */,
 				26036D2A1E0E88E9005D4D02 /* load */,
-				26036D1D1E0E83A9005D4D02 /* lifecycle.cpp */,
-				26036D1E1E0E83A9005D4D02 /* lifecycle.hpp */,
 			);
-			name = src;
+			name = lifecycle;
+			sourceTree = "<group>";
+		};
+		AD5F03CB1F94F4A2002742B9 /* trigger */ = {
+			isa = PBXGroup;
+			children = (
+				AD5F03CC1F94F509002742B9 /* trigger_start_framework.hpp */,
+				AD5F03D71F94F979002742B9 /* trigger_load_plugin.hpp */,
+			);
+			name = trigger;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,8 +117,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26036D201E0E83A9005D4D02 /* lifecycle.hpp in Headers */,
-				26036D2E1E0E894E005D4D02 /* loader.hpp in Headers */,
+				AD5F03CE1F94F523002742B9 /* exe_load_plugin.h in Headers */,
+				AD5F03D21F94F535002742B9 /* lifecycle.hpp in Headers */,
+				AD5F03D61F94F565002742B9 /* loader.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,8 +181,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26036D2D1E0E894E005D4D02 /* loader.cpp in Sources */,
-				26036D1F1E0E83A9005D4D02 /* lifecycle.cpp in Sources */,
+				AD5F03D51F94F565002742B9 /* loader.cpp in Sources */,
+				AD5F03D11F94F535002742B9 /* lifecycle.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,9 +289,10 @@
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../plugin/src",
-					"$(SRCROOT)/../lib/lib/",
+					"$(SRCROOT)/../plugin",
+					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../include",
+					"$(SRCROOT)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -286,9 +309,10 @@
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../plugin/src",
-					"$(SRCROOT)/../lib/lib/",
+					"$(SRCROOT)/../plugin",
+					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../include",
+					"$(SRCROOT)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

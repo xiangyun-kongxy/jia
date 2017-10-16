@@ -7,17 +7,21 @@
  *
  */
 
-#include <iostream>
 #include "id_service.hpp"
 
-#include "executor/exe_fetch_add_guid.hpp"
-#include "executor/exe_get_cur_guid.hpp"
-#include "trigger/trigger_set_guid.h"
+#include <iostream>
 
-#include <identifier/id_name.h>
+#include <lib/identifier/id_name.h>
+#include <lib/serialize/serializable.hpp>
+
+#include <id_service/executor/exe_fetch_add_guid.hpp>
+#include <id_service/executor/exe_get_cur_guid.hpp>
+#include <id_service/trigger/trigger_set_guid.h>
+
 
 #include <ipc.hpp>
 #include <functions.h>
+#include <events.h>
 #include <predefined_barren.h>
 
 namespace kxy {
@@ -28,8 +32,8 @@ namespace kxy {
         
         m_task_processor[F_FETCH_ADD_GUID] = new class fetch_add_guid;
         m_task_processor[F_GET_CUR_CUID] = new class get_cur_guid;
-        
-        m_event_processor[F_SET_GUID] = new class set_guid;
+
+        m_event_processor[EVT_SET_GUID] = new class set_guid;
     }
     
     id_service::~id_service() {
@@ -61,7 +65,7 @@ namespace kxy {
     }
     
     void id_service::save_guid() {
-        send_to(new id_name(PLUGIN_CONFIG_CENTER), F_PUT_CONFIG, CFG_CUR_GUID);
+        send_to(new id_name(PLUGIN_CONFIG_CENTER), EVT_PUT_CONFIG, CFG_CUR_GUID);
     }
     
     string id_service::type() const {

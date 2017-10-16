@@ -316,7 +316,7 @@
 					"$(SRCROOT)/../loader",
 					"$(SRCROOT)/../barren",
 					"$(SRCROOT)",
-					"$(SRCROOT)/../lib/lib",
+					"$(SRCROOT)/../lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -331,7 +331,7 @@
 					"$(SRCROOT)/../loader",
 					"$(SRCROOT)/../barren",
 					"$(SRCROOT)",
-					"$(SRCROOT)/../lib/lib",
+					"$(SRCROOT)/../lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

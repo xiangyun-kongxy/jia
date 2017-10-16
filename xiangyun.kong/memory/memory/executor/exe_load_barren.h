@@ -9,9 +9,11 @@
 #ifndef exe_on_load_barren_h
 #define exe_on_load_barren_h
 
-#include "../memory.hpp"
-#include <executor/executor.h>
-#include <response/simple_response.h>
+#include <memory/memory.hpp>
+
+#include <plugin/executor/executor.h>
+#include <plugin/response/simple_response.h>
+
 #include <errors.h>
 #include <names.h>
 
@@ -21,17 +23,17 @@ namespace mind {
     
     class load_barren : public executor {
     public:
-        virtual ptr<response> run(ptr<plugin> plugin, ptr<task> task) override {
+        virtual ptr<response> run(ptr<plugin> plugin, ptr<task> tsk) override {
             ptr<memory> owner = plugin;
-            ptr<serializable> data = task->param();
+            ptr<serializable> data = tsk->param();
             long id;
             data >> id;
             ptr<barren> barren = owner->read(id);
             if(barren != nullptr) {
                 data << barren;
-                return new simple_response(EC_OK, EM_OK, data);
+                return new simple_response(tsk, EC_OK, EM_OK, data);
             } else {
-                return new simple_response(EC_NOT_EXIST, EM_NOT_EXIST);
+                return new simple_response(tsk, EC_NOT_EXIST, EM_NOT_EXIST);
             }
         }
         

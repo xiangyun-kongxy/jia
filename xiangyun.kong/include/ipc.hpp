@@ -9,24 +9,26 @@
 #ifndef ipc_h
 #define ipc_h
 
-#include <serialize/serializable.hpp>
-#include <response/response.h>
-#include <task/simple_task.h>
-#include <event/simple_event.h>
-#include <identifier/identifier.h>
+#include <lib/serialize/serializable.hpp>
+#include <lib/identifier/identifier.h>
+
+#include <plugin/response/response.h>
+#include <plugin/task/simple_task.h>
+#include <plugin/event/simple_event.h>
 
 using namespace kxy;
 
 namespace pf {
 
     class plugin;
-    typedef void (*callback)(ptr<task>, ptr<response>);
+    typedef void (*task_callback)(ptr<object>);
     extern ptr<serializable> pack_data();
 
     extern void send_message(ptr<event>);
     extern ptr<response> do_task(ptr<task>);
-    extern void do_task_async(ptr<task>, callback);
+    extern void do_task_async(ptr<task>, task_callback);
 
+    extern ptr<object> wait_event(ptr<identifier>);
 
     template<typename value_type, typename ...other_types>
     ptr<serializable> pack_data(value_type value, other_types... other) {

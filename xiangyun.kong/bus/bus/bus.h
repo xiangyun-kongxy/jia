@@ -5,11 +5,18 @@
 #ifndef PLUGIN_BUS_H
 #define PLUGIN_BUS_H
 
-#include <plugin/plugin.h>
 #include <sys/semaphore.h>
 #include <pthread.h>
-#include <object/ptr.h>
+#include <set>
+
+#include <lib/object/ptr.h>
+
+#include <plugin/plugin/plugin.h>
+
 #include <ipc.hpp>
+
+using namespace std;
+using namespace kxy;
 
 namespace pf {
     
@@ -19,21 +26,28 @@ namespace pf {
         virtual ~bus();
         
     public:
-        ptr<response> wait_respond(ptr<task>);
-        
-        void add_pending_task(ptr<task>,callback);
-        void add_response(ptr<task>,ptr<response>);
+        void hold_object(ptr<identifier> obj);
+        void release_object(ptr<identifier> obj);
+
+        ptr<object> wait_object(ptr<identifier> obj);
+        void set_object(ptr<object> obj);
+
+        void set_event_trigger(ptr<identifier> evt, task_callback func);
         
     public:
         virtual string type() const override ;
         virtual bool is_kind_of(const string &type_name) const override ;
         
     private:
-        map<ptr<task>,callback> m_pending_task;
-        map<ptr<task>,ptr<response>> m_done_task;
-        
-        sem_t* m_sem;
         pthread_mutex_t m_mutex;
+        pthread_cond_t m_changed;
+
+        list<ptr<identifier>> m_waiting_object;
+        list<ptr<object>> m_object_set;
+
+        set<ptr<identifier>> m_hold_object;
+
+        map<ptr<identifier>, task_callback> m_user_trigger;
     };
     
 }

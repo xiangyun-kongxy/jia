@@ -11,11 +11,21 @@
 #ifndef PLUGIN_THREAD_H
 #define PLUGIN_THREAD_H
 
-#include <object/object.h>
+#include <lib/object/object.h>
 #include <semaphore.h>
 
 namespace kxy {
     
+    enum thread_status {
+        pending,
+        pausing,
+        paused,
+        resuming,
+        running,
+        destroying,
+        destroyed,
+    };
+
     class thread : public object {
     public:
         thread();
@@ -33,32 +43,25 @@ namespace kxy {
         
     public:
         virtual pthread_t thread_id() const;
-        
+        thread_status status();
+
     private:
         static void* thread_func(void *);
         
+    protected:
+        virtual void update_status();
+        virtual void change_status(thread_status s);
+        void wait_status();
+
     public:
         virtual void* run_once() = 0;
 
     protected:
         pthread_mutex_t m_mutex;
-        enum status {
-            pending,
-            pausing,
-            paused,
-            resuming,
-            running,
-            destroying,
-            destroyed,
-        };
         atomic_long m_status;
         pthread_t m_thread;
-    
-    protected:
-        virtual void update_status();
-        virtual void change_status(status s);
-
-        status get_status();
+        sem_t* m_status_changing;
+        sem_t* m_status_changed;
     };
 
 }

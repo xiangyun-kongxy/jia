@@ -9,8 +9,9 @@
 #ifndef trigger_on_put_barren_h
 #define trigger_on_put_barren_h
 
-#include <trigger/trigger.h>
-#include "../barren_cache.hpp"
+#include <barren_cache/barren_cache.hpp>
+
+#include <plugin/trigger/trigger.h>
 
 using namespace pf;
 

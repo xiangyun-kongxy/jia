@@ -7,13 +7,16 @@
 //
 
 #include "barren_io.hpp"
-#include <task/simple_task.h>
-#include <event/simple_event.h>
-#include <identifier/id_name.h>
-#include <response/response.h>
+
+#include <lib/identifier/id_name.h>
+
+#include <plugin/task/simple_task.h>
+#include <plugin/event/simple_event.h>
+#include <plugin/response/response.h>
 
 #include <ipc.hpp>
 #include <functions.h>
+#include <events.h>
 #include <names.h>
 
 using namespace pf;
@@ -33,7 +36,7 @@ namespace mind {
     }
     
     void save_barren(ptr<barren> obj) {
-        send_to(g_barren_provider, F_SAVE_CACHE_BARREN, obj);
+        send_to(g_barren_provider, EVT_SAVE_CACHE_BARREN, obj);
     }
     
 }

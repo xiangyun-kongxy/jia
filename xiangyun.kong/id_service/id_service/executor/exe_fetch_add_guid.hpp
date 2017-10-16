@@ -9,10 +9,11 @@
 #ifndef exe_fetch_add_guid_h
 #define exe_fetch_add_guid_h
 
-#include "../id_service.hpp"
+#include <id_service/id_service.hpp>
 
-#include <executor/executor.h>
-#include <response/simple_response.h>
+#include <plugin/executor/executor.h>
+#include <plugin/response/simple_response.h>
+
 #include <errors.h>
 #include <names.h>
 
@@ -28,7 +29,7 @@ namespace kxy {
             ptr<serializable> result = new serializable;
             
             result << id_service->fetch_add_guid();
-            return new simple_response(EC_OK, EM_OK, result);
+            return new simple_response(tsk, EC_OK, EM_OK, result);
         }
             
         virtual string type() const override {

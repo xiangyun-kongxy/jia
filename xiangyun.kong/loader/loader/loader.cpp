@@ -8,12 +8,17 @@
  */
 
 #include "loader.hpp"
-#include <plugin/plugin.h>
-#include <bus/bus/bus.h>
-#include <lifecycle/src/lifecycle.hpp>
-#include <task/simple_task.h>
-#include <manager/plugin_manager.hpp>
-#include <identifier/id_name.h>
+
+#include <lib/identifier/id_name.h>
+
+#include <plugin/plugin/plugin.h>
+#include <plugin/task/simple_task.h>
+#include <plugin/manager/plugin_manager.hpp>
+
+#include <bus/bus.h>
+
+#include <lifecycle/lifecycle.hpp>
+
 #include <functions.h>
 
 using namespace kxy;
@@ -32,8 +37,8 @@ namespace pf {
     
     void loader::load() {
         if(g_lifecycle != nullptr) {
-            call_plugin(new id_name(g_lifecycle->name()), F_LOAD_PLUGIN,
-                        m_plugin_conf_path);
+//            call_plugin(new id_name(g_lifecycle->name()), F_LOAD_PLUGIN,
+//                        m_plugin_conf_path);
         }
     }
 

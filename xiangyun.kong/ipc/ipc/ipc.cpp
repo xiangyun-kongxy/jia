@@ -8,56 +8,68 @@
  */
 
 
-#include <bus/bus.h>
 #include <sys/fcntl.h>
-#include <executor/executor.h>
-#include <identifier/id_name.h>
-#include <plugin/plugin.h>
-#include <event/simple_event.h>
+#include <set>
 
-#include <functions.h>
+#include <lib/identifier/id_name.h>
+
+#include <bus/bus.h>
+
+#include <plugin/executor/executor.h>
+#include <plugin/event/simple_event.h>
+
+#include <common/identifier/id_task_response.hpp>
+
+#include <events.h>
 #include <ipc.hpp>
+
+using namespace std;
 
 namespace pf {
     
-    extern ptr<plugin> g_bus;
+    extern ptr<bus> g_bus;
+    set<ptr<task>> g_waiting_tasks;
+
+    ptr<object> wait_event(ptr<identifier> id) {
+        if (g_bus != nullptr) {
+            return g_bus->wait_object(id);
+        }
+        return nullptr;
+    }
     
     void send_message(ptr<event> evt) {
-        if(g_bus != nullptr) {
+        if (g_bus != nullptr) {
             ptr<serializable> data = new serializable;
             data << evt;
-            ptr<event> route_event = new simple_event(F_ROUTE, data);
+            ptr<event> route_event = new simple_event(EVT_ROUTE, data);
             
             g_bus->on_event(route_event);
         }
     }
     
     ptr<response> do_task(ptr<task> tsk) {
-        ptr<response> rsp = nullptr;
-        ptr<bus> pbus = g_bus;
-        
-        if(pbus != nullptr) {
+        if (g_bus != nullptr) {
             ptr<serializable> data = new serializable;
             data << tsk;
-            ptr<event> route_event = new simple_event(F_ROUTE, data);
-            
-            pbus->add_pending_task(tsk, nullptr);
-            pbus->on_event(route_event);
-            rsp = pbus->wait_respond(tsk);
+            ptr<event> route_event = new simple_event(EVT_ROUTE, data);
+
+            ptr<id_task_response> id = new id_task_response(tsk);
+            g_bus->hold_object(id);
+            g_bus->on_event(route_event);
+            return g_bus->wait_object(id);
         }
         
-        return rsp;
+        return nullptr;
     }
     
-    void do_task_async(ptr<task> tsk, callback callback) {
-        ptr<bus> pbus = g_bus;
-        if(pbus != nullptr) {
+    void do_task_async(ptr<task> tsk, task_callback callback) {
+        if (g_bus != nullptr) {
             ptr<serializable> data = new serializable;
             data << tsk;
-            ptr<event> route_event = new simple_event(F_ROUTE, data);
+            ptr<event> route_event = new simple_event(EVT_ROUTE, data);
             
-            pbus->add_pending_task(tsk, callback);
-            pbus->on_event(route_event);
+            g_bus->set_event_trigger(new id_task_response(tsk), callback);
+            g_bus->on_event(route_event);
         }
     }
     

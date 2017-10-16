@@ -11,7 +11,8 @@
 
 #include <map>
 #include <string>
-#include <object/ptr.h>
+
+#include <lib/object/ptr.h>
 #include <barren/barren.hpp>
 
 using namespace std;

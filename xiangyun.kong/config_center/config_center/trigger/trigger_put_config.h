@@ -9,8 +9,9 @@
 #ifndef trigger_on_put_config_h
 #define trigger_on_put_config_h
 
-#include <trigger/trigger.h>
-#include "../config_center.hpp"
+#include <plugin/trigger/trigger.h>
+
+#include <config_center/config_center.hpp>
 
 using namespace pf;
 

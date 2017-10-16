@@ -9,8 +9,9 @@
 #ifndef trigger_new_compound_function_h
 #define trigger_new_compound_function_h
 
-#include <trigger/trigger.h>
-#include "../executor.hpp"
+#include <plugin/trigger/trigger.h>
+
+#include <executor/executor.hpp>
 
 using namespace pf;
 

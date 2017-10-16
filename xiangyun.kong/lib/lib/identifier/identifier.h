@@ -12,8 +12,8 @@
 #ifndef PLUGIN_PLUGIN_IDENTIFIER_H
 #define PLUGIN_PLUGIN_IDENTIFIER_H
 
-#include <object/object.h>
-#include <object/ptr.h>
+#include <lib/object/object.h>
+#include <lib/object/ptr.h>
 #include <names.h>
 
 namespace kxy {

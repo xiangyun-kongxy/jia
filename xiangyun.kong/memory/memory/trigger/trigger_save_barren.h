@@ -9,8 +9,10 @@
 #ifndef trigger_on_save_barren_h
 #define trigger_on_save_barren_h
 
-#include "../memory.hpp"
-#include <trigger/trigger.h>
+#include <memory/memory.hpp>
+
+#include <plugin/trigger/trigger.h>
+
 #include <names.h>
 
 using namespace pf;

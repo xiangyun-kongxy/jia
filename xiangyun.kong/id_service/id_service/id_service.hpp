@@ -10,7 +10,7 @@
 #ifndef id_service_
 #define id_service_
 
-#include <plugin/plugin.h>
+#include <plugin/plugin/plugin.h>
 
 /* The classes below are exported */
 #pragma GCC visibility push(default)

@@ -9,10 +9,11 @@
 #ifndef Header_h
 #define Header_h
 
+#include <id_service/id_service.hpp>
 
-#include <trigger/trigger.h>
+#include <plugin/trigger/trigger.h>
+
 #include <errors.h>
-#include "../id_service.hpp"
 
 using namespace pf;
 

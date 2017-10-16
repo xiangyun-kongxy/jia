@@ -7,14 +7,19 @@
 //
 
 #include "barren_cache.hpp"
-#include <identifier/id_name.h>
+
+#include <lib/identifier/id_name.h>
+
+#include <plugin/task/simple_task.h>
+#include <plugin/event/simple_event.h>
+
+#include <barren_cache/trigger/trigger_save_cache_barren.h>
+#include <barren_cache/executor/exe_load_cache_barren.h>
+
 #include <functions.h>
+#include <events.h>
 #include <ipc.hpp>
 #include <names.h>
-#include <task/simple_task.h>
-#include <event/simple_event.h>
-#include "trigger/trigger_save_cache_barren.h"
-#include "executor/exe_load_cache_barren.h"
 
 namespace mind {
     
@@ -23,7 +28,7 @@ namespace mind {
         // TODO: capacity from config
         m_cache = new cache(640000);
         
-        m_event_processor[F_SAVE_CACHE_BARREN] = new class save_cache_barren;
+        m_event_processor[EVT_SAVE_CACHE_BARREN] = new class save_cache_barren;
         m_task_processor[F_LOAD_CACHE_BARREN] = new class load_cache_barren;
     }
     
@@ -57,7 +62,7 @@ namespace mind {
     }
     
     void barren_cache::save_barren_to_memory(ptr<barren> obj) {
-        send_to(m_provider, F_SAVE_BARREN, obj);
+        send_to(m_provider, EVT_SAVE_BARREN, obj);
     }
     
     string barren_cache::type() const {

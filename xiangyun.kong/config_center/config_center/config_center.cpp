@@ -7,11 +7,14 @@
 //
 
 #include "config_center.hpp"
-#include "executor/exe_get_config.h"
-#include "trigger/trigger_put_config.h"
-#include "fs/kv.h"
+
+#include <lib/fs/kv.h>
+
+#include <config_center/executor/exe_get_config.h>
+#include <config_center/trigger/trigger_put_config.h>
 
 #include <functions.h>
+#include <events.h>
 #include <names.h>
 
 namespace kxy {
@@ -20,7 +23,7 @@ namespace kxy {
     
     config_center::config_center() {
         m_task_processor[F_GET_CONFIG] = new get_config;
-        m_event_processor[F_PUT_CONFIG] = new put_config;
+        m_event_processor[EVT_PUT_CONFIG] = new put_config;
     }
     
     string config_center::get(const string &key) {

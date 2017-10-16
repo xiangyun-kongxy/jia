@@ -9,8 +9,9 @@
 #ifndef barren_cache_hpp
 #define barren_cache_hpp
 
-#include <plugin/plugin.h>
-#include "cache/cache.hpp"
+#include <plugin/plugin/plugin.h>
+
+#include <barren_cache/cache/cache.hpp>
 
 using namespace pf;
 

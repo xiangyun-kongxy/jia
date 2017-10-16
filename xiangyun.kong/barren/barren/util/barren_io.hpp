@@ -10,8 +10,10 @@
 #define barren_io_hpp
 
 #include <string>
-#include <object/ptr.h>
-#include "../barren.hpp"
+
+#include <lib/object/ptr.h>
+
+#include <barren/barren.hpp>
 
 using namespace std;
 using namespace kxy;

@@ -269,10 +269,11 @@
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../plugin/src",
-					"$(SRCROOT)/../lib/lib",
+					"$(SRCROOT)/../plugin",
+					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../barren",
 					"$(SRCROOT)/../include",
+					"$(SRCROOT)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -289,10 +290,11 @@
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../plugin/src",
-					"$(SRCROOT)/../lib/lib",
+					"$(SRCROOT)/../plugin",
+					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../barren",
 					"$(SRCROOT)/../include",
+					"$(SRCROOT)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

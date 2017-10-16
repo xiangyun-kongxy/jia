@@ -9,7 +9,8 @@
 #ifndef trigger_execute_barren_h
 #define trigger_execute_barren_h
 
-#include <trigger/trigger.h>
+#include <plugin/trigger/trigger.h>
+
 #include <names.h>
 
 using namespace pf;

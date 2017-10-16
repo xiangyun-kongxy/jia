@@ -19,6 +19,7 @@
 		268A6D5D1F91F4F3000B6648 /* libbus.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbus.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libbus.dylib"; sourceTree = "<group>"; };
 		268A6D5F1F91F4F8000B6648 /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
 		268A6D641F91F603000B6648 /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
+		ADAD390D1F94DC5D00ABC6F3 /* libcommon.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommon.dylib; path = ../common/build/Debug/libcommon.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +64,7 @@
 		268A6D5C1F91F4F3000B6648 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				ADAD390D1F94DC5D00ABC6F3 /* libcommon.dylib */,
 				268A6D641F91F603000B6648 /* liblib.dylib */,
 				268A6D5F1F91F4F8000B6648 /* libplugin.dylib */,
 				268A6D5D1F91F4F3000B6648 /* libbus.dylib */,
@@ -247,8 +249,10 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../include",
 					"$(SRCROOT)/../bus",
-					"$(SRCROOT)/../lib/lib",
-					"$(SRCROOT)/../plugin/src",
+					"$(SRCROOT)/../lib",
+					"$(SRCROOT)/../plugin",
+					"$(SRCROOT)/../common",
+					"$(SRCROOT)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -267,8 +271,10 @@
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../include",
 					"$(SRCROOT)/../bus",
-					"$(SRCROOT)/../lib/lib",
-					"$(SRCROOT)/../plugin/src",
+					"$(SRCROOT)/../lib",
+					"$(SRCROOT)/../plugin",
+					"$(SRCROOT)/../common",
+					"$(SRCROOT)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -293,6 +299,7 @@
 				268A6D5B1F91F469000B6648 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

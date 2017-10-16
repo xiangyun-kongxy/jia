@@ -9,10 +9,11 @@
 #ifndef exe_on_get_config_h
 #define exe_on_get_config_h
 
-#include "../config_center.hpp"
+#include <config_center/config_center.hpp>
 
-#include <executor/executor.h>
-#include <response/simple_response.h>
+#include <plugin/executor/executor.h>
+#include <plugin/response/simple_response.h>
+
 #include <errors.h>
 #include <names.h>
 
@@ -28,7 +29,7 @@ namespace kxy {
             string key;
             data >> key;
             data << owner->get(key);
-            return new simple_response(EC_OK, EM_OK, data);
+            return new simple_response(task, EC_OK, EM_OK, data);
         }
         
         virtual string type() const override {

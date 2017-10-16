@@ -7,53 +7,54 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		26036D121E0E7264005D4D02 /* simple_event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26036D101E0E7264005D4D02 /* simple_event.cpp */; };
-		26036D131E0E7264005D4D02 /* simple_event.h in Headers */ = {isa = PBXBuildFile; fileRef = 26036D111E0E7264005D4D02 /* simple_event.h */; };
-		26036D171E0E7518005D4D02 /* simple_response.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26036D151E0E7518005D4D02 /* simple_response.cpp */; };
-		26036D181E0E7518005D4D02 /* simple_response.h in Headers */ = {isa = PBXBuildFile; fileRef = 26036D161E0E7518005D4D02 /* simple_response.h */; };
 		26036D261E0E882E005D4D02 /* liblib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26036D251E0E882E005D4D02 /* liblib.dylib */; };
-		26036D411E0EBF0F005D4D02 /* simple_task.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26036D3F1E0EBF0F005D4D02 /* simple_task.cpp */; };
-		26036D421E0EBF0F005D4D02 /* simple_task.h in Headers */ = {isa = PBXBuildFile; fileRef = 26036D401E0EBF0F005D4D02 /* simple_task.h */; };
-		266BFDD81DB26E6600E0FA0F /* event.h in Headers */ = {isa = PBXBuildFile; fileRef = 266BFD8E1DB26E6600E0FA0F /* event.h */; };
-		266BFDDB1DB26E6600E0FA0F /* executor.h in Headers */ = {isa = PBXBuildFile; fileRef = 266BFD931DB26E6600E0FA0F /* executor.h */; };
-		266BFDEC1DB26E6600E0FA0F /* plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 266BFDAC1DB26E6600E0FA0F /* plugin.cpp */; };
-		266BFDED1DB26E6600E0FA0F /* plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = 266BFDAD1DB26E6600E0FA0F /* plugin.h */; };
-		266BFDF71DB26E6600E0FA0F /* response.h in Headers */ = {isa = PBXBuildFile; fileRef = 266BFDBD1DB26E6600E0FA0F /* response.h */; };
-		266BFDF81DB26E6600E0FA0F /* task.h in Headers */ = {isa = PBXBuildFile; fileRef = 266BFDBF1DB26E6600E0FA0F /* task.h */; };
-		266BFE011DB26E6600E0FA0F /* trigger.h in Headers */ = {isa = PBXBuildFile; fileRef = 266BFDCD1DB26E6600E0FA0F /* trigger.h */; };
-		266BFE021DB26E6600E0FA0F /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 266BFDCF1DB26E6600E0FA0F /* version.cpp */; };
-		266BFE031DB26E6600E0FA0F /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = 266BFDD01DB26E6600E0FA0F /* version.h */; };
-		26DA2D9D1DB32455000C9B04 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26DA2D9B1DB32455000C9B04 /* config.cpp */; };
-		26DA2D9E1DB32455000C9B04 /* config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 26DA2D9C1DB32455000C9B04 /* config.hpp */; };
-		AD7E2BC61F83D08C002DAA7C /* plugin_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD7E2BC41F83D08C002DAA7C /* plugin_manager.cpp */; };
-		AD7E2BC71F83D08C002DAA7C /* plugin_manager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD7E2BC51F83D08C002DAA7C /* plugin_manager.hpp */; };
+		AD5F03DB1F94FCE0002742B9 /* plugin_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F03D81F94FCE0002742B9 /* plugin_manager.cpp */; };
+		AD5F03DC1F94FCE0002742B9 /* plugin_manager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03D91F94FCE0002742B9 /* plugin_manager.hpp */; };
+		AD5F03DD1F94FCE0002742B9 /* plugin_thread.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03DA1F94FCE0002742B9 /* plugin_thread.hpp */; };
+		AD5F03E11F94FD22002742B9 /* event.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03DE1F94FD22002742B9 /* event.h */; };
+		AD5F03E21F94FD22002742B9 /* simple_event.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F03DF1F94FD22002742B9 /* simple_event.cpp */; };
+		AD5F03E31F94FD22002742B9 /* simple_event.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03E01F94FD22002742B9 /* simple_event.h */; };
+		AD5F03E51F94FDA3002742B9 /* executor.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03E41F94FDA3002742B9 /* executor.h */; };
+		AD5F03EA1F94FDB4002742B9 /* config.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F03E61F94FDB4002742B9 /* config.cpp */; };
+		AD5F03EB1F94FDB4002742B9 /* config.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03E71F94FDB4002742B9 /* config.hpp */; };
+		AD5F03EC1F94FDB4002742B9 /* plugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F03E81F94FDB4002742B9 /* plugin.cpp */; };
+		AD5F03ED1F94FDB4002742B9 /* plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03E91F94FDB4002742B9 /* plugin.h */; };
+		AD5F03F21F94FDDD002742B9 /* response.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03EF1F94FDDD002742B9 /* response.h */; };
+		AD5F03F31F94FDDD002742B9 /* simple_response.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F03F01F94FDDD002742B9 /* simple_response.cpp */; };
+		AD5F03F41F94FDDD002742B9 /* simple_response.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03F11F94FDDD002742B9 /* simple_response.h */; };
+		AD5F03F81F94FDEB002742B9 /* simple_task.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F03F51F94FDEB002742B9 /* simple_task.cpp */; };
+		AD5F03F91F94FDEB002742B9 /* simple_task.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03F61F94FDEB002742B9 /* simple_task.h */; };
+		AD5F03FA1F94FDEB002742B9 /* task.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03F71F94FDEB002742B9 /* task.h */; };
+		AD5F03FC1F94FDF8002742B9 /* trigger.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03FB1F94FDF8002742B9 /* trigger.h */; };
+		AD5F03FF1F94FE05002742B9 /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F03FD1F94FE05002742B9 /* version.cpp */; };
+		AD5F04001F94FE05002742B9 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03FE1F94FE05002742B9 /* version.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		26036D101E0E7264005D4D02 /* simple_event.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simple_event.cpp; sourceTree = "<group>"; };
-		26036D111E0E7264005D4D02 /* simple_event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simple_event.h; sourceTree = "<group>"; };
-		26036D151E0E7518005D4D02 /* simple_response.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simple_response.cpp; sourceTree = "<group>"; };
-		26036D161E0E7518005D4D02 /* simple_response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simple_response.h; sourceTree = "<group>"; };
 		26036D251E0E882E005D4D02 /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
-		26036D3F1E0EBF0F005D4D02 /* simple_task.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = simple_task.cpp; sourceTree = "<group>"; };
-		26036D401E0EBF0F005D4D02 /* simple_task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = simple_task.h; sourceTree = "<group>"; };
 		266BFCEA1DB26A3200E0FA0F /* libplugin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libplugin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		266BFCF91DB26DD700E0FA0F /* plugin.framework.mdj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plugin.framework.mdj; path = doc/plugin.framework.mdj; sourceTree = "<group>"; };
 		266BFCFA1DB26DD700E0FA0F /* task.list */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = task.list; path = doc/task.list; sourceTree = "<group>"; };
-		266BFD8E1DB26E6600E0FA0F /* event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = event.h; sourceTree = "<group>"; };
-		266BFD931DB26E6600E0FA0F /* executor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = executor.h; sourceTree = "<group>"; };
-		266BFDAC1DB26E6600E0FA0F /* plugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = plugin.cpp; sourceTree = "<group>"; };
-		266BFDAD1DB26E6600E0FA0F /* plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = plugin.h; sourceTree = "<group>"; };
-		266BFDBD1DB26E6600E0FA0F /* response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = response.h; sourceTree = "<group>"; };
-		266BFDBF1DB26E6600E0FA0F /* task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = task.h; sourceTree = "<group>"; };
-		266BFDCD1DB26E6600E0FA0F /* trigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = trigger.h; sourceTree = "<group>"; };
-		266BFDCF1DB26E6600E0FA0F /* version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = version.cpp; sourceTree = "<group>"; };
-		266BFDD01DB26E6600E0FA0F /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
-		26DA2D9B1DB32455000C9B04 /* config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = config.cpp; sourceTree = "<group>"; };
-		26DA2D9C1DB32455000C9B04 /* config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = config.hpp; sourceTree = "<group>"; };
-		AD7E2BC41F83D08C002DAA7C /* plugin_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = plugin_manager.cpp; path = src/manager/plugin_manager.cpp; sourceTree = "<group>"; };
-		AD7E2BC51F83D08C002DAA7C /* plugin_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = plugin_manager.hpp; path = src/manager/plugin_manager.hpp; sourceTree = "<group>"; };
-		AD7E2BC81F83D3AB002DAA7C /* plugin_thread.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = plugin_thread.hpp; path = src/manager/plugin_thread.hpp; sourceTree = "<group>"; };
+		AD5F03D81F94FCE0002742B9 /* plugin_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = plugin_manager.cpp; path = plugin/manager/plugin_manager.cpp; sourceTree = "<group>"; };
+		AD5F03D91F94FCE0002742B9 /* plugin_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = plugin_manager.hpp; path = plugin/manager/plugin_manager.hpp; sourceTree = "<group>"; };
+		AD5F03DA1F94FCE0002742B9 /* plugin_thread.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = plugin_thread.hpp; path = plugin/manager/plugin_thread.hpp; sourceTree = "<group>"; };
+		AD5F03DE1F94FD22002742B9 /* event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = event.h; path = plugin/event/event.h; sourceTree = SOURCE_ROOT; };
+		AD5F03DF1F94FD22002742B9 /* simple_event.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = simple_event.cpp; path = plugin/event/simple_event.cpp; sourceTree = SOURCE_ROOT; };
+		AD5F03E01F94FD22002742B9 /* simple_event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = simple_event.h; path = plugin/event/simple_event.h; sourceTree = SOURCE_ROOT; };
+		AD5F03E41F94FDA3002742B9 /* executor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = executor.h; path = plugin/executor/executor.h; sourceTree = SOURCE_ROOT; };
+		AD5F03E61F94FDB4002742B9 /* config.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = config.cpp; path = plugin/plugin/config.cpp; sourceTree = SOURCE_ROOT; };
+		AD5F03E71F94FDB4002742B9 /* config.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = config.hpp; path = plugin/plugin/config.hpp; sourceTree = SOURCE_ROOT; };
+		AD5F03E81F94FDB4002742B9 /* plugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = plugin.cpp; path = plugin/plugin/plugin.cpp; sourceTree = SOURCE_ROOT; };
+		AD5F03E91F94FDB4002742B9 /* plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = plugin.h; path = plugin/plugin/plugin.h; sourceTree = SOURCE_ROOT; };
+		AD5F03EF1F94FDDD002742B9 /* response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = response.h; path = plugin/response/response.h; sourceTree = SOURCE_ROOT; };
+		AD5F03F01F94FDDD002742B9 /* simple_response.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = simple_response.cpp; path = plugin/response/simple_response.cpp; sourceTree = SOURCE_ROOT; };
+		AD5F03F11F94FDDD002742B9 /* simple_response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = simple_response.h; path = plugin/response/simple_response.h; sourceTree = SOURCE_ROOT; };
+		AD5F03F51F94FDEB002742B9 /* simple_task.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = simple_task.cpp; path = plugin/task/simple_task.cpp; sourceTree = SOURCE_ROOT; };
+		AD5F03F61F94FDEB002742B9 /* simple_task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = simple_task.h; path = plugin/task/simple_task.h; sourceTree = SOURCE_ROOT; };
+		AD5F03F71F94FDEB002742B9 /* task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = task.h; path = plugin/task/task.h; sourceTree = SOURCE_ROOT; };
+		AD5F03FB1F94FDF8002742B9 /* trigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = trigger.h; path = plugin/trigger/trigger.h; sourceTree = SOURCE_ROOT; };
+		AD5F03FD1F94FE05002742B9 /* version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = version.cpp; path = plugin/version/version.cpp; sourceTree = SOURCE_ROOT; };
+		AD5F03FE1F94FE05002742B9 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = version.h; path = plugin/version/version.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,9 +122,9 @@
 		266BFD8C1DB26E6600E0FA0F /* event */ = {
 			isa = PBXGroup;
 			children = (
-				26036D101E0E7264005D4D02 /* simple_event.cpp */,
-				26036D111E0E7264005D4D02 /* simple_event.h */,
-				266BFD8E1DB26E6600E0FA0F /* event.h */,
+				AD5F03DE1F94FD22002742B9 /* event.h */,
+				AD5F03DF1F94FD22002742B9 /* simple_event.cpp */,
+				AD5F03E01F94FD22002742B9 /* simple_event.h */,
 			);
 			name = event;
 			path = src/event;
@@ -132,7 +133,7 @@
 		266BFD921DB26E6600E0FA0F /* executor */ = {
 			isa = PBXGroup;
 			children = (
-				266BFD931DB26E6600E0FA0F /* executor.h */,
+				AD5F03E41F94FDA3002742B9 /* executor.h */,
 			);
 			name = executor;
 			path = src/executor;
@@ -141,10 +142,10 @@
 		266BFDAB1DB26E6600E0FA0F /* plugin */ = {
 			isa = PBXGroup;
 			children = (
-				266BFDAC1DB26E6600E0FA0F /* plugin.cpp */,
-				266BFDAD1DB26E6600E0FA0F /* plugin.h */,
-				26DA2D9B1DB32455000C9B04 /* config.cpp */,
-				26DA2D9C1DB32455000C9B04 /* config.hpp */,
+				AD5F03E61F94FDB4002742B9 /* config.cpp */,
+				AD5F03E71F94FDB4002742B9 /* config.hpp */,
+				AD5F03E81F94FDB4002742B9 /* plugin.cpp */,
+				AD5F03E91F94FDB4002742B9 /* plugin.h */,
 			);
 			name = plugin;
 			path = src/plugin;
@@ -153,9 +154,9 @@
 		266BFDB81DB26E6600E0FA0F /* response */ = {
 			isa = PBXGroup;
 			children = (
-				26036D151E0E7518005D4D02 /* simple_response.cpp */,
-				26036D161E0E7518005D4D02 /* simple_response.h */,
-				266BFDBD1DB26E6600E0FA0F /* response.h */,
+				AD5F03EF1F94FDDD002742B9 /* response.h */,
+				AD5F03F01F94FDDD002742B9 /* simple_response.cpp */,
+				AD5F03F11F94FDDD002742B9 /* simple_response.h */,
 			);
 			name = response;
 			path = src/response;
@@ -164,9 +165,9 @@
 		266BFDBE1DB26E6600E0FA0F /* task */ = {
 			isa = PBXGroup;
 			children = (
-				266BFDBF1DB26E6600E0FA0F /* task.h */,
-				26036D3F1E0EBF0F005D4D02 /* simple_task.cpp */,
-				26036D401E0EBF0F005D4D02 /* simple_task.h */,
+				AD5F03F51F94FDEB002742B9 /* simple_task.cpp */,
+				AD5F03F61F94FDEB002742B9 /* simple_task.h */,
+				AD5F03F71F94FDEB002742B9 /* task.h */,
 			);
 			name = task;
 			path = src/task;
@@ -175,7 +176,7 @@
 		266BFDC91DB26E6600E0FA0F /* trigger */ = {
 			isa = PBXGroup;
 			children = (
-				266BFDCD1DB26E6600E0FA0F /* trigger.h */,
+				AD5F03FB1F94FDF8002742B9 /* trigger.h */,
 			);
 			name = trigger;
 			path = src/trigger;
@@ -184,8 +185,8 @@
 		266BFDCE1DB26E6600E0FA0F /* version */ = {
 			isa = PBXGroup;
 			children = (
-				266BFDCF1DB26E6600E0FA0F /* version.cpp */,
-				266BFDD01DB26E6600E0FA0F /* version.h */,
+				AD5F03FD1F94FE05002742B9 /* version.cpp */,
+				AD5F03FE1F94FE05002742B9 /* version.h */,
 			);
 			name = version;
 			path = src/version;
@@ -194,9 +195,9 @@
 		AD7E2BC31F83D030002DAA7C /* manager */ = {
 			isa = PBXGroup;
 			children = (
-				AD7E2BC41F83D08C002DAA7C /* plugin_manager.cpp */,
-				AD7E2BC51F83D08C002DAA7C /* plugin_manager.hpp */,
-				AD7E2BC81F83D3AB002DAA7C /* plugin_thread.hpp */,
+				AD5F03D81F94FCE0002742B9 /* plugin_manager.cpp */,
+				AD5F03D91F94FCE0002742B9 /* plugin_manager.hpp */,
+				AD5F03DA1F94FCE0002742B9 /* plugin_thread.hpp */,
 			);
 			name = manager;
 			sourceTree = "<group>";
@@ -208,18 +209,19 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				266BFE031DB26E6600E0FA0F /* version.h in Headers */,
-				26036D421E0EBF0F005D4D02 /* simple_task.h in Headers */,
-				266BFDED1DB26E6600E0FA0F /* plugin.h in Headers */,
-				266BFDDB1DB26E6600E0FA0F /* executor.h in Headers */,
-				26DA2D9E1DB32455000C9B04 /* config.hpp in Headers */,
-				266BFDF81DB26E6600E0FA0F /* task.h in Headers */,
-				266BFDF71DB26E6600E0FA0F /* response.h in Headers */,
-				26036D131E0E7264005D4D02 /* simple_event.h in Headers */,
-				266BFE011DB26E6600E0FA0F /* trigger.h in Headers */,
-				266BFDD81DB26E6600E0FA0F /* event.h in Headers */,
-				26036D181E0E7518005D4D02 /* simple_response.h in Headers */,
-				AD7E2BC71F83D08C002DAA7C /* plugin_manager.hpp in Headers */,
+				AD5F03EB1F94FDB4002742B9 /* config.hpp in Headers */,
+				AD5F04001F94FE05002742B9 /* version.h in Headers */,
+				AD5F03ED1F94FDB4002742B9 /* plugin.h in Headers */,
+				AD5F03F41F94FDDD002742B9 /* simple_response.h in Headers */,
+				AD5F03E11F94FD22002742B9 /* event.h in Headers */,
+				AD5F03DC1F94FCE0002742B9 /* plugin_manager.hpp in Headers */,
+				AD5F03E51F94FDA3002742B9 /* executor.h in Headers */,
+				AD5F03DD1F94FCE0002742B9 /* plugin_thread.hpp in Headers */,
+				AD5F03E31F94FD22002742B9 /* simple_event.h in Headers */,
+				AD5F03F21F94FDDD002742B9 /* response.h in Headers */,
+				AD5F03FA1F94FDEB002742B9 /* task.h in Headers */,
+				AD5F03F91F94FDEB002742B9 /* simple_task.h in Headers */,
+				AD5F03FC1F94FDF8002742B9 /* trigger.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,13 +283,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				266BFE021DB26E6600E0FA0F /* version.cpp in Sources */,
-				AD7E2BC61F83D08C002DAA7C /* plugin_manager.cpp in Sources */,
-				26036D121E0E7264005D4D02 /* simple_event.cpp in Sources */,
-				26036D171E0E7518005D4D02 /* simple_response.cpp in Sources */,
-				26036D411E0EBF0F005D4D02 /* simple_task.cpp in Sources */,
-				26DA2D9D1DB32455000C9B04 /* config.cpp in Sources */,
-				266BFDEC1DB26E6600E0FA0F /* plugin.cpp in Sources */,
+				AD5F03F81F94FDEB002742B9 /* simple_task.cpp in Sources */,
+				AD5F03E21F94FD22002742B9 /* simple_event.cpp in Sources */,
+				AD5F03FF1F94FE05002742B9 /* version.cpp in Sources */,
+				AD5F03F31F94FDDD002742B9 /* simple_response.cpp in Sources */,
+				AD5F03DB1F94FCE0002742B9 /* plugin_manager.cpp in Sources */,
+				AD5F03EC1F94FDB4002742B9 /* plugin.cpp in Sources */,
+				AD5F03EA1F94FDB4002742B9 /* config.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -396,8 +398,8 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/src",
-					"$(SRCROOT)/../lib/lib",
+					"$(SRCROOT)",
+					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../include",
 				);
 				OTHER_CFLAGS = "-fPIC";
@@ -419,8 +421,8 @@
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/src",
-					"$(SRCROOT)/../lib/lib",
+					"$(SRCROOT)",
+					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../include",
 				);
 				OTHER_CFLAGS = "-fPIC";

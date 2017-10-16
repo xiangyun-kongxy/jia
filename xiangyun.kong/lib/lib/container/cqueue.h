@@ -11,11 +11,12 @@
 
 #include <sys/fcntl.h>
 #include <semaphore.h>
-#include <lock/auto_lock.h>
-#include <object/object.h>
 #include <pthread.h>
 #include <queue>
 #include <string>
+
+#include <lib/lock/auto_lock.h>
+#include <lib/object/object.h>
 
 using namespace std;
 

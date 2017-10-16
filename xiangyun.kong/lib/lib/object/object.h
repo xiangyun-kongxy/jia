@@ -14,8 +14,10 @@
 
 #include <string>
 #include <uuid/uuid.h>
-#include <object/reference.h>
-#include <object/type_info.h>
+
+#include <lib/object/reference.h>
+#include <lib/object/type_info.h>
+
 #include <names.h>
 
 using namespace std;

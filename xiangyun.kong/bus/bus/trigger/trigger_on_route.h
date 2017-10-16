@@ -11,10 +11,11 @@
 #ifndef PLUGIN_TRG_ON_ROUTING_EVENT_H
 #define PLUGIN_TRG_ON_ROUTING_EVENT_H
 
-#include <trigger/trigger.h>
-#include <event/event.h>
-#include <task/task.h>
-#include <manager/plugin_manager.hpp>
+#include <plugin/trigger/trigger.h>
+#include <plugin/event/event.h>
+#include <plugin/task/task.h>
+
+#include <plugin/manager/plugin_manager.hpp>
 
 namespace pf {
     

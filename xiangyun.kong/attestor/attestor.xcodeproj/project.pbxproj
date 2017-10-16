@@ -12,10 +12,10 @@
 		26D02E311E79783A00472610 /* libbarren.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26D02E301E79783A00472610 /* libbarren.dylib */; };
 		26D02E331E79783F00472610 /* libplugin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26D02E321E79783F00472610 /* libplugin.dylib */; };
 		26D02E351E79784F00472610 /* liblib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26D02E341E79784F00472610 /* liblib.dylib */; };
-		26D02E381E7ACDAB00472610 /* prove_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D02E361E7ACDAB00472610 /* prove_context.cpp */; };
-		26D02E391E7ACDAB00472610 /* prove_context.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 26D02E371E7ACDAB00472610 /* prove_context.hpp */; };
-		26D02E3C1E7E908400472610 /* prove_task_pool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D02E3A1E7E908400472610 /* prove_task_pool.cpp */; };
-		26D02E3D1E7E908400472610 /* prove_task_pool.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 26D02E3B1E7E908400472610 /* prove_task_pool.hpp */; };
+		AD5F040A1F950A7D002742B9 /* prove_context.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F04061F950A7D002742B9 /* prove_context.cpp */; };
+		AD5F040B1F950A7D002742B9 /* prove_context.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD5F04071F950A7D002742B9 /* prove_context.hpp */; };
+		AD5F040C1F950A7D002742B9 /* prove_task_pool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F04081F950A7D002742B9 /* prove_task_pool.cpp */; };
+		AD5F040D1F950A7D002742B9 /* prove_task_pool.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD5F04091F950A7D002742B9 /* prove_task_pool.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,10 +25,10 @@
 		26D02E301E79783A00472610 /* libbarren.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbarren.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libbarren.dylib"; sourceTree = "<group>"; };
 		26D02E321E79783F00472610 /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
 		26D02E341E79784F00472610 /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
-		26D02E361E7ACDAB00472610 /* prove_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = prove_context.cpp; path = prove/prove_context.cpp; sourceTree = SOURCE_ROOT; };
-		26D02E371E7ACDAB00472610 /* prove_context.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = prove_context.hpp; path = prove/prove_context.hpp; sourceTree = SOURCE_ROOT; };
-		26D02E3A1E7E908400472610 /* prove_task_pool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = prove_task_pool.cpp; path = prove/prove_task_pool.cpp; sourceTree = SOURCE_ROOT; };
-		26D02E3B1E7E908400472610 /* prove_task_pool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = prove_task_pool.hpp; path = prove/prove_task_pool.hpp; sourceTree = SOURCE_ROOT; };
+		AD5F04061F950A7D002742B9 /* prove_context.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = prove_context.cpp; path = prove/prove_context.cpp; sourceTree = "<group>"; };
+		AD5F04071F950A7D002742B9 /* prove_context.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = prove_context.hpp; path = prove/prove_context.hpp; sourceTree = "<group>"; };
+		AD5F04081F950A7D002742B9 /* prove_task_pool.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = prove_task_pool.cpp; path = prove/prove_task_pool.cpp; sourceTree = "<group>"; };
+		AD5F04091F950A7D002742B9 /* prove_task_pool.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = prove_task_pool.hpp; path = prove/prove_task_pool.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,10 +75,10 @@
 		26D02E2E1E79748000472610 /* prove */ = {
 			isa = PBXGroup;
 			children = (
-				26D02E361E7ACDAB00472610 /* prove_context.cpp */,
-				26D02E371E7ACDAB00472610 /* prove_context.hpp */,
-				26D02E3A1E7E908400472610 /* prove_task_pool.cpp */,
-				26D02E3B1E7E908400472610 /* prove_task_pool.hpp */,
+				AD5F04061F950A7D002742B9 /* prove_context.cpp */,
+				AD5F04071F950A7D002742B9 /* prove_context.hpp */,
+				AD5F04081F950A7D002742B9 /* prove_task_pool.cpp */,
+				AD5F04091F950A7D002742B9 /* prove_task_pool.hpp */,
 			);
 			name = prove;
 			sourceTree = "<group>";
@@ -101,8 +101,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				26D02E241E7973F100472610 /* attestor.hpp in Headers */,
-				26D02E391E7ACDAB00472610 /* prove_context.hpp in Headers */,
-				26D02E3D1E7E908400472610 /* prove_task_pool.hpp in Headers */,
+				AD5F040B1F950A7D002742B9 /* prove_context.hpp in Headers */,
+				AD5F040D1F950A7D002742B9 /* prove_task_pool.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,9 +164,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26D02E381E7ACDAB00472610 /* prove_context.cpp in Sources */,
+				AD5F040A1F950A7D002742B9 /* prove_context.cpp in Sources */,
 				26D02E281E7973F100472610 /* attestor.cpp in Sources */,
-				26D02E3C1E7E908400472610 /* prove_task_pool.cpp in Sources */,
+				AD5F040C1F950A7D002742B9 /* prove_task_pool.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,10 +271,11 @@
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../lib/lib",
+					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../include",
-					"$(SRCROOT)/../plugin/src",
+					"$(SRCROOT)/../plugin",
 					"$(SRCROOT)/../barren",
+					"$(SRCROOT)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -291,10 +292,11 @@
 				GCC_ENABLE_CPP_RTTI = YES;
 				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../lib/lib",
+					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../include",
-					"$(SRCROOT)/../plugin/src",
+					"$(SRCROOT)/../plugin",
 					"$(SRCROOT)/../barren",
+					"$(SRCROOT)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

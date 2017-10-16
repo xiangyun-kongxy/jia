@@ -7,10 +7,15 @@
 //
 
 #include "memory.hpp"
-#include "trigger/trigger_save_barren.h"
-#include "executor/exe_load_barren.h"
-#include <fs/kv.h>
+
+#include <lib/fs/kv.h>
+#include <lib/serialize/serializable.hpp>
+
+#include <memory/trigger/trigger_save_barren.h>
+#include <memory/executor/exe_load_barren.h>
+
 #include <functions.h>
+#include <events.h>
 
 namespace mind {
     
@@ -18,7 +23,7 @@ namespace mind {
     
     memory::memory() {
         m_task_processor[F_LOAD_BARREN] = new load_barren;
-        m_event_processor[F_SAVE_BARREN] = new save_barren;
+        m_event_processor[EVT_SAVE_BARREN] = new save_barren;
     }
     
     string memory::type() const {

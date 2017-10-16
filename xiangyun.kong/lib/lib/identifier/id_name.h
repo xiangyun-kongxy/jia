@@ -27,11 +27,11 @@ namespace kxy {
         }
         
         virtual string type() const override {
-            return OBJ_ID_NAME;
+            return ID_NAME;
         }
         
         virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == OBJ_ID_NAME || identifier::is_kind_of(type_name);
+            return type_name == ID_NAME || identifier::is_kind_of(type_name);
         }
         
     protected:

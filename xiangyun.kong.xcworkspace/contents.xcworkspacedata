@@ -3,7 +3,29 @@
    version = "1.0">
    <Group
       location = "container:"
+      name = "doc">
+      <FileRef
+         location = "group:xiangyun.kong/doc/barren.md">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/doc/barren.xml">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/doc/definition.xmind">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/doc/structure.txt">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/doc/thought.graffle">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
       name = "include">
+      <FileRef
+         location = "group:xiangyun.kong/include/names.h">
+      </FileRef>
       <FileRef
          location = "group:xiangyun.kong/include/errors.h">
       </FileRef>
@@ -11,13 +33,13 @@
          location = "group:xiangyun.kong/include/functions.h">
       </FileRef>
       <FileRef
-         location = "group:/Users/kongxiangyun/Documents/project/kxy/xiangyun.kong/include/names.h">
-      </FileRef>
-      <FileRef
          location = "group:xiangyun.kong/include/ipc.hpp">
       </FileRef>
       <FileRef
          location = "group:xiangyun.kong/include/predefined_barren.h">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/include/events.h">
       </FileRef>
    </Group>
    <FileRef
@@ -37,6 +59,9 @@
    </FileRef>
    <FileRef
       location = "group:xiangyun.kong/console/console.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:xiangyun.kong/common/common.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:xiangyun.kong/executor/executor.xcodeproj">

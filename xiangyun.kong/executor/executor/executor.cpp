@@ -8,20 +8,24 @@
  */
 
 #include <iostream>
-#include "executor.hpp"
-#include "trigger/trigger_execute_barren.hpp"
-#include "trigger/trigger_new_barren_function.hpp"
-#include "trigger/trigger_new_compound_function.hpp"
 
-#include <functions.h>
+#include <executor/executor.hpp>
+
+#include <executor/trigger/trigger_execute_barren.hpp>
+#include <executor/trigger/trigger_new_barren_function.hpp>
+#include <executor/trigger/trigger_new_compound_function.hpp>
+
+#include <events.h>
 #include <names.h>
 
 namespace mind {
 
     barren_executor::barren_executor() {
-        m_event_processor[F_EXECUTE_BARREN] = new execute_barren;
-        m_event_processor[F_NEW_BARREN_FUNCTION] = new class new_barren_function;
-        m_event_processor[F_NEW_COMPOUND_FUNCTION] = new class new_compound_function;
+        m_event_processor[EVT_EXECUTE_BARREN] = new execute_barren;
+        m_event_processor[EVT_NEW_BARREN_FUNCTION] =
+            new class new_barren_function;
+        m_event_processor[EVT_NEW_COMPOUND_FUNCTION] =
+            new class new_compound_function;
     }
 
     void barren_executor::exe_func(ptr<barren> obj) {
