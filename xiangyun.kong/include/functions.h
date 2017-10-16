@@ -10,7 +10,18 @@
 #define functions_h
 
 // provided by lifecycle
+static const string F_START_FRAMEWORK               = "start_framework";
+static const string F_STOP_FRAMEWORK                = "stop_framework";
+
 static const string F_LOAD_PLUGIN                   = "load_plugin";
+static const string F_UNLOAD_PLUGIN                 = "unload_plugin";
+
+static const string F_UPGRADE_PLUGIN                = "upgrade_plugin";
+
+static const string F_PAUSE_PLUGIN                  = "pause_plugin";
+static const string F_RESUME_PLUGIN                 = "resume_plugin";
+
+static const string F_WAIT_TO_RUN                   = "wait_ro_run";
 
 // provided by bus
 static const string F_ROUTE                         = "route_event";

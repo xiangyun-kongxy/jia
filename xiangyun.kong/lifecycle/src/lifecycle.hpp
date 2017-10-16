@@ -14,15 +14,19 @@
 namespace pf {
 
     enum plugin_status {
+        PS_UNKNOWN,
         PS_LOADING,
         PS_LOADED,
         PS_INSTALLING,
+        PS_INSTALLED,
+        PS_WAITINg,
         PS_RUNNING,
         PS_UPGRADING,
-        PS_UPDATING_DEPENDENCE,
+        PS_UPGRADED,
+        PS_UNINSTALLING,
+        PS_UNINSTALLED,
         PS_UNLOADING,
-        PS_READY,
-        PS_UNKNOWN,
+        PS_UNLOADED,
     };
     
     class lifecycle : public plugin {

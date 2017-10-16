@@ -19,11 +19,12 @@ namespace mind {
     class new_compound_function : public trigger {
     public:
         virtual void occur(ptr<plugin> owner, ptr<event> evt) override {
+            ptr<barren_executor> executor = owner;
             ptr<serializable> data = evt->param();
             long instruction;
             list<long> body;
             data >> instruction >> body;
-            ((ptr<barren_executor>)owner)->new_compound_function(instruction, body);
+            executor->new_compound_function(instruction, body);
         }
 
         virtual string type() const override {

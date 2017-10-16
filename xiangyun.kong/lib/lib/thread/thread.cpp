@@ -17,6 +17,7 @@ namespace kxy {
     thread::thread() {
         change_status(pending);
         pthread_mutex_init(&m_mutex, nullptr);
+        pthread_create(&m_thread, nullptr, thread::thread_func, this);
     }
     
     thread::~thread() {
@@ -46,7 +47,7 @@ namespace kxy {
     
     long thread::start() {
         change_status(resuming);
-        return pthread_create(&m_thread, nullptr, thread::thread_func, this);
+        return 0;
     }
     
     long thread::pause() {

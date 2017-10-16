@@ -66,12 +66,6 @@ namespace pf{
                 break;
             case PS_UPGRADING:
                 break;
-            case PS_UPDATING_DEPENDENCE:
-                break;
-            case PS_UNLOADING:
-                break;
-            case PS_READY:
-                break;
             default:
                 m_objects[obj] = PS_UNKNOWN;
         }

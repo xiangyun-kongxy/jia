@@ -18,11 +18,11 @@ using namespace rapidxml;
 namespace pf {
     
     list<config*> loader::read_config_file(const string &path, char*& buf) {
+        list<config*> confs;
+
         string conf = file_util::read(path);
         buf = new char[conf.length() + 1];
         strcpy(buf, conf.c_str());
-        
-        list<config*> confs;
         
         xml_document<> doc;
         doc.parse<0>(buf);
