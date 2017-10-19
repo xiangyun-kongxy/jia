@@ -21,7 +21,10 @@ namespace kxy {
     
     class set_guid : public trigger {
     public:
-        virtual void occur(ptr<plugin> owner, ptr<event> evt) override {
+        DECLARE_TYPE(trigger, TRIGGER_SET_GUID);
+        
+    public:
+        virtual void happen(ptr<plugin> owner, ptr<event> evt) override {
             ptr<id_service> id_service = owner;
             ptr<serializable> params = evt->param();
             
@@ -30,13 +33,6 @@ namespace kxy {
             id_service->set_guid(guid);
         }
         
-        virtual string type() const override {
-            return TRIGGER_SET_GUID;
-        }
-        
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == TRIGGER_SET_GUID || trigger::is_kind_of(type_name);
-        }
     };
 }
 

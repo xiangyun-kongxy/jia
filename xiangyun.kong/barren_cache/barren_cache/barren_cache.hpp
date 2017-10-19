@@ -9,9 +9,14 @@
 #ifndef barren_cache_hpp
 #define barren_cache_hpp
 
+#include <lib/identifier/id_name.h>
+
 #include <plugin/plugin/plugin.h>
 
 #include <barren_cache/cache/cache.hpp>
+
+#include <events.h>
+#include <functions.h>
 
 using namespace pf;
 
@@ -20,14 +25,20 @@ namespace mind {
     class barren_cache : public plugin {
     public:
         barren_cache();
+        DECLARE_TYPE(plugin, PLUGIN_BARREN_CACHE);
         
     public:
         ptr<barren> load_barren(long id);
         void save_barren(ptr<barren> obj);
-        
+
     public:
-        virtual string type() const override;
-        virtual bool is_kind_of(const string &type_name) const override ;
+        virtual list<ptr<identifier>> depend_on() const override {
+            list<ptr<identifier>> dependence;
+            dependence.push_back(new id_name(EVT_SAVE_BARREN));
+            dependence.push_back(new id_name(F_LOAD_BARREN));
+            
+            return dependence;
+        }
         
     private:
         ptr<barren> load_barren_from_memory(long id);

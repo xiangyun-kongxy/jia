@@ -32,15 +32,7 @@ namespace kxy {
     public:
         serializable();
         serializable(const char* buf);
-        
-    public:
-        virtual string type() const {
-            return OBJ_SERIALIZABLE;
-        }
-        
-        virtual bool is_kind_of(const string& type_name) const {
-            return type_name == OBJ_SERIALIZABLE || object::is_kind_of(type_name);
-        }
+        DECLARE_TYPE(object, OBJ_SERIALIZABLE);
         
     public:
         string buf() {
@@ -115,9 +107,9 @@ namespace kxy {
         }
         
         template<class value_type>
-        serializable& operator << (value_type v[]) {
-            assert("pointer type is not allowed");
-            return *this;
+        serializable& operator << (value_type* v) {
+            long x = (long) v;
+            return *this << x;
         }
         
         serializable& operator << (const char* str) {
@@ -211,8 +203,10 @@ namespace kxy {
         }
         
         template<class value_type>
-        serializable& operator >> (value_type v[]) {
-            assert("pointer type is not allowed");
+        serializable& operator >> (value_type* &v) {
+            long x = 0L;
+            *this >> x;
+            v = (value_type*)x;
             return *this;
         }
 

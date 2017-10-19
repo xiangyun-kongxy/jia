@@ -21,7 +21,10 @@ namespace mind {
     
     class save_barren : public trigger {
     public:
-        virtual void occur(ptr<plugin> plugin,ptr<event> event) override {
+        DECLARE_TYPE(trigger, TRIGGER_SAVE_BARREN);
+        
+    public:
+        virtual void happen(ptr<plugin> plugin,ptr<event> event) override {
             ptr<memory> owner = plugin;
             ptr<serializable> data = event->param();
             ptr<barren> barren;
@@ -29,13 +32,6 @@ namespace mind {
             owner->write(barren);
         }
         
-        virtual string type() const override {
-            return TRIGGER_SAVE_BARREN;
-        }
-        
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == TRIGGER_SAVE_BARREN || object::is_kind_of(type_name);
-        }
     };
     
 }

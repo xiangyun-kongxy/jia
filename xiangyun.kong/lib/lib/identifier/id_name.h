@@ -16,6 +16,9 @@ namespace kxy {
     
     class id_name : public identifier {
     public:
+        DECLARE_TYPE(identifier, ID_NAME);
+        
+    public:
         id_name(const string& name, ptr<identifier> base = nullptr)
         :   identifier(base),
             m_name(name) {
@@ -26,12 +29,8 @@ namespace kxy {
             return m_name == obj->name() && identifier::match(obj);
         }
         
-        virtual string type() const override {
-            return ID_NAME;
-        }
-        
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == ID_NAME || identifier::is_kind_of(type_name);
+        virtual string name() const override {
+            return m_name;
         }
         
     protected:

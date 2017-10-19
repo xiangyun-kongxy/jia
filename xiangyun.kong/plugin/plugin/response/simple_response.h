@@ -11,6 +11,9 @@ namespace pf {
 
     class simple_response : public response {
     public:
+        DECLARE_TYPE(response, OBJ_SIMPLE_RESPONSE);
+        
+    public:
         simple_response(ptr<task> tsk, long code, const string& msg,
                         ptr<serializable> context = nullptr);
 
@@ -18,10 +21,6 @@ namespace pf {
         virtual long code() override ;
         virtual string message() override ;
         virtual ptr<serializable> context() override ;
-
-    public:
-        virtual string type() const override ;
-        virtual bool is_kind_of(const string &type_name) const override ;
 
     private:
         long m_code;

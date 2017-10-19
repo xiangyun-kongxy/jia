@@ -31,7 +31,7 @@ namespace pf {
                 trigger = m_event_processor[evt->type()];
         }
         if (trigger != nullptr)
-            trigger->occur(this, evt);
+            trigger->happen(this, evt);
     }
 
     ptr<response> plugin::do_task(ptr<task> tsk) {
@@ -70,16 +70,13 @@ namespace pf {
     }
 
     ptr<plugin> plugin::current_plugin() {
-        ptr<plugin_manager> manager = plugin_manager::instance();
-        return manager->get_plugin_by_thread_id(pthread_self());
-    }
-
-    string plugin::type() const {
-        return OBJ_PLUGIN;
-    }
-    
-    bool plugin::is_kind_of(const string &type_name) const {
-        return type_name == OBJ_PLUGIN || object::is_kind_of(type_name);
+        plugin_manager* manager = plugin_manager::instance();
+        const plugin_info* pi;
+        pi = manager->get_plugin_by_thread_id(pthread_self());
+        if (pi != nullptr) {
+            return pi->pl;
+        }
+        return nullptr;
     }
 
 }

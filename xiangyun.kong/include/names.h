@@ -67,6 +67,7 @@ static const string TRIGGER_NEW_COMPOUND_FUNCTION   = "new_compound_function";
 static const string TRIGGER_SET_GUID                = "set_guid";
 static const string TRIGGER_SAVE_BARREN             = "save_barren";
 static const string TRIGGER_START_FRAMEWORK         = "start_framework";
+static const string TRIGGER_LOAD_PLUGIN             = "load_plugin";
 
 // identifiers
 static const string ID_ANY                          = "id_any";

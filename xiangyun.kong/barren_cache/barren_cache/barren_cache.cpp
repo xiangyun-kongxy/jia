@@ -65,14 +65,6 @@ namespace mind {
         send_to(m_provider, EVT_SAVE_BARREN, obj);
     }
     
-    string barren_cache::type() const {
-        return PLUGIN_BARREN_CACHE;
-    }
-    
-    bool barren_cache::is_kind_of(const string &type_name) const {
-        return type_name == PLUGIN_BARREN_CACHE || plugin::is_kind_of(type_name);
-    }
-
     extern "C" void* init_barren_cache(void* conf) {
         barren_cache* plugin = new barren_cache;
         return plugin;

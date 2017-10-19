@@ -24,6 +24,7 @@ namespace pf {
     public:
         bus();
         virtual ~bus();
+        DECLARE_TYPE(plugin, PLUGIN_BUS);
         
     public:
         void hold_object(ptr<identifier> obj);
@@ -33,10 +34,6 @@ namespace pf {
         void set_object(ptr<object> obj);
 
         void set_event_trigger(ptr<identifier> evt, task_callback func);
-        
-    public:
-        virtual string type() const override ;
-        virtual bool is_kind_of(const string &type_name) const override ;
         
     private:
         pthread_mutex_t m_mutex;

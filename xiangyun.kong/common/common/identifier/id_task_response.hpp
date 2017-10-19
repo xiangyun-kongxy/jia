@@ -24,6 +24,9 @@ namespace kxy {
 
     class id_task_response : public identifier {
     public:
+        DECLARE_TYPE(identifier, ID_TASK_RESPONSE);
+        
+    public:
         id_task_response(ptr<task> tsk, ptr<identifier> base = nullptr)
         :   identifier(base),
             m_tsk(tsk) {
@@ -36,15 +39,6 @@ namespace kxy {
                 && identifier::match(obj);
             }
             return false;
-        }
-
-        virtual string type() const override {
-            return ID_TASK_RESPONSE;
-        }
-
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == ID_TASK_RESPONSE
-            || identifier::is_kind_of(type_name);
         }
 
     protected:

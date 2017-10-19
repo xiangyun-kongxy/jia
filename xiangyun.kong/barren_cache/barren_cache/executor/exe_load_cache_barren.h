@@ -22,6 +22,9 @@ namespace mind {
     
     class load_cache_barren : public executor {
     public:
+        DECLARE_TYPE(executor, EXE_LOAD_CACHE_BARREN);
+
+    public:
         virtual ptr<response> run(ptr<plugin> plugin, ptr<task> tsk) override {
             ptr<barren_cache> owner = plugin;
             ptr<serializable> data = tsk->param();
@@ -36,13 +39,6 @@ namespace mind {
             }
         }
         
-        virtual string type() const override {
-            return EXE_LOAD_CACHE_BARREN;
-        }
-        
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == EXE_LOAD_CACHE_BARREN || object::is_kind_of(type_name);
-        }
     };
     
 }

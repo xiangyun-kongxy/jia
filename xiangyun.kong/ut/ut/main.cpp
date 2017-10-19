@@ -15,7 +15,7 @@ using namespace pf;
 using namespace std;
 
 int main(int argc, char** argv) {
-    string path =   "/Users/kongxiangyun/Documents/project/kxy/xiangyun.kong"
+    string path =   "/Users/xiangyun/Documents/project/kxy/xiangyun.kong"
                     "/console/console/config/mind.xml";
     loader* loader = new class loader(path);
     loader->load();

@@ -28,6 +28,10 @@
 		AD5F03FC1F94FDF8002742B9 /* trigger.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03FB1F94FDF8002742B9 /* trigger.h */; };
 		AD5F03FF1F94FE05002742B9 /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F03FD1F94FE05002742B9 /* version.cpp */; };
 		AD5F04001F94FE05002742B9 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03FE1F94FE05002742B9 /* version.h */; };
+		ADC522CC1F97856800AAD2B9 /* function_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADC522CA1F97856800AAD2B9 /* function_manager.cpp */; };
+		ADC522CD1F97856800AAD2B9 /* function_manager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = ADC522CB1F97856800AAD2B9 /* function_manager.hpp */; };
+		ADC522D01F978DAD00AAD2B9 /* dependence_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADC522CE1F978DAD00AAD2B9 /* dependence_manager.cpp */; };
+		ADC522D11F978DAD00AAD2B9 /* dependence_manager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = ADC522CF1F978DAD00AAD2B9 /* dependence_manager.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +59,10 @@
 		AD5F03FB1F94FDF8002742B9 /* trigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = trigger.h; path = plugin/trigger/trigger.h; sourceTree = SOURCE_ROOT; };
 		AD5F03FD1F94FE05002742B9 /* version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = version.cpp; path = plugin/version/version.cpp; sourceTree = SOURCE_ROOT; };
 		AD5F03FE1F94FE05002742B9 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = version.h; path = plugin/version/version.h; sourceTree = SOURCE_ROOT; };
+		ADC522CA1F97856800AAD2B9 /* function_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = function_manager.cpp; path = plugin/manager/function_manager.cpp; sourceTree = "<group>"; };
+		ADC522CB1F97856800AAD2B9 /* function_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = function_manager.hpp; path = plugin/manager/function_manager.hpp; sourceTree = "<group>"; };
+		ADC522CE1F978DAD00AAD2B9 /* dependence_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = dependence_manager.cpp; path = plugin/manager/dependence_manager.cpp; sourceTree = "<group>"; };
+		ADC522CF1F978DAD00AAD2B9 /* dependence_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = dependence_manager.hpp; path = plugin/manager/dependence_manager.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +91,7 @@
 				266BFCF81DB26DBD00E0FA0F /* doc */,
 				26036D241E0E882E005D4D02 /* Frameworks */,
 				266BFCEB1DB26A3200E0FA0F /* Products */,
-				266BFD7F1DB26E5800E0FA0F /* src */,
+				266BFD7F1DB26E5800E0FA0F /* plugin */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,7 +112,7 @@
 			name = doc;
 			sourceTree = "<group>";
 		};
-		266BFD7F1DB26E5800E0FA0F /* src */ = {
+		266BFD7F1DB26E5800E0FA0F /* plugin */ = {
 			isa = PBXGroup;
 			children = (
 				AD7E2BC31F83D030002DAA7C /* manager */,
@@ -116,7 +124,7 @@
 				266BFDC91DB26E6600E0FA0F /* trigger */,
 				266BFDCE1DB26E6600E0FA0F /* version */,
 			);
-			name = src;
+			name = plugin;
 			sourceTree = "<group>";
 		};
 		266BFD8C1DB26E6600E0FA0F /* event */ = {
@@ -198,6 +206,10 @@
 				AD5F03D81F94FCE0002742B9 /* plugin_manager.cpp */,
 				AD5F03D91F94FCE0002742B9 /* plugin_manager.hpp */,
 				AD5F03DA1F94FCE0002742B9 /* plugin_thread.hpp */,
+				ADC522CA1F97856800AAD2B9 /* function_manager.cpp */,
+				ADC522CB1F97856800AAD2B9 /* function_manager.hpp */,
+				ADC522CE1F978DAD00AAD2B9 /* dependence_manager.cpp */,
+				ADC522CF1F978DAD00AAD2B9 /* dependence_manager.hpp */,
 			);
 			name = manager;
 			sourceTree = "<group>";
@@ -215,10 +227,12 @@
 				AD5F03F41F94FDDD002742B9 /* simple_response.h in Headers */,
 				AD5F03E11F94FD22002742B9 /* event.h in Headers */,
 				AD5F03DC1F94FCE0002742B9 /* plugin_manager.hpp in Headers */,
+				ADC522CD1F97856800AAD2B9 /* function_manager.hpp in Headers */,
 				AD5F03E51F94FDA3002742B9 /* executor.h in Headers */,
 				AD5F03DD1F94FCE0002742B9 /* plugin_thread.hpp in Headers */,
 				AD5F03E31F94FD22002742B9 /* simple_event.h in Headers */,
 				AD5F03F21F94FDDD002742B9 /* response.h in Headers */,
+				ADC522D11F978DAD00AAD2B9 /* dependence_manager.hpp in Headers */,
 				AD5F03FA1F94FDEB002742B9 /* task.h in Headers */,
 				AD5F03F91F94FDEB002742B9 /* simple_task.h in Headers */,
 				AD5F03FC1F94FDF8002742B9 /* trigger.h in Headers */,
@@ -284,10 +298,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD5F03F81F94FDEB002742B9 /* simple_task.cpp in Sources */,
+				ADC522D01F978DAD00AAD2B9 /* dependence_manager.cpp in Sources */,
 				AD5F03E21F94FD22002742B9 /* simple_event.cpp in Sources */,
 				AD5F03FF1F94FE05002742B9 /* version.cpp in Sources */,
 				AD5F03F31F94FDDD002742B9 /* simple_response.cpp in Sources */,
 				AD5F03DB1F94FCE0002742B9 /* plugin_manager.cpp in Sources */,
+				ADC522CC1F97856800AAD2B9 /* function_manager.cpp in Sources */,
 				AD5F03EC1F94FDB4002742B9 /* plugin.cpp in Sources */,
 				AD5F03EA1F94FDB4002742B9 /* config.cpp in Sources */,
 			);

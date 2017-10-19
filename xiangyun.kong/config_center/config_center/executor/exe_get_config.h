@@ -23,6 +23,9 @@ namespace kxy {
     
     class get_config : public executor {
     public:
+        DECLARE_TYPE(executor, EXE_GET_CONFIG);
+        
+    public:
         virtual ptr<response> run(ptr<plugin> plugin, ptr<task> task) override {
             ptr<config_center> owner = plugin;
             ptr<serializable> data = task->param();
@@ -32,13 +35,6 @@ namespace kxy {
             return new simple_response(task, EC_OK, EM_OK, data);
         }
         
-        virtual string type() const override {
-            return EXE_GET_CONFIG;
-        }
-        
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == EXE_GET_CONFIG || executor::is_kind_of(type_name);
-        }
     };
     
 }

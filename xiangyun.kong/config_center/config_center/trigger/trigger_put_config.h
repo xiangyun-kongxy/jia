@@ -19,7 +19,10 @@ namespace kxy {
     
     class put_config : public trigger {
     public:
-        virtual void occur(ptr<plugin> plugin,ptr<event> event) override {
+        DECLARE_TYPE(trigger, TRIGGER_PUT_CONFIG);
+        
+    public:
+        virtual void happen(ptr<plugin> plugin,ptr<event> event) override {
             ptr<config_center> owner = plugin;
             ptr<serializable> data = event->param();
             string key;
@@ -28,13 +31,6 @@ namespace kxy {
             owner->put(key, config);
         }
         
-        virtual string type() const override {
-            return TRIGGER_PUT_CONFIG;
-        }
-        
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == TRIGGER_PUT_CONFIG || trigger::is_kind_of(type_name);
-        }
     };
     
 }

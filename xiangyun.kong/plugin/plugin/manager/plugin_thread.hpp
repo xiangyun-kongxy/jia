@@ -31,6 +31,9 @@ namespace pf {
 
     class plugin_thread : public thread {
     public:
+        DECLARE_TYPE(thread, OBJ_PLUGIN_THREAD);
+        
+    public:
         plugin_thread(ptr<cqueue<ptr<object>>> pool, ptr<plugin> owner) {
             m_owner = owner;
             m_pool = pool;
@@ -67,15 +70,6 @@ namespace pf {
 
         ptr<plugin> owner() const {
             return m_owner;
-        }
-
-    public:
-        virtual bool is_kind_of(const string &name) const override {
-            return name == OBJ_PLUGIN_THREAD || thread::is_kind_of(name);
-        }
-
-        virtual string type() const override {
-            return OBJ_PLUGIN_THREAD;
         }
 
     protected:

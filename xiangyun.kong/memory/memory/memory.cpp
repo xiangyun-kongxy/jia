@@ -26,14 +26,6 @@ namespace mind {
         m_event_processor[EVT_SAVE_BARREN] = new save_barren;
     }
     
-    string memory::type() const {
-        return PLUGIN_MEMORY;
-    }
-    
-    bool memory::is_kind_of(const string &type_name) const {
-        return type_name == PLUGIN_MEMORY || plugin::is_kind_of(type_name);
-    }
-    
     void memory::write(ptr<barren> barren) {
         serializable ar;
         ar << **barren;

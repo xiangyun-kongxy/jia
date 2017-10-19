@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		26036D231E0E83DE005D4D02 /* libplugin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26036D221E0E83DE005D4D02 /* libplugin.dylib */; };
-		AD5F03CE1F94F523002742B9 /* exe_load_plugin.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03CD1F94F523002742B9 /* exe_load_plugin.h */; };
 		AD5F03D11F94F535002742B9 /* lifecycle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F03CF1F94F535002742B9 /* lifecycle.cpp */; };
 		AD5F03D21F94F535002742B9 /* lifecycle.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03D01F94F535002742B9 /* lifecycle.hpp */; };
 		AD5F03D51F94F565002742B9 /* loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F03D31F94F565002742B9 /* loader.cpp */; };
@@ -21,7 +20,6 @@
 		26036D221E0E83DE005D4D02 /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
 		26784DF91E003A9700FCE82B /* liblifecycle.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = liblifecycle.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD5F03CC1F94F509002742B9 /* trigger_start_framework.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = trigger_start_framework.hpp; path = lifecycle/trigger/trigger_start_framework.hpp; sourceTree = "<group>"; };
-		AD5F03CD1F94F523002742B9 /* exe_load_plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = exe_load_plugin.h; path = lifecycle/executor/exe_load_plugin.h; sourceTree = "<group>"; };
 		AD5F03CF1F94F535002742B9 /* lifecycle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = lifecycle.cpp; path = lifecycle/lifecycle.cpp; sourceTree = "<group>"; };
 		AD5F03D01F94F535002742B9 /* lifecycle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = lifecycle.hpp; path = lifecycle/lifecycle.hpp; sourceTree = "<group>"; };
 		AD5F03D31F94F565002742B9 /* loader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = loader.cpp; path = lifecycle/load/loader.cpp; sourceTree = "<group>"; };
@@ -67,7 +65,6 @@
 		26036D361E0EB4BE005D4D02 /* executor */ = {
 			isa = PBXGroup;
 			children = (
-				AD5F03CD1F94F523002742B9 /* exe_load_plugin.h */,
 			);
 			name = executor;
 			sourceTree = "<group>";
@@ -117,7 +114,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD5F03CE1F94F523002742B9 /* exe_load_plugin.h in Headers */,
 				AD5F03D21F94F535002742B9 /* lifecycle.hpp in Headers */,
 				AD5F03D61F94F565002742B9 /* loader.hpp in Headers */,
 			);
@@ -293,6 +289,7 @@
 					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../include",
 					"$(SRCROOT)",
+					"$(SRCROOT)/../common",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -313,6 +310,7 @@
 					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../include",
 					"$(SRCROOT)",
+					"$(SRCROOT)/../common",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

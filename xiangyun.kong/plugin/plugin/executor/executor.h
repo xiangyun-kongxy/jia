@@ -15,15 +15,10 @@ namespace pf {
     
     class executor : public object {
     public:
-        virtual ptr<response> run(ptr<plugin>, ptr<task>) = 0;
-
-        virtual string type() const override {
-            return OBJ_EXECUTOR;
-        }
+        DECLARE_TYPE(object, OBJ_EXECUTOR);
         
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == OBJ_EXECUTOR || object::is_kind_of(type_name);
-        }
+    public:
+        virtual ptr<response> run(ptr<plugin>, ptr<task>) = 0;
 
     };
 

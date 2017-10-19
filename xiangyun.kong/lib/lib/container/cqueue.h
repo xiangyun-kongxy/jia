@@ -25,6 +25,9 @@ namespace kxy {
     template<typename ty>
     class cqueue : public object {
     public:
+        DECLARE_TYPE(object, OBJ_CQUEUE);
+        
+    public:
         cqueue() {
             m_sem = sem_open(to_string((long)this).c_str(), O_CREAT, 0644, 0);
             pthread_mutex_init(&m_mutex, nullptr);
@@ -32,15 +35,6 @@ namespace kxy {
         
         virtual ~cqueue() {
             pthread_mutex_destroy(&m_mutex);
-        }
-        
-    public:
-        virtual string type() const {
-            return OBJ_CQUEUE;
-        }
-        
-        virtual bool is_kind_of(const string& type_name) const {
-            return type_name == OBJ_CQUEUE || type_info::is_kind_of(type_name);
         }
         
     public:

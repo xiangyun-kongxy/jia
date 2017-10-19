@@ -25,6 +25,7 @@ namespace mind {
     class barren_executor : public plugin {
     public:
         barren_executor();
+        DECLARE_TYPE(plugin, PLUGIN_BARREN_EXECUTOR);
         
     public:
         void exe_func(ptr<barren>);
@@ -33,10 +34,6 @@ namespace mind {
 
     private:
         void exe_func_inner(long, ptr<barren>);
-
-    public:
-        virtual string type() const override ;
-        virtual bool is_kind_of(const string &type_name) const override ;
 
     private:
         map<long, barren_function> m_atom_functions;

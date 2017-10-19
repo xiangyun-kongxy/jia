@@ -16,6 +16,9 @@ namespace pf {
 
     class response : public object {
     public:
+        DECLARE_TYPE(object, OBJ_RESPONSE);
+        
+    public:
         response(ptr<task> tsk) {
             m_org_task = tsk;
         }
@@ -31,14 +34,6 @@ namespace pf {
             return m_org_task;
         }
         
-        virtual string type() const override {
-            return OBJ_RESPONSE;
-        }
-       
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == OBJ_RESPONSE || object::is_kind_of(type_name);
-        }
-
     protected:
         ptr<task> m_org_task;
     };

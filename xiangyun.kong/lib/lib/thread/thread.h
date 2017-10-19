@@ -22,18 +22,15 @@ namespace kxy {
         paused,
         resuming,
         running,
-        destroying,
-        destroyed,
+        stopping,
+        stopped,
     };
 
     class thread : public object {
     public:
         thread();
         virtual ~thread();
-        
-    public:
-        virtual string type() const override;
-        virtual bool is_kind_of(const string &type_name) const override ;
+        DECLARE_TYPE(object, OBJ_THREAD);
         
     public:
         virtual long start();
@@ -57,7 +54,6 @@ namespace kxy {
         virtual void* run_once() = 0;
 
     protected:
-        pthread_mutex_t m_mutex;
         atomic_long m_status;
         pthread_t m_thread;
         sem_t* m_status_changing;

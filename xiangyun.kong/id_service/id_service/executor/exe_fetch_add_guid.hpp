@@ -24,6 +24,9 @@ namespace kxy {
     
     class fetch_add_guid : public executor {
     public:
+        DECLARE_TYPE(executor, EXE_FETCH_ADD_GUID);
+        
+    public:
         virtual ptr<response> run(ptr<plugin> owner, ptr<task> tsk) override {
             ptr<id_service> id_service = owner;
             ptr<serializable> result = new serializable;
@@ -32,13 +35,6 @@ namespace kxy {
             return new simple_response(tsk, EC_OK, EM_OK, result);
         }
             
-        virtual string type() const override {
-            return EXE_FETCH_ADD_GUID;
-        }
-            
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == EXE_FETCH_ADD_GUID || executor::is_kind_of(type_name);
-        }
     };
 }
 

@@ -19,7 +19,7 @@
 
 #include <lifecycle/lifecycle.hpp>
 
-#include <functions.h>
+#include <events.h>
 
 using namespace kxy;
 namespace pf {
@@ -31,14 +31,19 @@ namespace pf {
         m_plugin_conf_path = conf_path;
         g_lifecycle = new lifecycle();
         g_bus = new bus();
-        plugin_manager::instance()->add_plugin(g_lifecycle);
-        plugin_manager::instance()->add_plugin(g_bus);
+
+        plugin_manager* pm = plugin_manager::instance();
+
+        pm->add_plugin(g_lifecycle);
+        pm->add_plugin(g_bus);
+        pm->active_plugin(new id_name(g_bus->name()));
+        pm->active_plugin(new id_name(g_lifecycle->name()));
     }
     
     void loader::load() {
         if(g_lifecycle != nullptr) {
-//            call_plugin(new id_name(g_lifecycle->name()), F_LOAD_PLUGIN,
-//                        m_plugin_conf_path);
+            send_to(new id_name(g_lifecycle->name()), EVT_START_FRAMEWORK,
+                    m_plugin_conf_path);
         }
     }
 

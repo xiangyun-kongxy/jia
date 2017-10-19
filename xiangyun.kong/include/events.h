@@ -21,7 +21,17 @@ static const string EVT_UPGRADE_PLUGIN              = "upgrade_plugin";
 static const string EVT_PAUSE_PLUGIN                = "pause_plugin";
 static const string EVT_RESUME_PLUGIN               = "resume_plugin";
 
-static const string EVT_WAIT_TO_RUN                 = "wait_ro_run";
+static const string EVT_PLUGIN_LOADING              = "evt_plugin_loading";
+static const string EVT_PLUGIN_LOADED               = "evt_plugin_loaded";
+static const string EVT_PLUGIN_INSTALLING           = "evt_plugin_installing";
+static const string EVT_PLUGIN_INSTALLED            = "evt_plugin_installed";
+static const string EVT_PLUGIN_RUNNING              = "evt_plugin_running";
+static const string EVT_PLUGIN_UPGRADING            = "evt_plugin_upgrading";
+static const string EVT_PLUGIN_UPGRADED             = "evt_plugin_upgrade";
+static const string EVT_PLUGIN_UNINSTALLING         = "evt_plugin_uninstalling";
+static const string EVT_PLUGIN_UNINSTALLED          = "evt_plugin_uninstalled";
+static const string EVT_PLUGIN_UNLOADING            = "evt_plugin_unloading";
+static const string EVT_PLUGIN_UNLOADED             = "evt_plugin_unloaded";
 
 // provided by bus
 static const string EVT_ROUTE                       = "route_event";

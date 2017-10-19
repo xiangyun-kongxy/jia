@@ -14,8 +14,10 @@
 namespace pf {
     
     class simple_task : public task {
+    public:
+        DECLARE_TYPE(task, OBJ_SIMPLE_TASK);
+        
     private:
-        friend ptr<plugin> get_this_plugin();
         simple_task(const string& task_name, ptr<plugin> caller);
         
     public:
@@ -30,14 +32,10 @@ namespace pf {
         virtual ptr<identifier> processor() const override;
         virtual ptr<serializable> param() const override;
         string task_name() const;
-        
+
     public:
-        virtual string type() const override {
-            return OBJ_SIMPLE_TASK;
-        }
-        
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == OBJ_SIMPLE_TASK || task::is_kind_of(type_name);
+        string name() const override {
+            return m_task_name;
         }
         
     private:

@@ -17,7 +17,7 @@ namespace kxy {
     /**
      * @since: 9:24 PM Oct 5, 2016
      *
-     * @warning ty must be derived from ::plugin::object
+     * @warning ty must be derived from ::kxy::reference
      *
      */
     template<typename ty>

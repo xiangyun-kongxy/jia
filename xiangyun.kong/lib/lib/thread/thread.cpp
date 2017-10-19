@@ -22,18 +22,16 @@ namespace kxy {
                                      O_CREAT, 0644, 0);
         m_status_changed = sem_open((l2s((long)this) + ".changed").c_str(),
                                     O_CREAT, 0644, 0);
-        pthread_mutex_init(&m_mutex, nullptr);
         pthread_create(&m_thread, nullptr, thread::thread_func, this);
     }
     
     thread::~thread() {
         stop();
-        pthread_mutex_destroy(&m_mutex);
     }
     
     void* thread::thread_func(void *param) {
         thread *obj = (thread*)param;
-        while (obj->status() != destroyed) {
+        while (obj->status() != stopped) {
             obj->update_status();
             if (obj->status() == running) {
                 obj->run_once();
@@ -45,33 +43,34 @@ namespace kxy {
         return nullptr;
     }
     
-    string thread::type() const {
-        return OBJ_THREAD;
-    }
-    
-    bool thread::is_kind_of(const string &type_name) const {
-        return type_name == OBJ_THREAD || object::is_kind_of(type_name);
-    }
-    
     long thread::start() {
-        if (m_thread == nullptr) {
-            pthread_create(&m_thread, nullptr, thread::thread_func, this);
+        if (m_status == pending || m_status == paused || m_status == stopped) {
+            if (m_thread == nullptr) {
+                pthread_create(&m_thread, nullptr, thread::thread_func, this);
+            }
+            change_status(resuming);
+            wait_status();
+            return 0;
         }
-        change_status(resuming);
-        wait_status();
-        return 0;
+        return -1;
     }
     
     long thread::pause() {
-        change_status(pausing);
-        wait_status();
-        return 0;
+        if (m_status == running) {
+            change_status(pausing);
+            wait_status();
+            return 0;
+        }
+        return -1;
     }
     
     long thread::resume() {
-        change_status(resuming);
-        wait_status();
-        return 0;
+        if (m_status == paused) {
+            change_status(resuming);
+            wait_status();
+            return 0;
+        }
+        return -1;
     }
     
     long thread::stop(bool force) {
@@ -82,9 +81,11 @@ namespace kxy {
                 m_thread = nullptr;
                 change_status(pending);
             } else {
-                change_status(destroying);
+                change_status(stopping);
                 wait_status();
             }
+        } else {
+            m_status = stopped;
         }
         return result;
     }
@@ -98,8 +99,8 @@ namespace kxy {
         exchange = resuming;
         m_status.compare_exchange_strong(exchange, running);
 
-        exchange = destroying;
-        if (m_status.compare_exchange_strong(exchange, destroyed)) {
+        exchange = stopping;
+        if (m_status.compare_exchange_strong(exchange, stopped)) {
             pthread_cancel(m_thread);
             m_thread = nullptr;
             change_status(pending);
@@ -112,7 +113,7 @@ namespace kxy {
 
     void thread::change_status(thread_status s) {
         m_status = s;
-        if (s == pausing || s == resuming || s == destroying) {
+        if (s == pausing || s == resuming || s == stopping) {
             sem_post(m_status_changing);
         }
     }
@@ -120,7 +121,7 @@ namespace kxy {
     void thread::wait_status() {
         while (true) {
             thread_status s = status();
-            if (s == pending || s == paused || s == running || s == destroyed) {
+            if (s == pending || s == paused || s == running || s == stopped) {
                 break;
             }
             sem_wait(m_status_changed);

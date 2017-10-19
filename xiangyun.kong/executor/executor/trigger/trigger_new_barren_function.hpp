@@ -19,7 +19,10 @@ namespace mind {
 
     class new_barren_function : public trigger {
     public:
-        virtual void occur(ptr<plugin> owner, ptr<event> evt) override {
+        DECLARE_TYPE(trigger, TRIGGER_NEW_BARREN_FUNCTION);
+        
+    public:
+        virtual void happen(ptr<plugin> owner, ptr<event> evt) override {
             ptr<serializable> data = evt->param();
             long instruction;
             barren_function func;
@@ -27,14 +30,6 @@ namespace mind {
             ((ptr<barren_executor>)owner)->new_barren_function(instruction, func);
         }
 
-        virtual string type() const override {
-            return TRIGGER_NEW_BARREN_FUNCTION;
-        }
-
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == TRIGGER_NEW_BARREN_FUNCTION
-            || trigger::is_kind_of(type_name);
-        }
     };
 }
 

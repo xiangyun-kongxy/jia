@@ -13,26 +13,28 @@
 #include <plugin/plugin/plugin.h>
 #include <plugin/event/simple_event.h>
 
+#include <iostream>
+
+using namespace std;
+
 namespace pf {
     
     class on_response : public trigger {
     public:
-        virtual void occur(ptr<plugin> owner, ptr<event> evt) override {
+        DECLARE_TYPE(trigger, TRIGGER_ON_RESPONSE);
+        
+    public:
+        virtual void happen(ptr<plugin> owner, ptr<event> evt) override {
             ptr<bus> bus = owner;
             ptr<serializable> data = evt->param();
             ptr<task> tsk;
             ptr<response> rsp;
             data >> tsk >> rsp;
             bus->set_object(rsp);
+
+            cout << "\t" << tsk->name() << " done!" << endl;
         }
         
-        virtual string type() const override {
-            return TRIGGER_ON_RESPONSE;
-        }
-        
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == TRIGGER_ON_RESPONSE || trigger::is_kind_of(type_name);
-        }
     };
     
 }

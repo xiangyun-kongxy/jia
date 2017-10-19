@@ -13,6 +13,9 @@ namespace pf {
 
     class simple_event : public event {
     public:
+        DECLARE_TYPE(event, OBJ_SIMPLE_EVENT);
+
+    public:
         simple_event(const string& name);
         simple_event(const string& name, ptr<serializable> param);
         simple_event(const string& name, ptr<identifier> dst);
@@ -26,9 +29,10 @@ namespace pf {
         virtual ptr<serializable> param() const override ;
 
     public:
-        virtual string type() const override ;
-        virtual bool is_kind_of(const string &type_name) const override ;
-
+        string name() const override {
+            return m_event_name;
+        }
+        
     private:
         string m_event_name;
         ptr<plugin> m_deliver;

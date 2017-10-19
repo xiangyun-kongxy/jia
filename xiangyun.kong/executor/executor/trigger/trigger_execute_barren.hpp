@@ -19,20 +19,16 @@ namespace mind {
 
     class execute_barren : public trigger {
     public:
-        virtual void occur(ptr<plugin> owner, ptr<event> evt) override {
+        DECLARE_TYPE(trigger, TRIGGER_EXECUTE_BARREN);
+        
+    public:
+        virtual void happen(ptr<plugin> owner, ptr<event> evt) override {
             ptr<serializable> data = evt->param();
             ptr<barren> br;
             data >> br;
             ((ptr<barren_executor>)owner)->exe_func(br);
         }
 
-        virtual string type() const override {
-            return TRIGGER_EXECUTE_BARREN;
-        }
-
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == TRIGGER_EXECUTE_BARREN || trigger::is_kind_of(type_name);
-        }
     };
 }
 

@@ -60,13 +60,6 @@ namespace mind {
         m_compound_functions[instruction] = body;
     }
 
-    string barren_executor::type() const {
-        return PLUGIN_BARREN_EXECUTOR;
-    }
-
-    bool barren_executor::is_kind_of(const string &type_name) const {
-        return type_name == PLUGIN_BARREN_EXECUTOR || plugin::is_kind_of(type_name);
-    }
 
     extern "C" void* init_barren_executor(void* conf) {
         return new barren_executor;

@@ -25,8 +25,10 @@ namespace pf {
 
     class start_framework : public trigger {
     public:
-
-        virtual void occur(ptr<plugin> owner, ptr<event> evt) override {
+        DECLARE_TYPE(trigger, TRIGGER_START_FRAMEWORK);
+        
+    public:
+        virtual void happen(ptr<plugin> owner, ptr<event> evt) override {
             ptr<lifecycle> lifecycle = owner;
             ptr<serializable> data = evt->param();
             string path;
@@ -38,20 +40,10 @@ namespace pf {
             
             list<config*>::const_iterator i;
             for(i = confs.begin(); i != confs.end(); ++i) {
-                ptr<serializable> param = new serializable;
-                param << *i;
-                send_to(new id_name(PLUGIN_LIFECYCLE), EVT_LOAD_PLUGIN, param);
+                send_to(new id_name(PLUGIN_LIFECYCLE), EVT_LOAD_PLUGIN, *i);
             }
         }
 
-        virtual string type() const override {
-            return TRIGGER_START_FRAMEWORK;
-        }
-
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == TRIGGER_START_FRAMEWORK
-            || object::is_kind_of(type_name);
-        }
     };
     
 }

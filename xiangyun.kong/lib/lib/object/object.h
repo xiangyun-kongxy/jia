@@ -22,16 +22,20 @@
 
 using namespace std;
 namespace kxy {
-    
+
+#define DECLARE_TYPE(base, inherit_type_name)                           \
+public:                                                                 \
+    virtual string type() const override {                              \
+        return inherit_type_name;                                       \
+    }                                                                   \
+    virtual bool is_kind_of(const string& type_name) const override {   \
+        return type_name == inherit_type_name                           \
+        || base::is_kind_of(type_name);                                 \
+    }
+
     class object : public reference, public type_info {
     public:
-        virtual string type() const {
-            return OBJECT;
-        }
-
-        virtual bool is_kind_of(const string& type_name) const {
-            return type_name == OBJECT || type_info::is_kind_of(type_name);
-        }
+        DECLARE_TYPE(type_info, OBJECT)
 
     public:
         virtual string name() const {

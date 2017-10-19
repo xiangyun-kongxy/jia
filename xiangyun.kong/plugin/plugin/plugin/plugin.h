@@ -26,6 +26,9 @@ namespace pf {
 
     class plugin : public object {
     public:
+        DECLARE_TYPE(object, OBJ_PLUGIN);
+        
+    public:
         /**
          * implementation for processing event
          * @param evt the event to process
@@ -55,9 +58,6 @@ namespace pf {
          * only if it declared to
          */
         virtual list<ptr<identifier>> depend_on() const;
-
-        virtual string type() const override ;
-        virtual bool is_kind_of(const string &type_name) const override ;
 
     public:
         static ptr<plugin> current_plugin();

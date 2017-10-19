@@ -27,6 +27,9 @@ namespace pf {
      */
     class task : public object {
     public:
+        DECLARE_TYPE(object, OBJ_TASK);
+        
+    public:
         /**
          * @return who called the task
          */
@@ -39,14 +42,6 @@ namespace pf {
          * @return parameter for processing task
          */
         virtual ptr<serializable> param() const = 0;
-
-        virtual string type() const override {
-            return OBJ_TASK;
-        }
-        
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == OBJ_TASK || object::is_kind_of(type_name);
-        }
 
     };
 

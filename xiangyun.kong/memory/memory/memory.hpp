@@ -23,10 +23,7 @@ namespace mind {
     class memory : public plugin {
     public:
         memory();
-        
-    public:
-        virtual string type() const override ;
-        virtual bool is_kind_of(const string &type_name) const override ;
+        DECLARE_TYPE(plugin, PLUGIN_MEMORY);
         
     public:
         void write(ptr<barren> obj);

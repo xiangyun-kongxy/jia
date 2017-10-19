@@ -120,12 +120,4 @@ namespace pf {
         m_user_trigger[evt] = func;
     }
 
-    string bus::type() const {
-        return PLUGIN_BUS;
-    }
-    
-    bool bus::is_kind_of(const string &type_name) const {
-        return type_name == PLUGIN_BUS || plugin::is_kind_of(type_name);
-    }
-
 }

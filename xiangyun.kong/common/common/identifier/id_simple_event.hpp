@@ -9,8 +9,10 @@
 #ifndef id_simple_event_h
 #define id_simple_event_h
 
-#include <identifier/identifier.h>
-#include <event/simple_event.h>
+#include <lib/identifier/identifier.h>
+
+#include <plugin/event/simple_event.h>
+
 #include <names.h>
 
 using namespace pf;
@@ -19,6 +21,9 @@ namespace kxy {
 
 
     class id_simple_event : public identifier {
+    public:
+        DECLARE_TYPE(identifier, ID_SIMPLE_EVENT);
+        
     public:
         id_simple_event(const string& evt, ptr<identifier> base = nullptr)
         :   identifier(base),
@@ -32,15 +37,6 @@ namespace kxy {
                 && identifier::match(obj);
             }
             return false;
-        }
-
-        virtual string type() const override {
-            return ID_SIMPLE_EVENT;
-        }
-
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == ID_SIMPLE_EVENT
-            || identifier::is_kind_of(type_name);
         }
 
     protected:

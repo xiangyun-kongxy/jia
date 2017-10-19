@@ -19,7 +19,10 @@ namespace mind {
 
     class new_compound_function : public trigger {
     public:
-        virtual void occur(ptr<plugin> owner, ptr<event> evt) override {
+        DECLARE_TYPE(trigger, TRIGGER_NEW_COMPOUND_FUNCTION);
+        
+    public:
+        virtual void happen(ptr<plugin> owner, ptr<event> evt) override {
             ptr<barren_executor> executor = owner;
             ptr<serializable> data = evt->param();
             long instruction;
@@ -28,14 +31,6 @@ namespace mind {
             executor->new_compound_function(instruction, body);
         }
 
-        virtual string type() const override {
-            return TRIGGER_NEW_COMPOUND_FUNCTION;
-        }
-
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == TRIGGER_NEW_COMPOUND_FUNCTION
-            || trigger::is_kind_of(type_name);
-        }
     };
 }
 

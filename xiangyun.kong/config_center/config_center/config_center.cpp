@@ -34,14 +34,6 @@ namespace kxy {
         kv_put(m_service, key, value);
     }
     
-    string config_center::type() const {
-        return PLUGIN_CONFIG_CENTER;
-    }
-    
-    bool config_center::is_kind_of(const string &type_name) const {
-        return type_name == PLUGIN_CONFIG_CENTER || plugin::is_kind_of(type_name);
-    }
-
     extern "C" void* init_config_center(void* conf) {
         config_center* plugin = new config_center;
         return plugin;

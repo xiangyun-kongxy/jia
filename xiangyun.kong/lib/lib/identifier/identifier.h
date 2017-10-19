@@ -26,6 +26,9 @@ namespace kxy {
      */
     class identifier : public object {
     public:
+        DECLARE_TYPE(object, OBJ_IDENTIFIER);
+        
+    public:
         identifier(ptr<identifier> base) {
             m_base = base;
         }
@@ -42,14 +45,6 @@ namespace kxy {
                 return m_base->match(obj);
             }
             return true;
-        }
-        
-        virtual string type() const override {
-            return OBJ_IDENTIFIER;
-        }
-
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == OBJ_IDENTIFIER || object::is_kind_of(type_name);
         }
         
     protected:

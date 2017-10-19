@@ -24,15 +24,12 @@ namespace kxy {
     public:
         id_service();
         virtual ~id_service();
+        DECLARE_TYPE(plugin, PLUGIN_ID_SERVICE);
         
     public:
         void set_guid(long id);
         long get_guid();
         long fetch_add_guid();
-        
-    public:
-        virtual string type() const override ;
-        virtual bool is_kind_of(const string &type_name) const override ;
         
     private:
         void load_guid();

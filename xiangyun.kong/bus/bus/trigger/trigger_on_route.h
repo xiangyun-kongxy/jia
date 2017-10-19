@@ -17,44 +17,47 @@
 
 #include <plugin/manager/plugin_manager.hpp>
 
+#include <iostream>
+
+using namespace std;
+
 namespace pf {
     
     class on_route : public trigger {
     public:
-        virtual void occur(ptr<plugin> owner, ptr<event> evt) override {
+        DECLARE_TYPE(trigger, TRIGGER_ON_ROUTE);
+        
+    public:
+        virtual void happen(ptr<plugin> owner, ptr<event> evt) override {
             ptr<serializable> data = evt->param();
             ptr<identifier> dst = nullptr;
-            
+
+
             ptr<object> msg;
             data >> msg;
             if(msg->is_kind_of(OBJ_EVENT)) {
                 dst = ((ptr<event>)msg)->destination();
+
+                if (((ptr<event>)msg)->deliver() != nullptr) {
+                    cout << ((ptr<event>)msg)->deliver()->name() <<
+                    " -> " << ((ptr<event>)msg)->name() << endl;
+                }
             } else if(msg->is_kind_of(OBJ_TASK)) {
                 dst = ((ptr<task>)msg)->processor();
+
+                if (((ptr<task>)msg)->caller() != nullptr) {
+                    cout << ((ptr<task>)msg)->caller()->name() <<
+                    " -> " << ((ptr<task>)msg)->name() << endl;
+                }
             }
             
             if(dst != nullptr) {
-                list<ptr<plugin_thread>> threads;
-                list<ptr<plugin>> plugins;
-                plugins = plugin_manager::instance()->find_plugin(dst);
-
-                list<ptr<plugin>>::iterator i;
-                for (i = plugins.begin(); i != plugins.end(); ++i) {
-                    threads = plugin_manager::instance()->get_plugin_thread(*i);
-                    if(threads.size() > 0) {
-                        threads.front()->pool()->push(msg);
-                    }
+                const plugin_info* pi;
+                pi = plugin_manager::instance()->find_plugin(dst);
+                if (pi != nullptr && pi->is_active) {
+                    pi->threads.front()->pool()->push(msg);
                 }
             }
-        }
-        
-    public:
-        virtual string type() const override {
-            return TRIGGER_ON_ROUTE;
-        }
-        
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == TRIGGER_ON_ROUTE || trigger::is_kind_of(type_name);
         }
         
     };

@@ -32,6 +32,9 @@ namespace pf {
      */
     class event : public object {
     public:
+        DECLARE_TYPE(object, OBJ_EVENT);
+        
+    public:
         /**
          * @return who published the event
          */
@@ -45,14 +48,6 @@ namespace pf {
          * @see plugin::data
          */
         virtual ptr<serializable> param() const = 0;
-
-        virtual string type() const override {
-            return OBJ_EVENT;
-        }
-        
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == OBJ_EVENT || object::is_kind_of(type_name);
-        }
 
     };
 

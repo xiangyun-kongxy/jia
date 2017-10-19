@@ -19,31 +19,57 @@
 using namespace kxy;
 
 namespace pf {
+    
+    struct plugin_info {
+        ptr<plugin> pl;
+        bool is_active;
+        list<ptr<plugin_thread>> threads;
+        
+        bool operator == (const ptr<plugin>& p) {
+            return pl == p;
+        }
+        
+        bool operator == (const ptr<identifier>& id) {
+            return id->match(pl);
+        }
 
-    class plugin_manager : public object {
+        bool operator == (pthread_t thread_id) {
+            for (ptr<plugin_thread> thread : threads) {
+                if (thread->thread_id() == thread_id) {
+                    return true;
+                }
+            }
+            return false;
+        }
+    };
+    
+    class plugin_manager {
     private:
-        plugin_manager(){};
+        friend void __init_plugin_manager();
+        plugin_manager();
 
     public:
-        static ptr<plugin_manager> instance();
+        static plugin_manager* instance();
 
     public:
         void add_plugin(ptr<plugin> p);
-        void delete_plugin(ptr<plugin> p);
-        list<ptr<plugin>> find_plugin(ptr<identifier> id);
-        list<ptr<plugin>> get_all_plugin();
+        void rm_plugin(ptr<identifier> id);
+        void active_plugin(ptr<identifier> id);
+        void suspend_plugin(ptr<identifier> id);
 
-    public:
-        void set_plugin_thread_count(ptr<plugin> p, long count);
-        long get_plugin_thread_count(ptr<plugin> p);
-        list<ptr<plugin_thread>> get_plugin_thread(ptr<plugin> p);
-        ptr<plugin> get_plugin_by_thread_id(pthread_t thread_id);
+        bool check_ready(ptr<identifier> id);
+        
+        list<plugin_info> get_all_plugin();
+        const plugin_info* find_plugin(ptr<identifier> id);
+        const plugin_info* get_plugin_by_thread_id(pthread_t thread_id);
 
     private:
-        typedef map<ptr<plugin>, list<ptr<plugin_thread>>> container_type;
-        container_type m_container;
+        ptr<plugin_thread> _create_thread(ptr<plugin>);
 
-        map<pthread_t, ptr<plugin>> m_thread_index;
+    private:
+        list<plugin_info> m_plugins;
+
+        pthread_mutex_t m_mutex;
     };
 }
 

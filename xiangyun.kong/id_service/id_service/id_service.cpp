@@ -68,14 +68,6 @@ namespace kxy {
         send_to(new id_name(PLUGIN_CONFIG_CENTER), EVT_PUT_CONFIG, CFG_CUR_GUID);
     }
     
-    string id_service::type() const {
-        return PLUGIN_ID_SERVICE;
-    }
-    
-    bool id_service::is_kind_of(const string &type_name) const {
-        return type_name == PLUGIN_ID_SERVICE || plugin::is_kind_of(type_name);
-    }
-    
     extern "C" {
         void* init_id_service(void* config) {
             id_service* service = new id_service;

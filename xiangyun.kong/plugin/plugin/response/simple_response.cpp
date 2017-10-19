@@ -27,12 +27,4 @@ namespace pf {
         return m_context;
     }
 
-    string simple_response::type() const {
-        return OBJ_SIMPLE_RESPONSE;
-    }
-
-    bool simple_response::is_kind_of(const string &type_name) const {
-        return type_name == OBJ_SIMPLE_RESPONSE
-        || response::is_kind_of(type_name);
-    }
 }

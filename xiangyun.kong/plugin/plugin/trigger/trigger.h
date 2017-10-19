@@ -14,15 +14,10 @@ namespace pf {
 
     class trigger : public object {
     public:
-        virtual void occur(ptr<plugin>,ptr<event>) = 0;
+        DECLARE_TYPE(object, OBJ_TRIGGER);
 
-        virtual string type() const override {
-            return OBJ_TRIGGER;
-        }
-        
-        virtual bool is_kind_of(const string &type_name) const override {
-            return type_name == OBJ_TRIGGER || object::is_kind_of(type_name);
-        }
+    public:
+        virtual void happen(ptr<plugin>,ptr<event>) = 0;
 
     };
 

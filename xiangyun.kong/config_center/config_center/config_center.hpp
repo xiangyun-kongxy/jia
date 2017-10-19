@@ -18,14 +18,11 @@ namespace kxy {
     class config_center : public plugin {
     public:
         config_center();
+        DECLARE_TYPE(plugin, PLUGIN_CONFIG_CENTER);
         
     public:
         string get(const string& key);
         void put(const string& key, const string& value);
-        
-    public:
-        virtual string type() const override;
-        virtual bool is_kind_of(const string &type_name) const override;
         
     private:
         static const string m_service;

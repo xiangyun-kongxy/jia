@@ -9,6 +9,9 @@
 #ifndef functions_h
 #define functions_h
 
+// provided by lifecycle
+static const string F_START_FRAMEWORK               = "start_frame_work";
+
 // provided by id service
 static const string F_FETCH_ADD_GUID                = "fetch_add_guid";
 static const string F_GET_CUR_CUID                  = "get_cur_guid";
