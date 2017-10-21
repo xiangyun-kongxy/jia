@@ -27,6 +27,10 @@ namespace kxy {
             return identifier::match(obj);
         }
         
+    public:
+        virtual string name() const override {
+            return "*";
+        }
     };
     
 }

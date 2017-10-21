@@ -33,6 +33,11 @@ namespace pf {
         m_event_name = name;
         m_param = param;
         m_dst = dst;
+
+        if (m_deliver == nullptr) {
+            extern ptr<plugin> g_terminal;
+            m_deliver = g_terminal;
+        }
     }
 
     ptr<plugin> simple_event::deliver() const {

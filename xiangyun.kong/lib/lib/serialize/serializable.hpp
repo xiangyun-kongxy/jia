@@ -251,6 +251,10 @@ namespace kxy {
         
         template<class base_type>
         void load(base_type& value) {
+            if (m_buf.empty()) {
+                return;
+            }
+
             long diff_size = sizeof(unsigned long) - sizeof(base_type);
             
             if (diff_size > 0) {

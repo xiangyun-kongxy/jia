@@ -11,12 +11,13 @@
 
 namespace kxy {
     
+    
     kv_service* get_kv_service(const string& service_name) {
-        kv_service* service = g_kv_services[service_name];
+        kv_service* service = (*g_kv_services)[service_name];
         
         if(service == nullptr) {
             service = new kv_service(service_name);
-            g_kv_services[service_name] = service;
+            (*g_kv_services)[service_name] = service;
         }
         
         return service;

@@ -16,6 +16,7 @@
 #include <lib/object/ptr.h>
 
 #include <list>
+#include <mutex>
 
 using namespace kxy;
 using namespace std;
@@ -25,8 +26,10 @@ namespace pf {
     class dependence_manager {
     private:
         friend void __init_dependence_manager();
+        friend void __uninit_dependence_manager();
         typedef list<pair<ptr<object>,ptr<object>>> container;
         dependence_manager();
+        ~dependence_manager();
 
     public:
         static dependence_manager* instance();
@@ -41,12 +44,12 @@ namespace pf {
     private:
         container::iterator _exist(ptr<object>, ptr<object>);
         bool _match(ptr<object>, ptr<object>);
+        list<ptr<object>> _extern_sub_obj(ptr<object> obj);
 
     private:
         container m_depend;
         container m_be_depend;
 
-        pthread_mutex_t m_mutex;
     };
     
 }

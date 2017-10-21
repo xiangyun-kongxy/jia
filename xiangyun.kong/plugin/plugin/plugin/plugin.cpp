@@ -15,7 +15,10 @@
 
 #include <errors.h>
 
+#include <iostream>
+
 using namespace kxy;
+using namespace std;
 
 namespace pf {
     
@@ -25,34 +28,35 @@ namespace pf {
     void plugin::on_event(ptr<event> evt) {
         ptr<trigger> trigger = nullptr;
         if (evt != nullptr) {
-            if (evt->type() == OBJ_SIMPLE_EVENT)
-                trigger = m_event_processor[((ptr<simple_event>)evt)->event_type()];
-            else
-                trigger = m_event_processor[evt->type()];
+            trigger = m_event_processor[evt->name()];
+            if (trigger != nullptr)
+                trigger->happen(this, evt);
         }
-        if (trigger != nullptr)
-            trigger->happen(this, evt);
     }
 
     ptr<response> plugin::do_task(ptr<task> tsk) {
         ptr<executor> executor = nullptr;
         if (tsk != nullptr) {
-            if(tsk->is_kind_of(OBJ_SIMPLE_TASK))
-                executor = m_task_processor[((ptr<simple_task>)tsk)->task_name()];
-            else
-                executor = m_task_processor[tsk->type()];
+            executor = m_task_processor[tsk->name()];
+            if (executor != nullptr)
+                return executor->run(this, tsk);
         }
-        if (executor != nullptr)
-            return executor->run(this, tsk);
-        else
-            return new simple_response(tsk, EC_TASK_NOT_SUPPORTED,
-                                       EM_TASK_NOT_SUPPORTED);
+        return new simple_response(tsk, EC_TASK_NOT_SUPPORTED,
+                                   EM_TASK_NOT_SUPPORTED);
     }
 
     list<ptr<identifier>> plugin::depend_on() const {
         return list<ptr<identifier>>();
     }
 
+    void plugin::init() {
+        
+    }
+    
+    void plugin::uninit() {
+        
+    }
+    
     list<ptr<identifier>> plugin::accepted_event() const {
         list<ptr<identifier>> evt;
         map<string,ptr<trigger>>::const_iterator i;
@@ -71,12 +75,14 @@ namespace pf {
 
     ptr<plugin> plugin::current_plugin() {
         plugin_manager* manager = plugin_manager::instance();
-        const plugin_info* pi;
-        pi = manager->get_plugin_by_thread_id(pthread_self());
-        if (pi != nullptr) {
-            return pi->pl;
-        }
-        return nullptr;
+        context_info ci = manager->get_context_by_thread_id(pthread_self());
+        return ci.plugin;
+    }
+    
+    ptr<object> plugin::current_task() {
+        plugin_manager* manager = plugin_manager::instance();
+        context_info ci = manager->get_context_by_thread_id(pthread_self());
+        return ci.task;
     }
 
 }

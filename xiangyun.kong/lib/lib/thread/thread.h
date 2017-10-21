@@ -48,7 +48,7 @@ namespace kxy {
     protected:
         virtual void update_status();
         virtual void change_status(thread_status s);
-        void wait_status();
+        virtual void wait_status();
 
     public:
         virtual void* run_once() = 0;

@@ -22,6 +22,7 @@ using namespace mind;
 
 def_ut(ut_barren_rw) {
     ptr<barren> br = new barren;
+    save_barren(br);
     
     ptr<barren> lbr = load_barren(br->id());
     assert(lbr != nullptr);
@@ -29,22 +30,37 @@ def_ut(ut_barren_rw) {
     cout << lbr->id() << " created and loaded" << endl;
 }
 
-def_ut(ut_barren_rw_speed) {
-    long count;
-    cout << "barren count to rw:";
-    cin >> count;
-    
-    long start = time(nullptr);
+void* speed_func(void* param) {
+    long count = (long)param;
+
     long i;
     for (i = 0; i < count; ++i) {
         save_barren(new barren);
     }
-    cout << "write " << i << " barrens cost " << time(nullptr) - start << endl;
-    
-    start = time(nullptr);
+
     for (i = 0; i < count; ++i) {
         ptr<barren> pbr = load_barren(10000056000L + i);
         assert(pbr != nullptr);
     }
-    cout << "read " << i << " barrens cost " << time(nullptr) - start << endl;
+
+    cout << "end   " << time(nullptr) << endl;
+
+    return nullptr;
+}
+
+def_ut(ut_barren_rw_speed) {
+    long count;
+    cout << "barren count to rw:";
+    cin >> count;
+
+    cout << "start " << time(nullptr) << endl;
+    
+    pthread_t threads[8];
+    for (long i = 0; i < 1; ++i) {
+        pthread_create(threads + i, nullptr, speed_func, (void*)count);
+    }
+
+    for (long i = 0; i < 1; ++i) {
+        pthread_join(threads[i], nullptr);
+    }
 }

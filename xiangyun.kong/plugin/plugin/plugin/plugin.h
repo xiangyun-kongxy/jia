@@ -59,8 +59,12 @@ namespace pf {
          */
         virtual list<ptr<identifier>> depend_on() const;
 
+        virtual void init();
+        virtual void uninit();
+
     public:
         static ptr<plugin> current_plugin();
+        static ptr<object> current_task();
         
     protected:
         map<string, ptr<trigger>> m_event_processor;

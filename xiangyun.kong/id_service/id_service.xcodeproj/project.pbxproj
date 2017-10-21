@@ -24,6 +24,7 @@
 		268A6D421F91DD2D000B6648 /* exe_fetch_add_guid.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = exe_fetch_add_guid.hpp; path = executor/exe_fetch_add_guid.hpp; sourceTree = "<group>"; };
 		268A6D431F91DF67000B6648 /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
 		268A6D6B1F92009D000B6648 /* trigger_set_guid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = trigger_set_guid.h; path = trigger/trigger_set_guid.h; sourceTree = "<group>"; };
+		AD620C171F9A81B500F39E20 /* exe_fetch_add_guid_bench.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = exe_fetch_add_guid_bench.hpp; path = executor/exe_fetch_add_guid_bench.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +84,7 @@
 			children = (
 				268A6D411F91DD11000B6648 /* exe_get_cur_guid.hpp */,
 				268A6D421F91DD2D000B6648 /* exe_fetch_add_guid.hpp */,
+				AD620C171F9A81B500F39E20 /* exe_fetch_add_guid_bench.hpp */,
 			);
 			name = executor;
 			sourceTree = "<group>";
@@ -269,7 +271,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)",
 					"$(SRCROOT)/../plugin",
@@ -289,7 +291,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)",
 					"$(SRCROOT)/../plugin",

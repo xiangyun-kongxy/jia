@@ -13,8 +13,10 @@
 
 #include <lib/identifier/id_name.h>
 #include <lib/serialize/serializable.hpp>
+#include <lib/convert/basic_type_convert.h>
 
 #include <id_service/executor/exe_fetch_add_guid.hpp>
+#include <id_service/executor/exe_fetch_add_guid_bench.hpp>
 #include <id_service/executor/exe_get_cur_guid.hpp>
 #include <id_service/trigger/trigger_set_guid.h>
 
@@ -28,15 +30,18 @@ namespace kxy {
     
     id_service::id_service() {
         m_cur_id = BARREN_FREE_BEGIN;
-        load_guid();
         
         m_task_processor[F_FETCH_ADD_GUID] = new class fetch_add_guid;
+        m_task_processor[F_FETCH_ADD_GUID_BENCH] = new fetch_add_guid_bench;
         m_task_processor[F_GET_CUR_CUID] = new class get_cur_guid;
 
         m_event_processor[EVT_SET_GUID] = new class set_guid;
     }
     
-    id_service::~id_service() {
+    void id_service::init() {
+        load_guid();
+    }
+    void id_service::uninit() {
         save_guid();
     }
     
@@ -54,18 +59,23 @@ namespace kxy {
         return m_cur_id++;
     }
     
+    long id_service::fetch_add_guid(long size) {
+        return atomic_fetch_add(&m_cur_id, size);
+    }
+
     void id_service::load_guid() {
         ptr<serializable> rsp;
         rsp = call_plugin(new id_name(PLUGIN_CONFIG_CENTER), F_GET_CONFIG, CFG_CUR_GUID);
         if (rsp != nullptr) {
-            long id = 0;
+            string id;
             rsp >> id;
-            set_guid(id);
+            set_guid(s2l(id.c_str()));
         }
     }
     
     void id_service::save_guid() {
-        send_to(new id_name(PLUGIN_CONFIG_CENTER), EVT_PUT_CONFIG, CFG_CUR_GUID);
+        send_to(new id_name(PLUGIN_CONFIG_CENTER), EVT_PUT_CONFIG,
+                l2s(get_guid()), CFG_CUR_GUID);
     }
     
     extern "C" {

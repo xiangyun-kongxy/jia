@@ -1,8 +1,0 @@
-<plugins>
-    <plugin lib_path="libmemory.dylib" init_func="init_memory"/>
-    <plugin lib_path="libbarren_cache.dylib" init_func="init_barren_cache"/>
-    <plugin lib_path="libconfig_center.dylib" init_func="init_config_center"/>
-    <plugin lib_path="libid_service.dylib" init_func="init_id_service">
-        <parameter cur_guid="10000056000"/>
-    </plugin>
-</plugins>

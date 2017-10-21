@@ -6,6 +6,7 @@
 
 #include <unistd.h>
 #include <sys/fcntl.h>
+#include <sys/time.h>
 
 #include <lib/lock/auto_lock.h>
 #include <lib/identifier/id_name.h>
@@ -17,6 +18,9 @@
 #include <events.h>
 #include <names.h>
 
+#include <mutex>
+
+using namespace std;
 using namespace kxy;
 
 namespace pf {
@@ -36,82 +40,79 @@ namespace pf {
         pthread_cond_destroy(&m_changed);
     }
 
-    void bus::hold_object(ptr<identifier> id) {
-        auto_lock _(&m_mutex);
-        m_hold_object.insert(id);
+    void bus::set_waiting(ptr<kxy::identifier> id) {
+        do {
+            auto_lock _(&m_mutex);
+            m_waiting[id] = nullptr;
+        } while (0);
     }
-    
-    void bus::release_object(ptr<identifier> id) {
-        auto_lock _(&m_mutex);
-        m_hold_object.erase(id);
 
-        list<ptr<object>>::iterator i;
-        for (i = m_object_set.begin(); i != m_object_set.end(); ) {
-            if (id->match(*i)) {
-                m_object_set.erase(i++);
-            } else {
-                ++i;
-            }
-        }
-    }
-    
-    ptr<object> bus::wait_object(ptr<kxy::identifier> id) {
-        pthread_mutex_lock(&m_mutex);
-        m_waiting_object.push_back(id);
-        pthread_mutex_unlock(&m_mutex);
+    ptr<object> bus::wait_object(ptr<kxy::identifier> id, timeval& timeout) {
+        timespec ts;
+        ts.tv_sec = timeout.tv_sec;
+        ts.tv_nsec = timeout.tv_usec * 1000;
 
         while(true) {
             auto_lock _(&m_mutex);
 
-            for (ptr<object> obj : m_object_set) {
-                if (id->match(obj)) {
-                    list<ptr<identifier>>::iterator i;
-                    for (i = m_waiting_object.begin();
-                         i != m_waiting_object.end(); ++i) {
-                        if (*i == id) {
-                            m_waiting_object.erase(i);
-                            break;
-                        }
-                    }
-                    return obj;
-                }
+            map<ptr<identifier>,ptr<object>>::iterator i;
+            i = m_waiting.find(id);
+            if (i->second != nullptr) {
+                ptr<object> obj = i->second;
+                m_waiting.erase(i);
+                return obj;
             }
-            
-            pthread_cond_wait(&m_changed, &m_mutex);
+
+            timeval now;
+            gettimeofday(&now, nullptr);
+            if (now.tv_sec > timeout.tv_sec ||
+                (now.tv_sec == timeout.tv_sec &&
+                 now.tv_usec >= timeout.tv_usec)) {
+                    m_waiting.erase(id);
+                break;
+            }
+
+            pthread_cond_timedwait(&m_changed, &m_mutex, &ts);
         }
         return nullptr;
     }
 
     void bus::set_object(ptr<kxy::object> obj) {
-        auto_lock _(&m_mutex);
+        do {
+            auto_lock _(&m_mutex);
 
-        bool held = false;
-
-        for (ptr<identifier> id : m_waiting_object) {
-            if (id->match(obj)) {
-                m_object_set.push_back(obj);
-                held = true;
-                pthread_cond_signal(&m_changed);
-                break;
-            }
-        }
-        if (!held) {
-            for (ptr<identifier> id : m_hold_object) {
-                if (id->match(obj)) {
-                    m_object_set.push_back(obj);
-                    break;
+            bool set = false;
+            map<ptr<identifier>, ptr<object>>::iterator it;
+            for (it = m_waiting.begin(); it != m_waiting.end(); ++it) {
+                if (it->first->match(obj)) {
+                    it->second = obj;
+                    set = true;
                 }
             }
-        }
-        
-        map<ptr<identifier>, task_callback>::iterator i;
-        for (i = m_user_trigger.begin(); i != m_user_trigger.end(); ) {
-            if (i->first->match(obj)) {
-                i->second(obj);
-                m_user_trigger.erase(i++);
-            } else {
-                ++i;
+
+            if (set) {
+                pthread_cond_broadcast(&m_changed);
             }
+        } while (0);
+
+        list<task_callback> callbacks;
+        do {
+            lock_guard<mutex> _(m_trigger_mutex);
+
+            map<ptr<identifier>, task_callback>::iterator i;
+            for (i = m_user_trigger.begin(); i != m_user_trigger.end(); ) {
+                if (i->first->match(obj)) {
+                    callbacks.push_back(i->second);
+                    m_user_trigger.erase(i++);
+                } else {
+                    ++i;
+                }
+            }
+
+        } while (0);
+
+        for (task_callback callback : callbacks) {
+            callback(obj);
         }
     }
 

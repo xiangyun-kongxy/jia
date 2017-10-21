@@ -13,7 +13,10 @@
 
 #include <plugin/plugin/plugin.h>
 
+#include <mutex>
+
 using namespace kxy;
+using namespace std;
 
 namespace pf {
 
@@ -30,7 +33,10 @@ namespace pf {
     class function_manager {
     private:
         friend void __init_function_manager();
+        friend void __uninit_function_manager();
         function_manager();
+        ~function_manager();
+        
     public:
         static function_manager* instance();
 
@@ -44,7 +50,6 @@ namespace pf {
     private:
         list<function_info> m_functions;
         
-        pthread_mutex_t m_mutex;
     };
     
 }

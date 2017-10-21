@@ -24,6 +24,7 @@
 #include <events.h>
 #include <ipc.hpp>
 
+#include <log.hpp>
 
 namespace pf {
 
@@ -39,44 +40,30 @@ namespace pf {
             data >> conf;
 
             if (conf != nullptr) {
-                ptr<serializable> param;
-
-                param = new serializable;
-                param << conf->get_name();
-                send_message(new simple_event(EVT_PLUGIN_LOADING, param));
+                logs::get_logger("info")->info(conf->get_name() + " is loading...");
                 
+                broadcast(EVT_PLUGIN_LOADING, conf->get_name());
                 ptr<plugin> plugin = loader::load_plugin(conf);
+                broadcast(EVT_PLUGIN_LOADED, conf->get_name());
 
-                param = new serializable;
-                param << conf->get_name();
-                send_message(new simple_event(EVT_PLUGIN_LOADED, param));
-
-                param = new serializable;
-                param << conf->get_name();
-                send_message(new simple_event(EVT_PLUGIN_INSTALLING, param));
-
+                broadcast(EVT_PLUGIN_INSTALLING, conf->get_name());
                 plugin_manager::instance()->add_plugin(plugin);
 
                 dependence_manager* dm = dependence_manager::instance();
                 plugin_manager* pm = plugin_manager::instance();
                 do {
                     if (dm->is_depend_ready(plugin)) {
-                        param = new serializable;
-                        param << conf->get_name();
-                        send_message(new simple_event(EVT_PLUGIN_INSTALLED,
-                                                      param));
-
+                        plugin->init();
+                        broadcast(EVT_PLUGIN_INSTALLED, conf->get_name());
                         pm->active_plugin(new id_name(plugin->name()));
-
-                        param = new serializable;
-                        param << conf->get_name();
-                        send_message(new simple_event(EVT_PLUGIN_RUNNING,
-                                                      param));
+                        broadcast(EVT_PLUGIN_RUNNING, conf->get_name());
                         break;
                     } else {
                         wait_event(new id_simple_event(EVT_PLUGIN_RUNNING));
                     }
                 } while (true);
+                
+                logs::get_logger("info")->info(conf->get_name() + " is loaded");
             }
 
         }

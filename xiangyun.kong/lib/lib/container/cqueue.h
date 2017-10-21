@@ -59,7 +59,18 @@ namespace kxy {
                 return ty();
             }
         }
-        
+
+        ty try_pop() {
+            auto_lock lock(&m_mutex);
+            if (m_container.size() > 0) {
+                ty result = m_container.front();
+                m_container.pop();
+                return result;
+            } else {
+                return ty();
+            }
+        }
+
         ty front() const {
             auto_lock lock(&m_mutex);
             if (m_container.size() > 0) {
@@ -69,7 +80,7 @@ namespace kxy {
             }
         }
 
-        int size() const {
+        long size() {
             auto_lock lock(&m_mutex);
             return m_container.size();
         }

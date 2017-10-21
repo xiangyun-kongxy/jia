@@ -15,15 +15,24 @@
 #include <plugin/plugin/plugin.h>
 
 #include "plugin_thread.hpp"
+#include "help_thread.hpp"
+
+#include <mutex>
 
 using namespace kxy;
+using namespace std;
 
 namespace pf {
+    
+    struct context_info {
+        ptr<plugin> plugin;
+        ptr<object> task;
+    };
     
     struct plugin_info {
         ptr<plugin> pl;
         bool is_active;
-        list<ptr<plugin_thread>> threads;
+        list<ptr<plugin_thread>>* threads;
         
         bool operator == (const ptr<plugin>& p) {
             return pl == p;
@@ -34,7 +43,7 @@ namespace pf {
         }
 
         bool operator == (pthread_t thread_id) {
-            for (ptr<plugin_thread> thread : threads) {
+            for (ptr<plugin_thread> thread : *threads) {
                 if (thread->thread_id() == thread_id) {
                     return true;
                 }
@@ -46,7 +55,9 @@ namespace pf {
     class plugin_manager {
     private:
         friend void __init_plugin_manager();
+        friend void __uninit_plugin_manager();
         plugin_manager();
+        ~plugin_manager();
 
     public:
         static plugin_manager* instance();
@@ -59,17 +70,18 @@ namespace pf {
 
         bool check_ready(ptr<identifier> id);
         
-        list<plugin_info> get_all_plugin();
+        list<plugin_info*> get_all_plugin();
         const plugin_info* find_plugin(ptr<identifier> id);
-        const plugin_info* get_plugin_by_thread_id(pthread_t thread_id);
+        context_info get_context_by_thread_id(pthread_t thread_id);
 
     private:
         ptr<plugin_thread> _create_thread(ptr<plugin>);
 
     private:
-        list<plugin_info> m_plugins;
+        list<plugin_info*> m_plugins;
+        list<ptr<help_thread>> m_task_helper;
+        map<pthread_t, ptr<thread>> m_threads;
 
-        pthread_mutex_t m_mutex;
     };
 }
 

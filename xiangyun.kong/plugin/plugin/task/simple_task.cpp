@@ -13,6 +13,14 @@
 using namespace kxy;
 
 namespace pf {
+
+    class terminal : public plugin {
+    public:
+        DECLARE_TYPE(plugin, "terminal");
+    };
+
+    ptr<terminal> g_terminal = new terminal;
+    
     simple_task::simple_task(const string& task_name) :
     simple_task::simple_task(task_name, (ptr<serializable>)nullptr) {
         
@@ -34,6 +42,10 @@ namespace pf {
         m_task_name = task_name;
         m_param = param;
         m_processor = proc;
+
+        if (m_caller == nullptr) {
+            m_caller = g_terminal;
+        }
     }
     
     simple_task::simple_task(const string& task_name, ptr<plugin> caller) {
@@ -41,6 +53,10 @@ namespace pf {
         m_param = nullptr;
         m_processor = nullptr;
         m_caller = caller;
+
+        if (m_caller == nullptr) {
+            m_caller = g_terminal;
+        }
     }
     
     ptr<plugin> simple_task::caller() const {

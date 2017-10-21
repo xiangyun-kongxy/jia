@@ -22,15 +22,10 @@ namespace pf {
     class loader
     {
     public:
-        loader(const string& conf_path);
-        
-    public:
-        void load();
-        
-    private:
-        string m_plugin_conf_path;
+        static void load(const string& conf_path);
+        static void unload();
     };
-    
+
 }
 
 #pragma GCC visibility pop

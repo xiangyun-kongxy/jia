@@ -47,6 +47,7 @@ namespace mind {
         map<long, value_info*> m_values;
         long m_frequent;
         long m_capacity;
+        mutex m_mutex;
     };
     
 }

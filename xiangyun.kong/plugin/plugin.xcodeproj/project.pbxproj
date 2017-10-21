@@ -39,6 +39,7 @@
 		266BFCEA1DB26A3200E0FA0F /* libplugin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libplugin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		266BFCF91DB26DD700E0FA0F /* plugin.framework.mdj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plugin.framework.mdj; path = doc/plugin.framework.mdj; sourceTree = "<group>"; };
 		266BFCFA1DB26DD700E0FA0F /* task.list */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = task.list; path = doc/task.list; sourceTree = "<group>"; };
+		AD265FF41F98E7EA0065E89C /* help_thread.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = help_thread.hpp; path = plugin/manager/help_thread.hpp; sourceTree = "<group>"; };
 		AD5F03D81F94FCE0002742B9 /* plugin_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = plugin_manager.cpp; path = plugin/manager/plugin_manager.cpp; sourceTree = "<group>"; };
 		AD5F03D91F94FCE0002742B9 /* plugin_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = plugin_manager.hpp; path = plugin/manager/plugin_manager.hpp; sourceTree = "<group>"; };
 		AD5F03DA1F94FCE0002742B9 /* plugin_thread.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = plugin_thread.hpp; path = plugin/manager/plugin_thread.hpp; sourceTree = "<group>"; };
@@ -210,6 +211,7 @@
 				ADC522CB1F97856800AAD2B9 /* function_manager.hpp */,
 				ADC522CE1F978DAD00AAD2B9 /* dependence_manager.cpp */,
 				ADC522CF1F978DAD00AAD2B9 /* dependence_manager.hpp */,
+				AD265FF41F98E7EA0065E89C /* help_thread.hpp */,
 			);
 			name = manager;
 			sourceTree = "<group>";
@@ -411,7 +413,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)",
@@ -434,7 +436,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)",

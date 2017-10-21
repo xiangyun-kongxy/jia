@@ -35,7 +35,7 @@ namespace kxy {
                 
                 return result;
             }
-            return nullptr;
+            return "";
         }
     };
 }

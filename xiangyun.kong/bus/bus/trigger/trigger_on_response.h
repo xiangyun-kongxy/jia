@@ -15,6 +15,8 @@
 
 #include <iostream>
 
+#include <log.hpp>
+
 using namespace std;
 
 namespace pf {
@@ -27,14 +29,16 @@ namespace pf {
         virtual void happen(ptr<plugin> owner, ptr<event> evt) override {
             ptr<bus> bus = owner;
             ptr<serializable> data = evt->param();
-            ptr<task> tsk;
             ptr<response> rsp;
-            data >> tsk >> rsp;
-            bus->set_object(rsp);
+            data >> rsp;
 
-            cout << "\t" << tsk->name() << " done!" << endl;
+            logs::get_logger("bus")->info(evt->deliver()->name() + " response " +
+                                          rsp->org_task()->caller()->name() +
+                                          " " + rsp->org_task()->name());
+            
+            bus->set_object(rsp);
         }
-        
+
     };
     
 }

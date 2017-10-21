@@ -17,6 +17,10 @@
 
 #include <plugin/manager/plugin_manager.hpp>
 
+#include <bus/bus.h>
+
+#include <log.hpp>
+
 #include <iostream>
 
 using namespace std;
@@ -29,34 +33,34 @@ namespace pf {
         
     public:
         virtual void happen(ptr<plugin> owner, ptr<event> evt) override {
+            ptr<bus> bus = owner;
             ptr<serializable> data = evt->param();
             ptr<identifier> dst = nullptr;
 
 
             ptr<object> msg;
             data >> msg;
+            bus->set_object(msg);
+
+            
             if(msg->is_kind_of(OBJ_EVENT)) {
-                dst = ((ptr<event>)msg)->destination();
-
-                if (((ptr<event>)msg)->deliver() != nullptr) {
-                    cout << ((ptr<event>)msg)->deliver()->name() <<
-                    " -> " << ((ptr<event>)msg)->name() << endl;
-                }
+                ptr<event> e = msg;
+                dst = e->destination();
+                
+                logs::get_logger("bus")->info(e->deliver()->name() + " send to " +
+                                              dst->name() + " " + e->name());
             } else if(msg->is_kind_of(OBJ_TASK)) {
-                dst = ((ptr<task>)msg)->processor();
-
-                if (((ptr<task>)msg)->caller() != nullptr) {
-                    cout << ((ptr<task>)msg)->caller()->name() <<
-                    " -> " << ((ptr<task>)msg)->name() << endl;
-                }
+                ptr<task> t = msg;
+                dst = t->processor();
+                logs::get_logger("bus")->info(t->caller()->name() + " send to " +
+                                              dst->name() + " " + t->name());
             }
             
-            if(dst != nullptr) {
-                const plugin_info* pi;
-                pi = plugin_manager::instance()->find_plugin(dst);
-                if (pi != nullptr && pi->is_active) {
-                    pi->threads.front()->pool()->push(msg);
-                }
+            
+            const plugin_info* pi;
+            pi = plugin_manager::instance()->find_plugin(dst);
+            if (pi != nullptr && pi->is_active) {
+                pi->threads->front()->pool()->push(msg);
             }
         }
         

@@ -7,11 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26C79E341F9B2F1D00466DB3 /* logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26C79E321F9B2F1D00466DB3 /* logger.cpp */; };
+		26C79E351F9B2F1D00466DB3 /* logger.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 26C79E331F9B2F1D00466DB3 /* logger.hpp */; };
+		26C79E381F9B2FDD00466DB3 /* libplugin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26C79E371F9B2FDD00466DB3 /* libplugin.dylib */; };
+		26C79E3A1F9B2FE200466DB3 /* liblib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26C79E391F9B2FE200466DB3 /* liblib.dylib */; };
+		26C79E3E1F9B35A800466DB3 /* log_service.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26C79E3D1F9B35A800466DB3 /* log_service.cpp */; };
 		AD5F03CA1F94F186002742B9 /* id_simple_event.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03C91F94EBBC002742B9 /* id_simple_event.hpp */; };
 		ADAD39021F94DA8C00ABC6F3 /* id_task_response.hpp in Headers */ = {isa = PBXBuildFile; fileRef = ADAD38FE1F94DA8C00ABC6F3 /* id_task_response.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		26C79E321F9B2F1D00466DB3 /* logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = logger.cpp; path = log/logger.cpp; sourceTree = "<group>"; };
+		26C79E331F9B2F1D00466DB3 /* logger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = logger.hpp; path = log/logger.hpp; sourceTree = "<group>"; };
+		26C79E371F9B2FDD00466DB3 /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
+		26C79E391F9B2FE200466DB3 /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
+		26C79E3D1F9B35A800466DB3 /* log_service.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = log_service.cpp; path = log/log_service.cpp; sourceTree = "<group>"; };
 		AD5F03C91F94EBBC002742B9 /* id_simple_event.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = id_simple_event.hpp; path = identifier/id_simple_event.hpp; sourceTree = "<group>"; };
 		ADAD38ED1F94DA2300ABC6F3 /* libcommon.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libcommon.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADAD38FE1F94DA8C00ABC6F3 /* id_task_response.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = id_task_response.hpp; path = identifier/id_task_response.hpp; sourceTree = "<group>"; };
@@ -22,17 +32,39 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26C79E3A1F9B2FE200466DB3 /* liblib.dylib in Frameworks */,
+				26C79E381F9B2FDD00466DB3 /* libplugin.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		26C79E311F9B2F0B00466DB3 /* log */ = {
+			isa = PBXGroup;
+			children = (
+				26C79E321F9B2F1D00466DB3 /* logger.cpp */,
+				26C79E331F9B2F1D00466DB3 /* logger.hpp */,
+				26C79E3D1F9B35A800466DB3 /* log_service.cpp */,
+			);
+			name = log;
+			sourceTree = "<group>";
+		};
+		26C79E361F9B2FDC00466DB3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				26C79E391F9B2FE200466DB3 /* liblib.dylib */,
+				26C79E371F9B2FDD00466DB3 /* libplugin.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ADAD38E41F94DA2300ABC6F3 = {
 			isa = PBXGroup;
 			children = (
 				ADAD38EF1F94DA2300ABC6F3 /* common */,
 				ADAD38EE1F94DA2300ABC6F3 /* Products */,
+				26C79E361F9B2FDC00466DB3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -47,6 +79,7 @@
 		ADAD38EF1F94DA2300ABC6F3 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				26C79E311F9B2F0B00466DB3 /* log */,
 				ADAD38FB1F94DA3D00ABC6F3 /* identifier */,
 			);
 			path = common;
@@ -69,6 +102,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD5F03CA1F94F186002742B9 /* id_simple_event.hpp in Headers */,
+				26C79E351F9B2F1D00466DB3 /* logger.hpp in Headers */,
 				ADAD39021F94DA8C00ABC6F3 /* id_task_response.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,6 +164,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26C79E3E1F9B35A800466DB3 /* log_service.cpp in Sources */,
+				26C79E341F9B2F1D00466DB3 /* logger.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,7 +269,13 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/",
+					"$(SRCROOT)/../lib",
+					"$(SRCROOT)/../plugin",
+					"$(SRCROOT)/../include",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -246,7 +288,13 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/",
+					"$(SRCROOT)/../lib",
+					"$(SRCROOT)/../plugin",
+					"$(SRCROOT)/../include",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

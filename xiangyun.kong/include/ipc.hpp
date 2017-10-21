@@ -49,8 +49,12 @@ namespace pf {
         ptr<serializable> param = pack_data(params...);
         ptr<task> task = new simple_task(func_name, param);
         ptr<response> rsp = do_task(task);
-        ptr<serializable> data = rsp->context();
-        return data;
+
+        if (rsp != nullptr) {
+            ptr<serializable> data = rsp->context();
+            return data;
+        }
+        return nullptr;
     }
 
     template<typename ...ptype>
@@ -59,8 +63,11 @@ namespace pf {
         ptr<serializable> param = pack_data(params...);
         ptr<task> task = new simple_task(func_name, param, plugin);
         ptr<response> rsp = do_task(task);
-        ptr<serializable> data = rsp->context();
-        return data;
+        if (rsp != nullptr) {
+            ptr<serializable> data = rsp->context();
+            return data;
+        }
+        return nullptr;
     }
     
     template<typename ...ptype>

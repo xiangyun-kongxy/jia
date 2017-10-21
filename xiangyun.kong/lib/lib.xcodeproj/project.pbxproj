@@ -13,14 +13,17 @@
 		260F0F621DD4CCE200D4A0A5 /* cqueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 260F0F611DD4CCE200D4A0A5 /* cqueue.h */; };
 		2618B1031E3313010096766A /* block_store.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2618B1011E3313010096766A /* block_store.cpp */; };
 		2618B1041E3313010096766A /* block_store.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2618B1021E3313010096766A /* block_store.hpp */; };
+		261FB71F1F9B6F4D008C34CA /* initializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 261FB71D1F9B6F4D008C34CA /* initializer.cpp */; };
+		261FB7201F9B6F4D008C34CA /* initializer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 261FB71E1F9B6F4D008C34CA /* initializer.hpp */; };
 		26784DE71E00334D00FCE82B /* thread.h in Headers */ = {isa = PBXBuildFile; fileRef = 26784DE61E00334D00FCE82B /* thread.h */; };
 		26784DE91E0033C500FCE82B /* thread.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26784DE81E0033C500FCE82B /* thread.cpp */; };
 		267BC04C1E2B81F600C6F0EE /* kv_service.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 267BC04A1E2B81F600C6F0EE /* kv_service.cpp */; };
 		267BC04D1E2B81F600C6F0EE /* kv_service.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 267BC04B1E2B81F600C6F0EE /* kv_service.hpp */; };
-		267BC04F1E2B83B800C6F0EE /* libleveldb.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 267BC04E1E2B83B800C6F0EE /* libleveldb.dylib */; };
 		267BC0521E2B870F00C6F0EE /* kv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 267BC0511E2B870F00C6F0EE /* kv.cpp */; };
 		26D02E161E7829E800472610 /* basic_type_convert.h in Headers */ = {isa = PBXBuildFile; fileRef = 26D02E151E7829E800472610 /* basic_type_convert.h */; };
 		26F682E61DCCADEE0052103D /* file_util.h in Headers */ = {isa = PBXBuildFile; fileRef = 26F682E51DCCADEE0052103D /* file_util.h */; };
+		AD265FF31F98DF9F0065E89C /* auto_lock.h in Headers */ = {isa = PBXBuildFile; fileRef = AD265FF21F98DF9F0065E89C /* auto_lock.h */; };
+		AD620C161F9A5D8A00F39E20 /* libleveldb.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AD620C151F9A5D8A00F39E20 /* libleveldb.dylib */; };
 		ADAD39091F94DB5300ABC6F3 /* id_any.h in Headers */ = {isa = PBXBuildFile; fileRef = ADAD39051F94DB5300ABC6F3 /* id_any.h */; };
 		ADAD390A1F94DB5300ABC6F3 /* id_name.h in Headers */ = {isa = PBXBuildFile; fileRef = ADAD39061F94DB5300ABC6F3 /* id_name.h */; };
 		ADAD390C1F94DB5300ABC6F3 /* identifier.h in Headers */ = {isa = PBXBuildFile; fileRef = ADAD39081F94DB5300ABC6F3 /* identifier.h */; };
@@ -41,6 +44,8 @@
 		2618B1011E3313010096766A /* block_store.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = block_store.cpp; path = container/private/block_store.cpp; sourceTree = "<group>"; };
 		2618B1021E3313010096766A /* block_store.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = block_store.hpp; path = container/private/block_store.hpp; sourceTree = "<group>"; };
 		2618B1051E3488DE0096766A /* list_with_read_index.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = list_with_read_index.h; path = container/list_with_read_index.h; sourceTree = "<group>"; };
+		261FB71D1F9B6F4D008C34CA /* initializer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = initializer.cpp; path = init/initializer.cpp; sourceTree = "<group>"; };
+		261FB71E1F9B6F4D008C34CA /* initializer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = initializer.hpp; path = init/initializer.hpp; sourceTree = "<group>"; };
 		2622BF441DCC61A5007332AA /* liblib.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = liblib.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		26784DE61E00334D00FCE82B /* thread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = thread.h; path = thread/thread.h; sourceTree = "<group>"; };
 		26784DE81E0033C500FCE82B /* thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = thread.cpp; path = thread/thread.cpp; sourceTree = "<group>"; };
@@ -52,8 +57,9 @@
 		26D02E151E7829E800472610 /* basic_type_convert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = basic_type_convert.h; path = convert/basic_type_convert.h; sourceTree = "<group>"; };
 		26F682E41DCCAC210052103D /* xml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = xml.h; path = fs/xml.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		26F682E51DCCADEE0052103D /* file_util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = file_util.h; path = fs/file_util.h; sourceTree = "<group>"; };
-		26F682E81DCCAEA40052103D /* auto_lock.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = auto_lock.h; path = lock/auto_lock.h; sourceTree = "<group>"; };
 		5104126C1E13B20B0079832C /* olist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = olist.h; path = container/olist.h; sourceTree = "<group>"; };
+		AD265FF21F98DF9F0065E89C /* auto_lock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = auto_lock.h; path = lock/auto_lock.h; sourceTree = "<group>"; };
+		AD620C151F9A5D8A00F39E20 /* libleveldb.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libleveldb.dylib; path = ../leveldb/build/Release/libleveldb.dylib; sourceTree = "<group>"; };
 		ADAD39051F94DB5300ABC6F3 /* id_any.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = id_any.h; path = identifier/id_any.h; sourceTree = "<group>"; };
 		ADAD39061F94DB5300ABC6F3 /* id_name.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = id_name.h; path = identifier/id_name.h; sourceTree = "<group>"; };
 		ADAD39081F94DB5300ABC6F3 /* identifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = identifier.h; path = identifier/identifier.h; sourceTree = "<group>"; };
@@ -64,7 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				267BC04F1E2B83B800C6F0EE /* libleveldb.dylib in Frameworks */,
+				AD620C161F9A5D8A00F39E20 /* libleveldb.dylib in Frameworks */,
 				26036D291E0E88C9005D4D02 /* libc++.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,6 +99,7 @@
 		26036D271E0E88C9005D4D02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AD620C151F9A5D8A00F39E20 /* libleveldb.dylib */,
 				267BC04E1E2B83B800C6F0EE /* libleveldb.dylib */,
 				26036D281E0E88C9005D4D02 /* libc++.tbd */,
 			);
@@ -117,6 +124,15 @@
 			name = private;
 			sourceTree = "<group>";
 		};
+		261FB71C1F9B6F2C008C34CA /* init */ = {
+			isa = PBXGroup;
+			children = (
+				261FB71D1F9B6F4D008C34CA /* initializer.cpp */,
+				261FB71E1F9B6F4D008C34CA /* initializer.hpp */,
+			);
+			name = init;
+			sourceTree = "<group>";
+		};
 		2622BF3B1DCC61A5007332AA = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +153,7 @@
 		2622BF461DCC61A5007332AA /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				261FB71C1F9B6F2C008C34CA /* init */,
 				ADAD39041F94DB3F00ABC6F3 /* identifier */,
 				2601A5BB1F1F4A8700D60350 /* macro */,
 				2601A5B51F1F0EE600D60350 /* serialize */,
@@ -182,7 +199,7 @@
 		26F682E71DCCAE7B0052103D /* lock */ = {
 			isa = PBXGroup;
 			children = (
-				26F682E81DCCAEA40052103D /* auto_lock.h */,
+				AD265FF21F98DF9F0065E89C /* auto_lock.h */,
 			);
 			name = lock;
 			sourceTree = "<group>";
@@ -228,6 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADAD390C1F94DB5300ABC6F3 /* identifier.h in Headers */,
+				AD265FF31F98DF9F0065E89C /* auto_lock.h in Headers */,
 				26F682E61DCCADEE0052103D /* file_util.h in Headers */,
 				2618B1041E3313010096766A /* block_store.hpp in Headers */,
 				ADAD39091F94DB5300ABC6F3 /* id_any.h in Headers */,
@@ -235,6 +253,7 @@
 				26784DE71E00334D00FCE82B /* thread.h in Headers */,
 				2601A5B91F1F0F1A00D60350 /* serializable.hpp in Headers */,
 				260F0F621DD4CCE200D4A0A5 /* cqueue.h in Headers */,
+				261FB7201F9B6F4D008C34CA /* initializer.hpp in Headers */,
 				267BC04D1E2B81F600C6F0EE /* kv_service.hpp in Headers */,
 				ADAD390A1F94DB5300ABC6F3 /* id_name.h in Headers */,
 			);
@@ -298,6 +317,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				261FB71F1F9B6F4D008C34CA /* initializer.cpp in Sources */,
 				267BC04C1E2B81F600C6F0EE /* kv_service.cpp in Sources */,
 				26784DE91E0033C500FCE82B /* thread.cpp in Sources */,
 				2601A5B81F1F0F1A00D60350 /* serializable.cpp in Sources */,
@@ -409,7 +429,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"${SRCROOT}",
 					"$(SRCROOT)/../leveldb/leveldb/include",
@@ -428,7 +448,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"${SRCROOT}",
 					"$(SRCROOT)/../leveldb/leveldb/include",

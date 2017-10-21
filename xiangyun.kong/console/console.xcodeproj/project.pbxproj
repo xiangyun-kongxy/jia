@@ -32,7 +32,6 @@
 		267BBE441E178DC500C6F0EE /* libloader.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libloader.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libloader.dylib"; sourceTree = "<group>"; };
 		267BBE451E178DC500C6F0EE /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
 		267BBE4B1E178E2E00C6F0EE /* console.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = console.cpp; sourceTree = "<group>"; };
-		267BC0561E2B8BC500C6F0EE /* mind.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = mind.xml; path = console/config/mind.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +50,6 @@
 		267BBE2D1E178DAE00C6F0EE = {
 			isa = PBXGroup;
 			children = (
-				267BC0551E2B8B7A00C6F0EE /* config */,
 				267BBE381E178DAE00C6F0EE /* console */,
 				267BBE371E178DAE00C6F0EE /* Products */,
 				267BBE401E178DC500C6F0EE /* Frameworks */,
@@ -84,14 +82,6 @@
 				267BBE451E178DC500C6F0EE /* libplugin.dylib */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		267BC0551E2B8B7A00C6F0EE /* config */ = {
-			isa = PBXGroup;
-			children = (
-				267BC0561E2B8BC500C6F0EE /* mind.xml */,
-			);
-			name = config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

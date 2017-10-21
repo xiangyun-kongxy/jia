@@ -13,6 +13,7 @@
 
 #include <lib/identifier/id_name.h>
 #include <lib/lock/auto_lock.h>
+#include <lib/init/initializer.hpp>
 
 #include <barren/util/barren_io.hpp>
 
@@ -30,7 +31,7 @@ namespace mind {
         m_ids = new long[2];
         m_ids[0] = 2;
         m_ids[1] = get_guid();
-        
+
     }
     
     barren::barren(const list<long>& ids) {
@@ -43,7 +44,7 @@ namespace mind {
             m_ids[i] = it;
             ++i;
         }
-        
+
     }
     
     long barren::operator[] (long i) {
@@ -62,23 +63,22 @@ namespace mind {
         return m_ids[1];
     }
     
-    long barren::get_guid() {
-        long guid = 0;
-        ptr<serializable> rsp;
-        rsp = call_plugin(new id_name(PLUGIN_ID_SERVICE), F_FETCH_ADD_GUID);
-        if (rsp != nullptr) {
-            rsp >> guid;
-        }
-        return guid;
-    }
-    
+
     
     set<long> g_locked_barren;
     pthread_mutex_t g_barren_set_sync;
     pthread_cond_t g_cond_barren_unlocked;
     
+    void __uninit_barren_sync_mutex() {
+        pthread_cond_destroy(&g_cond_barren_unlocked);
+        pthread_mutex_destroy(&g_barren_set_sync);
+    }
+    
     void __attribute__((constructor)) __init_barren_sync_mutex() {
         pthread_mutex_init(&g_barren_set_sync, nullptr);
+        pthread_cond_init(&g_cond_barren_unlocked, nullptr);
+        
+        register_uninitializer("uninitialize barren sync", __uninit_barren_sync_mutex);
     }
     
     void barren::lock() {
@@ -91,7 +91,6 @@ namespace mind {
                 g_locked_barren.insert(id());
                 locked = true;
             } else {
-                locked = false;
                 pthread_cond_wait(&g_cond_barren_unlocked, &g_barren_set_sync);
             }
         } while(!locked);
@@ -103,7 +102,28 @@ namespace mind {
             g_locked_barren.erase(id());
         } while (0);
         
-        pthread_cond_signal(&g_cond_barren_unlocked);
+        pthread_cond_broadcast(&g_cond_barren_unlocked);
     }
-    
+
+    long barren::get_guid() {
+        static long cur = 0;
+        static long max = 0;
+
+        do {
+            auto_lock _(&g_barren_set_sync);
+            if (cur == max) {
+                ptr<serializable> rsp;
+                rsp = call_plugin(new id_name(PLUGIN_ID_SERVICE),
+                                  F_FETCH_ADD_GUID_BENCH, 10000);
+                if (rsp != nullptr) {
+                    rsp >> cur;
+                    max = cur + 9999;
+                } else {
+                    return 0;
+                }
+            }
+            return cur++;
+        } while (0);
+    }
+
 }

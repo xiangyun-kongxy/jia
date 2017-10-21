@@ -25,24 +25,20 @@ namespace pf {
         bus();
         virtual ~bus();
         DECLARE_TYPE(plugin, PLUGIN_BUS);
-        
-    public:
-        void hold_object(ptr<identifier> obj);
-        void release_object(ptr<identifier> obj);
 
-        ptr<object> wait_object(ptr<identifier> obj);
+    public:
+        ptr<object> wait_object(ptr<identifier> obj, timeval& timeout);
+        void set_waiting(ptr<identifier> id);
         void set_object(ptr<object> obj);
 
         void set_event_trigger(ptr<identifier> evt, task_callback func);
         
     private:
         pthread_mutex_t m_mutex;
+        mutex m_trigger_mutex;
         pthread_cond_t m_changed;
 
-        list<ptr<identifier>> m_waiting_object;
-        list<ptr<object>> m_object_set;
-
-        set<ptr<identifier>> m_hold_object;
+        map<ptr<identifier>, ptr<object>> m_waiting;
 
         map<ptr<identifier>, task_callback> m_user_trigger;
     };

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		26036D231E0E83DE005D4D02 /* libplugin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26036D221E0E83DE005D4D02 /* libplugin.dylib */; };
+		261FB7221F9B8450008C34CA /* libcommon.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 261FB7211F9B8450008C34CA /* libcommon.dylib */; };
 		AD5F03D11F94F535002742B9 /* lifecycle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F03CF1F94F535002742B9 /* lifecycle.cpp */; };
 		AD5F03D21F94F535002742B9 /* lifecycle.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03D01F94F535002742B9 /* lifecycle.hpp */; };
 		AD5F03D51F94F565002742B9 /* loader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F03D31F94F565002742B9 /* loader.cpp */; };
@@ -18,7 +19,10 @@
 
 /* Begin PBXFileReference section */
 		26036D221E0E83DE005D4D02 /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
+		261FB7211F9B8450008C34CA /* libcommon.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommon.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libcommon.dylib"; sourceTree = "<group>"; };
 		26784DF91E003A9700FCE82B /* liblifecycle.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = liblifecycle.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		26C79E3F1F9B4BDE00466DB3 /* trigger_stop_framework.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = trigger_stop_framework.hpp; path = lifecycle/trigger/trigger_stop_framework.hpp; sourceTree = "<group>"; };
+		26C79E401F9B54A500466DB3 /* trigger_unload_plugin.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = trigger_unload_plugin.hpp; path = lifecycle/trigger/trigger_unload_plugin.hpp; sourceTree = "<group>"; };
 		AD5F03CC1F94F509002742B9 /* trigger_start_framework.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = trigger_start_framework.hpp; path = lifecycle/trigger/trigger_start_framework.hpp; sourceTree = "<group>"; };
 		AD5F03CF1F94F535002742B9 /* lifecycle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = lifecycle.cpp; path = lifecycle/lifecycle.cpp; sourceTree = "<group>"; };
 		AD5F03D01F94F535002742B9 /* lifecycle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = lifecycle.hpp; path = lifecycle/lifecycle.hpp; sourceTree = "<group>"; };
@@ -34,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				261FB7221F9B8450008C34CA /* libcommon.dylib in Frameworks */,
 				AD5F04051F9501FD002742B9 /* libipc.dylib in Frameworks */,
 				AD5F04021F9501DF002742B9 /* liblib.dylib in Frameworks */,
 				26036D231E0E83DE005D4D02 /* libplugin.dylib in Frameworks */,
@@ -46,6 +51,7 @@
 		26036D211E0E83DE005D4D02 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				261FB7211F9B8450008C34CA /* libcommon.dylib */,
 				AD5F04031F9501E5002742B9 /* libipc.dylib */,
 				AD5F04011F9501DF002742B9 /* liblib.dylib */,
 				26036D221E0E83DE005D4D02 /* libplugin.dylib */,
@@ -103,6 +109,8 @@
 			children = (
 				AD5F03CC1F94F509002742B9 /* trigger_start_framework.hpp */,
 				AD5F03D71F94F979002742B9 /* trigger_load_plugin.hpp */,
+				26C79E3F1F9B4BDE00466DB3 /* trigger_stop_framework.hpp */,
+				26C79E401F9B54A500466DB3 /* trigger_unload_plugin.hpp */,
 			);
 			name = trigger;
 			sourceTree = "<group>";
@@ -283,7 +291,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../plugin",
 					"$(SRCROOT)/../lib",
@@ -304,7 +312,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../plugin",
 					"$(SRCROOT)/../lib",

@@ -37,7 +37,7 @@ namespace kxy {
         ReadOptions m_ropt;
     };
     
-    extern map<string, kv_service*> g_kv_services;
+    extern map<string, kv_service*>* g_kv_services;
 }
 
 #endif /* kv_service_hpp */

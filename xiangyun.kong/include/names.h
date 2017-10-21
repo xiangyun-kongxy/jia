@@ -36,9 +36,10 @@ static const string OBJ_PLUGIN                      = "plugin";
 static const string OBJ_IDENTIFIER                  = "identifier";
 static const string OBJ_THREAD                      = "thread";
 static const string OBJ_PLUGIN_THREAD               = "plugin_thread";
+static const string OBJ_HELP_THREAD                 = "help_thread";
 static const string OBJ_SERIALIZABLE                = "serializable";
 static const string OBJ_CQUEUE                      = "cqueue";
-
+static const string OBJ_LOGGER                      = "logger";
 
 // plugins
 static const string PLUGIN_BUS                      = "bus";
@@ -53,6 +54,7 @@ static const string PLUGIN_BARREN_EXECUTOR          = "barren_executor";
 static const string EXE_LOAD_CACHE_BARREN           = "load_cache_barren";
 static const string EXE_GET_CONFIG                  = "get_config";
 static const string EXE_FETCH_ADD_GUID              = "fetch_add_guid";
+static const string EXE_FETCH_ADD_GUID_BENCH        = "fetch_add_guid_bench";
 static const string EXE_GET_CUR_GUID                = "get_cur_guid";
 static const string EXE_LOAD_BARREN                 = "load_barren";
 
@@ -67,7 +69,9 @@ static const string TRIGGER_NEW_COMPOUND_FUNCTION   = "new_compound_function";
 static const string TRIGGER_SET_GUID                = "set_guid";
 static const string TRIGGER_SAVE_BARREN             = "save_barren";
 static const string TRIGGER_START_FRAMEWORK         = "start_framework";
+static const string TRIGGER_STOP_FRAMEWORK          = "stop_framework";
 static const string TRIGGER_LOAD_PLUGIN             = "load_plugin";
+static const string TRIGGER_UNLOAD_PLUGIN           = "unload_plugin";
 
 // identifiers
 static const string ID_ANY                          = "id_any";

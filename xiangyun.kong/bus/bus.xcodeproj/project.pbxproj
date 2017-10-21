@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		26036D3E1E0EBE32005D4D02 /* liblib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26036D3D1E0EBE32005D4D02 /* liblib.dylib */; };
 		266E1A621E0D703200FA8F01 /* libplugin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 266E1A611E0D703200FA8F01 /* libplugin.dylib */; };
+		26C79E3C1F9B34A400466DB3 /* libcommon.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26C79E3B1F9B34A400466DB3 /* libcommon.dylib */; };
 		26DC67C01E02D78700A68FDF /* bus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26DC67BE1E02D78700A68FDF /* bus.cpp */; };
 		26DC67C11E02D78700A68FDF /* bus.h in Headers */ = {isa = PBXBuildFile; fileRef = 26DC67BF1E02D78700A68FDF /* bus.h */; };
 /* End PBXBuildFile section */
@@ -20,6 +21,7 @@
 		26036D3D1E0EBE32005D4D02 /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
 		266E1A611E0D703200FA8F01 /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
 		26784E111E003C8D00FCE82B /* libbus.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libbus.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		26C79E3B1F9B34A400466DB3 /* libcommon.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommon.dylib; path = ../common/build/Debug/libcommon.dylib; sourceTree = "<group>"; };
 		26DC67BE1E02D78700A68FDF /* bus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = bus.cpp; sourceTree = "<group>"; };
 		26DC67BF1E02D78700A68FDF /* bus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bus.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -29,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26C79E3C1F9B34A400466DB3 /* libcommon.dylib in Frameworks */,
 				26036D3E1E0EBE32005D4D02 /* liblib.dylib in Frameworks */,
 				266E1A621E0D703200FA8F01 /* libplugin.dylib in Frameworks */,
 			);
@@ -56,6 +59,7 @@
 		266E1A601E0D703200FA8F01 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				26C79E3B1F9B34A400466DB3 /* libcommon.dylib */,
 				26036D3D1E0EBE32005D4D02 /* liblib.dylib */,
 				26036D3B1E0EBE20005D4D02 /* liblifecycle.dylib */,
 				266E1A611E0D703200FA8F01 /* libplugin.dylib */,
@@ -66,7 +70,7 @@
 		26784E081E003C8D00FCE82B = {
 			isa = PBXGroup;
 			children = (
-				26784E131E003C8D00FCE82B /* src */,
+				26784E131E003C8D00FCE82B /* bus */,
 				26784E121E003C8D00FCE82B /* Products */,
 				266E1A601E0D703200FA8F01 /* Frameworks */,
 			);
@@ -80,7 +84,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		26784E131E003C8D00FCE82B /* src */ = {
+		26784E131E003C8D00FCE82B /* bus */ = {
 			isa = PBXGroup;
 			children = (
 				519AA7C51E1122CA007D1A90 /* executor */,
@@ -89,7 +93,6 @@
 				26DC67BE1E02D78700A68FDF /* bus.cpp */,
 				26DC67BF1E02D78700A68FDF /* bus.h */,
 			);
-			name = src;
 			path = bus;
 			sourceTree = "<group>";
 		};
@@ -281,6 +284,7 @@
 					"$(SRCROOT)/../plugin",
 					"$(SRCROOT)/../include",
 					"$(SRCROOT)",
+					"$(SRCROOT)/../common",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -302,6 +306,7 @@
 					"$(SRCROOT)/../plugin",
 					"$(SRCROOT)/../include",
 					"$(SRCROOT)",
+					"$(SRCROOT)/../common",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

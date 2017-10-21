@@ -9,6 +9,10 @@
 #include "cache.hpp"
 #include <math.h>
 
+#include <mutex>
+
+using namespace std;
+
 namespace mind {
     
     cache::cache(long capacity) {
@@ -17,12 +21,16 @@ namespace mind {
     }
     
     void cache::put(ptr<barren> value) {
+        lock_guard<mutex> _(m_mutex);
+
         ++m_frequent;
         
         m_values[value->id()] = new value_info(m_frequent, value);
     }
     
     ptr<barren> cache::get(long id) {
+        lock_guard<mutex> _(m_mutex);
+        
         ++m_frequent;
         
         value_info* value = m_values[id];
@@ -35,6 +43,8 @@ namespace mind {
     }
     
     void cache::cleanup() {
+        lock_guard<mutex> _(m_mutex);
+        
         map<long, value_info*>::iterator i;
         for(i = m_values.begin(); i != m_values.end();) {
             if(i->second->expired(m_frequent, m_values.size(), m_capacity)) {

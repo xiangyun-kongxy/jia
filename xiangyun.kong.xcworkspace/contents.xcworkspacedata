@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <FileRef
+      location = "group:../../../../../mind/conf">
+   </FileRef>
    <Group
       location = "container:"
       name = "doc">
@@ -40,6 +43,9 @@
       </FileRef>
       <FileRef
          location = "group:xiangyun.kong/include/events.h">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/include/log.hpp">
       </FileRef>
    </Group>
    <FileRef

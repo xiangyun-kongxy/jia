@@ -15,10 +15,10 @@ using namespace pf;
 using namespace std;
 
 int main(int argc, char** argv) {
-    string path =   "/Users/xiangyun/Documents/project/kxy/xiangyun.kong"
-                    "/console/console/config/mind.xml";
-    loader* loader = new class loader(path);
-    loader->load();
+    string path = "/mind/conf/mind.xml";
+    loader::load(path);
     
     run_ut();
+    
+    loader::unload();
 }

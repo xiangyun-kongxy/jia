@@ -10,15 +10,27 @@
 #include "plugin_manager.hpp"
 #include "function_manager.hpp"
 
-#include <lib/lock/auto_lock.h>
+#include <lib/init/initializer.hpp>
+#include <lib/identifier/id_name.h>
 
+using namespace kxy;
 
 namespace pf {
 
+    extern recursive_mutex g_plugin_managing_mutex;
+
     dependence_manager* g_dependence_manager = nullptr;
 
+    void __uninit_dependence_manager() {
+        delete g_dependence_manager;
+        g_dependence_manager = nullptr;
+    }
+    
     void __attribute__((constructor)) __init_dependence_manager() {
         g_dependence_manager = new dependence_manager;
+        
+        register_uninitializer("uninitialize dependence manager",
+                               __uninit_dependence_manager);
     }
 
     dependence_manager* dependence_manager::instance() {
@@ -26,12 +38,16 @@ namespace pf {
     }
 
     dependence_manager::dependence_manager() {
-        pthread_mutex_init(&m_mutex, nullptr);
+    }
+    
+    dependence_manager::~dependence_manager() {
+        m_depend.clear();
+        m_be_depend.clear();
     }
 
     void dependence_manager::add_depend(ptr<object> obj,
                                         ptr<object> be_depend) {
-        auto_lock _(&m_mutex);
+        lock_guard<recursive_mutex> _(g_plugin_managing_mutex);
 
         if (_exist(obj, be_depend) == m_depend.end()) {
             m_depend.push_back(container::value_type(obj, be_depend));
@@ -41,6 +57,8 @@ namespace pf {
 
     void dependence_manager::rm_depend(ptr<object> obj,
                                        ptr<object> be_depend) {
+        lock_guard<recursive_mutex> _(g_plugin_managing_mutex);
+        
         container::iterator i;
         i = _exist(obj, be_depend);
         if (i != m_depend.end()) {
@@ -56,6 +74,8 @@ namespace pf {
     }
 
     bool dependence_manager::is_depend_ready(ptr<kxy::object> obj) {
+        lock_guard<recursive_mutex> _(g_plugin_managing_mutex);
+
         container::iterator i;
         for (i = m_depend.begin(); i != m_depend.end(); ++i) {
             if (_match(i->first, obj)) {
@@ -69,15 +89,31 @@ namespace pf {
     }
 
     bool dependence_manager::is_depended(ptr<kxy::object> obj) {
-        container::iterator i;
-        for (i = m_be_depend.begin(); i != m_be_depend.end(); ++i) {
-            if (_match(obj, i->first)) {
-                if (plugin_manager::instance()->check_ready(i->second) ||
-                    function_manager::instance()->check_ready(i->second)) {
-                    return true;
+        lock_guard<recursive_mutex> _(g_plugin_managing_mutex);
+
+        list<ptr<object>> objs = _extern_sub_obj(obj);
+        for (ptr<object> id : objs) {
+            container::iterator i;
+            for (i = m_be_depend.begin(); i != m_be_depend.end(); ++i) {
+                if (_match(id, i->first)) {
+                    if (plugin_manager::instance()->check_ready(i->second) ||
+                        (i->second->is_kind_of(OBJ_IDENTIFIER) &&
+                         function_manager::instance()->check_ready(i->second))) {
+                        return true;
+                    }
                 }
             }
         }
+        
+        ptr<identifier> id = new id_name(obj->name());
+        const plugin_info* pi = plugin_manager::instance()->find_plugin(id);
+        if (pi != nullptr) {
+            ptr<cqueue<ptr<object>>> tasks = pi->threads->front()->pool();
+            if (tasks->size() > 0) {
+                return true;
+            }
+        }
+        
         return false;
     }
 
@@ -100,6 +136,26 @@ namespace pf {
         } else {
             return o1 == o2;
         }
+    }
+    
+    list<ptr<object>> dependence_manager::_extern_sub_obj(ptr<object> obj) {
+        list<ptr<object>> result;
+        ptr<identifier> id = new id_name(obj->name());
+        result.push_back(id);
+        result.push_back(obj);
+        
+        const plugin_info* pi = plugin_manager::instance()->find_plugin(id);
+        if (pi != nullptr) {
+            list<ptr<identifier>> func;
+            
+            func = pi->pl->accepted_task();
+            result.insert(result.end(), func.begin(), func.end());
+            
+            func = pi->pl->accepted_event();
+            result.insert(result.end(), func.begin(), func.end());
+        }
+        
+        return result;
     }
 
 }

@@ -37,6 +37,7 @@ namespace pf {
         plugin_thread(ptr<cqueue<ptr<object>>> pool, ptr<plugin> owner) {
             m_owner = owner;
             m_pool = pool;
+            m_cur_task = nullptr;
         }
 
         virtual ~plugin_thread() {
@@ -45,23 +46,29 @@ namespace pf {
 
     public:
         virtual void* run_once() override {
-            ptr<object> tsk = m_pool->pop();
-            if(tsk == nullptr) {
+            m_cur_task = m_pool->pop();
+            
+            if(m_cur_task == nullptr) {
                 usleep(12);
-            } else if (tsk->is_kind_of(OBJ_TASK)) {
-                ptr<response> rsp = m_owner->do_task((ptr<task>)tsk);
+            } else if (m_cur_task->is_kind_of(OBJ_TASK)) {
+                ptr<response> rsp = m_owner->do_task(m_cur_task);
 
                 extern ptr<plugin> g_bus;
                 ptr<serializable> data;
                 ptr<simple_event> evt;
                 data = new serializable;
-                data << tsk << rsp;
+                data << rsp;
                 evt = new simple_event(EVT_RESPONSE, data);
                 g_bus->on_event(evt);
-            } else if (tsk->is_kind_of(OBJ_EVENT)) {
-                m_owner->on_event((ptr<event>)tsk);
+            } else if (m_cur_task->is_kind_of(OBJ_EVENT)) {
+                m_owner->on_event(m_cur_task);
             }
             return 0;
+        }
+                
+        virtual void wait_status() override {
+            m_pool->push(nullptr);
+            thread::wait_status();
         }
 
         ptr<cqueue<ptr<object>>> pool() const {
@@ -71,10 +78,15 @@ namespace pf {
         ptr<plugin> owner() const {
             return m_owner;
         }
+                
+        ptr<object> cur_task() const {
+            return m_cur_task;
+        }
 
     protected:
         ptr<cqueue<ptr<object>>> m_pool;
         ptr<plugin> m_owner;
+        ptr<object> m_cur_task;
     };
 
 }
