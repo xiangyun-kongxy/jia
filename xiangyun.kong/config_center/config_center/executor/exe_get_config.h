@@ -26,13 +26,13 @@ namespace kxy {
         DECLARE_TYPE(executor, EXE_GET_CONFIG);
         
     public:
-        virtual ptr<response> run(ptr<plugin> plugin, ptr<task> task) override {
+        virtual ptr<response> run(ptr<plugin> plugin, ptr<event> evt) override {
             ptr<config_center> owner = plugin;
-            ptr<serializable> data = task->param();
+            ptr<serializable> data = evt->param();
             string key;
             data >> key;
             data << owner->get(key);
-            return new simple_response(task, EC_OK, EM_OK, data);
+            return new simple_response(evt, EC_OK, EM_OK, data);
         }
         
     };

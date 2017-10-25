@@ -31,11 +31,11 @@ namespace kxy {
     id_service::id_service() {
         m_cur_id = BARREN_FREE_BEGIN;
         
-        m_task_processor[F_FETCH_ADD_GUID] = new class fetch_add_guid;
-        m_task_processor[F_FETCH_ADD_GUID_BENCH] = new fetch_add_guid_bench;
-        m_task_processor[F_GET_CUR_CUID] = new class get_cur_guid;
+        m_executors[F_FETCH_ADD_GUID]       = new class fetch_add_guid;
+        m_executors[F_FETCH_ADD_GUID_BENCH] = new fetch_add_guid_bench;
+        m_executors[F_GET_CUR_CUID]         = new class get_cur_guid;
 
-        m_event_processor[EVT_SET_GUID] = new class set_guid;
+        m_triggers[EVT_SET_GUID]            = new class set_guid;
     }
     
     void id_service::init() {
@@ -65,7 +65,8 @@ namespace kxy {
 
     void id_service::load_guid() {
         ptr<serializable> rsp;
-        rsp = call_plugin(new id_name(PLUGIN_CONFIG_CENTER), F_GET_CONFIG, CFG_CUR_GUID);
+        rsp = call_plugin(new id_name(PLUGIN_CONFIG_CENTER), F_GET_CONFIG,
+                          CFG_CUR_GUID);
         if (rsp != nullptr) {
             string id;
             rsp >> id;
@@ -75,7 +76,7 @@ namespace kxy {
     
     void id_service::save_guid() {
         send_to(new id_name(PLUGIN_CONFIG_CENTER), EVT_PUT_CONFIG,
-                l2s(get_guid()), CFG_CUR_GUID);
+                CFG_CUR_GUID, l2s(get_guid()));
     }
     
     extern "C" {

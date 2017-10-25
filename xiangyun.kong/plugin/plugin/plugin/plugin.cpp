@@ -11,7 +11,6 @@
 #include <plugin/manager/plugin_manager.hpp>
 #include <plugin/response/simple_response.h>
 #include <plugin/event/simple_event.h>
-#include <plugin/task/simple_task.h>
 
 #include <errors.h>
 
@@ -28,20 +27,20 @@ namespace pf {
     void plugin::on_event(ptr<event> evt) {
         ptr<trigger> trigger = nullptr;
         if (evt != nullptr) {
-            trigger = m_event_processor[evt->name()];
+            trigger = m_triggers[evt->name()];
             if (trigger != nullptr)
                 trigger->happen(this, evt);
         }
     }
 
-    ptr<response> plugin::do_task(ptr<task> tsk) {
+    ptr<response> plugin::do_task(ptr<event> evt) {
         ptr<executor> executor = nullptr;
-        if (tsk != nullptr) {
-            executor = m_task_processor[tsk->name()];
+        if (evt != nullptr) {
+            executor = m_executors[evt->name()];
             if (executor != nullptr)
-                return executor->run(this, tsk);
+                return executor->run(this, evt);
         }
-        return new simple_response(tsk, EC_TASK_NOT_SUPPORTED,
+        return new simple_response(evt, EC_TASK_NOT_SUPPORTED,
                                    EM_TASK_NOT_SUPPORTED);
     }
 
@@ -57,20 +56,18 @@ namespace pf {
         
     }
     
-    list<ptr<identifier>> plugin::accepted_event() const {
+    list<ptr<identifier>> plugin::supported_event() const {
         list<ptr<identifier>> evt;
         map<string,ptr<trigger>>::const_iterator i;
-        for(i = m_event_processor.begin(); i != m_event_processor.end(); ++i)
+        for(i = m_triggers.begin(); i != m_triggers.end(); ++i)
             evt.push_back(new id_name(i->first));
+        
+        
+        map<string,ptr<executor>>::const_iterator it;
+        for(it = m_executors.begin(); it != m_executors.end(); ++it)
+            evt.push_back(new id_name(it->first));
+        
         return evt;
-    }
-
-    list<ptr<identifier>> plugin::accepted_task() const {
-        list<ptr<identifier>> tsk;
-        map<string,ptr<executor>>::const_iterator i;
-        for(i = m_task_processor.begin(); i != m_task_processor.end(); ++i)
-            tsk.push_back(new id_name(i->first));
-        return tsk;
     }
 
     ptr<plugin> plugin::current_plugin() {

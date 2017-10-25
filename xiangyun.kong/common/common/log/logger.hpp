@@ -18,10 +18,12 @@
 #include <sys/time.h>
 #include <mutex>
 
+using namespace std;
+
 namespace kxy {
     
-#define MAX_LOG_LINE_SIZE           1024
-#define SYNC_LOG_LATENCY            10
+#define MAX_LOG_LINE_SIZE           4096 
+#define SYNC_LOG_LATENCY            1
     
     enum log_level {
         LL_DEBUG,
@@ -53,7 +55,7 @@ namespace kxy {
         long m_level;
         
         string m_buf;
-        
+
         mutex m_mutex;
         pthread_t m_thread;
     };

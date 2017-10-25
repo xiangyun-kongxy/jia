@@ -26,8 +26,6 @@ static const string OBJECT                          = "object";
 
 static const string OBJ_EVENT                       = "event";
 static const string OBJ_SIMPLE_EVENT                = "simple_event";
-static const string OBJ_TASK                        = "task";
-static const string OBJ_SIMPLE_TASK                 = "simple_task";
 static const string OBJ_RESPONSE                    = "response";
 static const string OBJ_SIMPLE_RESPONSE             = "simple_response";
 static const string OBJ_EXECUTOR                    = "executor";
@@ -40,6 +38,8 @@ static const string OBJ_HELP_THREAD                 = "help_thread";
 static const string OBJ_SERIALIZABLE                = "serializable";
 static const string OBJ_CQUEUE                      = "cqueue";
 static const string OBJ_LOGGER                      = "logger";
+static const string OBJ_SCHEDULER                   = "scheduler";
+static const string OBJ_SWITCHER                    = "switcher";
 
 // plugins
 static const string PLUGIN_BUS                      = "bus";

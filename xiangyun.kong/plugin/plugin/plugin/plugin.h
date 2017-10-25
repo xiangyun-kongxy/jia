@@ -11,7 +11,6 @@
 
 #include <plugin/response/response.h>
 #include <plugin/event/event.h>
-#include <plugin/task/task.h>
 #include <plugin/trigger/trigger.h>
 #include <plugin/executor/executor.h>
 #include <list>
@@ -36,24 +35,19 @@ namespace pf {
         virtual void on_event(ptr<event> evt);
         /**
          * execute pre-defined function
-         * @param tsk function and parameter for function
+         * @param evt function and parameter for function
          * @return result of executing
          */
-        virtual ptr<response> do_task(ptr<task> tsk);
+        virtual ptr<response> do_task(ptr<event> evt);
 
     public:
         /**
-         * which events the plugin supports.
-         * other events won't route to here
-         */
-        virtual list<ptr<identifier>> accepted_event() const;
-        /**
-         * which tasks(functions) the plugin supports.
+         * which functions the plugin supports.
          * other tasks won't route to here
          */
-        virtual list<ptr<identifier>> accepted_task() const;
+        virtual list<ptr<identifier>> supported_event() const;
         /**
-         * which plugins and/or tasks, events the plugin depend on.
+         * which plugins and/or events the plugin depend on.
          * if depended object doesn't exist, the plugin would not be loaded,
          * only if it declared to
          */
@@ -67,8 +61,8 @@ namespace pf {
         static ptr<object> current_task();
         
     protected:
-        map<string, ptr<trigger>> m_event_processor;
-        map<string, ptr<executor>> m_task_processor;
+        map<string, ptr<trigger>> m_triggers;
+        map<string, ptr<executor>> m_executors;
     };
 
     typedef plugin* (*plugin_init_func)(xml_node<>* conf);

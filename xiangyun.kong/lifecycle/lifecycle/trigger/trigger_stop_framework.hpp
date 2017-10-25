@@ -31,19 +31,22 @@ namespace pf {
         virtual void happen(ptr<plugin> owner, ptr<event> evt) override {
             ptr<lifecycle> lifecycle = owner;
             
+            set<string> exc_plugin;
+            exc_plugin.insert(PLUGIN_BUS);
+            exc_plugin.insert(PLUGIN_LIFECYCLE);
+
             plugin_manager* pm = plugin_manager::instance();
             dependence_manager* dm = dependence_manager::instance();
-            list<plugin_info> pis;
+            list<plugin_info*> pis;
             do {
-                list<plugin_info*> pis = pm->get_all_plugin();
+                pis = pm->get_all_plugin();
                 for (plugin_info* pi : pis) {
                     
-                    if (pi->pl->name() != PLUGIN_LIFECYCLE &&
-                        pi->pl->name() != PLUGIN_BUS &&
+                    if (exc_plugin.end() == exc_plugin.find(pi->pl->name()) &&
                         !dm->is_depended(pi->pl)) {
                         send_to(new id_name(PLUGIN_LIFECYCLE), EVT_UNLOAD_PLUGIN,
                                 new id_name(pi->pl->name()));
-                        wait_event(new id_simple_event(EVT_PLUGIN_UNLOADED));
+                        exc_plugin.insert(pi->pl->name());
                     }
                 }
                 sleep(1);

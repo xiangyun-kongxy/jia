@@ -21,11 +21,9 @@
 namespace mind {
 
     barren_executor::barren_executor() {
-        m_event_processor[EVT_EXECUTE_BARREN] = new execute_barren;
-        m_event_processor[EVT_NEW_BARREN_FUNCTION] =
-            new class new_barren_function;
-        m_event_processor[EVT_NEW_COMPOUND_FUNCTION] =
-            new class new_compound_function;
+        m_triggers[EVT_EXECUTE_BARREN]        = new class execute_barren;
+        m_triggers[EVT_NEW_BARREN_FUNCTION]   = new class new_barren_function;
+        m_triggers[EVT_NEW_COMPOUND_FUNCTION] = new class new_compound_function;
     }
 
     void barren_executor::exe_func(ptr<barren> obj) {

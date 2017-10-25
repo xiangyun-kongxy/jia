@@ -8,7 +8,7 @@
 #include <lib/object/object.h>
 #include <lib/object/ptr.h>
 #include <lib/serialize/serializable.hpp>
-#include <plugin/task/task.h>
+#include <plugin/event/event.h>
 
 using namespace kxy;
 
@@ -19,8 +19,8 @@ namespace pf {
         DECLARE_TYPE(object, OBJ_RESPONSE);
         
     public:
-        response(ptr<task> tsk) {
-            m_org_task = tsk;
+        response(ptr<event> evt) {
+            m_org_event = evt;
         }
 
         virtual ~response() {}
@@ -30,12 +30,12 @@ namespace pf {
         virtual string message() = 0;
         virtual ptr<serializable> context() = 0;
 
-        ptr<task> org_task() const {
-            return m_org_task;
+        ptr<event> org_event() const {
+            return m_org_event;
         }
         
     protected:
-        ptr<task> m_org_task;
+        ptr<event> m_org_event;
     };
 
 }

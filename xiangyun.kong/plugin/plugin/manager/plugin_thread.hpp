@@ -18,7 +18,6 @@
 
 #include <plugin/response/response.h>
 #include <plugin/event/event.h>
-#include <plugin/task/task.h>
 #include <plugin/event/simple_event.h>
 #include <plugin/plugin/plugin.h>
 
@@ -50,17 +49,12 @@ namespace pf {
             
             if(m_cur_task == nullptr) {
                 usleep(12);
-            } else if (m_cur_task->is_kind_of(OBJ_TASK)) {
+            } else if (m_cur_task->should_response()) {
                 ptr<response> rsp = m_owner->do_task(m_cur_task);
 
                 extern ptr<plugin> g_bus;
-                ptr<serializable> data;
-                ptr<simple_event> evt;
-                data = new serializable;
-                data << rsp;
-                evt = new simple_event(EVT_RESPONSE, data);
-                g_bus->on_event(evt);
-            } else if (m_cur_task->is_kind_of(OBJ_EVENT)) {
+                g_bus->on_event((ptr<event>)rsp);
+            } else {
                 m_owner->on_event(m_cur_task);
             }
             return 0;
@@ -86,7 +80,7 @@ namespace pf {
     protected:
         ptr<cqueue<ptr<object>>> m_pool;
         ptr<plugin> m_owner;
-        ptr<object> m_cur_task;
+        ptr<event> m_cur_task;
     };
 
 }

@@ -24,7 +24,7 @@ namespace mind {
     
     class barren : public reference {
     public:
-        barren();
+        barren(bool init = true);
         barren(const list<long>& ids);
         
     public:

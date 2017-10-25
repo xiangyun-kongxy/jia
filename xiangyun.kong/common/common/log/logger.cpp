@@ -10,6 +10,8 @@
 
 #include <plugin/manager/plugin_manager.hpp>
 
+#include <log.hpp>
+
 using namespace pf;
 
 namespace kxy {
@@ -27,6 +29,10 @@ namespace kxy {
     }
     
     void logger::debug(const string& msg) {
+        if (logs::get_logger("debug") != this) {
+            logs::get_logger("debug")->debug(msg);
+        }
+
         if (m_level >= LL_DEBUG) {
             pthread_t thread;
             timeval now;
@@ -38,6 +44,10 @@ namespace kxy {
     }
     
     void logger::info(const string& msg) {
+        if (logs::get_logger("info") != this) {
+            logs::get_logger("info")->info(msg);
+        }
+
         if (m_level >= LL_INFO) {
             pthread_t thread;
             timeval now;
@@ -49,6 +59,10 @@ namespace kxy {
     }
     
     void logger::warn(const string& msg) {
+        if (logs::get_logger("warn") != this) {
+            logs::get_logger("warn")->warn(msg);
+        }
+
         if (m_level >= LL_WARN) {
             pthread_t thread;
             timeval now;
@@ -60,6 +74,10 @@ namespace kxy {
     }
     
     void logger::error(const string& msg) {
+        if (logs::get_logger("error") != this) {
+            logs::get_logger("error")->error(msg);
+        }
+        
         if (m_level >= LL_ERROR) {
             pthread_t thread;
             timeval now;
@@ -78,9 +96,9 @@ namespace kxy {
             "warn",
             "error",
         };
-        
-        char tb[16];
-        strftime(tb, 128, "%F %T", gmtime(&tv.tv_sec));
+
+        char tb[32];
+        strftime(tb, 32, "%F %T", localtime(&tv.tv_sec));
         
         const char* plugin = "terminal";
         const char* task = "freedom";
@@ -92,13 +110,17 @@ namespace kxy {
         if (ci.task != nullptr) {
             task = ci.task->name().c_str();
         }
-        char loghead_buf[MAX_LOG_LINE_SIZE + 1] = "";
+
+        char log_buf[MAX_LOG_LINE_SIZE + 1] = "";
+        snprintf(log_buf, MAX_LOG_LINE_SIZE,
+                 "[%5s][%s %06d][%016lx][%-10s][%-16s]%s\n",
+                 level_mapping[level], tb, tv.tv_usec, (long)thread, plugin,
+                 task, msg.c_str());
         
-        snprintf(loghead_buf, MAX_LOG_LINE_SIZE, "[%s][%s %d][%p][%s][%s]",
-                 level_mapping[level], tb, tv.tv_usec, thread, plugin, task);
-        
-        lock_guard<mutex> _(m_mutex);
-        m_buf += loghead_buf + msg + "\n";
+        do {
+            lock_guard<mutex> _(m_mutex);
+            m_buf += log_buf;
+        } while (0);
     }
     
     void* logger::_commit_log(void *param) {

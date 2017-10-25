@@ -10,7 +10,6 @@
 
 #include <lib/identifier/id_name.h>
 
-#include <plugin/task/simple_task.h>
 #include <plugin/event/simple_event.h>
 
 #include <barren_cache/trigger/trigger_save_cache_barren.h>
@@ -28,8 +27,8 @@ namespace mind {
         // TODO: capacity from config
         m_cache = new cache(640000);
         
-        m_event_processor[EVT_SAVE_CACHE_BARREN] = new class save_cache_barren;
-        m_task_processor[F_LOAD_CACHE_BARREN] = new class load_cache_barren;
+        m_triggers[EVT_SAVE_CACHE_BARREN] = new class save_cache_barren;
+        m_executors[F_LOAD_CACHE_BARREN] = new class load_cache_barren;
     }
     
     ptr<barren> barren_cache::load_barren(long id) {

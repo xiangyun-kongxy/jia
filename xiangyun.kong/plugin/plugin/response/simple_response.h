@@ -14,7 +14,7 @@ namespace pf {
         DECLARE_TYPE(response, OBJ_SIMPLE_RESPONSE);
         
     public:
-        simple_response(ptr<task> tsk, long code, const string& msg,
+        simple_response(ptr<event> evt, long code, const string& msg,
                         ptr<serializable> context = nullptr);
 
     public:

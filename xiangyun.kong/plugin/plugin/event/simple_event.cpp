@@ -12,7 +12,14 @@
 using namespace kxy;
 
 namespace pf {
-
+    
+    class terminal : public plugin {
+    public:
+        DECLARE_TYPE(plugin, "terminal");
+    };
+    
+    ptr<terminal> g_terminal = new terminal;
+    
     simple_event::simple_event(const string& name) :
     simple_event::simple_event(name, nullptr, new id_any()) {
     
@@ -35,7 +42,6 @@ namespace pf {
         m_dst = dst;
 
         if (m_deliver == nullptr) {
-            extern ptr<plugin> g_terminal;
             m_deliver = g_terminal;
         }
     }

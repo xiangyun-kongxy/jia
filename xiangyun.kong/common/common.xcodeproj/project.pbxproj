@@ -13,7 +13,6 @@
 		26C79E3A1F9B2FE200466DB3 /* liblib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26C79E391F9B2FE200466DB3 /* liblib.dylib */; };
 		26C79E3E1F9B35A800466DB3 /* log_service.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26C79E3D1F9B35A800466DB3 /* log_service.cpp */; };
 		AD5F03CA1F94F186002742B9 /* id_simple_event.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03C91F94EBBC002742B9 /* id_simple_event.hpp */; };
-		ADAD39021F94DA8C00ABC6F3 /* id_task_response.hpp in Headers */ = {isa = PBXBuildFile; fileRef = ADAD38FE1F94DA8C00ABC6F3 /* id_task_response.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,7 +23,6 @@
 		26C79E3D1F9B35A800466DB3 /* log_service.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = log_service.cpp; path = log/log_service.cpp; sourceTree = "<group>"; };
 		AD5F03C91F94EBBC002742B9 /* id_simple_event.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = id_simple_event.hpp; path = identifier/id_simple_event.hpp; sourceTree = "<group>"; };
 		ADAD38ED1F94DA2300ABC6F3 /* libcommon.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libcommon.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
-		ADAD38FE1F94DA8C00ABC6F3 /* id_task_response.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = id_task_response.hpp; path = identifier/id_task_response.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +86,6 @@
 		ADAD38FB1F94DA3D00ABC6F3 /* identifier */ = {
 			isa = PBXGroup;
 			children = (
-				ADAD38FE1F94DA8C00ABC6F3 /* id_task_response.hpp */,
 				AD5F03C91F94EBBC002742B9 /* id_simple_event.hpp */,
 			);
 			name = identifier;
@@ -103,7 +100,6 @@
 			files = (
 				AD5F03CA1F94F186002742B9 /* id_simple_event.hpp in Headers */,
 				26C79E351F9B2F1D00466DB3 /* logger.hpp in Headers */,
-				ADAD39021F94DA8C00ABC6F3 /* id_task_response.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,7 +264,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
-				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/",
@@ -287,7 +283,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
-				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/",

@@ -33,7 +33,7 @@ namespace kxy {
     public:
         virtual bool match(ptr<object> obj) override {
             if (obj->is_kind_of(OBJ_EVENT)) {
-                return m_evt == ((ptr<simple_event>)obj)->event_type()
+                return m_evt == obj->name()
                 && identifier::match(obj);
             }
             return false;

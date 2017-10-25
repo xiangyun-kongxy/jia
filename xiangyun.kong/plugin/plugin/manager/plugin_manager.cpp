@@ -12,6 +12,9 @@
 
 #include <lib/init/initializer.hpp>
 
+#include <iostream>
+
+using namespace std;
 using namespace kxy;
 
 namespace pf {
@@ -45,14 +48,17 @@ namespace pf {
             m_task_helper.push_back(helper);
             m_threads[helper->thread_id()] = helper;
         }
+        
+        m_version = 1;
     }
     
     plugin_manager::~plugin_manager() {
         for (ptr<help_thread> thread : m_task_helper) {
-            thread->pause();
+            thread->stop(true);
             m_threads.erase(thread->thread_id());
         }
         m_task_helper.clear();
+        ++m_version;
     }
     
     void plugin_manager::add_plugin(ptr<plugin> pl) {
@@ -71,49 +77,47 @@ namespace pf {
             pi->threads->push_back(_create_thread(pl));
             m_plugins.push_back(pi);
 
-            for (ptr<identifier> function : pl->accepted_event()) {
-                function_manager::instance()->add_function(pl, function);
-            }
-            for (ptr<identifier> function : pl->accepted_task()) {
+            for (ptr<identifier> function : pl->supported_event()) {
                 function_manager::instance()->add_function(pl, function);
             }
             for (ptr<identifier> obj : pl->depend_on()) {
                 dependence_manager::instance()->add_depend(pl, obj);
             }
+            
+            ++m_version;
+        } else {
+            cout << "error: plugin " << pl->name() << " duplicated." << endl;
         }
     }
 
     void plugin_manager::rm_plugin(ptr<identifier> id) {
         lock_guard<recursive_mutex> _(g_plugin_managing_mutex);
 
-        if (!dependence_manager::instance()->is_depended(id)) {
-            list<plugin_info*>::iterator i;
-            for (i = m_plugins.begin(); i != m_plugins.end(); ++i) {
-                if (**i == id)
-                    break;
+        list<plugin_info*>::iterator i;
+        for (i = m_plugins.begin(); i != m_plugins.end(); ++i) {
+            if (**i == id)
+                break;
+        }
+        if (i != m_plugins.end()) {
+            ptr<plugin> pl = (*i)->pl;
+            for (ptr<help_thread> helper : m_task_helper) {
+                helper->rm_helping(pl);
             }
-            if (i != m_plugins.end()) {
-                ptr<plugin> pl = (*i)->pl;
-                for (ptr<help_thread> helper : m_task_helper) {
-                    helper->rm_helping(pl);
-                }
-                for (ptr<identifier> function : pl->accepted_task()) {
-                    function_manager::instance()->rm_function(function);
-                }
-                for (ptr<identifier> function : pl->accepted_event()) {
-                    function_manager::instance()->rm_function(function);
-                }
-                for (ptr<identifier> obj : pl->depend_on()) {
-                    dependence_manager::instance()->rm_depend(pl, obj);
-                }
+            for (ptr<identifier> function : pl->supported_event()) {
+                function_manager::instance()->rm_function(function);
+            }
+            for (ptr<identifier> obj : pl->depend_on()) {
+                dependence_manager::instance()->rm_depend(pl, obj);
+            }
 
-                for (ptr<plugin_thread> thread : *(*i)->threads) {
-                    m_threads.erase(thread->thread_id());
-                }
-                delete (*i)->threads;
-                delete *i;
-                m_plugins.erase(i);
+            for (ptr<plugin_thread> thread : *(*i)->threads) {
+                m_threads.erase(thread->thread_id());
             }
+            delete (*i)->threads;
+            delete *i;
+
+            m_plugins.erase(i);
+            ++m_version;
         }
     }
 
@@ -151,19 +155,18 @@ namespace pf {
                     thread->start();
                 }
 
-                for (ptr<identifier> function : (*i)->pl->accepted_task()) {
-                    function_manager::instance()->active_function(function);
-                }
-
-                for (ptr<identifier> function : (*i)->pl->accepted_event()) {
+                for (ptr<identifier> function : (*i)->pl->supported_event()) {
                     function_manager::instance()->active_function(function);
                 }
                 
-                for (ptr<help_thread> helper : m_task_helper) {
-                    helper->add_helping((*i)->pl, (*i)->threads->front()->pool());
+                if (!(*i)->pl->is_kind_of(PLUGIN_BUS)) {
+                    for (ptr<help_thread> helper : m_task_helper) {
+                        helper->add_helping((*i)->pl, (*i)->threads->front()->pool());
+                    }
                 }
 
                 (*i)->is_active = true;
+                ++m_version;
             }
         }
     }
@@ -171,31 +174,27 @@ namespace pf {
     void plugin_manager::suspend_plugin(ptr<identifier> id) {
         lock_guard<recursive_mutex> _(g_plugin_managing_mutex);
 
-        if (!dependence_manager::instance()->is_depended(id)) {
-            list<plugin_info*>::iterator i;
-            for (i = m_plugins.begin(); i != m_plugins.end(); ++i) {
-                if (**i == id)
-                    break;
+        list<plugin_info*>::iterator i;
+        for (i = m_plugins.begin(); i != m_plugins.end(); ++i) {
+            if (**i == id)
+                break;
+        }
+        if (i != m_plugins.end()) {
+            for (ptr<help_thread> helper : m_task_helper) {
+                helper->rm_helping((*i)->pl);
             }
-            if (i != m_plugins.end()) {
-                for (ptr<help_thread> helper : m_task_helper) {
-                    helper->rm_helping((*i)->pl);
-                }
-                
-                for (ptr<identifier> function : (*i)->pl->accepted_task()) {
-                    function_manager::instance()->suspend_function(function);
-                }
-
-                for (ptr<identifier> function : (*i)->pl->accepted_event()) {
-                    function_manager::instance()->suspend_function(function);
-                }
-
-                for (ptr<plugin_thread> thread : *(*i)->threads) {
-                    thread->pause();
-                }
-
-                (*i)->is_active = false;
+            
+            for (ptr<identifier> function : (*i)->pl->supported_event()) {
+                function_manager::instance()->suspend_function(function);
             }
+
+            for (ptr<plugin_thread> thread : *(*i)->threads) {
+                thread->pause();
+            }
+
+            (*i)->is_active = false;
+            
+            ++m_version;
         }
     }
 
@@ -219,6 +218,19 @@ namespace pf {
         return ci;
     }
 
+    bool plugin_manager::have_task(ptr<identifier> id) {
+        lock_guard<recursive_mutex> _(g_plugin_managing_mutex);
+
+        list<plugin_info*>::iterator i;
+        for (i = m_plugins.begin(); i != m_plugins.end(); ++i) {
+            if (**i == id)
+                break;
+        }
+        if (i != m_plugins.end()) {
+            return (*i)->threads->front()->pool()->size() > 0;
+        }
+        return false;
+    }
 
     bool plugin_manager::check_ready(ptr<kxy::identifier> id)  {
         lock_guard<recursive_mutex> _(g_plugin_managing_mutex);
@@ -233,14 +245,29 @@ namespace pf {
         }
         return false;
     }
+    
+    long plugin_manager::version() const {
+        return m_version;
+    }
+    
+    void plugin_manager::lock() {
+        g_plugin_managing_mutex.lock();
+    }
+    
+    void plugin_manager::unlock() {
+        g_plugin_managing_mutex.unlock();
+    }
 
     ptr<plugin_thread> plugin_manager::_create_thread(ptr<plugin> pl) {
         ptr<cqueue<ptr<object>>> pool = new cqueue<ptr<object>>;
         ptr<plugin_thread> thread = new plugin_thread(pool, pl);
 
-        for (ptr<help_thread> helper : m_task_helper) {
-            helper->add_helping(pl, pool);
+        if (!pl->is_kind_of(PLUGIN_BUS)) {
+            for (ptr<help_thread> helper : m_task_helper) {
+                helper->add_helping(pl, pool);
+            }
         }
+        
         m_threads[thread->thread_id()] = thread;
         
         return thread;

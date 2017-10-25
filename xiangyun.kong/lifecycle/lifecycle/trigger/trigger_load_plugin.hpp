@@ -26,6 +26,10 @@
 
 #include <log.hpp>
 
+#include <iostream>
+
+using namespace std;
+
 namespace pf {
 
     class load_plugin : public trigger {
@@ -40,7 +44,8 @@ namespace pf {
             data >> conf;
 
             if (conf != nullptr) {
-                logs::get_logger("info")->info(conf->get_name() + " is loading...");
+                info_log(logs::get_logger("info"), conf->get_name() +
+                         " is loading...");
                 
                 broadcast(EVT_PLUGIN_LOADING, conf->get_name());
                 ptr<plugin> plugin = loader::load_plugin(conf);
@@ -59,11 +64,12 @@ namespace pf {
                         broadcast(EVT_PLUGIN_RUNNING, conf->get_name());
                         break;
                     } else {
-                        wait_event(new id_simple_event(EVT_PLUGIN_RUNNING));
+                        wait_object(new id_simple_event(EVT_PLUGIN_RUNNING));
                     }
                 } while (true);
                 
-                logs::get_logger("info")->info(conf->get_name() + " is loaded");
+                info_log(logs::get_logger("info"), conf->get_name() +
+                         " is loaded");
             }
 
         }

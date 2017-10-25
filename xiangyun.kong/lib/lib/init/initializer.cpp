@@ -25,10 +25,12 @@ namespace kxy {
     }
     
     void do_cleanup() {
+        map<string, uninit_func>* funcs = g_uninit_func_list;
         map<string, uninit_func>::iterator i;
-        for (i = g_uninit_func_list->begin(); i != g_uninit_func_list->end(); ++i) {
-            cout << "doing " << i->first << "..." << endl;
+        for (i = funcs->begin(); i != funcs->end(); ++i) {
+            cout << "doing " << i->first << "..." ;
             i->second();
+            cout << "done." << endl;
         }
     }
     

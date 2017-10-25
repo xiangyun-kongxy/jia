@@ -13,11 +13,11 @@
 
 #include <plugin/trigger/trigger.h>
 #include <plugin/event/event.h>
-#include <plugin/task/task.h>
 
 #include <plugin/manager/plugin_manager.hpp>
 
 #include <bus/bus.h>
+#include <bus/schedule/event_router/router.hpp>
 
 #include <log.hpp>
 
@@ -32,38 +32,47 @@ namespace pf {
         DECLARE_TYPE(trigger, TRIGGER_ON_ROUTE);
         
     public:
-        virtual void happen(ptr<plugin> owner, ptr<event> evt) override {
-            ptr<bus> bus = owner;
-            ptr<serializable> data = evt->param();
-            ptr<identifier> dst = nullptr;
-
-
-            ptr<object> msg;
-            data >> msg;
-            bus->set_object(msg);
-
-            
-            if(msg->is_kind_of(OBJ_EVENT)) {
-                ptr<event> e = msg;
-                dst = e->destination();
-                
-                logs::get_logger("bus")->info(e->deliver()->name() + " send to " +
-                                              dst->name() + " " + e->name());
-            } else if(msg->is_kind_of(OBJ_TASK)) {
-                ptr<task> t = msg;
-                dst = t->processor();
-                logs::get_logger("bus")->info(t->caller()->name() + " send to " +
-                                              dst->name() + " " + t->name());
-            }
-            
-            
-            const plugin_info* pi;
-            pi = plugin_manager::instance()->find_plugin(dst);
-            if (pi != nullptr && pi->is_active) {
-                pi->threads->front()->pool()->push(msg);
-            }
+        on_route() {
+            pthread_key_create(&m_sheduler, _release_scheduler);
+            pthread_key_create(&m_version, nullptr);
         }
         
+        ~on_route() {
+            pthread_key_delete(m_version);
+            pthread_key_delete(m_sheduler);
+        }
+        
+    public:
+        virtual void happen(ptr<plugin> owner, ptr<event> evt) override {
+            router* rt = (router*)pthread_getspecific(m_sheduler);
+            if (rt == nullptr) {
+                rt = new router;
+                pthread_setspecific(m_sheduler, rt);
+            }
+            
+            long version = (long)pthread_getspecific(m_version);
+            if (version != plugin_manager::instance()->version()) {
+                rt->update_plugins();
+                version = plugin_manager::instance()->version();
+                pthread_setspecific(m_version, (void*)version);
+            }
+            
+            rt->schedule(evt);
+            
+            info_log(logs::get_logger("bus"), evt->name() + " " +
+                     evt->deliver()->name() + " -> " +
+                     evt->destination()->name());
+        }
+        
+    private:
+        static void _release_scheduler(void* param) {
+            router* r = (router*)param;
+            delete r;
+        }
+        
+    private:
+        pthread_key_t m_sheduler;
+        pthread_key_t m_version;
     };
     
 }

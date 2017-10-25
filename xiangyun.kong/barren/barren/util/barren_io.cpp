@@ -10,7 +10,6 @@
 
 #include <lib/identifier/id_name.h>
 
-#include <plugin/task/simple_task.h>
 #include <plugin/event/simple_event.h>
 #include <plugin/response/response.h>
 

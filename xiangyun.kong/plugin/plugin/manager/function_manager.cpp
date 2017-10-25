@@ -11,6 +11,9 @@
 
 #include <lib/init/initializer.hpp>
 
+#include <iostream>
+
+using namespace std;
 using namespace kxy;
 
 namespace pf {
@@ -54,6 +57,8 @@ namespace pf {
             fi.is_active = false;
             fi.provider = owner;
             m_functions.push_back(fi);
+        } else {
+            cout << "error: function " << function->name() << " duplicated." << endl;
         }
     }
 

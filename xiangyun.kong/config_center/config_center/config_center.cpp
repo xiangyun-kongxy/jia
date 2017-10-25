@@ -22,8 +22,8 @@ namespace kxy {
     const string config_center::m_service = "config_service";
     
     config_center::config_center() {
-        m_task_processor[F_GET_CONFIG] = new get_config;
-        m_event_processor[EVT_PUT_CONFIG] = new put_config;
+        m_executors[F_GET_CONFIG] = new get_config;
+        m_triggers[EVT_PUT_CONFIG] = new put_config;
     }
     
     string config_center::get(const string &key) {

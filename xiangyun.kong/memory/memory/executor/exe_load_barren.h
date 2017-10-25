@@ -26,17 +26,17 @@ namespace mind {
         DECLARE_TYPE(executor, EXE_LOAD_BARREN);
         
     public:
-        virtual ptr<response> run(ptr<plugin> plugin, ptr<task> tsk) override {
+        virtual ptr<response> run(ptr<plugin> plugin, ptr<event> evt) override {
             ptr<memory> owner = plugin;
-            ptr<serializable> data = tsk->param();
+            ptr<serializable> data = evt->param();
             long id;
             data >> id;
             ptr<barren> barren = owner->read(id);
             if(barren != nullptr) {
                 data << barren;
-                return new simple_response(tsk, EC_OK, EM_OK, data);
+                return new simple_response(evt, EC_OK, EM_OK, data);
             } else {
-                return new simple_response(tsk, EC_NOT_EXIST, EM_NOT_EXIST);
+                return new simple_response(evt, EC_NOT_EXIST, EM_NOT_EXIST);
             }
         }
         

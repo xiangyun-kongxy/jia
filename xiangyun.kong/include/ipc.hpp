@@ -12,43 +12,44 @@
 #include <lib/serialize/serializable.hpp>
 #include <lib/identifier/identifier.h>
 
-#include <plugin/response/response.h>
-#include <plugin/task/simple_task.h>
+#include <plugin/plugin/plugin.h>
 #include <plugin/event/simple_event.h>
 
 using namespace kxy;
 
 namespace pf {
 
-    class plugin;
-    typedef void (*task_callback)(ptr<object>);
-    extern ptr<serializable> pack_data();
+    typedef void (*fcallback)(ptr<object>);
 
-    extern void send_message(ptr<event>);
-    extern ptr<response> do_task(ptr<task>);
-    extern void do_task_async(ptr<task>, task_callback);
+    ptr<object> wait_object(ptr<identifier>);
+    void send_message(ptr<event>);
+    ptr<response> call_function(ptr<event>);
+    void call_function(ptr<event>, fcallback);
 
-    extern ptr<object> wait_event(ptr<identifier>);
 
-    template<typename value_type, typename ...other_types>
-    ptr<serializable> pack_data(value_type value, other_types... other) {
-        ptr<serializable> result = pack_data(other...);
-        result << value;
-        return result;
-    }
 
     template<typename value_type>
-    ptr<serializable> pack_data(value_type value) {
-        ptr<serializable> ar = new serializable;
+    ptr<serializable> pack_data(ptr<serializable> ar, value_type value) {
         ar << value;
         return ar;
     }
+    
+    template<typename value_type, typename ...other_types>
+    ptr<serializable> pack_data(ptr<serializable>& ar, value_type value,
+                                other_types... other) {
+        ar << value;
+        pack_data(ar, other...);
+        return ar;
+    }
+    
+    ptr<serializable> pack_data(ptr<serializable>&);
 
     template<typename ...ptype>
     ptr<serializable> call(const string& func_name, ptype... params) {
-        ptr<serializable> param = pack_data(params...);
-        ptr<task> task = new simple_task(func_name, param);
-        ptr<response> rsp = do_task(task);
+        ptr<serializable> param = new serializable;
+        param = pack_data(params...);
+        ptr<event> evt = new simple_event(func_name, param);
+        ptr<response> rsp = call_function(evt);
 
         if (rsp != nullptr) {
             ptr<serializable> data = rsp->context();
@@ -60,9 +61,10 @@ namespace pf {
     template<typename ...ptype>
     ptr<serializable> call_plugin(ptr<identifier> plugin, const string& func_name,
                                   ptype... params) {
-        ptr<serializable> param = pack_data(params...);
-        ptr<task> task = new simple_task(func_name, param, plugin);
-        ptr<response> rsp = do_task(task);
+        ptr<serializable> param = new serializable;
+        pack_data(param, params...);
+        ptr<event> evt = new simple_event(func_name, param, plugin);
+        ptr<response> rsp = call_function(evt);
         if (rsp != nullptr) {
             ptr<serializable> data = rsp->context();
             return data;
@@ -73,7 +75,8 @@ namespace pf {
     template<typename ...ptype>
     void send_to(ptr<identifier> plugin, const string& event, ptype... params) {
         ptr<class event> evt;
-        ptr<serializable> param = pack_data(params...);
+        ptr<serializable> param = new serializable;
+        pack_data(param, params...);
         evt = new simple_event(event, param, plugin);
         send_message(evt);
     }
@@ -81,7 +84,8 @@ namespace pf {
     template<typename ...ptype>
     void broadcast(const string& event, ptype... params) {
         ptr<class event> evt;
-        ptr<serializable> param = pack_data(params...);
+        ptr<serializable> param = new serializable;
+        pack_data(param, params...);
         evt = new simple_event(event, param);
         send_message(evt);
     }

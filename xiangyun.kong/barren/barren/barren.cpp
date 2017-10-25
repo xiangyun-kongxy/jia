@@ -27,11 +27,14 @@ using namespace std;
 
 namespace mind {
 
-    barren::barren() {
-        m_ids = new long[2];
-        m_ids[0] = 2;
-        m_ids[1] = get_guid();
-
+    barren::barren(bool init /*= true*/ ) {
+        if (init) {
+            m_ids = new long[2];
+            m_ids[0] = 2;
+            m_ids[1] = get_guid();
+        } else {
+            m_ids = nullptr;
+        }
     }
     
     barren::barren(const list<long>& ids) {
@@ -114,10 +117,10 @@ namespace mind {
             if (cur == max) {
                 ptr<serializable> rsp;
                 rsp = call_plugin(new id_name(PLUGIN_ID_SERVICE),
-                                  F_FETCH_ADD_GUID_BENCH, 10000);
+                                  F_FETCH_ADD_GUID_BENCH, 10000L);
                 if (rsp != nullptr) {
                     rsp >> cur;
-                    max = cur + 9999;
+                    max = cur + 10000L;
                 } else {
                     return 0;
                 }

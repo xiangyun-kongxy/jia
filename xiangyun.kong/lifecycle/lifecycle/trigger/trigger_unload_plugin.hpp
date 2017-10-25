@@ -42,9 +42,14 @@ namespace pf {
                 dependence_manager* dm = dependence_manager::instance();
                 plugin_manager* pm = plugin_manager::instance();
                 if (!dm->is_depended(id)) {
+                    while (pm->have_task(id) ||
+                           pm->have_task(new id_name(PLUGIN_BUS))) {
+                        usleep(32000);
+                    }
                     const plugin_info* pi = pm->find_plugin(id);
                     if (pi != nullptr) {
-                        logs::get_logger("info")->info(id->name() + " is exiting...");
+                        info_log(logs::get_logger("info"), id->name() +
+                                 " is exiting...");
                         
                         broadcast(EVT_PLUGIN_UNINSTALLING, id->name());
                         pi->pl->uninit();
@@ -54,7 +59,7 @@ namespace pf {
                         pm->rm_plugin(id);
                         broadcast(EVT_PLUGIN_UNLOADED, id->name());
                         
-                        logs::get_logger("info")->info(id->name() + " is exited");
+                        info_log(logs::get_logger("info"), id->name() + " is exited");
                     }
                 }
             }

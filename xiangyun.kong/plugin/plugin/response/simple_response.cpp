@@ -6,10 +6,10 @@
 
 namespace pf {
 
-    simple_response::simple_response(ptr<task> tsk, long code,
+    simple_response::simple_response(ptr<event> evt, long code,
                                      const string& msg,
                                      ptr<serializable> context)
-    : response(tsk) {
+    : response(evt) {
         m_code = code;
         m_msg = msg;
         m_context = context;

@@ -26,7 +26,7 @@ namespace kxy {
     }
     
     thread::~thread() {
-        stop();
+        stop(true);
     }
     
     void* thread::thread_func(void *param) {

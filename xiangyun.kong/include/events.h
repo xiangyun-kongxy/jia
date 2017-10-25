@@ -49,9 +49,9 @@ static const string EVT_NEW_COMPOUND_FUNCTION       = "new_compound_function";
 static const string EVT_EXECUTE_BARREN              = "execute_barren";
 
 // provided by barren cache
-static const string EVT_SAVE_CACHE_BARREN           = "load_cache_barren";
+static const string EVT_SAVE_CACHE_BARREN           = "save_cache_barren";
 
 // provided by barren memory
-static const string EVT_SAVE_BARREN                 = "load_barren";
+static const string EVT_SAVE_BARREN                 = "save_barren";
 
 #endif /* events_h */

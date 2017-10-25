@@ -26,9 +26,7 @@ namespace pf {
      * @since: 2:21 PM Aug 6, 2016
      *
      * *plugin::event* is the basic message transferred in the framework. every
-     * interaction between plugin should exchange message by *plugin::event* or
-     * *plugin::task*. the different between event and task is multi-cast or single-
-     * cast. event is sent to all plugin that matches destination
+     * interaction between plugin should exchange message by *plugin::event*.
      */
     class event : public object {
     public:
@@ -48,7 +46,13 @@ namespace pf {
          * @see plugin::data
          */
         virtual ptr<serializable> param() const = 0;
+        
+        virtual bool& should_response() {
+            return m_should_response;
+        }
 
+    protected:
+        bool m_should_response;
     };
 
 }

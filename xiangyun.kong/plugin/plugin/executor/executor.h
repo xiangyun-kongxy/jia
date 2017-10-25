@@ -9,7 +9,7 @@
 #include <lib/object/ptr.h>
 
 #include <plugin/response/response.h>
-#include <plugin/task/task.h>
+#include <plugin/event/event.h>
 
 namespace pf {
     
@@ -18,7 +18,7 @@ namespace pf {
         DECLARE_TYPE(object, OBJ_EXECUTOR);
         
     public:
-        virtual ptr<response> run(ptr<plugin>, ptr<task>) = 0;
+        virtual ptr<response> run(ptr<plugin>, ptr<event>) = 0;
 
     };
 

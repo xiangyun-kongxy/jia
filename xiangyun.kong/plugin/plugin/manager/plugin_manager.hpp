@@ -69,11 +69,17 @@ namespace pf {
         void suspend_plugin(ptr<identifier> id);
 
         bool check_ready(ptr<identifier> id);
+        bool have_task(ptr<identifier> id);
         
         list<plugin_info*> get_all_plugin();
         const plugin_info* find_plugin(ptr<identifier> id);
         context_info get_context_by_thread_id(pthread_t thread_id);
 
+        long version() const;
+        
+        void lock();
+        void unlock();
+        
     private:
         ptr<plugin_thread> _create_thread(ptr<plugin>);
 
@@ -81,7 +87,8 @@ namespace pf {
         list<plugin_info*> m_plugins;
         list<ptr<help_thread>> m_task_helper;
         map<pthread_t, ptr<thread>> m_threads;
-
+        
+        long m_version;
     };
 }
 

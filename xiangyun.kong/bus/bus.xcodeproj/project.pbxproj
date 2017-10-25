@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		26036D3E1E0EBE32005D4D02 /* liblib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26036D3D1E0EBE32005D4D02 /* liblib.dylib */; };
+		2668272B1FA0BB1C004A4005 /* scheduler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 266827291FA0BB1C004A4005 /* scheduler.cpp */; };
+		2668272C1FA0BB1C004A4005 /* scheduler.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2668272A1FA0BB1C004A4005 /* scheduler.hpp */; };
+		266827311FA0C02D004A4005 /* switcher.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 2668272F1FA0C02D004A4005 /* switcher.hpp */; };
 		266E1A621E0D703200FA8F01 /* libplugin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 266E1A611E0D703200FA8F01 /* libplugin.dylib */; };
 		26C79E3C1F9B34A400466DB3 /* libcommon.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26C79E3B1F9B34A400466DB3 /* libcommon.dylib */; };
 		26DC67C01E02D78700A68FDF /* bus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26DC67BE1E02D78700A68FDF /* bus.cpp */; };
@@ -15,10 +18,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		26036D091E0E6F23005D4D02 /* trigger_on_response.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = trigger_on_response.h; path = trigger/trigger_on_response.h; sourceTree = "<group>"; };
 		26036D0A1E0E6F5C005D4D02 /* trigger_on_route.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = trigger_on_route.h; path = trigger/trigger_on_route.h; sourceTree = "<group>"; };
 		26036D3B1E0EBE20005D4D02 /* liblifecycle.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblifecycle.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/liblifecycle.dylib"; sourceTree = "<group>"; };
 		26036D3D1E0EBE32005D4D02 /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
+		266827291FA0BB1C004A4005 /* scheduler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = scheduler.cpp; path = schedule/scheduler.cpp; sourceTree = "<group>"; };
+		2668272A1FA0BB1C004A4005 /* scheduler.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = scheduler.hpp; path = schedule/scheduler.hpp; sourceTree = "<group>"; };
+		2668272F1FA0C02D004A4005 /* switcher.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = switcher.hpp; path = schedule/event_router/switcher.hpp; sourceTree = "<group>"; };
+		266827321FA0C671004A4005 /* sw_broadcast.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = sw_broadcast.hpp; path = schedule/event_router/sw_broadcast.hpp; sourceTree = "<group>"; };
+		266827331FA0C887004A4005 /* sw_name.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = sw_name.hpp; path = schedule/event_router/sw_name.hpp; sourceTree = "<group>"; };
+		266827341FA0CA25004A4005 /* sw_sequence.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = sw_sequence.hpp; path = schedule/event_router/sw_sequence.hpp; sourceTree = "<group>"; };
+		266827351FA0CB30004A4005 /* router.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = router.hpp; path = schedule/event_router/router.hpp; sourceTree = "<group>"; };
 		266E1A611E0D703200FA8F01 /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
 		26784E111E003C8D00FCE82B /* libbus.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libbus.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		26C79E3B1F9B34A400466DB3 /* libcommon.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommon.dylib; path = ../common/build/Debug/libcommon.dylib; sourceTree = "<group>"; };
@@ -43,7 +52,6 @@
 		26036D081E0E6EF4005D4D02 /* trigger */ = {
 			isa = PBXGroup;
 			children = (
-				26036D091E0E6F23005D4D02 /* trigger_on_response.h */,
 				26036D0A1E0E6F5C005D4D02 /* trigger_on_route.h */,
 			);
 			name = trigger;
@@ -52,8 +60,31 @@
 		26036D1C1E0E81AB005D4D02 /* schedule */ = {
 			isa = PBXGroup;
 			children = (
+				266827361FA0D33F004A4005 /* object_manager */,
+				2668272D1FA0BFE1004A4005 /* event_router */,
+				266827291FA0BB1C004A4005 /* scheduler.cpp */,
+				2668272A1FA0BB1C004A4005 /* scheduler.hpp */,
 			);
 			name = schedule;
+			sourceTree = "<group>";
+		};
+		2668272D1FA0BFE1004A4005 /* event_router */ = {
+			isa = PBXGroup;
+			children = (
+				2668272F1FA0C02D004A4005 /* switcher.hpp */,
+				266827321FA0C671004A4005 /* sw_broadcast.hpp */,
+				266827331FA0C887004A4005 /* sw_name.hpp */,
+				266827341FA0CA25004A4005 /* sw_sequence.hpp */,
+				266827351FA0CB30004A4005 /* router.hpp */,
+			);
+			name = event_router;
+			sourceTree = "<group>";
+		};
+		266827361FA0D33F004A4005 /* object_manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = object_manager;
 			sourceTree = "<group>";
 		};
 		266E1A601E0D703200FA8F01 /* Frameworks */ = {
@@ -87,20 +118,12 @@
 		26784E131E003C8D00FCE82B /* bus */ = {
 			isa = PBXGroup;
 			children = (
-				519AA7C51E1122CA007D1A90 /* executor */,
 				26036D1C1E0E81AB005D4D02 /* schedule */,
 				26036D081E0E6EF4005D4D02 /* trigger */,
 				26DC67BE1E02D78700A68FDF /* bus.cpp */,
 				26DC67BF1E02D78700A68FDF /* bus.h */,
 			);
 			path = bus;
-			sourceTree = "<group>";
-		};
-		519AA7C51E1122CA007D1A90 /* executor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = executor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,7 +133,9 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2668272C1FA0BB1C004A4005 /* scheduler.hpp in Headers */,
 				26DC67C11E02D78700A68FDF /* bus.h in Headers */,
+				266827311FA0C02D004A4005 /* switcher.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26DC67C01E02D78700A68FDF /* bus.cpp in Sources */,
+				2668272B1FA0BB1C004A4005 /* scheduler.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +326,7 @@
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
 				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = NO_LOG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../lib",

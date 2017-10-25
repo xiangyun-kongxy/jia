@@ -29,12 +29,27 @@ namespace kxy {
     void __attribute__((constructor)) __init_log_stores() {
         g_log_stores = new map<string, ptr<logger>>;
         
-        logs::set_logger("debug", "/mind/log/debug.log", CUR_LOG_LEVEL);
-        logs::set_logger("info", "/mind/log/info.log", CUR_LOG_LEVEL);
-        logs::set_logger("warn", "/mind/log/warn.log", CUR_LOG_LEVEL);
-        logs::set_logger("error", "/mind/log/error.log", CUR_LOG_LEVEL);
+        FILE* pf;
+#ifdef DEBUG
+        logs::set_logger("debug", stdout, CUR_LOG_LEVEL);
+        logs::set_logger("info", stdout, CUR_LOG_LEVEL);
+        logs::set_logger("warn", stdout, CUR_LOG_LEVEL);
+        logs::set_logger("error", stdout, CUR_LOG_LEVEL);
+#else
+        pf = fopen("/mind/log/debug.log", "a");
+        logs::set_logger("debug", pf, CUR_LOG_LEVEL);
         
-        logs::set_logger("bus", "/mind/log/bus.log", CUR_LOG_LEVEL);
+        pf = fopen("/mind/log/info.log", "a");
+        logs::set_logger("info", pf, CUR_LOG_LEVEL);
+        
+        pf = fopen("/mind/log/warn.log", "a");
+        logs::set_logger("warn", pf, CUR_LOG_LEVEL);
+        
+        pf = fopen("/mind/log/error.log", "a");
+        logs::set_logger("error", pf, CUR_LOG_LEVEL);
+#endif
+        pf = fopen("/mind/log/bus.log", "a");
+        logs::set_logger("bus", pf, CUR_LOG_LEVEL);
         
         register_uninitializer("uninitialize logstores", __uninit_log_stores);
     }
@@ -43,8 +58,17 @@ namespace kxy {
         return (*g_log_stores)[name];
     }
     
-    void logs::set_logger(const string &name, const string &file, kxy::log_level level) {
-        FILE* fd = fopen(file.c_str(), "a");
-        (*g_log_stores)[name] = new logger(fd, level);
+    void logs::set_logger(const string &name, FILE* file, kxy::log_level level) {
+        (*g_log_stores)[name] = new logger(file, level);
     }
+    
+    
+    const char* filename(const char* path) {
+        const char* pc;
+        while ((pc = strchr(path, '/')) != nullptr) {
+            path = pc + 1;
+        }
+        return path;
+    }
+    
 }

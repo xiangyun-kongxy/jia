@@ -23,10 +23,10 @@ using namespace std;
 namespace pf{
     
     lifecycle::lifecycle() {
-        m_event_processor[EVT_START_FRAMEWORK] = new start_framework;
-        m_event_processor[EVT_STOP_FRAMEWORK] = new stop_framework;
-        m_event_processor[EVT_LOAD_PLUGIN] = new load_plugin;
-        m_event_processor[EVT_UNLOAD_PLUGIN] = new unload_plugin;
+        m_triggers[EVT_START_FRAMEWORK] = new start_framework;
+        m_triggers[EVT_STOP_FRAMEWORK]  = new stop_framework;
+        m_triggers[EVT_LOAD_PLUGIN]     = new load_plugin;
+        m_triggers[EVT_UNLOAD_PLUGIN]   = new unload_plugin;
     }
 
     lifecycle::~lifecycle() {

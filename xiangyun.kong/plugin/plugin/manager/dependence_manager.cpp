@@ -13,6 +13,7 @@
 #include <lib/init/initializer.hpp>
 #include <lib/identifier/id_name.h>
 
+
 using namespace kxy;
 
 namespace pf {
@@ -65,7 +66,7 @@ namespace pf {
             m_depend.erase(i);
 
             for (i = m_be_depend.begin(); i != m_be_depend.end(); ++i) {
-                if (_match(i->first, obj) && _match(i->second, be_depend)) {
+                if (_match(i->first, be_depend) && _match(i->second, obj)) {
                     m_be_depend.erase(i);
                     break;
                 }
@@ -96,21 +97,8 @@ namespace pf {
             container::iterator i;
             for (i = m_be_depend.begin(); i != m_be_depend.end(); ++i) {
                 if (_match(id, i->first)) {
-                    if (plugin_manager::instance()->check_ready(i->second) ||
-                        (i->second->is_kind_of(OBJ_IDENTIFIER) &&
-                         function_manager::instance()->check_ready(i->second))) {
-                        return true;
-                    }
+                    return true;
                 }
-            }
-        }
-        
-        ptr<identifier> id = new id_name(obj->name());
-        const plugin_info* pi = plugin_manager::instance()->find_plugin(id);
-        if (pi != nullptr) {
-            ptr<cqueue<ptr<object>>> tasks = pi->threads->front()->pool();
-            if (tasks->size() > 0) {
-                return true;
             }
         }
         
@@ -148,10 +136,7 @@ namespace pf {
         if (pi != nullptr) {
             list<ptr<identifier>> func;
             
-            func = pi->pl->accepted_task();
-            result.insert(result.end(), func.begin(), func.end());
-            
-            func = pi->pl->accepted_event();
+            func = pi->pl->supported_event();
             result.insert(result.end(), func.begin(), func.end());
         }
         

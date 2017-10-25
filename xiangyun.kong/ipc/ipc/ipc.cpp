@@ -8,20 +8,15 @@
  */
 
 
-#include <sys/fcntl.h>
 #include <sys/time.h>
-#include <set>
 
 #include <lib/identifier/id_name.h>
 #include <lib/container/cqueue.h>
 
 #include <bus/bus.h>
 
-#include <plugin/executor/executor.h>
 #include <plugin/event/simple_event.h>
 #include <plugin/manager/plugin_manager.hpp>
-
-#include <common/identifier/id_task_response.hpp>
 
 #include <events.h>
 #include <ipc.hpp>
@@ -30,13 +25,11 @@ using namespace std;
 
 namespace pf {
 
-    // static const timeval MAX_TIMEOUT = {120, 0};
     static const timeval TIMEOUT = {10, 0};
     
     extern ptr<plugin> g_bus;
-    set<ptr<task>> g_waiting_tasks;
     ptr<cqueue<ptr<object>>> g_bus_pool = nullptr;
-
+    
     ptr<cqueue<ptr<object>>> get_bus_pool() {
         if (g_bus_pool == nullptr) {
             plugin_manager *pm = plugin_manager::instance();
@@ -46,62 +39,40 @@ namespace pf {
         return g_bus_pool;
     }
     
-    ptr<object> wait_event(ptr<identifier> id) {
-        if (g_bus != nullptr) {
-            timeval timeout;
-            gettimeofday(&timeout, nullptr);
-            timeout.tv_sec += TIMEOUT.tv_sec;
-            timeout.tv_usec += TIMEOUT.tv_usec;
-            ((ptr<bus>)g_bus)->set_waiting(id);
-            return ((ptr<bus>)g_bus)->wait_object(id, timeout);
-        }
-        return nullptr;
+    ptr<object> wait_object(ptr<identifier> id) {
+        ((ptr<bus>)g_bus)->add_waiting_object(id);
+        
+        timeval timeout;
+        gettimeofday(&timeout, nullptr);
+        timeout.tv_sec += TIMEOUT.tv_sec;
+        timeout.tv_usec += TIMEOUT.tv_usec;
+        return ((ptr<bus>)g_bus)->wait_object(id, timeout);
     }
     
     void send_message(ptr<event> evt) {
-        if (g_bus != nullptr) {
-
-            ptr<serializable> data = new serializable;
-            data << evt;
-            ptr<event> route_event = new simple_event(EVT_ROUTE, data);
-            
-            get_bus_pool()->push(route_event);
-        }
+        evt->should_response() = false;
+        get_bus_pool()->push(evt);
     }
 
-    ptr<response> do_task(ptr<task> tsk) {
-        if (g_bus != nullptr) {
-            ptr<serializable> data = new serializable;
-            data << tsk;
-            ptr<event> route_event = new simple_event(EVT_ROUTE, data);
+    ptr<response> call_function(ptr<event> evt) {
+        evt->should_response() = true;
+        ((ptr<bus>)g_bus)->add_rsp_trigger(evt, nullptr);
+        get_bus_pool()->push(evt);
 
-            ptr<id_task_response> id = new id_task_response(tsk);
-            ((ptr<bus>)g_bus)->set_waiting(id);
-            get_bus_pool()->push(route_event);
-
-            timeval timeout;
-            gettimeofday(&timeout, nullptr);
-            timeout.tv_sec += TIMEOUT.tv_sec;
-            timeout.tv_usec += TIMEOUT.tv_usec;
-            return ((ptr<bus>)g_bus)->wait_object(id, timeout);
-        }
-        
-        return nullptr;
+        timeval timeout;
+        gettimeofday(&timeout, nullptr);
+        timeout.tv_sec += TIMEOUT.tv_sec;
+        timeout.tv_usec += TIMEOUT.tv_usec;
+        return ((ptr<bus>)g_bus)->wait_response(evt, timeout);
     }
     
-    void do_task_async(ptr<task> tsk, task_callback callback) {
-        if (g_bus != nullptr) {
-            ptr<serializable> data = new serializable;
-            data << tsk;
-            ptr<event> route_event = new simple_event(EVT_ROUTE, data);
-            
-            ((ptr<bus>)g_bus)->set_event_trigger(new id_task_response(tsk),
-                                                 callback);
-            get_bus_pool()->push(route_event);
-        }
+    void call_function(ptr<event> evt, fcallback callback) {
+        evt->should_response() = true;
+        ((ptr<bus>)g_bus)->add_rsp_trigger(evt, callback);
+        get_bus_pool()->push(evt);
     }
     
-    ptr<serializable> pack_data() {
-        return new serializable;
+    ptr<serializable> pack_data(ptr<serializable>& ar) {
+        return ar;
     }
 }

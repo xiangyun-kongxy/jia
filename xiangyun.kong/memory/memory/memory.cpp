@@ -22,8 +22,8 @@ namespace mind {
     const string memory::m_path = "barren_memory";
     
     memory::memory() {
-        m_task_processor[F_LOAD_BARREN] = new load_barren;
-        m_event_processor[EVT_SAVE_BARREN] = new save_barren;
+        m_executors[F_LOAD_BARREN] = new load_barren;
+        m_triggers[EVT_SAVE_BARREN] = new save_barren;
     }
     
     void memory::write(ptr<barren> barren) {
@@ -33,10 +33,14 @@ namespace mind {
     }
     
     ptr<barren> memory::read(long id) {
-        serializable ar(kv_get(m_path, l2s(id)).c_str());
-        ptr<barren> b = new barren();
-        ar >> **b;
-        return b;
+        string buf = kv_get(m_path, l2s(id));
+        if (buf.length() > 0) {
+            serializable ar(buf.c_str());
+            ptr<barren> b = new barren(false);
+            ar >> **b;
+            return b;
+        }
+        return nullptr;
     }
 
     extern "C" void* init_memory(void* conf) {

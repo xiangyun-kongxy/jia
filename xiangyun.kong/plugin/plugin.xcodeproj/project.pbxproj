@@ -22,9 +22,6 @@
 		AD5F03F21F94FDDD002742B9 /* response.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03EF1F94FDDD002742B9 /* response.h */; };
 		AD5F03F31F94FDDD002742B9 /* simple_response.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F03F01F94FDDD002742B9 /* simple_response.cpp */; };
 		AD5F03F41F94FDDD002742B9 /* simple_response.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03F11F94FDDD002742B9 /* simple_response.h */; };
-		AD5F03F81F94FDEB002742B9 /* simple_task.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F03F51F94FDEB002742B9 /* simple_task.cpp */; };
-		AD5F03F91F94FDEB002742B9 /* simple_task.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03F61F94FDEB002742B9 /* simple_task.h */; };
-		AD5F03FA1F94FDEB002742B9 /* task.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03F71F94FDEB002742B9 /* task.h */; };
 		AD5F03FC1F94FDF8002742B9 /* trigger.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03FB1F94FDF8002742B9 /* trigger.h */; };
 		AD5F03FF1F94FE05002742B9 /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F03FD1F94FE05002742B9 /* version.cpp */; };
 		AD5F04001F94FE05002742B9 /* version.h in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03FE1F94FE05002742B9 /* version.h */; };
@@ -54,9 +51,6 @@
 		AD5F03EF1F94FDDD002742B9 /* response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = response.h; path = plugin/response/response.h; sourceTree = SOURCE_ROOT; };
 		AD5F03F01F94FDDD002742B9 /* simple_response.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = simple_response.cpp; path = plugin/response/simple_response.cpp; sourceTree = SOURCE_ROOT; };
 		AD5F03F11F94FDDD002742B9 /* simple_response.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = simple_response.h; path = plugin/response/simple_response.h; sourceTree = SOURCE_ROOT; };
-		AD5F03F51F94FDEB002742B9 /* simple_task.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = simple_task.cpp; path = plugin/task/simple_task.cpp; sourceTree = SOURCE_ROOT; };
-		AD5F03F61F94FDEB002742B9 /* simple_task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = simple_task.h; path = plugin/task/simple_task.h; sourceTree = SOURCE_ROOT; };
-		AD5F03F71F94FDEB002742B9 /* task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = task.h; path = plugin/task/task.h; sourceTree = SOURCE_ROOT; };
 		AD5F03FB1F94FDF8002742B9 /* trigger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = trigger.h; path = plugin/trigger/trigger.h; sourceTree = SOURCE_ROOT; };
 		AD5F03FD1F94FE05002742B9 /* version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = version.cpp; path = plugin/version/version.cpp; sourceTree = SOURCE_ROOT; };
 		AD5F03FE1F94FE05002742B9 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = version.h; path = plugin/version/version.h; sourceTree = SOURCE_ROOT; };
@@ -174,9 +168,6 @@
 		266BFDBE1DB26E6600E0FA0F /* task */ = {
 			isa = PBXGroup;
 			children = (
-				AD5F03F51F94FDEB002742B9 /* simple_task.cpp */,
-				AD5F03F61F94FDEB002742B9 /* simple_task.h */,
-				AD5F03F71F94FDEB002742B9 /* task.h */,
 			);
 			name = task;
 			path = src/task;
@@ -235,8 +226,6 @@
 				AD5F03E31F94FD22002742B9 /* simple_event.h in Headers */,
 				AD5F03F21F94FDDD002742B9 /* response.h in Headers */,
 				ADC522D11F978DAD00AAD2B9 /* dependence_manager.hpp in Headers */,
-				AD5F03FA1F94FDEB002742B9 /* task.h in Headers */,
-				AD5F03F91F94FDEB002742B9 /* simple_task.h in Headers */,
 				AD5F03FC1F94FDF8002742B9 /* trigger.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,7 +288,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD5F03F81F94FDEB002742B9 /* simple_task.cpp in Sources */,
 				ADC522D01F978DAD00AAD2B9 /* dependence_manager.cpp in Sources */,
 				AD5F03E21F94FD22002742B9 /* simple_event.cpp in Sources */,
 				AD5F03FF1F94FE05002742B9 /* version.cpp in Sources */,
@@ -406,13 +394,13 @@
 		266BFCF61DB26A3200E0FA0F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				DEVELOPMENT_TEAM = V26S23V64D;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
-				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				HEADER_SEARCH_PATHS = (
@@ -420,7 +408,7 @@
 					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../include",
 				);
-				OTHER_CFLAGS = "-fPIC";
+				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -429,13 +417,13 @@
 		266BFCF71DB26A3200E0FA0F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				DEVELOPMENT_TEAM = V26S23V64D;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
-				GCC_ENABLE_CPP_RTTI = YES;
+				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				HEADER_SEARCH_PATHS = (
@@ -443,7 +431,7 @@
 					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../include",
 				);
-				OTHER_CFLAGS = "-fPIC";
+				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

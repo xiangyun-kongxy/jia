@@ -27,12 +27,12 @@ namespace kxy {
         DECLARE_TYPE(executor, EXE_FETCH_ADD_GUID);
         
     public:
-        virtual ptr<response> run(ptr<plugin> owner, ptr<task> tsk) override {
+        virtual ptr<response> run(ptr<plugin> owner, ptr<event> evt) override {
             ptr<id_service> id_service = owner;
             ptr<serializable> result = new serializable;
             
             result << id_service->fetch_add_guid();
-            return new simple_response(tsk, EC_OK, EM_OK, result);
+            return new simple_response(evt, EC_OK, EM_OK, result);
         }
             
     };
