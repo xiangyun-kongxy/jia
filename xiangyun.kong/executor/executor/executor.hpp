@@ -10,7 +10,7 @@
 #ifndef executor_
 #define executor_
 
-#include <plugin/plugin/plugin.h>
+#include <plugin/plugin/plugin.hpp>
 #include <barren/barren.hpp>
 
 /* The classes below are exported */

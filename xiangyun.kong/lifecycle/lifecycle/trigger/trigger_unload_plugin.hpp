@@ -9,17 +9,16 @@
 #ifndef trigger_unload_plugin_h
 #define trigger_unload_plugin_h
 
-#include <lib/identifier/id_name.h>
+#include <lib/identifier/id_name.hpp>
 
-#include <plugin/trigger/trigger.h>
-#include <plugin/plugin/config.hpp>
+#include <plugin/trigger/trigger.hpp>
 #include <plugin/manager/plugin_manager.hpp>
 #include <plugin/manager/dependence_manager.hpp>
 
 #include <common/identifier/id_simple_event.hpp>
 
-#include <names.h>
-#include <events.h>
+#include <class_names.hpp>
+#include <messages.hpp>
 #include <ipc.hpp>
 #include <log.hpp>
 
@@ -42,24 +41,22 @@ namespace pf {
                 dependence_manager* dm = dependence_manager::instance();
                 plugin_manager* pm = plugin_manager::instance();
                 if (!dm->is_depended(id)) {
-                    while (pm->have_task(id) ||
-                           pm->have_task(new id_name(PLUGIN_BUS))) {
+                    while (pm->has_task(id) ||
+                           pm->has_task(new id_name(PLUGIN_BUS))) {
                         usleep(32000);
                     }
-                    const plugin_info* pi = pm->find_plugin(id);
-                    if (pi != nullptr) {
-                        info_log(logs::get_logger("info"), id->name() +
-                                 " is exiting...");
+                    ptr<plugin> pl = pm->find_plugin(id);
+                    if (pl != nullptr) {
+                        info_log("info", id->name() + " is exiting...");
                         
-                        broadcast(EVT_PLUGIN_UNINSTALLING, id->name());
-                        pi->pl->uninit();
-                        pm->suspend_plugin(id);
-                        broadcast(EVT_PLUGIN_UNINSTALLED, id->name());
-                        broadcast(EVT_PLUGIN_UNLOADING, id->name());
-                        pm->rm_plugin(id);
-                        broadcast(EVT_PLUGIN_UNLOADED, id->name());
+                        broadcast(M_PLUGIN_UNINSTALLING, id->name());
+                        pl->uninit();
+                        broadcast(M_PLUGIN_UNINSTALLED, id->name());
+                        broadcast(M_PLUGIN_UNLOADING, id->name());
+                        pl = nullptr;
+                        broadcast(M_PLUGIN_UNLOADED, id->name());
                         
-                        info_log(logs::get_logger("info"), id->name() + " is exited");
+                        info_log("info", id->name() + " is exited");
                     }
                 }
             }

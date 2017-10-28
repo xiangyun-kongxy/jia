@@ -11,6 +11,9 @@
 
 #include "switcher.hpp"
 #include <plugin/manager/plugin_manager.hpp>
+#include <iostream>
+
+using namespace std;
 
 namespace pf {
     
@@ -21,28 +24,36 @@ namespace pf {
         }
         
     public:
-        virtual void schedule(ptr<event> evt) override {
+        virtual void schedule(ptr<object> obj) override {
+            long retry = 1;
+
+            ptr<event> evt = obj;
             ptr<cqueue<ptr<object>>> pool;
-            pool = m_pools[evt->destination()->name()];
-            if (pool != nullptr) {
-                pool->push(evt);
+            do {
+                pool = m_pools[evt->destination()->name()];
+                if (pool != nullptr) {
+                    pool->push(evt);
+                    break;
+                }
+                update_plugins();
+            } while (retry-- > 0);
+            
+            if (retry <= 0) {
+                cout << "error" << endl;
             }
         }
         
         virtual void update_plugins() override {
             plugin_manager* pm = plugin_manager::instance();
             
-            pm->lock();
-            
-            list<plugin_info*> pi = pm->get_all_plugin();
+            list<ptr<plugin>> pls = pm->get_all_plugin();
             m_pools.clear();
-            for (plugin_info* i : pi) {
-                if (!i->pl->is_kind_of(PLUGIN_BUS)) {
-                    m_pools[i->pl->name()] = i->threads->front()->pool();
+            for (ptr<plugin> pl : pls) {
+                if (!pl->is_kind_of(PLUGIN_BUS)) {
+                    m_pools[pl->name()] = pl->tasks();
                 }
             }
             
-            pm->unlock();
         }
         
     private:

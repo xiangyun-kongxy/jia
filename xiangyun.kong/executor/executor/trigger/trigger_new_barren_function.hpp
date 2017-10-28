@@ -9,7 +9,7 @@
 #ifndef trigger_new_barren_fuction_h
 #define trigger_new_barren_fuction_h
 
-#include <plugin/trigger/trigger.h>
+#include <plugin/trigger/trigger.hpp>
 
 #include <executor/executor.hpp>
 

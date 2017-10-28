@@ -11,9 +11,11 @@
 #include "function_manager.hpp"
 
 #include <lib/init/initializer.hpp>
-#include <lib/identifier/id_name.h>
+#include <lib/identifier/id_name.hpp>
 
+#include <iostream>
 
+using namespace std;
 using namespace kxy;
 
 namespace pf {
@@ -43,7 +45,6 @@ namespace pf {
     
     dependence_manager::~dependence_manager() {
         m_depend.clear();
-        m_be_depend.clear();
     }
 
     void dependence_manager::add_depend(ptr<object> obj,
@@ -52,7 +53,6 @@ namespace pf {
 
         if (_exist(obj, be_depend) == m_depend.end()) {
             m_depend.push_back(container::value_type(obj, be_depend));
-            m_be_depend.push_back(container::value_type(be_depend, obj));
         }
     }
 
@@ -64,13 +64,6 @@ namespace pf {
         i = _exist(obj, be_depend);
         if (i != m_depend.end()) {
             m_depend.erase(i);
-
-            for (i = m_be_depend.begin(); i != m_be_depend.end(); ++i) {
-                if (_match(i->first, be_depend) && _match(i->second, obj)) {
-                    m_be_depend.erase(i);
-                    break;
-                }
-            }
         }
     }
 
@@ -80,8 +73,8 @@ namespace pf {
         container::iterator i;
         for (i = m_depend.begin(); i != m_depend.end(); ++i) {
             if (_match(i->first, obj)) {
-                if (!plugin_manager::instance()->check_ready(i->second) &&
-                    !function_manager::instance()->check_ready(i->second)) {
+                if (!plugin_manager::instance()->is_actived(i->second) &&
+                    !function_manager::instance()->is_actived(i->second)) {
                     return false;
                 }
             }
@@ -95,8 +88,8 @@ namespace pf {
         list<ptr<object>> objs = _extern_sub_obj(obj);
         for (ptr<object> id : objs) {
             container::iterator i;
-            for (i = m_be_depend.begin(); i != m_be_depend.end(); ++i) {
-                if (_match(id, i->first)) {
+            for (i = m_depend.begin(); i != m_depend.end(); ++i) {
+                if (_match(id, i->second)) {
                     return true;
                 }
             }
@@ -132,11 +125,10 @@ namespace pf {
         result.push_back(id);
         result.push_back(obj);
         
-        const plugin_info* pi = plugin_manager::instance()->find_plugin(id);
-        if (pi != nullptr) {
+        ptr<plugin> pl = plugin_manager::instance()->find_plugin(id);
+        if (pl != nullptr) {
             list<ptr<identifier>> func;
-            
-            func = pi->pl->supported_event();
+            func = pl->supported_event();
             result.insert(result.end(), func.begin(), func.end());
         }
         

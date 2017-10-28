@@ -12,11 +12,11 @@
 
 #include <id_service/id_service.hpp>
 
-#include <plugin/executor/executor.h>
-#include <plugin/response/simple_response.h>
+#include <plugin/executor/executor.hpp>
+#include <plugin/response/simple_response.hpp>
 
-#include <errors.h>
-#include <names.h>
+#include <errors.hpp>
+#include <class_names.hpp>
 
 
 using namespace pf;

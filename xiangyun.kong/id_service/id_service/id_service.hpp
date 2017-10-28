@@ -10,12 +10,11 @@
 #ifndef id_service_
 #define id_service_
 
-#include <lib/identifier/id_name.h>
+#include <lib/identifier/id_name.hpp>
 
-#include <plugin/plugin/plugin.h>
+#include <plugin/plugin/plugin.hpp>
 
-#include <functions.h>
-#include <events.h>
+#include <messages.hpp>
 
 /* The classes below are exported */
 #pragma GCC visibility push(default)
@@ -44,12 +43,12 @@ namespace kxy {
         virtual list<ptr<identifier>> depend_on() const override {
             list<ptr<identifier>> dependence;
             
-            dependence.push_back(new id_name(F_GET_CONFIG));
-            dependence.push_back(new id_name(EVT_PUT_CONFIG));
+            dependence.push_back(new id_name(M_GET_CONFIG));
+            dependence.push_back(new id_name(M_PUT_CONFIG));
             return dependence;
         }
 
-        virtual void init() override;
+        virtual void resume() override;
         virtual void uninit() override;
 
     private:

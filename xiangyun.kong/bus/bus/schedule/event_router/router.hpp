@@ -28,12 +28,13 @@ namespace pf {
         }
         
     public:
-        virtual void schedule(ptr<event> evt) override {
+        virtual void schedule(ptr<object> obj) override {
+            ptr<event> evt = obj;
             switcher* sw = m_forward_switchers[evt->destination()->type()];
             if (sw == nullptr) {
                 sw = m_default_forward;
             }
-            sw->schedule(evt);
+            sw->schedule(obj);
         }
         
     public:

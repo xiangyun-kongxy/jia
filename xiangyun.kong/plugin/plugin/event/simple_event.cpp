@@ -2,23 +2,18 @@
 // Created by 孔祥云 on 8/2/16.
 //
 
-#include "simple_event.h"
+#include "simple_event.hpp"
 
-#include <lib/identifier/id_any.h>
-#include <lib/identifier/id_name.h>
+#include <lib/identifier/id_any.hpp>
+#include <lib/identifier/id_name.hpp>
 
-#include <plugin/plugin/plugin.h>
+#include <plugin/plugin/plugin.hpp>
 
 using namespace kxy;
 
 namespace pf {
     
-    class terminal : public plugin {
-    public:
-        DECLARE_TYPE(plugin, "terminal");
-    };
-    
-    ptr<terminal> g_terminal = new terminal;
+    ptr<plugin> g_terminal;
     
     simple_event::simple_event(const string& name) :
     simple_event::simple_event(name, nullptr, new id_any()) {

@@ -11,11 +11,11 @@
 
 #include <stdio.h>
 
-#include <lib/object/object.h>
+#include <lib/object/object.hpp>
 
-#include <plugin/event/event.h>
+#include <plugin/event/event.hpp>
 
-#include <names.h>
+#include <class_names.hpp>
 
 using namespace kxy;
 
@@ -26,7 +26,6 @@ namespace pf {
         virtual ~scheduler() {}
         
     public:
-        virtual void schedule(ptr<event> evt) {}
         virtual void schedule(ptr<object> obj) {}
     };
     

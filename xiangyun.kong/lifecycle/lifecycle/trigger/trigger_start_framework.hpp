@@ -10,15 +10,15 @@
 #define trigger_start_framework_h
 
 
-#include <lib/identifier/id_name.h>
+#include <lib/identifier/id_name.hpp>
 
-#include <plugin/trigger/trigger.h>
-#include <plugin/plugin/config.hpp>
+#include <plugin/trigger/trigger.hpp>
+#include <plugin/plugin/plugin_config.hpp>
 
 #include <lifecycle/load/loader.hpp>
 
-#include <names.h>
-#include <events.h>
+#include <class_names.hpp>
+#include <messages.hpp>
 #include <ipc.hpp>
 
 namespace pf {
@@ -35,12 +35,12 @@ namespace pf {
             data >> path;
 
             char* buf;
-            list<config*> confs = loader::read_config_file(path, buf);
+            list<plugin_config*> confs;
+            confs = plugin_loader::read_config_file(path, buf);
             lifecycle->set_config(buf, confs);
             
-            list<config*>::const_iterator i;
-            for(i = confs.begin(); i != confs.end(); ++i) {
-                send_to(new id_name(PLUGIN_LIFECYCLE), EVT_LOAD_PLUGIN, *i);
+            for(plugin_config* conf : confs) {
+                send_to(new id_name(PLUGIN_LIFECYCLE), M_LOAD_PLUGIN, conf);
             }
         }
 

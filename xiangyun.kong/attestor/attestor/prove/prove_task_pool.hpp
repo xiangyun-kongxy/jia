@@ -9,7 +9,7 @@
 #ifndef prove_task_pool_hpp
 #define prove_task_pool_hpp
 
-#include <lib/container/cqueue.h>
+#include <lib/container/cqueue.hpp>
 
 #include <attestor/prove/prove_context.hpp>
 

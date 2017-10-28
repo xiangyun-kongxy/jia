@@ -24,22 +24,25 @@
       location = "container:"
       name = "include">
       <FileRef
-         location = "group:xiangyun.kong/include/names.h">
+         location = "group:xiangyun.kong/include/class_names.hpp">
       </FileRef>
       <FileRef
-         location = "group:xiangyun.kong/include/errors.h">
+         location = "group:xiangyun.kong/include/errors.hpp">
       </FileRef>
       <FileRef
-         location = "group:xiangyun.kong/include/functions.h">
+         location = "group:xiangyun.kong/include/messages.hpp">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/include/predefined_barren.hpp">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/include/log.hpp">
       </FileRef>
       <FileRef
          location = "group:xiangyun.kong/include/ipc.hpp">
       </FileRef>
       <FileRef
-         location = "group:xiangyun.kong/include/predefined_barren.h">
-      </FileRef>
-      <FileRef
-         location = "group:xiangyun.kong/include/events.h">
+         location = "group:xiangyun.kong/include/config_keys.hpp">
       </FileRef>
    </Group>
    <FileRef

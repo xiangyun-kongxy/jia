@@ -9,9 +9,9 @@
 #ifndef memory_hpp
 #define memory_hpp
 
-#include <lib/object/ptr.h>
+#include <lib/object/ptr.hpp>
 
-#include <plugin/plugin/plugin.h>
+#include <plugin/plugin/plugin.hpp>
 
 #include <barren/barren.hpp>
 

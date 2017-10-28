@@ -20,9 +20,9 @@
 		267BBFCF1E2130B300C6F0EE /* libleveldb.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libleveldb.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libleveldb.dylib"; sourceTree = "<group>"; };
 		267BBFD11E21310400C6F0EE /* memory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = memory.cpp; sourceTree = "<group>"; };
 		267BBFD21E21310400C6F0EE /* memory.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = memory.hpp; sourceTree = "<group>"; };
-		267BBFD71E21360300C6F0EE /* trigger_save_barren.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = trigger_save_barren.h; path = trigger/trigger_save_barren.h; sourceTree = "<group>"; };
+		267BBFD71E21360300C6F0EE /* trigger_save_barren.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = trigger_save_barren.hpp; path = trigger/trigger_save_barren.hpp; sourceTree = "<group>"; };
 		267BBFDD1E21F1F300C6F0EE /* libbarren.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbarren.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libbarren.dylib"; sourceTree = "<group>"; };
-		267BBFE01E21F3BC00C6F0EE /* exe_load_barren.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = exe_load_barren.h; path = executor/exe_load_barren.h; sourceTree = "<group>"; };
+		267BBFE01E21F3BC00C6F0EE /* exe_load_barren.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = exe_load_barren.hpp; path = executor/exe_load_barren.hpp; sourceTree = "<group>"; };
 		267BC0531E2B897400C6F0EE /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,7 +82,7 @@
 		267BBFD61E2135B000C6F0EE /* trigger */ = {
 			isa = PBXGroup;
 			children = (
-				267BBFD71E21360300C6F0EE /* trigger_save_barren.h */,
+				267BBFD71E21360300C6F0EE /* trigger_save_barren.hpp */,
 			);
 			name = trigger;
 			sourceTree = "<group>";
@@ -90,7 +90,7 @@
 		267BBFDF1E21F39A00C6F0EE /* executor */ = {
 			isa = PBXGroup;
 			children = (
-				267BBFE01E21F3BC00C6F0EE /* exe_load_barren.h */,
+				267BBFE01E21F3BC00C6F0EE /* exe_load_barren.hpp */,
 			);
 			name = executor;
 			sourceTree = "<group>";

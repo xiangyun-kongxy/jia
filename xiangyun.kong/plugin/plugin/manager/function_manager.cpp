@@ -7,7 +7,6 @@
 //
 
 #include "function_manager.hpp"
-#include "dependence_manager.hpp"
 
 #include <lib/init/initializer.hpp>
 
@@ -65,12 +64,10 @@ namespace pf {
     void function_manager::rm_function(ptr<identifier> function) {
         lock_guard<recursive_mutex> _(g_plugin_managing_mutex);
 
-        if (!dependence_manager::instance()->is_depended(function)) {
-            list<function_info>::iterator i;
-            i = find(m_functions.begin(), m_functions.end(), function);
-            if (i != m_functions.end()) {
-                m_functions.erase(i);
-            }
+        list<function_info>::iterator i;
+        i = find(m_functions.begin(), m_functions.end(), function);
+        if (i != m_functions.end()) {
+            m_functions.erase(i);
         }
     }
 
@@ -87,16 +84,14 @@ namespace pf {
     void function_manager::suspend_function(ptr<identifier> function) {
         lock_guard<recursive_mutex> _(g_plugin_managing_mutex);
 
-        if (!dependence_manager::instance()->is_depended(function)) {
-            list<function_info>::iterator i;
-            i = find(m_functions.begin(), m_functions.end(), function);
-            if (i != m_functions.end()) {
-                (*i).is_active = false;
-            }
+        list<function_info>::iterator i;
+        i = find(m_functions.begin(), m_functions.end(), function);
+        if (i != m_functions.end()) {
+            (*i).is_active = false;
         }
     }
 
-    bool function_manager::check_ready(ptr<kxy::identifier> id) {
+    bool function_manager::is_actived(ptr<identifier> id) {
         lock_guard<recursive_mutex> _(g_plugin_managing_mutex);
 
         list<function_info>::iterator i;

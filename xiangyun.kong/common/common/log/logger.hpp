@@ -11,9 +11,9 @@
 
 #include <stdio.h>
 
-#include <lib/object/object.h>
+#include <lib/object/object.hpp>
 
-#include <names.h>
+#include <class_names.hpp>
 
 #include <sys/time.h>
 #include <mutex>
@@ -47,7 +47,9 @@ namespace kxy {
         void error(const string& msg);
         
     protected:
-        void _log(const timeval& tv, pthread_t thread, log_level level, const string& msg);
+        void _log(const timeval& tv, pthread_t thread, log_level level,
+                  const char* plugin_name, const char* task_name,
+                  const string& msg);
         static void* _commit_log(void*);
         
     private:

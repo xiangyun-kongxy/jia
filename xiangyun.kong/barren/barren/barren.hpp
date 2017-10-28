@@ -13,8 +13,8 @@
 #include <string>
 #include <list>
 
-#include <lib/object/reference.h>
-#include <lib/object/ptr.h>
+#include <lib/object/reference.hpp>
+#include <lib/object/ptr.hpp>
 #include <lib/serialize/serializable.hpp>
 
 using namespace kxy;

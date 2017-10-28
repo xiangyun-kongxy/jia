@@ -11,15 +11,15 @@
 #include <set>
 #include <semaphore.h>
 
-#include <lib/identifier/id_name.h>
-#include <lib/lock/auto_lock.h>
+#include <lib/identifier/id_name.hpp>
+#include <lib/lock/auto_lock.hpp>
 #include <lib/init/initializer.hpp>
 
 #include <barren/util/barren_io.hpp>
 
 #include <ipc.hpp>
-#include <functions.h>
-#include <names.h>
+#include <class_names.hpp>
+#include <messages.hpp>
 
 using namespace kxy;
 using namespace pf;
@@ -117,7 +117,7 @@ namespace mind {
             if (cur == max) {
                 ptr<serializable> rsp;
                 rsp = call_plugin(new id_name(PLUGIN_ID_SERVICE),
-                                  F_FETCH_ADD_GUID_BENCH, 10000L);
+                                  M_FETCH_ADD_GUID_BENCH, 10000L);
                 if (rsp != nullptr) {
                     rsp >> cur;
                     max = cur + 10000L;

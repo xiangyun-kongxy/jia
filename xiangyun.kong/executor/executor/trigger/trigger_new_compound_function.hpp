@@ -9,7 +9,7 @@
 #ifndef trigger_new_compound_function_h
 #define trigger_new_compound_function_h
 
-#include <plugin/trigger/trigger.h>
+#include <plugin/trigger/trigger.hpp>
 
 #include <executor/executor.hpp>
 

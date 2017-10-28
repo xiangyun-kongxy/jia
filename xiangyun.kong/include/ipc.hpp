@@ -10,10 +10,10 @@
 #define ipc_h
 
 #include <lib/serialize/serializable.hpp>
-#include <lib/identifier/identifier.h>
+#include <lib/identifier/identifier.hpp>
 
-#include <plugin/plugin/plugin.h>
-#include <plugin/event/simple_event.h>
+#include <plugin/plugin/plugin.hpp>
+#include <plugin/event/simple_event.hpp>
 
 using namespace kxy;
 

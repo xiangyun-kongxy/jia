@@ -9,17 +9,19 @@
 #ifndef trigger_stop_framework_h
 #define trigger_stop_framework_h
 
-#include <lib/identifier/id_name.h>
+#include <lib/identifier/id_name.hpp>
 
-#include <plugin/trigger/trigger.h>
+#include <plugin/trigger/trigger.hpp>
 #include <plugin/manager/plugin_manager.hpp>
 #include <plugin/manager/dependence_manager.hpp>
 
 #include <common/identifier/id_simple_event.hpp>
 
-#include <names.h>
-#include <events.h>
+#include <class_names.hpp>
+#include <messages.hpp>
 #include <ipc.hpp>
+
+#include <unistd.h>
 
 namespace pf {
     
@@ -37,20 +39,20 @@ namespace pf {
 
             plugin_manager* pm = plugin_manager::instance();
             dependence_manager* dm = dependence_manager::instance();
-            list<plugin_info*> pis;
+            list<ptr<plugin>> pls;
             do {
-                pis = pm->get_all_plugin();
-                for (plugin_info* pi : pis) {
-                    
-                    if (exc_plugin.end() == exc_plugin.find(pi->pl->name()) &&
-                        !dm->is_depended(pi->pl)) {
-                        send_to(new id_name(PLUGIN_LIFECYCLE), EVT_UNLOAD_PLUGIN,
-                                new id_name(pi->pl->name()));
-                        exc_plugin.insert(pi->pl->name());
+                pls = pm->get_all_plugin();
+                for (ptr<plugin> pl : pls) {
+
+                    if (exc_plugin.end() == exc_plugin.find(pl->name()) &&
+                        !dm->is_depended(pl)) {
+                        send_to(new id_name(PLUGIN_LIFECYCLE), M_UNLOAD_PLUGIN,
+                                ptr<id_name>(new id_name(pl->name())));
+                        exc_plugin.insert(pl->name());
                     }
                 }
                 sleep(1);
-            } while (pis.size() > 2);
+            } while (pls.size() > 2);
         }
         
     };

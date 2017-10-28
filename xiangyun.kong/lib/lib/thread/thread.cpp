@@ -8,11 +8,12 @@
  *
  */
 
-#include "thread.h"
+#include "thread.hpp"
+
 #include <pthread/pthread.h>
 #include <unistd.h>
 
-#include <lib/convert/basic_type_convert.h>
+#include <lib/convert/basic_type_convert.hpp>
 
 namespace kxy {
     
@@ -26,11 +27,11 @@ namespace kxy {
     }
     
     thread::~thread() {
-        stop(true);
+
     }
-    
+
     void* thread::thread_func(void *param) {
-        thread *obj = (thread*)param;
+        thread* obj= (thread*)param;
         while (obj->status() != stopped) {
             obj->update_status();
             if (obj->status() == running) {
@@ -39,20 +40,7 @@ namespace kxy {
                 sem_wait(obj->m_status_changing);
             }
         }
-        obj->m_thread = nullptr;
-        return nullptr;
-    }
-    
-    long thread::start() {
-        if (m_status == pending || m_status == paused || m_status == stopped) {
-            if (m_thread == nullptr) {
-                pthread_create(&m_thread, nullptr, thread::thread_func, this);
-            }
-            change_status(resuming);
-            wait_status();
-            return 0;
-        }
-        return -1;
+        return obj->m_thread = nullptr;
     }
     
     long thread::pause() {
@@ -65,7 +53,7 @@ namespace kxy {
     }
     
     long thread::resume() {
-        if (m_status == paused) {
+        if (m_status == paused || m_status == pending) {
             change_status(resuming);
             wait_status();
             return 0;
@@ -73,23 +61,6 @@ namespace kxy {
         return -1;
     }
     
-    long thread::stop(bool force) {
-        int result = 0;
-        if (m_thread != nullptr) {
-            if (force) {
-                result = pthread_cancel(m_thread);
-                m_thread = nullptr;
-                change_status(pending);
-            } else {
-                change_status(stopping);
-                wait_status();
-            }
-        } else {
-            m_status = stopped;
-        }
-        return result;
-    }
-
     void thread::update_status() {
         long old_status = status();
 
@@ -100,12 +71,8 @@ namespace kxy {
         m_status.compare_exchange_strong(exchange, running);
 
         exchange = stopping;
-        if (m_status.compare_exchange_strong(exchange, stopped)) {
-            pthread_cancel(m_thread);
-            m_thread = nullptr;
-            change_status(pending);
-        }
-
+        m_status.compare_exchange_strong(exchange, stopped);
+        
         if (status() != old_status) {
             sem_post(m_status_changed);
         }
@@ -125,6 +92,14 @@ namespace kxy {
                 break;
             }
             sem_wait(m_status_changed);
+        }
+    }
+
+    void thread::kill_thread() {
+        if (m_thread != nullptr) {
+            change_status(stopping);
+            wait_status();
+            m_thread = nullptr;
         }
     }
 

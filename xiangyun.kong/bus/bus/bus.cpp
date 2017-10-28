@@ -2,18 +2,18 @@
 // Created by 孔祥云 on 8/10/16.
 //
 
-#include "bus.h"
+#include "bus.hpp"
 
 #include <unistd.h>
 #include <sys/fcntl.h>
 #include <sys/time.h>
 
-#include <lib/lock/auto_lock.h>
-#include <lib/identifier/id_name.h>
-#include <plugin/executor/executor.h>
+#include <lib/lock/auto_lock.hpp>
+#include <lib/identifier/id_name.hpp>
+#include <plugin/executor/executor.hpp>
 
-#include <events.h>
-#include <names.h>
+#include <messages.hpp>
+#include <class_names.hpp>
 
 #include <mutex>
 
@@ -120,7 +120,7 @@ namespace pf {
         } while (0);
         
         ptr<event> evt = rsp->org_event();
-        info_log(logs::get_logger("bus"), evt->name() + " " +
+        info_log("bus", evt->name() + " " +
                  evt->deliver()->name() + " <- " +
                  evt->destination()->name());
     }

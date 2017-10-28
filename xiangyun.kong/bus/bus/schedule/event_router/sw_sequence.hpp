@@ -21,29 +21,34 @@ namespace pf {
         }
         
     public:
-        virtual void schedule(ptr<event> evt) override {
-            map<ptr<plugin>, ptr<cqueue<ptr<object>>>>::iterator i;
-            for (i = m_pools.begin(); i != m_pools.end(); ++i) {
-                if (evt->destination()->match(i->first)) {
-                    i->second->push(evt);
+        virtual void schedule(ptr<object> obj) override {
+            long retry = 1;
+            do {
+                ptr<event> evt = obj;
+                map<ptr<plugin>, ptr<cqueue<ptr<object>>>>::iterator i;
+                for (i = m_pools.begin(); i != m_pools.end(); ++i) {
+                    if (evt->destination()->match(i->first)) {
+                        i->second->push(evt);
+                        --retry;
+                    }
                 }
-            }
+                if (retry > 0) {
+                    update_plugins();
+                }
+            } while (retry-- > 0);
         }
         
         virtual void update_plugins() override {
             plugin_manager* pm = plugin_manager::instance();
             
-            pm->lock();
-            
-            list<plugin_info*> pi = pm->get_all_plugin();
+            list<ptr<plugin>> pls = pm->get_all_plugin();
             m_pools.clear();
-            for (plugin_info* i : pi) {
-                if (!i->pl->is_kind_of(PLUGIN_BUS)) {
-                    m_pools[i->pl] = i->threads->front()->pool();
+            for (ptr<plugin> pl : pls) {
+                if (!pl->is_kind_of(PLUGIN_BUS)) {
+                    m_pools[pl] = pl->tasks();
                 }
             }
             
-            pm->unlock();
         }
         
     private:

@@ -9,10 +9,11 @@
 #ifndef serializable_hpp
 #define serializable_hpp
 
-#include "../convert/basic_type_convert.h"
-#include "../object/object.h"
-#include "decl_serializable.h"
-#include "../object/ptr.h"
+#include "decl_serializable.hpp"
+
+#include <lib/convert/basic_type_convert.hpp>
+#include <lib/object/object.hpp>
+#include <lib/object/ptr.hpp>
 
 #include <stdio.h>
 #include <sstream>
@@ -35,29 +36,18 @@ namespace kxy {
         DECLARE_TYPE(object, OBJ_SERIALIZABLE);
         
     public:
-        string buf() {
-            if (m_buf.size() == 0) {
-                return "";
-            }
-            
-            list<string>::const_iterator i = m_buf.begin();
-            string str = *i++;
-            while (i != m_buf.end()) {
-                str = str + SS1 + *i++;
-            }
-            return str;
-        }
-        
+        string buf();
+
     public:
         
-#define def_serialize_type(type_name)           \
-    serializable& operator << (type_name c) {   \
-        save(c);                                \
-        return *this;                           \
-    }                                           \
-    serializable& operator >> (type_name& c) {  \
-        load(c);                                \
-        return *this;                           \
+#define def_serialize_type(type_name)                           \
+    serializable& operator << (type_name c) {                   \
+        save(c);                                                \
+        return *this;                                           \
+    }                                                           \
+    serializable& operator >> (type_name& c) {                  \
+        load(c);                                                \
+        return *this;                                           \
     }
 
 #define def_serialize_iterator(type_name)                       \
@@ -103,15 +93,37 @@ namespace kxy {
                 *this << i->first;
                 *this << i->second;
             }
+
             return *this;
         }
-        
+
+        template<class key_type, class value_type>
+        serializable& operator >> (map<key_type, value_type>& m) {
+            long size;
+            *this >> size;
+            for (long i = 0; i < size; ++i) {
+                key_type key;
+                value_type value;
+                *this >> key >> value;
+                m[key] = value;
+            }
+            return *this;
+        }
+
         template<class value_type>
         serializable& operator << (value_type* v) {
             long x = (long) v;
             return *this << x;
         }
-        
+
+        template<class value_type>
+        serializable& operator >> (value_type* &v) {
+            long x = 0L;
+            *this >> x;
+            v = (value_type*)x;
+            return *this;
+        }
+
         serializable& operator << (const char* str) {
             long len = strlen(str);
             long count = len / sizeof(long);
@@ -123,7 +135,7 @@ namespace kxy {
             
             *this << len;
             for (i = 0; i < count; ++i) {
-                *this << ((const long*)str)[i];
+                *this << ((long*)str)[i];
             }
             *this << last;
             
@@ -131,8 +143,8 @@ namespace kxy {
         }
         
         serializable& operator >> (string& str) {
-            long len = s2l(m_buf.front().c_str());
-            m_buf.pop_front();
+            long len;
+            *this >> len;
             
             char* buf = new char[(len / sizeof(long) + 1) * sizeof(long)];
             long i;
@@ -152,19 +164,7 @@ namespace kxy {
             return (*this) << str.c_str();
         }
         
-        template<class key_type, class value_type>
-        serializable& operator >> (map<key_type, value_type>& m) {
-            long size;
-            *this >> size;
-            for (long i = 0; i < size; ++i) {
-                key_type key;
-                value_type value;
-                *this >> key >> value;
-                m[key] = value;
-            }
-            return *this;
-        }
-        
+
         template<class value_type>
         serializable& operator >> (list<value_type>& l) {
             long size;
@@ -201,15 +201,6 @@ namespace kxy {
             }
             return *this;
         }
-        
-        template<class value_type>
-        serializable& operator >> (value_type* &v) {
-            long x = 0L;
-            *this >> x;
-            v = (value_type*)x;
-            return *this;
-        }
-
         template<class type>
         serializable& operator << (ptr<type> data) {
             m_hold_reference.insert(data);

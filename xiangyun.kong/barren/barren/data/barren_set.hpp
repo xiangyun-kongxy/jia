@@ -10,7 +10,8 @@
 #define barren_set_hpp
 
 #include <stdio.h>
-#include "../barren.hpp"
+
+#include <barren/barren.hpp>
 
 namespace mind {
     

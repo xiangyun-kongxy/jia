@@ -9,48 +9,56 @@
 
 #include "loader.hpp"
 
-#include <lib/identifier/id_name.h>
+#include <lib/identifier/id_name.hpp>
 #include <lib/init/initializer.hpp>
 
-#include <plugin/plugin/plugin.h>
+#include <plugin/plugin/plugin.hpp>
 #include <plugin/manager/plugin_manager.hpp>
 #include <plugin/manager/dependence_manager.hpp>
 
-#include <bus/bus.h>
+#include <bus/bus.hpp>
 
 #include <lifecycle/lifecycle.hpp>
 
-#include <events.h>
-#include <names.h>
+#include <messages.hpp>
+#include <class_names.hpp>
 
 #include <log.hpp>
 
 #include <sys/signal.h>
+#include <unistd.h>
 
 using namespace kxy;
 namespace pf {
+
+    class terminal : public plugin {
+    public:
+        DECLARE_TYPE(plugin, "terminal");
+    };
+
     
     extern ptr<plugin> g_lifecycle;
     extern ptr<plugin> g_bus;
+    extern ptr<plugin> g_terminal;
 
     void sig_func(int);
     
     void loader::load(const string& conf_path) {
-        plugin_manager* pm = plugin_manager::instance();
+        g_terminal = new terminal;
 
-        info_log(logs::get_logger("info"),"bus is loading...");
+        info_log("info","bus is loading...");
         g_bus = new bus();
-        pm->add_plugin(g_bus);
-        pm->active_plugin(new id_name(PLUGIN_BUS));
-        info_log(logs::get_logger("info"), "bus is loaded");
+        g_bus->init();
+        g_bus->resume();
+        info_log("info", "bus is loaded");
 
-        info_log(logs::get_logger("info"), "lifecycle is loading...");
+        info_log("info", "lifecycle is loading...");
         g_lifecycle = new lifecycle();
-        pm->add_plugin(g_lifecycle);
-        pm->active_plugin(new id_name(PLUGIN_LIFECYCLE));
-        info_log(logs::get_logger("info"), "lifecycle is loaded");
+        g_lifecycle->init();
+        g_lifecycle->resume();
+        info_log("info", "lifecycle is loaded");
 
-        send_to(new id_name(PLUGIN_LIFECYCLE), EVT_START_FRAMEWORK, conf_path);
+        send_to(new id_name(PLUGIN_LIFECYCLE), M_START_FRAMEWORK, conf_path);
 
         signal(SIGABRT, sig_func);
         signal(SIGTERM, sig_func);
@@ -62,25 +70,25 @@ namespace pf {
     }
     
     void loader::unload() {
-        send_to(new id_name(PLUGIN_LIFECYCLE), EVT_STOP_FRAMEWORK);
+        send_to(new id_name(PLUGIN_LIFECYCLE), M_STOP_FRAMEWORK);
 
         plugin_manager* pm = plugin_manager::instance();
     
         while (pm->get_all_plugin().size() > 2 ||
-               pm->have_task(new id_name(PLUGIN_LIFECYCLE)) ||
-               pm->have_task(new id_name(PLUGIN_BUS))) {
+               pm->has_task(new id_name(PLUGIN_LIFECYCLE)) ||
+               pm->has_task(new id_name(PLUGIN_BUS))) {
             sleep(1);
         }
 
-        info_log(logs::get_logger("info"), "lifecycle is exiting...");
-        pm->rm_plugin(new id_name(PLUGIN_LIFECYCLE));
+        info_log("info", "lifecycle is exiting...");
+        g_lifecycle->uninit();
         g_lifecycle = nullptr;
-        info_log(logs::get_logger("info"), "lifecycle is exited");
+        info_log("info", "lifecycle is exited");
 
-        info_log(logs::get_logger("info"), "bus is exiting...");
-        pm->rm_plugin(new id_name(PLUGIN_BUS));
+        info_log("info", "bus is exiting...");
+        g_bus->uninit();
         g_bus = nullptr;
-        info_log(logs::get_logger("info"), "bus is exited");
+        info_log("info", "bus is exited");
 
         do_cleanup();
     }

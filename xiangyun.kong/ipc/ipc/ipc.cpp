@@ -10,15 +10,15 @@
 
 #include <sys/time.h>
 
-#include <lib/identifier/id_name.h>
-#include <lib/container/cqueue.h>
+#include <lib/identifier/id_name.hpp>
+#include <lib/container/cqueue.hpp>
 
-#include <bus/bus.h>
+#include <bus/bus.hpp>
 
-#include <plugin/event/simple_event.h>
+#include <plugin/event/simple_event.hpp>
 #include <plugin/manager/plugin_manager.hpp>
 
-#include <events.h>
+#include <messages.hpp>
 #include <ipc.hpp>
 
 using namespace std;
@@ -28,16 +28,6 @@ namespace pf {
     static const timeval TIMEOUT = {10, 0};
     
     extern ptr<plugin> g_bus;
-    ptr<cqueue<ptr<object>>> g_bus_pool = nullptr;
-    
-    ptr<cqueue<ptr<object>>> get_bus_pool() {
-        if (g_bus_pool == nullptr) {
-            plugin_manager *pm = plugin_manager::instance();
-            const plugin_info* pi = pm->find_plugin(new id_name(PLUGIN_BUS));
-            g_bus_pool = pi->threads->front()->pool();
-        }
-        return g_bus_pool;
-    }
     
     ptr<object> wait_object(ptr<identifier> id) {
         ((ptr<bus>)g_bus)->add_waiting_object(id);
@@ -51,13 +41,13 @@ namespace pf {
     
     void send_message(ptr<event> evt) {
         evt->should_response() = false;
-        get_bus_pool()->push(evt);
+        g_bus->tasks()->push(evt);
     }
 
     ptr<response> call_function(ptr<event> evt) {
         evt->should_response() = true;
         ((ptr<bus>)g_bus)->add_rsp_trigger(evt, nullptr);
-        get_bus_pool()->push(evt);
+        g_bus->tasks()->push(evt);
 
         timeval timeout;
         gettimeofday(&timeout, nullptr);
@@ -69,7 +59,7 @@ namespace pf {
     void call_function(ptr<event> evt, fcallback callback) {
         evt->should_response() = true;
         ((ptr<bus>)g_bus)->add_rsp_trigger(evt, callback);
-        get_bus_pool()->push(evt);
+        g_bus->tasks()->push(evt);
     }
     
     ptr<serializable> pack_data(ptr<serializable>& ar) {

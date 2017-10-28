@@ -9,7 +9,7 @@
 #ifndef config_center_hpp
 #define config_center_hpp
 
-#include <plugin/plugin/plugin.h>
+#include <plugin/plugin/plugin.hpp>
 
 using namespace pf;
 

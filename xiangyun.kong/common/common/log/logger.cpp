@@ -8,9 +8,11 @@
 
 #include "logger.hpp"
 
-#include <plugin/manager/plugin_manager.hpp>
+#include <plugin/manager/thread_manager.hpp>
 
 #include <log.hpp>
+
+#include <unistd.h>
 
 using namespace pf;
 
@@ -34,12 +36,23 @@ namespace kxy {
         }
 
         if (m_level >= LL_DEBUG) {
+            const char* plugin_name = "none";
+            const char* task_name = "none";
+            ptr<plugin> pl = thread_manager::instance()->current_plugin();
+            if (pl != nullptr) {
+                plugin_name = pl->name().c_str();
+            }
+            ptr<event> evt = thread_manager::instance()->current_task();
+            if (evt != nullptr) {
+                task_name = evt->name().c_str();
+            }
+
             pthread_t thread;
             timeval now;
             thread = pthread_self();
             gettimeofday(&now, nullptr);
             
-            _log(now, thread, LL_DEBUG, msg);
+            _log(now, thread, LL_DEBUG, plugin_name, task_name, msg);
         }
     }
     
@@ -49,12 +62,23 @@ namespace kxy {
         }
 
         if (m_level >= LL_INFO) {
+            const char* plugin_name = "none";
+            const char* task_name = "none";
+            ptr<plugin> pl = thread_manager::instance()->current_plugin();
+            if (pl != nullptr) {
+                plugin_name = pl->name().c_str();
+            }
+            ptr<event> evt = thread_manager::instance()->current_task();
+            if (evt != nullptr) {
+                task_name = evt->name().c_str();
+            }
+
             pthread_t thread;
             timeval now;
             thread = pthread_self();
             gettimeofday(&now, nullptr);
-            
-            _log(now, thread, LL_INFO, msg);
+
+            _log(now, thread, LL_INFO, plugin_name, task_name, msg);
         }
     }
     
@@ -64,12 +88,23 @@ namespace kxy {
         }
 
         if (m_level >= LL_WARN) {
+            const char* plugin_name = "none";
+            const char* task_name = "none";
+            ptr<plugin> pl = thread_manager::instance()->current_plugin();
+            if (pl != nullptr) {
+                plugin_name = pl->name().c_str();
+            }
+            ptr<event> evt = thread_manager::instance()->current_task();
+            if (evt != nullptr) {
+                task_name = evt->name().c_str();
+            }
+
             pthread_t thread;
             timeval now;
             thread = pthread_self();
             gettimeofday(&now, nullptr);
-            
-            _log(now, thread, LL_WARN, msg);
+
+            _log(now, thread, LL_WARN, plugin_name, task_name, msg);
         }
     }
     
@@ -79,16 +114,28 @@ namespace kxy {
         }
         
         if (m_level >= LL_ERROR) {
+            const char* plugin_name = "none";
+            const char* task_name = "none";
+            ptr<plugin> pl = thread_manager::instance()->current_plugin();
+            if (pl != nullptr) {
+                plugin_name = pl->name().c_str();
+            }
+            ptr<event> evt = thread_manager::instance()->current_task();
+            if (evt != nullptr) {
+                task_name = evt->name().c_str();
+            }
+
             pthread_t thread;
             timeval now;
             thread = pthread_self();
             gettimeofday(&now, nullptr);
             
-            _log(now, thread, LL_ERROR, msg);
+            _log(now, thread, LL_ERROR, plugin_name, task_name, msg);
         }
     }
     
     void logger::_log(const timeval& tv, pthread_t thread, log_level level,
+                      const char* plugin_name, const char* task_name,
                       const string& msg) {
         static const char* level_mapping[] = {
             "debug",
@@ -100,22 +147,11 @@ namespace kxy {
         char tb[32];
         strftime(tb, 32, "%F %T", localtime(&tv.tv_sec));
         
-        const char* plugin = "terminal";
-        const char* task = "freedom";
-        plugin_manager* pm = plugin_manager::instance();
-        context_info ci = pm->get_context_by_thread_id(thread);
-        if (ci.plugin != nullptr) {
-            plugin = ci.plugin->name().c_str();
-        }
-        if (ci.task != nullptr) {
-            task = ci.task->name().c_str();
-        }
-
         char log_buf[MAX_LOG_LINE_SIZE + 1] = "";
         snprintf(log_buf, MAX_LOG_LINE_SIZE,
-                 "[%5s][%s %06d][%016lx][%-10s][%-16s]%s\n",
-                 level_mapping[level], tb, tv.tv_usec, (long)thread, plugin,
-                 task, msg.c_str());
+                 "[%5s][%s %06d][%016lx][%-16s][%-20s]%s\n",
+                 level_mapping[level], tb, tv.tv_usec, (long)thread,
+                 plugin_name, task_name, msg.c_str());
         
         do {
             lock_guard<mutex> _(m_mutex);

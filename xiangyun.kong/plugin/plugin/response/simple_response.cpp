@@ -2,7 +2,7 @@
 // Created by xiangyun.kong on 8/8/16.
 //
 
-#include "simple_response.h"
+#include "simple_response.hpp"
 
 namespace pf {
 

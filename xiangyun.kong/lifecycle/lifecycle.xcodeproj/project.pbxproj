@@ -68,13 +68,6 @@
 			name = load;
 			sourceTree = "<group>";
 		};
-		26036D361E0EB4BE005D4D02 /* executor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = executor;
-			sourceTree = "<group>";
-		};
 		26784DF01E003A9700FCE82B = {
 			isa = PBXGroup;
 			children = (
@@ -98,7 +91,6 @@
 				AD5F03CF1F94F535002742B9 /* lifecycle.cpp */,
 				AD5F03D01F94F535002742B9 /* lifecycle.hpp */,
 				AD5F03CB1F94F4A2002742B9 /* trigger */,
-				26036D361E0EB4BE005D4D02 /* executor */,
 				26036D2A1E0E88E9005D4D02 /* load */,
 			);
 			name = lifecycle;

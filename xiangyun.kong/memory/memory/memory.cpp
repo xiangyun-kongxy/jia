@@ -8,22 +8,21 @@
 
 #include "memory.hpp"
 
-#include <lib/fs/kv.h>
+#include <lib/fs/kv.hpp>
 #include <lib/serialize/serializable.hpp>
 
-#include <memory/trigger/trigger_save_barren.h>
-#include <memory/executor/exe_load_barren.h>
+#include <memory/trigger/trigger_save_barren.hpp>
+#include <memory/executor/exe_load_barren.hpp>
 
-#include <functions.h>
-#include <events.h>
+#include <messages.hpp>
 
 namespace mind {
     
     const string memory::m_path = "barren_memory";
     
     memory::memory() {
-        m_executors[F_LOAD_BARREN] = new load_barren;
-        m_triggers[EVT_SAVE_BARREN] = new save_barren;
+        m_executors[M_LOAD_BARREN] = new load_barren;
+        m_triggers[M_SAVE_BARREN] = new save_barren;
     }
     
     void memory::write(ptr<barren> barren) {

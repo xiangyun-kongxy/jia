@@ -12,8 +12,8 @@
 #include <stdio.h>
 #include <map>
 
-#include <lib/object/object.h>
-#include <lib/object/ptr.h>
+#include <lib/object/object.hpp>
+#include <lib/object/ptr.hpp>
 
 #include <barren/barren.hpp>
 

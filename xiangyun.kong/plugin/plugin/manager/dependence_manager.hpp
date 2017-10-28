@@ -11,9 +11,9 @@
 
 #include <stdio.h>
 
-#include <lib/identifier/identifier.h>
-#include <lib/object/object.h>
-#include <lib/object/ptr.h>
+#include <lib/identifier/identifier.hpp>
+#include <lib/object/object.hpp>
+#include <lib/object/ptr.hpp>
 
 #include <list>
 #include <mutex>
@@ -25,6 +25,7 @@ namespace pf {
 
     class dependence_manager {
     private:
+        friend class plugin_manager;
         friend void __init_dependence_manager();
         friend void __uninit_dependence_manager();
         typedef list<pair<ptr<object>,ptr<object>>> container;
@@ -34,13 +35,13 @@ namespace pf {
     public:
         static dependence_manager* instance();
         
-    public:
+        bool is_depend_ready(ptr<object> obj);
+        bool is_depended(ptr<object> obj);
+
+    private:
         void add_depend(ptr<object> obj, ptr<object> be_depend);
         void rm_depend(ptr<object> obj, ptr<object> be_depend);
 
-        bool is_depend_ready(ptr<object> obj);
-        bool is_depended(ptr<object> obj);
-        
     private:
         container::iterator _exist(ptr<object>, ptr<object>);
         bool _match(ptr<object>, ptr<object>);
@@ -48,8 +49,6 @@ namespace pf {
 
     private:
         container m_depend;
-        container m_be_depend;
-
     };
     
 }

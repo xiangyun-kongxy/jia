@@ -8,22 +8,21 @@
 
 #include "config_center.hpp"
 
-#include <lib/fs/kv.h>
+#include <lib/fs/kv.hpp>
 
-#include <config_center/executor/exe_get_config.h>
-#include <config_center/trigger/trigger_put_config.h>
+#include <config_center/executor/exe_get_config.hpp>
+#include <config_center/trigger/trigger_put_config.hpp>
 
-#include <functions.h>
-#include <events.h>
-#include <names.h>
+#include <messages.hpp>
+#include <class_names.hpp>
 
 namespace kxy {
     
     const string config_center::m_service = "config_service";
     
     config_center::config_center() {
-        m_executors[F_GET_CONFIG] = new get_config;
-        m_triggers[EVT_PUT_CONFIG] = new put_config;
+        m_executors[M_GET_CONFIG] = new get_config;
+        m_triggers[M_PUT_CONFIG] = new put_config;
     }
     
     string config_center::get(const string &key) {

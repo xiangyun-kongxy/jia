@@ -9,25 +9,12 @@
 #ifndef lifecycle_hpp
 #define lifecycle_hpp
 
-#include <plugin/plugin/plugin.h>
-#include <plugin/plugin/config.hpp>
+#include <plugin/plugin/plugin.hpp>
+#include <plugin/plugin/plugin_config.hpp>
 
 namespace pf {
 
-    enum plugin_status {
-        PS_UNKNOWN,
-        PS_LOADING,
-        PS_LOADED,
-        PS_INSTALLING,
-        PS_INSTALLED,
-        PS_RUNNING,
-        PS_UPGRADING,
-        PS_UPGRADED,
-        PS_UNINSTALLING,
-        PS_UNINSTALLED,
-        PS_UNLOADING,
-        PS_UNLOADED,
-    };
+
     
     class lifecycle : public plugin {
     public:
@@ -38,10 +25,13 @@ namespace pf {
         virtual ~lifecycle();
 
     public:
-        void set_config(char* buf, const list<config*>& configs);
+        virtual void init() override;
+
+    public:
+        void set_config(char* buf, const list<plugin_config*>& configs);
 
     private:
-        map<char*, list<config*>> m_configs;
+        map<char*, list<plugin_config*>> m_configs;
     };
     
 }

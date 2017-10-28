@@ -8,15 +8,13 @@
 
 #include "barren_io.hpp"
 
-#include <lib/identifier/id_name.h>
+#include <lib/identifier/id_name.hpp>
 
-#include <plugin/event/simple_event.h>
-#include <plugin/response/response.h>
+#include <plugin/response/response.hpp>
 
 #include <ipc.hpp>
-#include <functions.h>
-#include <events.h>
-#include <names.h>
+#include <messages.hpp>
+#include <class_names.hpp>
 
 using namespace pf;
 
@@ -27,7 +25,7 @@ namespace mind {
     ptr<barren> load_barren(long id) {
         ptr<barren> barren;
         ptr<serializable> rsp;
-        rsp = call_plugin(g_barren_provider, F_LOAD_CACHE_BARREN, id);
+        rsp = call_plugin(g_barren_provider, M_LOAD_CACHE_BARREN, id);
         if (rsp != nullptr) {
             rsp >> barren;
         }
@@ -35,7 +33,7 @@ namespace mind {
     }
     
     void save_barren(ptr<barren> obj) {
-        send_to(g_barren_provider, EVT_SAVE_CACHE_BARREN, obj);
+        send_to(g_barren_provider, M_SAVE_CACHE_BARREN, obj);
     }
     
 }

@@ -11,7 +11,7 @@
 
 #include <string>
 
-#include <lib/object/ptr.h>
+#include <lib/object/ptr.hpp>
 
 #include <barren/barren.hpp>
 

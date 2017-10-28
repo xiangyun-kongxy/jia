@@ -26,8 +26,8 @@
 		267BC00F1E29278E00C6F0EE /* libmemory.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmemory.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libmemory.dylib"; sourceTree = "<group>"; };
 		267BC0111E29279500C6F0EE /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
 		267BC01A1E293A0500C6F0EE /* libbus.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbus.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libbus.dylib"; sourceTree = "<group>"; };
-		267BC01C1E293F9100C6F0EE /* trigger_save_cache_barren.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = trigger_save_cache_barren.h; path = trigger/trigger_save_cache_barren.h; sourceTree = "<group>"; };
-		267BC01D1E29409A00C6F0EE /* exe_load_cache_barren.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = exe_load_cache_barren.h; path = executor/exe_load_cache_barren.h; sourceTree = "<group>"; };
+		267BC01C1E293F9100C6F0EE /* trigger_save_cache_barren.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = trigger_save_cache_barren.hpp; path = trigger/trigger_save_cache_barren.hpp; sourceTree = "<group>"; };
+		267BC01D1E29409A00C6F0EE /* exe_load_cache_barren.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = exe_load_cache_barren.hpp; path = executor/exe_load_cache_barren.hpp; sourceTree = "<group>"; };
 		267BC01F1E2941B800C6F0EE /* cache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cache.cpp; path = cache/cache.cpp; sourceTree = "<group>"; };
 		267BC0201E2941B800C6F0EE /* cache.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = cache.hpp; path = cache/cache.hpp; sourceTree = "<group>"; };
 		268A6D681F91F647000B6648 /* libipc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libipc.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libipc.dylib"; sourceTree = "<group>"; };
@@ -93,7 +93,7 @@
 		267BC0131E29336B00C6F0EE /* executor */ = {
 			isa = PBXGroup;
 			children = (
-				267BC01D1E29409A00C6F0EE /* exe_load_cache_barren.h */,
+				267BC01D1E29409A00C6F0EE /* exe_load_cache_barren.hpp */,
 			);
 			name = executor;
 			sourceTree = "<group>";
@@ -101,7 +101,7 @@
 		267BC0141E29337800C6F0EE /* trigger */ = {
 			isa = PBXGroup;
 			children = (
-				267BC01C1E293F9100C6F0EE /* trigger_save_cache_barren.h */,
+				267BC01C1E293F9100C6F0EE /* trigger_save_cache_barren.hpp */,
 			);
 			name = trigger;
 			sourceTree = "<group>";

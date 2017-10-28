@@ -11,38 +11,44 @@
 
 #include <iostream>
 
-#include <lib/identifier/id_name.h>
+#include <lib/identifier/id_name.hpp>
 #include <lib/serialize/serializable.hpp>
-#include <lib/convert/basic_type_convert.h>
+#include <lib/convert/basic_type_convert.hpp>
 
 #include <id_service/executor/exe_fetch_add_guid.hpp>
 #include <id_service/executor/exe_fetch_add_guid_bench.hpp>
 #include <id_service/executor/exe_get_cur_guid.hpp>
-#include <id_service/trigger/trigger_set_guid.h>
+#include <id_service/trigger/trigger_set_guid.hpp>
 
 
 #include <ipc.hpp>
-#include <functions.h>
-#include <events.h>
-#include <predefined_barren.h>
+#include <messages.hpp>
+#include <config_keys.hpp>
+
+#include <predefined_barren.hpp>
 
 namespace kxy {
     
     id_service::id_service() {
         m_cur_id = BARREN_FREE_BEGIN;
         
-        m_executors[F_FETCH_ADD_GUID]       = new class fetch_add_guid;
-        m_executors[F_FETCH_ADD_GUID_BENCH] = new fetch_add_guid_bench;
-        m_executors[F_GET_CUR_CUID]         = new class get_cur_guid;
+        m_executors[M_FETCH_ADD_GUID]       = new class fetch_add_guid;
+        m_executors[M_FETCH_ADD_GUID_BENCH] = new fetch_add_guid_bench;
+        m_executors[M_GET_CUR_GUID]         = new class get_cur_guid;
 
-        m_triggers[EVT_SET_GUID]            = new class set_guid;
+        m_triggers[M_SET_GUID]            = new class set_guid;
     }
     
-    void id_service::init() {
+    void id_service::resume() {
+        plugin::resume();
+        
         load_guid();
     }
+    
     void id_service::uninit() {
         save_guid();
+
+        plugin::uninit();
     }
     
     void id_service::set_guid(long id) {
@@ -65,7 +71,7 @@ namespace kxy {
 
     void id_service::load_guid() {
         ptr<serializable> rsp;
-        rsp = call_plugin(new id_name(PLUGIN_CONFIG_CENTER), F_GET_CONFIG,
+        rsp = call_plugin(new id_name(PLUGIN_CONFIG_CENTER), M_GET_CONFIG,
                           CFG_CUR_GUID);
         if (rsp != nullptr) {
             string id;
@@ -75,7 +81,7 @@ namespace kxy {
     }
     
     void id_service::save_guid() {
-        send_to(new id_name(PLUGIN_CONFIG_CENTER), EVT_PUT_CONFIG,
+        send_to(new id_name(PLUGIN_CONFIG_CENTER), M_PUT_CONFIG,
                 CFG_CUR_GUID, l2s(get_guid()));
     }
     

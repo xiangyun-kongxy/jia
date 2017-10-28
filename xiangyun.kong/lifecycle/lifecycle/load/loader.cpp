@@ -10,18 +10,20 @@
 
 #include <dlfcn.h>
 
-#include <lib/fs/file_util.h>
+#include <lib/fs/file_util.hpp>
 
-#include <functions.h>
-#include <names.h>
+#include <class_names.hpp>
+#include <config_keys.hpp>
+
+#include <log.hpp>
 
 using namespace kxy;
 using namespace rapidxml;
 
 namespace pf {
     
-    list<config*> loader::read_config_file(const string &path, char*& buf) {
-        list<config*> confs;
+    list<plugin_config*> plugin_loader::read_config_file(const string &path, char*& buf) {
+        list<plugin_config*> confs;
 
         string conf = file_util::read(path);
         buf = new char[conf.length() + 1];
@@ -33,7 +35,7 @@ namespace pf {
         if(root != nullptr) {
             xml_node<>* child = root->first_node(CFG_PLUGIN.c_str());
             while(child != nullptr) {
-                confs.push_back(new config(child));
+                confs.push_back(new plugin_config(child));
                 child = child->next_sibling(CFG_PLUGIN.c_str());
             }
         }
@@ -41,7 +43,7 @@ namespace pf {
         return confs;
     }
     
-    ptr<plugin> loader::load_plugin(const config *conf) {
+    ptr<plugin> plugin_loader::load_plugin(const plugin_config *conf) {
         string lib_path = conf->get_lib_path();
         string init_func_name = conf->get_init_func();
 
@@ -50,7 +52,11 @@ namespace pf {
             void* init_func = dlsym(lib, init_func_name.c_str());
             if (init_func != nullptr) {
                 return ((plugin_init_func)init_func)(conf->get_private_param());
+            } else {
+                error_log("error", init_func_name + ": " + dlerror());
             }
+        } else {
+            error_log("error", lib_path + ": " + dlerror());
         }
         return nullptr;
     }

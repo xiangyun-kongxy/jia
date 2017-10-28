@@ -23,7 +23,7 @@
 		268A6D411F91DD11000B6648 /* exe_get_cur_guid.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = exe_get_cur_guid.hpp; path = executor/exe_get_cur_guid.hpp; sourceTree = "<group>"; };
 		268A6D421F91DD2D000B6648 /* exe_fetch_add_guid.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = exe_fetch_add_guid.hpp; path = executor/exe_fetch_add_guid.hpp; sourceTree = "<group>"; };
 		268A6D431F91DF67000B6648 /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
-		268A6D6B1F92009D000B6648 /* trigger_set_guid.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = trigger_set_guid.h; path = trigger/trigger_set_guid.h; sourceTree = "<group>"; };
+		268A6D6B1F92009D000B6648 /* trigger_set_guid.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = trigger_set_guid.hpp; path = trigger/trigger_set_guid.hpp; sourceTree = "<group>"; };
 		AD620C171F9A81B500F39E20 /* exe_fetch_add_guid_bench.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = exe_fetch_add_guid_bench.hpp; path = executor/exe_fetch_add_guid_bench.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,7 +92,7 @@
 		268A6D6A1F92005E000B6648 /* trigger */ = {
 			isa = PBXGroup;
 			children = (
-				268A6D6B1F92009D000B6648 /* trigger_set_guid.h */,
+				268A6D6B1F92009D000B6648 /* trigger_set_guid.hpp */,
 			);
 			name = trigger;
 			sourceTree = "<group>";

@@ -9,11 +9,11 @@
 #ifndef id_simple_event_h
 #define id_simple_event_h
 
-#include <lib/identifier/identifier.h>
+#include <lib/identifier/identifier.hpp>
 
-#include <plugin/event/simple_event.h>
+#include <plugin/event/simple_event.hpp>
 
-#include <names.h>
+#include <class_names.hpp>
 
 using namespace pf;
 

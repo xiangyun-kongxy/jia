@@ -7,11 +7,10 @@
 //
 
 #include "barren_set.hpp"
-#include "../util/barren_io.hpp"
+
+#include <barren/util/barren_io.hpp>
 
 namespace mind {
-    
-    
     
     void barren_set::add(long id) {
         lock();

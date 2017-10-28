@@ -8,17 +8,16 @@
 
 #include "barren_cache.hpp"
 
-#include <lib/identifier/id_name.h>
+#include <lib/identifier/id_name.hpp>
 
-#include <plugin/event/simple_event.h>
+#include <plugin/event/simple_event.hpp>
 
-#include <barren_cache/trigger/trigger_save_cache_barren.h>
-#include <barren_cache/executor/exe_load_cache_barren.h>
+#include <barren_cache/trigger/trigger_save_cache_barren.hpp>
+#include <barren_cache/executor/exe_load_cache_barren.hpp>
 
-#include <functions.h>
-#include <events.h>
+#include <messages.hpp>
 #include <ipc.hpp>
-#include <names.h>
+#include <class_names.hpp>
 
 namespace mind {
     
@@ -27,8 +26,8 @@ namespace mind {
         // TODO: capacity from config
         m_cache = new cache(640000);
         
-        m_triggers[EVT_SAVE_CACHE_BARREN] = new class save_cache_barren;
-        m_executors[F_LOAD_CACHE_BARREN] = new class load_cache_barren;
+        m_triggers[M_SAVE_CACHE_BARREN] = new class save_cache_barren;
+        m_executors[M_LOAD_CACHE_BARREN] = new class load_cache_barren;
     }
     
     ptr<barren> barren_cache::load_barren(long id) {
@@ -52,7 +51,7 @@ namespace mind {
     }
     
     ptr<barren> barren_cache::load_barren_from_memory(long id) {
-        ptr<serializable> rsp = call_plugin(m_provider, F_LOAD_BARREN, id);
+        ptr<serializable> rsp = call_plugin(m_provider, M_LOAD_BARREN, id);
         ptr<barren> barren = nullptr;
         if (rsp != nullptr) {
             rsp >> barren;
@@ -61,7 +60,7 @@ namespace mind {
     }
     
     void barren_cache::save_barren_to_memory(ptr<barren> obj) {
-        send_to(m_provider, EVT_SAVE_BARREN, obj);
+        send_to(m_provider, M_SAVE_BARREN, obj);
     }
     
     extern "C" void* init_barren_cache(void* conf) {

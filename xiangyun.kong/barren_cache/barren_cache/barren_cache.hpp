@@ -9,14 +9,13 @@
 #ifndef barren_cache_hpp
 #define barren_cache_hpp
 
-#include <lib/identifier/id_name.h>
+#include <lib/identifier/id_name.hpp>
 
-#include <plugin/plugin/plugin.h>
+#include <plugin/plugin/plugin.hpp>
 
 #include <barren_cache/cache/cache.hpp>
 
-#include <events.h>
-#include <functions.h>
+#include <messages.hpp>
 
 using namespace pf;
 
@@ -34,8 +33,8 @@ namespace mind {
     public:
         virtual list<ptr<identifier>> depend_on() const override {
             list<ptr<identifier>> dependence;
-            dependence.push_back(new id_name(EVT_SAVE_BARREN));
-            dependence.push_back(new id_name(F_LOAD_BARREN));
+            dependence.push_back(new id_name(M_SAVE_BARREN));
+            dependence.push_back(new id_name(M_LOAD_BARREN));
             
             return dependence;
         }

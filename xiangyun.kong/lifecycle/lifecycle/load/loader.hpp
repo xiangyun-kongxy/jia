@@ -9,8 +9,8 @@
 #ifndef loader_hpp
 #define loader_hpp
 
-#include <plugin/plugin/plugin.h>
-#include <plugin/plugin/config.hpp>
+#include <plugin/plugin/plugin.hpp>
+#include <plugin/plugin/plugin_config.hpp>
 
 #include <list>
 
@@ -18,10 +18,11 @@ using namespace std;
 
 namespace pf {
     
-    class loader {
+    class plugin_loader {
     public:
-        static list<config*> read_config_file(const string& path, char*& buf);
-        static ptr<plugin> load_plugin(const config* conf);
+        static list<plugin_config*> read_config_file(const string& path,
+                                                     char*& buf);
+        static ptr<plugin> load_plugin(const plugin_config* conf);
         
     };
     

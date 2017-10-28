@@ -9,10 +9,10 @@
 #ifndef trigger_load_plugin_h
 #define trigger_load_plugin_h
 
-#include <lib/identifier/id_name.h>
+#include <lib/identifier/id_name.hpp>
 
-#include <plugin/trigger/trigger.h>
-#include <plugin/plugin/config.hpp>
+#include <plugin/trigger/trigger.hpp>
+#include <plugin/plugin/plugin_config.hpp>
 #include <plugin/manager/plugin_manager.hpp>
 #include <plugin/manager/dependence_manager.hpp>
 
@@ -20,8 +20,8 @@
 
 #include <common/identifier/id_simple_event.hpp>
 
-#include <names.h>
-#include <events.h>
+#include <class_names.hpp>
+#include <messages.hpp>
 #include <ipc.hpp>
 
 #include <log.hpp>
@@ -40,36 +40,38 @@ namespace pf {
         virtual void happen(ptr<plugin> owner, ptr<event> evt) override {
             ptr<lifecycle> lifecycle = owner;
             ptr<serializable> data = evt->param();
-            config* conf = nullptr;
+            plugin_config* conf = nullptr;
             data >> conf;
 
             if (conf != nullptr) {
-                info_log(logs::get_logger("info"), conf->get_name() +
-                         " is loading...");
+                info_log("info", conf->get_name() + " is loading...");
                 
-                broadcast(EVT_PLUGIN_LOADING, conf->get_name());
-                ptr<plugin> plugin = loader::load_plugin(conf);
-                broadcast(EVT_PLUGIN_LOADED, conf->get_name());
+                broadcast(M_PLUGIN_LOADING, conf->get_name());
+                ptr<plugin> plugin = plugin_loader::load_plugin(conf);
+                if (plugin == nullptr) {
+                    error_log("error", conf->get_name() + " failed to load.");
+                    return;
+                }
+                broadcast(M_PLUGIN_LOADED, conf->get_name());
 
-                broadcast(EVT_PLUGIN_INSTALLING, conf->get_name());
-                plugin_manager::instance()->add_plugin(plugin);
+                broadcast(M_PLUGIN_INSTALLING, conf->get_name());
+                plugin->init();
 
                 dependence_manager* dm = dependence_manager::instance();
-                plugin_manager* pm = plugin_manager::instance();
                 do {
                     if (dm->is_depend_ready(plugin)) {
-                        plugin->init();
-                        broadcast(EVT_PLUGIN_INSTALLED, conf->get_name());
-                        pm->active_plugin(new id_name(plugin->name()));
-                        broadcast(EVT_PLUGIN_RUNNING, conf->get_name());
+                        broadcast(M_PLUGIN_INSTALLED, conf->get_name());
+                        plugin->resume();
+                        broadcast(M_PLUGIN_RUNNING, conf->get_name());
                         break;
                     } else {
-                        wait_object(new id_simple_event(EVT_PLUGIN_RUNNING));
+                        wait_object(new id_simple_event(M_PLUGIN_RUNNING));
                     }
                 } while (true);
                 
-                info_log(logs::get_logger("info"), conf->get_name() +
-                         " is loaded");
+                info_log("info", conf->get_name() + " is loaded");
+            } else {
+                cout << "error" << endl;
             }
 
         }

@@ -25,5 +25,18 @@ namespace kxy {
             split = strtok_r(NULL, SS1, &context);
         }
     }
-    
+
+    string serializable::buf() {
+        if (m_buf.size() == 0) {
+            return "";
+        }
+
+        list<string>::const_iterator i = m_buf.begin();
+        string str = *i++;
+        while (i != m_buf.end()) {
+            str = str + SS1 + *i++;
+        }
+        return str;
+    }
+
 }

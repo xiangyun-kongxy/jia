@@ -12,7 +12,7 @@
 #include <barren/barren.hpp>
 #include <barren/util/barren_io.hpp>
 
-#include <predefined_barren.h>
+#include <predefined_barren.hpp>
 
 #include <iostream>
 #include <time.h>

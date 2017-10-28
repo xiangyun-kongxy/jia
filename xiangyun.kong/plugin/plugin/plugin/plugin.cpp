@@ -2,18 +2,18 @@
 // Created by xiangyun.kong on 8/8/16.
 //
 
-#include "plugin.h"
+#include "plugin.hpp"
+
+#include <lib/identifier/id_name.hpp>
+
+#include <plugin/manager/thread_manager.hpp>
+#include <plugin/manager/plugin_manager.hpp>
+#include <plugin/response/simple_response.hpp>
+#include <plugin/event/simple_event.hpp>
+
+#include <errors.hpp>
 
 #include <pthread.h>
-
-#include <lib/identifier/id_name.h>
-
-#include <plugin/manager/plugin_manager.hpp>
-#include <plugin/response/simple_response.h>
-#include <plugin/event/simple_event.h>
-
-#include <errors.h>
-
 #include <iostream>
 
 using namespace kxy;
@@ -23,7 +23,13 @@ namespace pf {
     
     ptr<plugin> g_lifecycle = nullptr;
     ptr<plugin> g_bus = nullptr;
-    
+
+    plugin::plugin() {
+        m_status = PS_LOADING;
+
+        m_status = PS_LOADED;
+    }
+
     void plugin::on_event(ptr<event> evt) {
         ptr<trigger> trigger = nullptr;
         if (evt != nullptr) {
@@ -48,14 +54,6 @@ namespace pf {
         return list<ptr<identifier>>();
     }
 
-    void plugin::init() {
-        
-    }
-    
-    void plugin::uninit() {
-        
-    }
-    
     list<ptr<identifier>> plugin::supported_event() const {
         list<ptr<identifier>> evt;
         map<string,ptr<trigger>>::const_iterator i;
@@ -71,15 +69,103 @@ namespace pf {
     }
 
     ptr<plugin> plugin::current_plugin() {
-        plugin_manager* manager = plugin_manager::instance();
-        context_info ci = manager->get_context_by_thread_id(pthread_self());
-        return ci.plugin;
+        return thread_manager::instance()->current_plugin();
     }
     
-    ptr<object> plugin::current_task() {
-        plugin_manager* manager = plugin_manager::instance();
-        context_info ci = manager->get_context_by_thread_id(pthread_self());
-        return ci.task;
+    ptr<event> plugin::current_task() {
+        return thread_manager::instance()->current_task();
     }
 
+    void plugin::init() {
+        lock_guard<mutex> _(m_mutex);
+
+        m_status = PS_INSTALLING;
+        
+        m_tasks = new cqueue<ptr<object>>;
+        
+        thread_manager* tm = thread_manager::instance();
+        m_threads.push_back(tm->create_thread_for_plugin(this));
+        
+        plugin_manager* pm = plugin_manager::instance();
+        pm->add_plugin(this);
+
+        m_status = PS_INSTALLED;
+    }
+
+    void plugin::suspend() {
+        lock_guard<mutex> _(m_mutex);
+
+        plugin_manager* pm = plugin_manager::instance();
+        pm->plugin_suspended(this);
+
+        thread_manager* tm = thread_manager::instance();
+        for (pthread_t thread : m_threads) {
+            tm->suspend_thread(thread);
+        }
+
+        m_status = PS_INSTALLED;
+    }
+
+    void plugin::resume() {
+        lock_guard<mutex> _(m_mutex);
+
+        thread_manager* tm = thread_manager::instance();
+        for (pthread_t thread : m_threads) {
+            tm->resume_thread(thread);
+        }
+
+        plugin_manager* pm = plugin_manager::instance();
+        pm->plugin_actived(this);
+
+        m_status = PS_RUNNING;
+    }
+
+    void plugin::uninit() {
+        lock_guard<mutex> _(m_mutex);
+
+        m_status = PS_UNINSTALLING;
+
+        thread_manager* tm = thread_manager::instance();
+        for (pthread_t thread : m_threads) {
+            tm->delete_thread(thread);
+        }
+        m_threads.clear();
+
+        plugin_manager* pm = plugin_manager::instance();
+        pm->rm_plugin(this);
+
+        m_status = PS_UNINSTALLED;
+    }
+
+    plugin_status plugin::status() {
+        return m_status;
+    }
+
+    ptr<cqueue<ptr<object>>> plugin::tasks() {
+        return m_tasks;
+    }
+
+    void plugin::inc_thread() {
+        lock_guard<mutex> _(m_mutex);
+
+        thread_manager* tm = thread_manager::instance();
+        pthread_t thread_id = tm->create_thread_for_plugin(this);
+        m_threads.push_back(thread_id);
+
+        if (m_status == PS_RUNNING) {
+            tm->resume_thread(thread_id);
+        }
+    }
+
+    void plugin::dec_thread() {
+        lock_guard<mutex> _(m_mutex);
+
+        if (m_threads.size() > 1) {
+            pthread_t thread_id = m_threads.front();
+            m_threads.pop_front();
+
+            thread_manager* tm = thread_manager::instance();
+            tm->delete_thread(thread_id);
+        }
+    }
 }
