@@ -26,8 +26,16 @@ namespace kxy {
     class id_service : public plugin
     {
     public:
-        id_service();
         DECLARE_TYPE(plugin, PLUGIN_ID_SERVICE);
+        
+        IMPL_BEGIN
+        IMPL_F(T_INT, M_FETCH_ADD_GUID)
+        IMPL_F(T_INT, M_FETCH_ADD_GUID_BENCH, T_INT)
+        IMPL_F(T_INT, M_GET_CUR_GUID)
+        IMPL_F(T_NONE, M_SET_GUID, T_INT)
+        IMPL_END
+    public:
+        id_service();
         
     public:
         void set_guid(long id);

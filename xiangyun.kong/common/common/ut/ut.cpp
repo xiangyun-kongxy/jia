@@ -1,15 +1,15 @@
 //
 //  ut.cpp
-//  ut
+//  common
 //
-//  Created by 孔祥云 on 10/14/17.
-//  Copyright © 2017 孔祥云. All rights reserved.
+//  Created by 孔祥云 on 10/29/17.
+//  Copyright © 2017 xiangyun.kong. All rights reserved.
 //
-
-#include "ut.hpp"
 
 #include <unistd.h>
 #include <iostream>
+
+#include <ut.hpp>
 
 using namespace std;
 
@@ -32,7 +32,6 @@ void show_ut_help() {
     cout << endl;
     cout << "\t* all" << endl;
     cout << "\t* exit" << endl;
-    cout << "\t* help | h | ?" << endl;
 }
 
 void run_ut() {

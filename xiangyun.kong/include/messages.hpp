@@ -67,5 +67,7 @@ static const string M_PUBLISH                       = "publish";
 static const string M_INC_THREAD                    = "inc_thread";
 static const string M_DEC_THREAD                    = "dec_thread";
 static const string M_SHOW_TASK_COUNT               = "show_ctask";
+static const string M_SHOW_PLUGINS                  = "show_plugins";
+
 
 #endif /* events_h */

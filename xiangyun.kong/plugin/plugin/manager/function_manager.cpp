@@ -45,23 +45,23 @@ namespace pf {
     }
 
     void function_manager::add_function(ptr<plugin> owner,
-                                        ptr<identifier> function) {
+                                        ptr<function> func) {
         lock_guard<recursive_mutex> _(g_plugin_managing_mutex);
         
         list<function_info>::iterator i;
-        i = find(m_functions.begin(), m_functions.end(), function);
-        if (i == m_functions.end()) {
+        i = find(m_functions.begin(), m_functions.end(), func);
+        if (i == m_functions.end() || i->provider != owner) {
             function_info fi;
-            fi.function = function;
+            fi.func = func;
             fi.is_active = false;
             fi.provider = owner;
             m_functions.push_back(fi);
         } else {
-            cout << "error: function " << function->name() << " duplicated." << endl;
+            cout << "error: function " << func->name() << " duplicated." << endl;
         }
     }
 
-    void function_manager::rm_function(ptr<identifier> function) {
+    void function_manager::rm_function(ptr<function> function) {
         lock_guard<recursive_mutex> _(g_plugin_managing_mutex);
 
         list<function_info>::iterator i;
@@ -71,7 +71,7 @@ namespace pf {
         }
     }
 
-    void function_manager::active_function(ptr<identifier> function) {
+    void function_manager::active_function(ptr<function> function) {
         lock_guard<recursive_mutex> _(g_plugin_managing_mutex);
 
         list<function_info>::iterator i;
@@ -81,7 +81,7 @@ namespace pf {
         }
     }
 
-    void function_manager::suspend_function(ptr<identifier> function) {
+    void function_manager::suspend_function(ptr<function> function) {
         lock_guard<recursive_mutex> _(g_plugin_managing_mutex);
 
         list<function_info>::iterator i;

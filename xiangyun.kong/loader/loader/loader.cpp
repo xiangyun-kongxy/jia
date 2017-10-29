@@ -36,6 +36,8 @@ namespace pf {
     class terminal : public plugin {
     public:
         DECLARE_TYPE(plugin, "terminal");
+        IMPL_BEGIN
+        IMPL_END
     };
 
     
@@ -105,7 +107,6 @@ namespace pf {
         g_ps = nullptr;
         info_log("info", "publish-subscribe is exited");
         
-        do_cleanup();
     }
 
     void sig_func(int sig) {
@@ -119,6 +120,7 @@ namespace pf {
                 signal(SIGQUIT, SIG_IGN);
                 signal(SIGINT,  SIG_IGN);
                 loader::unload();
+                do_cleanup();
                 signal(SIGABRT, SIG_DFL);
                 signal(SIGTERM, SIG_DFL);
                 signal(SIGQUIT, SIG_DFL);

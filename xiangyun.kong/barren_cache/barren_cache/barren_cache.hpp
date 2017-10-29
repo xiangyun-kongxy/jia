@@ -23,8 +23,15 @@ namespace mind {
     
     class barren_cache : public plugin {
     public:
-        barren_cache();
         DECLARE_TYPE(plugin, PLUGIN_BARREN_CACHE);
+        
+        IMPL_BEGIN
+        IMPL_F(T_USER, M_LOAD_CACHE_BARREN, T_INT)
+        IMPL_F(T_NONE, M_SAVE_CACHE_BARREN, T_USER)
+        IMPL_END
+        
+    public:
+        barren_cache();
         
     public:
         ptr<barren> load_barren(long id);

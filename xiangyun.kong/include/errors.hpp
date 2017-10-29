@@ -28,4 +28,7 @@ static const string EM_NOT_EXIST = "not exist";
 static const long EC_PARAM = 3L;
 static const string EM_PARAM = "parameter is invalid";
 
+static const long EC_PLUGIN_NOT_FOUND = 4L;
+static const string EM_PLUGIN_NOT_FOUND = "plugin not found";
+
 #endif //PLUGIN_ERRORS_H

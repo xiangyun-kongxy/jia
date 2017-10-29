@@ -53,7 +53,7 @@ namespace pf {
         if (m_plugins.find(pl) == m_plugins.end()) {
             m_plugins.insert(pl);
 
-            for (ptr<identifier> function : pl->supported_event()) {
+            for (ptr<function> function : pl->supported_functions()) {
                 function_manager::instance()->add_function(pl, function);
             }
             for (ptr<identifier> obj : pl->depend_on()) {
@@ -70,7 +70,7 @@ namespace pf {
         lock_guard<recursive_mutex> _(g_plugin_managing_mutex);
 
         if (m_plugins.find(pl) != m_plugins.end()) {
-            for (ptr<identifier> function : pl->supported_event()) {
+            for (ptr<function> function : pl->supported_functions()) {
                 function_manager::instance()->rm_function(function);
             }
             for (ptr<identifier> obj : pl->depend_on()) {
@@ -108,7 +108,7 @@ namespace pf {
     void plugin_manager::plugin_actived(ptr<pf::plugin> pl) {
         lock_guard<recursive_mutex> _(g_plugin_managing_mutex);
 
-        for (ptr<identifier> function : pl->supported_event()) {
+        for (ptr<function> function : pl->supported_functions()) {
             function_manager::instance()->active_function(function);
         }
 
@@ -118,7 +118,7 @@ namespace pf {
     void plugin_manager::plugin_suspended(ptr<pf::plugin> pl) {
         lock_guard<recursive_mutex> _(g_plugin_managing_mutex);
 
-        for (ptr<identifier> function : pl->supported_event()) {
+        for (ptr<function> function : pl->supported_functions()) {
             function_manager::instance()->suspend_function(function);
         }
 

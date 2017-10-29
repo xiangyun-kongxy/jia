@@ -3,6 +3,13 @@
    version = "1.0">
    <Group
       location = "container:"
+      name = "conf">
+      <FileRef
+         location = "group:../../../../../mind/conf/mind.xml">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
       name = "doc">
       <FileRef
          location = "group:xiangyun.kong/doc/barren.md">
@@ -43,6 +50,9 @@
       </FileRef>
       <FileRef
          location = "group:xiangyun.kong/include/config_keys.hpp">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/include/ut.hpp">
       </FileRef>
    </Group>
    <FileRef
@@ -101,8 +111,5 @@
    </FileRef>
    <FileRef
       location = "group:xiangyun.kong/spl/spl.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/ut/ut.xcodeproj">
    </FileRef>
 </Workspace>

@@ -47,7 +47,13 @@ namespace pf {
         }
 
         virtual ~plugin_thread() {
-            kill_thread();
+            change_status(stopping);
+            
+            // waking thread up
+            for (long i = 0; i < 1024; ++i)
+                m_pool->push(nullptr);
+            
+            wait_status();
         }
 
     public:

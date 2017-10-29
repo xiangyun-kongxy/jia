@@ -11,14 +11,23 @@
 
 #include <plugin/plugin/plugin.hpp>
 
+#include <messages.hpp>
+
 using namespace pf;
 
 namespace kxy {
     
     class config_center : public plugin {
     public:
-        config_center();
         DECLARE_TYPE(plugin, PLUGIN_CONFIG_CENTER);
+        
+        IMPL_BEGIN
+        IMPL_F(T_STR, M_GET_CONFIG, T_STR)
+        IMPL_F(T_NONE, M_PUT_CONFIG, T_STR, T_STR)
+        IMPL_END
+        
+    public:
+        config_center();
         
     public:
         string get(const string& key);

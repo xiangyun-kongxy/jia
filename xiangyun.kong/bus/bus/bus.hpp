@@ -15,6 +15,9 @@ namespace pf {
     public:
         DECLARE_TYPE(plugin, PLUGIN_BUS);
         
+        IMPL_BEGIN
+        IMPL_END
+        
     public:
         bus();
         

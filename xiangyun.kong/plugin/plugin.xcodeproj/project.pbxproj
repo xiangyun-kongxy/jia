@@ -33,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		26036D251E0E882E005D4D02 /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
+		264C47581FA5B9A3009DDD1B /* function.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = function.hpp; path = plugin/function/function.hpp; sourceTree = "<group>"; };
+		264C47591FA5BD96009DDD1B /* type.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = type.hpp; path = plugin/function/type.hpp; sourceTree = "<group>"; };
 		266BFCEA1DB26A3200E0FA0F /* libplugin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libplugin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		266BFCF91DB26DD700E0FA0F /* plugin.framework.mdj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = plugin.framework.mdj; path = doc/plugin.framework.mdj; sourceTree = "<group>"; };
 		266BFCFA1DB26DD700E0FA0F /* task.list */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = task.list; path = doc/task.list; sourceTree = "<group>"; };
@@ -82,6 +84,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		264C47571FA5B961009DDD1B /* function */ = {
+			isa = PBXGroup;
+			children = (
+				264C47581FA5B9A3009DDD1B /* function.hpp */,
+				264C47591FA5BD96009DDD1B /* type.hpp */,
+			);
+			name = function;
+			sourceTree = "<group>";
+		};
 		266BFCE11DB26A3200E0FA0F = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +123,7 @@
 		266BFD7F1DB26E5800E0FA0F /* plugin */ = {
 			isa = PBXGroup;
 			children = (
+				264C47571FA5B961009DDD1B /* function */,
 				ADF4CA681FA2D2E9009FF3AA /* thread */,
 				AD7E2BC31F83D030002DAA7C /* manager */,
 				266BFD8C1DB26E6600E0FA0F /* event */,

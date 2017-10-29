@@ -1,15 +1,14 @@
 //
 //  ut.hpp
-//  ut
+//  
 //
-//  Created by 孔祥云 on 10/14/17.
-//  Copyright © 2017 孔祥云. All rights reserved.
+//  Created by 孔祥云 on 10/29/17.
+//
 //
 
-#ifndef ut_hpp
-#define ut_hpp
+#ifndef ut_h
+#define ut_h
 
-#include <stdio.h>
 #include <map>
 #include <string>
 
@@ -27,4 +26,4 @@ void run_ut();
     }                                                           \
     void ut_name()
 
-#endif /* ut_hpp */
+#endif /* ut_h */

@@ -14,8 +14,6 @@
 #include <memory/executor/exe_save_barren.hpp>
 #include <memory/executor/exe_load_barren.hpp>
 
-#include <messages.hpp>
-
 namespace mind {
     
     const string memory::m_path = "barren_memory";

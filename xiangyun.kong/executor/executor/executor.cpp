@@ -15,9 +15,6 @@
 #include <executor/executor/exe_new_barren_function.hpp>
 #include <executor/executor/exe_new_compound_function.hpp>
 
-#include <messages.hpp>
-#include <class_names.hpp>
-
 namespace mind {
 
     barren_executor::barren_executor() {

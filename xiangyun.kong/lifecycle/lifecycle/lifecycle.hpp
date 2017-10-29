@@ -20,6 +20,9 @@ namespace pf {
     public:
         DECLARE_TYPE(plugin, PLUGIN_LIFECYCLE);
         
+        IMPL_BEGIN
+        IMPL_END
+        
     public:
         lifecycle();
         virtual ~lifecycle();

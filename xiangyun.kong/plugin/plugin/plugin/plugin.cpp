@@ -46,16 +46,6 @@ namespace pf {
         return list<ptr<identifier>>();
     }
 
-    list<ptr<identifier>> plugin::supported_event() const {
-        list<ptr<identifier>> evt;
-        
-        map<string,ptr<executor>>::const_iterator it;
-        for(it = m_executors.begin(); it != m_executors.end(); ++it)
-            evt.push_back(new id_name(it->first));
-        
-        return evt;
-    }
-
     ptr<plugin> plugin::current_plugin() {
         return thread_manager::instance()->current_plugin();
     }

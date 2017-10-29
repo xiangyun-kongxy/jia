@@ -64,7 +64,7 @@ namespace pf {
                         broadcast(M_PLUGIN_RUNNING, conf->get_name());
                         break;
                     } else {
-                        wait(new id_simple_event(M_PLUGIN_RUNNING));
+                        sleep(2);
                     }
                 } while (true);
                 

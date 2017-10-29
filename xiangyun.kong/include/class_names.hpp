@@ -36,6 +36,7 @@ static const string OBJ_SCHEDULER                   = "scheduler";
 static const string OBJ_SWITCHER                    = "switcher";
 static const string OBJ_DELIVER                     = "deliver";
 static const string OBJ_DELIVER_MANAGER             = "dlvmanager";
+static const string OBJ_FUNCTION                    = "function";
 
 static const string DLV_RESPONSE                    = "dlvresponse";
 
@@ -74,6 +75,7 @@ static const string EXE_PUBLISHER                   = "publish";
 static const string EXE_INC_THREAD                  = "inc_thread";
 static const string EXE_DEC_THREAD                  = "dec_thread";
 static const string EXE_SHOW_TASK_COUNT             = "show_ctask";
+static const string EXE_SHOW_PLUGINS                = "show_plugins";
 
 
 // identifiers

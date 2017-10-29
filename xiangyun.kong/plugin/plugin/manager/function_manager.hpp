@@ -35,20 +35,25 @@ namespace pf {
         bool is_actived(ptr<identifier> id);
 
     private:
-        void add_function(ptr<plugin> owner, ptr<identifier> function);
-        void rm_function(ptr<identifier> function);
-        void active_function(ptr<identifier> function);
-        void suspend_function(ptr<identifier> function);
+        void add_function(ptr<plugin> owner, ptr<function> func);
+        void rm_function(ptr<function> func);
+        void active_function(ptr<function> func);
+        void suspend_function(ptr<function> func);
 
     private:
         
         struct function_info {
-            ptr<identifier> function;
+            ptr<function> func;
             bool is_active;
             ptr<plugin> provider;
 
+            bool operator == (const ptr<function>& func) {
+                return this->func->name() == func->name() &&
+                    this->func->provider() == func->provider();
+            }
+            
             bool operator == (const ptr<identifier>& id) {
-                return id->match(function);
+                return id->match(func);
             }
         };
         

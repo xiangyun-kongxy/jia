@@ -23,6 +23,9 @@ namespace pf {
     class ps : public plugin {
     public:
         DECLARE_TYPE(plugin, PLUGIN_PS);
+        
+        IMPL_BEGIN
+        IMPL_END
 
     public:
         ps();

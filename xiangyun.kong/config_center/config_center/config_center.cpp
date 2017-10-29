@@ -13,8 +13,6 @@
 #include <config_center/executor/exe_get_config.hpp>
 #include <config_center/executor/exe_put_config.hpp>
 
-#include <messages.hpp>
-
 namespace kxy {
     
     const string config_center::m_service = "config_service";

@@ -46,6 +46,7 @@ namespace pf {
     public:
         long acquire() {
             long pos = m_pfree->pop();
+            while (sem_trywait(m_sems[pos]) == 0);
             return pos;
         }
 

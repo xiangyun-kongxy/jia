@@ -15,6 +15,8 @@
 
 #include <barren/barren.hpp>
 
+#include <messages.hpp>
+
 using namespace pf;
 using namespace kxy;
 
@@ -22,8 +24,15 @@ namespace mind {
     
     class memory : public plugin {
     public:
-        memory();
         DECLARE_TYPE(plugin, PLUGIN_MEMORY);
+        
+        IMPL_BEGIN
+        IMPL_F(T_USER, M_LOAD_BARREN, T_INT)
+        IMPL_F(T_NONE, M_SAVE_BARREN, T_USER)
+        IMPL_END
+        
+    public:
+        memory();
         
     public:
         void write(ptr<barren> obj);

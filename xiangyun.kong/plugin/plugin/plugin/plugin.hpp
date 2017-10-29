@@ -14,6 +14,7 @@
 #include <plugin/event/event.hpp>
 #include <plugin/executor/executor.hpp>
 #include <plugin/plugin/plugin_status.hpp>
+#include <plugin/function/function.hpp>
 
 #include <list>
 #include <map>
@@ -45,7 +46,8 @@ namespace pf {
          * which functions the plugin supports.
          * other tasks won't route to here
          */
-        virtual list<ptr<identifier>> supported_event() const;
+        virtual list<ptr<function>> supported_functions() const = 0;
+        
         /**
          * which plugins and/or events the plugin depend on.
          * if depended object doesn't exist, the plugin would not be loaded,
@@ -59,10 +61,9 @@ namespace pf {
         virtual void resume();
         virtual void uninit();
 
+    public:
         virtual plugin_status status();
         virtual ptr<cqueue<ptr<object>>> tasks();
-
-    public:
         virtual void inc_thread();
         virtual void dec_thread();
         

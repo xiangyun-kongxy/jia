@@ -127,8 +127,8 @@ namespace pf {
         
         ptr<plugin> pl = plugin_manager::instance()->find_plugin(id);
         if (pl != nullptr) {
-            list<ptr<identifier>> func;
-            func = pl->supported_event();
+            list<ptr<function>> func;
+            func = pl->supported_functions();
             result.insert(result.end(), func.begin(), func.end());
         }
         
