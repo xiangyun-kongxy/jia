@@ -22,20 +22,13 @@ namespace pf {
         
     public:
         virtual void schedule(ptr<object> obj) override {
-            long retry = 1;
-            do {
-                ptr<event> evt = obj;
-                map<ptr<plugin>, ptr<cqueue<ptr<object>>>>::iterator i;
-                for (i = m_pools.begin(); i != m_pools.end(); ++i) {
-                    if (evt->destination()->match(i->first)) {
-                        i->second->push(evt);
-                        --retry;
-                    }
+            ptr<event> evt = obj;
+            map<ptr<plugin>, ptr<cqueue<ptr<object>>>>::iterator i;
+            for (i = m_pools.begin(); i != m_pools.end(); ++i) {
+                if (evt->destination()->match(i->first)) {
+                    i->second->push(evt);
                 }
-                if (retry > 0) {
-                    update_plugins();
-                }
-            } while (retry-- > 0);
+            }
         }
         
         virtual void update_plugins() override {
@@ -44,7 +37,8 @@ namespace pf {
             list<ptr<plugin>> pls = pm->get_all_plugin();
             m_pools.clear();
             for (ptr<plugin> pl : pls) {
-                if (!pl->is_kind_of(PLUGIN_BUS)) {
+                if (!pl->is_kind_of(PLUGIN_BUS) &&
+                    !pl->is_kind_of(PLUGIN_PS)) {
                     m_pools[pl] = pl->tasks();
                 }
             }

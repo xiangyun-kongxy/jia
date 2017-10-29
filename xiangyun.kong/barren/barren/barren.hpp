@@ -9,10 +9,6 @@
 #ifndef barren_hpp
 #define barren_hpp
 
-#include <atomic>
-#include <string>
-#include <list>
-
 #include <lib/object/reference.hpp>
 #include <lib/object/ptr.hpp>
 #include <lib/serialize/serializable.hpp>

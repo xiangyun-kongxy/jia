@@ -11,11 +11,8 @@
 
 #include <sys/fcntl.h>
 #include <semaphore.h>
-#include <pthread.h>
 #include <queue>
-#include <string>
 
-#include <lib/lock/auto_lock.hpp>
 #include <lib/object/object.hpp>
 #include <lib/lock/spinlock.hpp>
 
@@ -46,7 +43,7 @@ namespace kxy {
         }
         
         ty pop() {
-            ty result;
+            ty result = ty();
             if (sem_wait(m_sem) == 0) {
                 m_mutex.lock();
                 if (m_container.size() > 0) {
@@ -59,7 +56,7 @@ namespace kxy {
         }
 
         ty try_pop() {
-            ty result;
+            ty result = ty();
             m_mutex.lock();
             if (m_container.size() > 0) {
                 result = m_container.front();
@@ -84,8 +81,9 @@ namespace kxy {
         }
         
     private:
-        queue<ty> m_container;
         spin_mutex m_mutex;
+        queue<ty> m_container;
+        
         sem_t* m_sem;
     };
 }

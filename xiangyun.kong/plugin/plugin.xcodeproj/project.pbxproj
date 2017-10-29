@@ -21,7 +21,6 @@
 		AD5F03F21F94FDDD002742B9 /* response.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03EF1F94FDDD002742B9 /* response.hpp */; };
 		AD5F03F31F94FDDD002742B9 /* simple_response.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F03F01F94FDDD002742B9 /* simple_response.cpp */; };
 		AD5F03F41F94FDDD002742B9 /* simple_response.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03F11F94FDDD002742B9 /* simple_response.hpp */; };
-		AD5F03FC1F94FDF8002742B9 /* trigger.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03FB1F94FDF8002742B9 /* trigger.hpp */; };
 		AD5F03FF1F94FE05002742B9 /* version.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AD5F03FD1F94FE05002742B9 /* version.cpp */; };
 		AD5F04001F94FE05002742B9 /* version.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD5F03FE1F94FE05002742B9 /* version.hpp */; };
 		ADC522CC1F97856800AAD2B9 /* function_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADC522CA1F97856800AAD2B9 /* function_manager.cpp */; };
@@ -50,7 +49,6 @@
 		AD5F03EF1F94FDDD002742B9 /* response.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = response.hpp; path = plugin/response/response.hpp; sourceTree = SOURCE_ROOT; };
 		AD5F03F01F94FDDD002742B9 /* simple_response.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = simple_response.cpp; path = plugin/response/simple_response.cpp; sourceTree = SOURCE_ROOT; };
 		AD5F03F11F94FDDD002742B9 /* simple_response.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = simple_response.hpp; path = plugin/response/simple_response.hpp; sourceTree = SOURCE_ROOT; };
-		AD5F03FB1F94FDF8002742B9 /* trigger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = trigger.hpp; path = plugin/trigger/trigger.hpp; sourceTree = SOURCE_ROOT; };
 		AD5F03FD1F94FE05002742B9 /* version.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = version.cpp; path = plugin/version/version.cpp; sourceTree = SOURCE_ROOT; };
 		AD5F03FE1F94FE05002742B9 /* version.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = version.hpp; path = plugin/version/version.hpp; sourceTree = SOURCE_ROOT; };
 		ADC522CA1F97856800AAD2B9 /* function_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = function_manager.cpp; path = plugin/manager/function_manager.cpp; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 				266BFD921DB26E6600E0FA0F /* executor */,
 				266BFDAB1DB26E6600E0FA0F /* plugin */,
 				266BFDB81DB26E6600E0FA0F /* response */,
-				266BFDC91DB26E6600E0FA0F /* trigger */,
 				266BFDCE1DB26E6600E0FA0F /* version */,
 			);
 			name = plugin;
@@ -168,15 +165,6 @@
 			);
 			name = response;
 			path = src/response;
-			sourceTree = "<group>";
-		};
-		266BFDC91DB26E6600E0FA0F /* trigger */ = {
-			isa = PBXGroup;
-			children = (
-				AD5F03FB1F94FDF8002742B9 /* trigger.hpp */,
-			);
-			name = trigger;
-			path = src/trigger;
 			sourceTree = "<group>";
 		};
 		266BFDCE1DB26E6600E0FA0F /* version */ = {
@@ -231,7 +219,6 @@
 				AD5F03E31F94FD22002742B9 /* simple_event.hpp in Headers */,
 				AD5F03F21F94FDDD002742B9 /* response.hpp in Headers */,
 				ADC522D11F978DAD00AAD2B9 /* dependence_manager.hpp in Headers */,
-				AD5F03FC1F94FDF8002742B9 /* trigger.hpp in Headers */,
 				ADF4CA6D1FA2D556009FF3AA /* thread_manager.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

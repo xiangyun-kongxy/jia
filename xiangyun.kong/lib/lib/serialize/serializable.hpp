@@ -11,12 +11,10 @@
 
 #include "decl_serializable.hpp"
 
-#include <lib/convert/basic_type_convert.hpp>
+#include <lib/convert/type_convert.hpp>
 #include <lib/object/object.hpp>
 #include <lib/object/ptr.hpp>
 
-#include <stdio.h>
-#include <sstream>
 #include <map>
 #include <set>
 #include <list>
@@ -31,9 +29,11 @@ namespace kxy {
 
     class serializable : public object {
     public:
+        DECLARE_TYPE(object, OBJ_SERIALIZABLE);
+        
+    public:
         serializable();
         serializable(const char* buf);
-        DECLARE_TYPE(object, OBJ_SERIALIZABLE);
         
     public:
         string buf();
@@ -81,8 +81,6 @@ namespace kxy {
         def_serialize_iterator(queue<value_type>);
         template<class value_type>
         def_serialize_iterator(stack<value_type>);
-        
-        
         
         
         template<class key_type, class value_type>

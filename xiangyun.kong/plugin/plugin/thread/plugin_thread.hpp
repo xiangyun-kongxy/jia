@@ -66,13 +66,12 @@ namespace pf {
 
             if(m_cur_task == nullptr) {
                 usleep(12);
-            } else if (m_cur_task->should_response()) {
-                ptr<response> rsp = m_owner->do_task(m_cur_task);
-
-                extern ptr<plugin> g_bus;
-                g_bus->on_event((ptr<event>)rsp);
             } else {
-                m_owner->on_event(m_cur_task);
+                ptr<response> rsp = m_owner->do_task(m_cur_task);
+                if (rsp != nullptr) {
+                    extern ptr<plugin> g_ps;
+                    g_ps->tasks()->push(rsp);
+                }
             }
             return 0;
         }

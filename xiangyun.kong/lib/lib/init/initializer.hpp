@@ -9,7 +9,6 @@
 #ifndef initializer_hpp
 #define initializer_hpp
 
-#include <stdio.h>
 #include <string>
 
 using namespace std;

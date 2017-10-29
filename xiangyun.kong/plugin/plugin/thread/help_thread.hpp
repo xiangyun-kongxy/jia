@@ -74,14 +74,10 @@ namespace pf {
             ci->task = m_cur_task;
 
             if (m_cur_task != nullptr) {
-                if (m_cur_task->should_response()) {
-                    ptr<response> rsp = current_owner()->do_task(m_cur_task);
+                ptr<response> rsp = current_owner()->do_task(m_cur_task);
 
-                    extern ptr<plugin> g_bus;
-                    g_bus->on_event((ptr<event>)rsp);
-                } else {
-                    current_owner()->on_event(m_cur_task);
-                }
+                extern ptr<plugin> g_ps;
+                g_ps->tasks()->push(rsp);
             } else {
                 sleep(1);
             }

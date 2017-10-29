@@ -29,9 +29,11 @@ namespace kxy {
 
     class thread : public object {
     public:
+        DECLARE_TYPE(object, OBJ_THREAD);
+        
+    public:
         thread();
         virtual ~thread();
-        DECLARE_TYPE(object, OBJ_THREAD);
         
     public:
         virtual long pause();
@@ -55,9 +57,10 @@ namespace kxy {
 
     protected:
         atomic_long m_status;
-        pthread_t m_thread;
         sem_t* m_status_changing;
         sem_t* m_status_changed;
+        
+        pthread_t m_thread;
     };
 
 }

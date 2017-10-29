@@ -12,6 +12,7 @@
 		268A6D351F91D05F000B6648 /* id_service.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 268A6D341F91D05F000B6648 /* id_service.cpp */; };
 		268A6D3D1F91D0AE000B6648 /* libplugin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 268A6D3C1F91D0AE000B6648 /* libplugin.dylib */; };
 		268A6D441F91DF67000B6648 /* liblib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 268A6D431F91DF67000B6648 /* liblib.dylib */; };
+		AD593E071FA4CE6100939767 /* exe_set_guid.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD593E061FA4CE6100939767 /* exe_set_guid.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +24,7 @@
 		268A6D411F91DD11000B6648 /* exe_get_cur_guid.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = exe_get_cur_guid.hpp; path = executor/exe_get_cur_guid.hpp; sourceTree = "<group>"; };
 		268A6D421F91DD2D000B6648 /* exe_fetch_add_guid.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = exe_fetch_add_guid.hpp; path = executor/exe_fetch_add_guid.hpp; sourceTree = "<group>"; };
 		268A6D431F91DF67000B6648 /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
-		268A6D6B1F92009D000B6648 /* trigger_set_guid.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = trigger_set_guid.hpp; path = trigger/trigger_set_guid.hpp; sourceTree = "<group>"; };
+		AD593E061FA4CE6100939767 /* exe_set_guid.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = exe_set_guid.hpp; path = executor/exe_set_guid.hpp; sourceTree = "<group>"; };
 		AD620C171F9A81B500F39E20 /* exe_fetch_add_guid_bench.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = exe_fetch_add_guid_bench.hpp; path = executor/exe_fetch_add_guid_bench.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,7 +62,6 @@
 		268A6D2F1F91D05F000B6648 /* id_service */ = {
 			isa = PBXGroup;
 			children = (
-				268A6D6A1F92005E000B6648 /* trigger */,
 				268A6D3F1F91DC0E000B6648 /* executor */,
 				268A6D301F91D05F000B6648 /* id_service.hpp */,
 				268A6D341F91D05F000B6648 /* id_service.cpp */,
@@ -82,19 +82,12 @@
 		268A6D3F1F91DC0E000B6648 /* executor */ = {
 			isa = PBXGroup;
 			children = (
+				AD593E061FA4CE6100939767 /* exe_set_guid.hpp */,
 				268A6D411F91DD11000B6648 /* exe_get_cur_guid.hpp */,
 				268A6D421F91DD2D000B6648 /* exe_fetch_add_guid.hpp */,
 				AD620C171F9A81B500F39E20 /* exe_fetch_add_guid_bench.hpp */,
 			);
 			name = executor;
-			sourceTree = "<group>";
-		};
-		268A6D6A1F92005E000B6648 /* trigger */ = {
-			isa = PBXGroup;
-			children = (
-				268A6D6B1F92009D000B6648 /* trigger_set_guid.hpp */,
-			);
-			name = trigger;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,6 +98,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				268A6D311F91D05F000B6648 /* id_service.hpp in Headers */,
+				AD593E071FA4CE6100939767 /* exe_set_guid.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

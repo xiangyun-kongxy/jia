@@ -9,8 +9,9 @@
 #ifndef ptr_h
 #define ptr_h
 
-#include <stdio.h>
-#include <pthread.h>
+#ifdef DEBUG_REFERENCE
+#   include <pthread.h>
+#endif
 
 namespace kxy {
     
@@ -44,7 +45,7 @@ namespace kxy {
         }
         
         const ptr& operator=(ty* _val) {
-#ifdef _DEBUG
+#ifdef DEBUG_REFERENCE
             if (_val != nullptr) {
                 printf("%016lx: %016lx +++ %016lx(%ld)\n", (long)pthread_self(),
                        (long)this, (long)_val, _val->ref_count());
@@ -63,7 +64,7 @@ namespace kxy {
         }
         
         ~ptr() {
-#ifdef _DEBUG
+#ifdef DEBUG_REFERENCE
             if (m_ref != nullptr) {
                 printf("%016lx .\t.\t%016lx xxx %016lx(%ld)\n", (long)pthread_self(),
                        (long)this, (long)m_ref, m_ref->ref_count());

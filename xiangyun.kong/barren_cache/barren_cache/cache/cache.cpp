@@ -9,10 +9,6 @@
 #include "cache.hpp"
 #include <math.h>
 
-#include <mutex>
-
-using namespace std;
-
 namespace mind {
     
     cache::cache(long capacity) {

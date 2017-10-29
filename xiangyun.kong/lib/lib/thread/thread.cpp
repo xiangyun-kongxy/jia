@@ -13,7 +13,7 @@
 #include <pthread/pthread.h>
 #include <unistd.h>
 
-#include <lib/convert/basic_type_convert.hpp>
+#include <lib/convert/type_convert.hpp>
 
 namespace kxy {
     

@@ -21,10 +21,11 @@ namespace pf {
 
     typedef void (*fcallback)(ptr<object>);
 
-    ptr<object> wait_object(ptr<identifier>);
-    void send_message(ptr<event>);
-    ptr<response> call_function(ptr<event>);
-    void call_function(ptr<event>, fcallback);
+    ptr<object> wait(ptr<identifier>);
+
+    void send(ptr<event>);
+    ptr<response> call(ptr<event>);
+    void call(ptr<event>, fcallback);
 
 
 
@@ -49,7 +50,7 @@ namespace pf {
         ptr<serializable> param = new serializable;
         param = pack_data(params...);
         ptr<event> evt = new simple_event(func_name, param);
-        ptr<response> rsp = call_function(evt);
+        ptr<response> rsp = call(evt);
 
         if (rsp != nullptr) {
             ptr<serializable> data = rsp->context();
@@ -64,7 +65,7 @@ namespace pf {
         ptr<serializable> param = new serializable;
         pack_data(param, params...);
         ptr<event> evt = new simple_event(func_name, param, plugin);
-        ptr<response> rsp = call_function(evt);
+        ptr<response> rsp = call(evt);
         if (rsp != nullptr) {
             ptr<serializable> data = rsp->context();
             return data;
@@ -78,7 +79,7 @@ namespace pf {
         ptr<serializable> param = new serializable;
         pack_data(param, params...);
         evt = new simple_event(event, param, plugin);
-        send_message(evt);
+        send(evt);
     }
     
     template<typename ...ptype>
@@ -87,7 +88,7 @@ namespace pf {
         ptr<serializable> param = new serializable;
         pack_data(param, params...);
         evt = new simple_event(event, param);
-        send_message(evt);
+        send(evt);
     }
 }
 

@@ -9,11 +9,10 @@
 #ifndef cache_hpp
 #define cache_hpp
 
-#include <map>
-#include <string>
-
-#include <lib/object/ptr.hpp>
 #include <barren/barren.hpp>
+
+#include <mutex>
+#include <map>
 
 using namespace std;
 

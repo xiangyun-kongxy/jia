@@ -94,6 +94,12 @@
       location = "group:xiangyun.kong/plugin/plugin.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:xiangyun.kong/plugin_controller/plugin_controller.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:xiangyun.kong/ps/ps.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:xiangyun.kong/spl/spl.xcodeproj">
    </FileRef>
    <FileRef

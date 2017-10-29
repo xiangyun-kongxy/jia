@@ -47,12 +47,6 @@ namespace pf {
          */
         virtual ptr<serializable> param() const = 0;
         
-        virtual bool& should_response() {
-            return m_should_response;
-        }
-
-    protected:
-        bool m_should_response;
     };
 
 }

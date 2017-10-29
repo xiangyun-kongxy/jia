@@ -15,10 +15,7 @@
 #include <lib/lock/auto_lock.hpp>
 #include <lib/init/initializer.hpp>
 
-#include <barren/util/barren_io.hpp>
-
 #include <ipc.hpp>
-#include <class_names.hpp>
 #include <messages.hpp>
 
 using namespace kxy;

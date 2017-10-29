@@ -15,6 +15,8 @@
 
 #include <bus/bus.hpp>
 
+#include <ps/ps.hpp>
+
 #include <plugin/event/simple_event.hpp>
 #include <plugin/manager/plugin_manager.hpp>
 
@@ -25,41 +27,30 @@ using namespace std;
 
 namespace pf {
 
-    static const timeval TIMEOUT = {10, 0};
-    
     extern ptr<plugin> g_bus;
-    
-    ptr<object> wait_object(ptr<identifier> id) {
-        ((ptr<bus>)g_bus)->add_waiting_object(id);
-        
-        timeval timeout;
-        gettimeofday(&timeout, nullptr);
-        timeout.tv_sec += TIMEOUT.tv_sec;
-        timeout.tv_usec += TIMEOUT.tv_usec;
-        return ((ptr<bus>)g_bus)->wait_object(id, timeout);
+    extern ptr<plugin> g_ps;
+
+    ptr<object> wait(ptr<identifier> id) {
+        long key = ((ptr<ps>)g_ps)->subscribe(id);
+        return ((ptr<ps>)g_ps)->wait(key);
     }
     
-    void send_message(ptr<event> evt) {
-        evt->should_response() = false;
+    void send(ptr<event> evt) {
         g_bus->tasks()->push(evt);
+        ((ptr<ps>)g_ps)->tasks()->push(evt);
     }
 
-    ptr<response> call_function(ptr<event> evt) {
-        evt->should_response() = true;
-        ((ptr<bus>)g_bus)->add_rsp_trigger(evt, nullptr);
+    ptr<response> call(ptr<event> evt) {
+        long key = ((ptr<ps>)g_ps)->subscribe(new id_response(evt));
         g_bus->tasks()->push(evt);
-
-        timeval timeout;
-        gettimeofday(&timeout, nullptr);
-        timeout.tv_sec += TIMEOUT.tv_sec;
-        timeout.tv_usec += TIMEOUT.tv_usec;
-        return ((ptr<bus>)g_bus)->wait_response(evt, timeout);
+        ((ptr<ps>)g_ps)->tasks()->push(evt);
+        return ((ptr<ps>)g_ps)->wait(key);
     }
     
-    void call_function(ptr<event> evt, fcallback callback) {
-        evt->should_response() = true;
-        ((ptr<bus>)g_bus)->add_rsp_trigger(evt, callback);
+    void call(ptr<event> evt, fcallback callback) {
+        ((ptr<ps>)g_ps)->subscribe(new id_response(evt), callback);
         g_bus->tasks()->push(evt);
+        ((ptr<ps>)g_ps)->tasks()->push(evt);
     }
     
     ptr<serializable> pack_data(ptr<serializable>& ar) {

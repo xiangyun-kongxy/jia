@@ -11,7 +11,7 @@
 #include <lib/fs/kv.hpp>
 #include <lib/serialize/serializable.hpp>
 
-#include <memory/trigger/trigger_save_barren.hpp>
+#include <memory/executor/exe_save_barren.hpp>
 #include <memory/executor/exe_load_barren.hpp>
 
 #include <messages.hpp>
@@ -22,7 +22,7 @@ namespace mind {
     
     memory::memory() {
         m_executors[M_LOAD_BARREN] = new load_barren;
-        m_triggers[M_SAVE_BARREN] = new save_barren;
+        m_executors[M_SAVE_BARREN] = new save_barren;
     }
     
     void memory::write(ptr<barren> barren) {

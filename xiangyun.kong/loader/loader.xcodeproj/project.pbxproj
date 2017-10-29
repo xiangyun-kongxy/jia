@@ -14,6 +14,7 @@
 		267BBE2A1E17890E00C6F0EE /* liblifecycle.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 267BBE291E17890E00C6F0EE /* liblifecycle.dylib */; };
 		267BBE2C1E17891300C6F0EE /* libplugin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 267BBE2B1E17891300C6F0EE /* libplugin.dylib */; };
 		268A6D671F91F63A000B6648 /* libipc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 268A6D661F91F63A000B6648 /* libipc.dylib */; };
+		AD593DF21FA4B77B00939767 /* libps.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AD593DF11FA4B77B00939767 /* libps.dylib */; };
 		AD93D4F61F9C2DAF00FB0380 /* libcommon.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AD93D4F51F9C2DAF00FB0380 /* libcommon.dylib */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 		267BBE291E17890E00C6F0EE /* liblifecycle.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblifecycle.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/liblifecycle.dylib"; sourceTree = "<group>"; };
 		267BBE2B1E17891300C6F0EE /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
 		268A6D661F91F63A000B6648 /* libipc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libipc.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libipc.dylib"; sourceTree = "<group>"; };
+		AD593DF11FA4B77B00939767 /* libps.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libps.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-dumkzocnaldwwnavyrkilehtiwxv/Build/Products/Debug/libps.dylib"; sourceTree = "<group>"; };
 		AD93D4F51F9C2DAF00FB0380 /* libcommon.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommon.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-dumkzocnaldwwnavyrkilehtiwxv/Build/Products/Debug/libcommon.dylib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -34,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD593DF21FA4B77B00939767 /* libps.dylib in Frameworks */,
 				AD93D4F61F9C2DAF00FB0380 /* libcommon.dylib in Frameworks */,
 				268A6D671F91F63A000B6648 /* libipc.dylib in Frameworks */,
 				267BBE2C1E17891300C6F0EE /* libplugin.dylib in Frameworks */,
@@ -75,6 +78,7 @@
 		267BBE241E17890300C6F0EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AD593DF11FA4B77B00939767 /* libps.dylib */,
 				AD93D4F51F9C2DAF00FB0380 /* libcommon.dylib */,
 				268A6D661F91F63A000B6648 /* libipc.dylib */,
 				267BBE2B1E17891300C6F0EE /* libplugin.dylib */,
@@ -266,6 +270,7 @@
 					"$(SRCROOT)/../plugin",
 					"$(SRCROOT)/../include",
 					"$(SRCROOT)/../common",
+					"$(SRCROOT)/../ps",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -289,6 +294,7 @@
 					"$(SRCROOT)/../plugin",
 					"$(SRCROOT)/../include",
 					"$(SRCROOT)/../common",
+					"$(SRCROOT)/../ps",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

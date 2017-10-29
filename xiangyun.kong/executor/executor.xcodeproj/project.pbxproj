@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD593E031FA4CE4F00939767 /* exe_execute_barren.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD593E001FA4CE4F00939767 /* exe_execute_barren.hpp */; };
+		AD593E041FA4CE4F00939767 /* exe_new_barren_function.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD593E011FA4CE4F00939767 /* exe_new_barren_function.hpp */; };
+		AD593E051FA4CE4F00939767 /* exe_new_compound_function.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD593E021FA4CE4F00939767 /* exe_new_compound_function.hpp */; };
 		ADF8B82C1F89087C0027F954 /* executor.hpp in Headers */ = {isa = PBXBuildFile; fileRef = ADF8B82B1F89087C0027F954 /* executor.hpp */; };
 		ADF8B8301F89087C0027F954 /* executor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADF8B82F1F89087C0027F954 /* executor.cpp */; };
 		ADF8B8381F8909450027F954 /* libplugin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ADF8B8371F8909450027F954 /* libplugin.dylib */; };
@@ -15,15 +18,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AD593E001FA4CE4F00939767 /* exe_execute_barren.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = exe_execute_barren.hpp; path = executor/exe_execute_barren.hpp; sourceTree = "<group>"; };
+		AD593E011FA4CE4F00939767 /* exe_new_barren_function.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = exe_new_barren_function.hpp; path = executor/exe_new_barren_function.hpp; sourceTree = "<group>"; };
+		AD593E021FA4CE4F00939767 /* exe_new_compound_function.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = exe_new_compound_function.hpp; path = executor/exe_new_compound_function.hpp; sourceTree = "<group>"; };
 		ADF8B8281F89087C0027F954 /* libexecutor.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libexecutor.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADF8B82B1F89087C0027F954 /* executor.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = executor.hpp; sourceTree = "<group>"; };
 		ADF8B82F1F89087C0027F954 /* executor.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = executor.cpp; sourceTree = "<group>"; };
 		ADF8B8371F8909450027F954 /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-dumkzocnaldwwnavyrkilehtiwxv/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
 		ADF8B8391F8909500027F954 /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-dumkzocnaldwwnavyrkilehtiwxv/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
 		ADF8B83B1F8909760027F954 /* libbarren.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbarren.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-dumkzocnaldwwnavyrkilehtiwxv/Build/Products/Debug/libbarren.dylib"; sourceTree = "<group>"; };
-		ADF8B83E1F891C860027F954 /* trigger_execute_barren.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = trigger_execute_barren.hpp; path = trigger/trigger_execute_barren.hpp; sourceTree = "<group>"; };
-		ADF8B83F1F8927DF0027F954 /* trigger_new_barren_function.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = trigger_new_barren_function.hpp; path = trigger/trigger_new_barren_function.hpp; sourceTree = "<group>"; };
-		ADF8B8401F892AC00027F954 /* trigger_new_compound_function.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = trigger_new_compound_function.hpp; path = trigger/trigger_new_compound_function.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +43,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD593DFF1FA4CE4200939767 /* executor */ = {
+			isa = PBXGroup;
+			children = (
+				AD593E001FA4CE4F00939767 /* exe_execute_barren.hpp */,
+				AD593E011FA4CE4F00939767 /* exe_new_barren_function.hpp */,
+				AD593E021FA4CE4F00939767 /* exe_new_compound_function.hpp */,
+			);
+			name = executor;
+			sourceTree = "<group>";
+		};
 		ADF8B81F1F89087C0027F954 = {
 			isa = PBXGroup;
 			children = (
@@ -60,7 +73,7 @@
 		ADF8B82A1F89087C0027F954 /* executor */ = {
 			isa = PBXGroup;
 			children = (
-				ADF8B83D1F891B530027F954 /* trigger */,
+				AD593DFF1FA4CE4200939767 /* executor */,
 				ADF8B82B1F89087C0027F954 /* executor.hpp */,
 				ADF8B82F1F89087C0027F954 /* executor.cpp */,
 			);
@@ -77,16 +90,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		ADF8B83D1F891B530027F954 /* trigger */ = {
-			isa = PBXGroup;
-			children = (
-				ADF8B83E1F891C860027F954 /* trigger_execute_barren.hpp */,
-				ADF8B83F1F8927DF0027F954 /* trigger_new_barren_function.hpp */,
-				ADF8B8401F892AC00027F954 /* trigger_new_compound_function.hpp */,
-			);
-			name = trigger;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -95,6 +98,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADF8B82C1F89087C0027F954 /* executor.hpp in Headers */,
+				AD593E041FA4CE4F00939767 /* exe_new_barren_function.hpp in Headers */,
+				AD593E031FA4CE4F00939767 /* exe_execute_barren.hpp in Headers */,
+				AD593E051FA4CE4F00939767 /* exe_new_compound_function.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

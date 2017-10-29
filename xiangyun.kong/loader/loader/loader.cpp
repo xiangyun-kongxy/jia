@@ -16,6 +16,8 @@
 #include <plugin/manager/plugin_manager.hpp>
 #include <plugin/manager/dependence_manager.hpp>
 
+#include <ps/ps.hpp>
+
 #include <bus/bus.hpp>
 
 #include <lifecycle/lifecycle.hpp>
@@ -40,11 +42,18 @@ namespace pf {
     extern ptr<plugin> g_lifecycle;
     extern ptr<plugin> g_bus;
     extern ptr<plugin> g_terminal;
+    extern ptr<plugin> g_ps;
 
     void sig_func(int);
     
     void loader::load(const string& conf_path) {
         g_terminal = new terminal;
+
+        info_log("info","publish-subscribe is loading...");
+        g_ps = new ps();
+        g_ps->init();
+        g_ps->resume();
+        info_log("info", "publish-subscribe is loaded");
 
         info_log("info","bus is loading...");
         g_bus = new bus();
@@ -74,9 +83,10 @@ namespace pf {
 
         plugin_manager* pm = plugin_manager::instance();
     
-        while (pm->get_all_plugin().size() > 2 ||
+        while (pm->get_all_plugin().size() > 3 ||
                pm->has_task(new id_name(PLUGIN_LIFECYCLE)) ||
-               pm->has_task(new id_name(PLUGIN_BUS))) {
+               pm->has_task(new id_name(PLUGIN_BUS)) ||
+               pm->has_task(new id_name(PLUGIN_PS))) {
             sleep(1);
         }
 
@@ -90,6 +100,11 @@ namespace pf {
         g_bus = nullptr;
         info_log("info", "bus is exited");
 
+        info_log("info", "publish-subscribe is exiting...");
+        g_ps->uninit();
+        g_ps = nullptr;
+        info_log("info", "publish-subscribe is exited");
+        
         do_cleanup();
     }
 

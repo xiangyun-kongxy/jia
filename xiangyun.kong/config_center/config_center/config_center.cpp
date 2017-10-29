@@ -11,10 +11,9 @@
 #include <lib/fs/kv.hpp>
 
 #include <config_center/executor/exe_get_config.hpp>
-#include <config_center/trigger/trigger_put_config.hpp>
+#include <config_center/executor/exe_put_config.hpp>
 
 #include <messages.hpp>
-#include <class_names.hpp>
 
 namespace kxy {
     
@@ -22,7 +21,7 @@ namespace kxy {
     
     config_center::config_center() {
         m_executors[M_GET_CONFIG] = new get_config;
-        m_triggers[M_PUT_CONFIG] = new put_config;
+        m_executors[M_PUT_CONFIG] = new put_config;
     }
     
     string config_center::get(const string &key) {

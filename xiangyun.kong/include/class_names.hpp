@@ -24,7 +24,6 @@ static const string OBJ_SIMPLE_EVENT                = "sevent";
 static const string OBJ_RESPONSE                    = "response";
 static const string OBJ_SIMPLE_RESPONSE             = "sresponse";
 static const string OBJ_EXECUTOR                    = "executor";
-static const string OBJ_TRIGGER                     = "trigger";
 static const string OBJ_PLUGIN                      = "plugin";
 static const string OBJ_IDENTIFIER                  = "identifier";
 static const string OBJ_THREAD                      = "thread";
@@ -48,6 +47,8 @@ static const string PLUGIN_BARREN_CACHE             = "cbarren";
 static const string PLUGIN_MEMORY                   = "memory";
 static const string PLUGIN_CONFIG_CENTER            = "cfgcenter";
 static const string PLUGIN_BARREN_EXECUTOR          = "exebarren";
+static const string PLUGIN_PS                       = "pub_sub";
+static const string PLUGIN_CONTROLLER               = "plugin_ctrl";
 
 // task processors
 static const string EXE_LOAD_CACHE_BARREN           = "load_cbarren";
@@ -56,21 +57,24 @@ static const string EXE_FETCH_ADD_GUID              = "fetch_add_guid";
 static const string EXE_FETCH_ADD_GUID_BENCH        = "fetch_add_guidb";
 static const string EXE_GET_CUR_GUID                = "get_cur_guid";
 static const string EXE_LOAD_BARREN                 = "load_barren";
+static const string EXE_SAVE_CACHE_BARREN           = "save_cbarren";
+static const string EXE_ON_RESPONSE                 = "response";
+static const string EXE_ON_ROUTE                    = "route";
+static const string EXE_PUT_CONFIG                  = "put_config";
+static const string EXE_EXECUTE_BARREN              = "exe_barren";
+static const string EXE_NEW_BARREN_FUNCTION         = "new_bfunc";
+static const string EXE_NEW_COMPOUND_FUNCTION       = "new_cfunc";
+static const string EXE_SET_GUID                    = "set_guid";
+static const string EXE_SAVE_BARREN                 = "save_barren";
+static const string EXE_START_FRAMEWORK             = "start_framework";
+static const string EXE_STOP_FRAMEWORK              = "stop_framework";
+static const string EXE_LOAD_PLUGIN                 = "load_plugin";
+static const string EXE_UNLOAD_PLUGIN               = "unload_plugin";
+static const string EXE_PUBLISHER                   = "publish";
+static const string EXE_INC_THREAD                  = "inc_thread";
+static const string EXE_DEC_THREAD                  = "dec_thread";
+static const string EXE_SHOW_TASK_COUNT             = "show_ctask";
 
-// event processors(task without response)
-static const string TRIGGER_SAVE_CACHE_BARREN       = "save_cbarren";
-static const string TRIGGER_ON_RESPONSE             = "response";
-static const string TRIGGER_ON_ROUTE                = "route";
-static const string TRIGGER_PUT_CONFIG              = "put_config";
-static const string TRIGGER_EXECUTE_BARREN          = "exe_barren";
-static const string TRIGGER_NEW_BARREN_FUNCTION     = "new_bfunc";
-static const string TRIGGER_NEW_COMPOUND_FUNCTION   = "new_cfunc";
-static const string TRIGGER_SET_GUID                = "set_guid";
-static const string TRIGGER_SAVE_BARREN             = "save_barren";
-static const string TRIGGER_START_FRAMEWORK         = "start_framework";
-static const string TRIGGER_STOP_FRAMEWORK          = "stop_framework";
-static const string TRIGGER_LOAD_PLUGIN             = "load_plugin";
-static const string TRIGGER_UNLOAD_PLUGIN           = "unload_plugin";
 
 // identifiers
 static const string ID_ANY                          = "id_any";

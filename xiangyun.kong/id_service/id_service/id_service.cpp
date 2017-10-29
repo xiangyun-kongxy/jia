@@ -13,12 +13,12 @@
 
 #include <lib/identifier/id_name.hpp>
 #include <lib/serialize/serializable.hpp>
-#include <lib/convert/basic_type_convert.hpp>
+#include <lib/convert/type_convert.hpp>
 
 #include <id_service/executor/exe_fetch_add_guid.hpp>
 #include <id_service/executor/exe_fetch_add_guid_bench.hpp>
 #include <id_service/executor/exe_get_cur_guid.hpp>
-#include <id_service/trigger/trigger_set_guid.hpp>
+#include <id_service/executor/exe_set_guid.hpp>
 
 
 #include <ipc.hpp>
@@ -35,8 +35,7 @@ namespace kxy {
         m_executors[M_FETCH_ADD_GUID]       = new class fetch_add_guid;
         m_executors[M_FETCH_ADD_GUID_BENCH] = new fetch_add_guid_bench;
         m_executors[M_GET_CUR_GUID]         = new class get_cur_guid;
-
-        m_triggers[M_SET_GUID]            = new class set_guid;
+        m_executors[M_SET_GUID]             = new class set_guid;
     }
     
     void id_service::resume() {

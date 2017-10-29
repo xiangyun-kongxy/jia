@@ -10,7 +10,6 @@
 #define reference_h
 
 #include <atomic>
-#include <stdio.h>
 
 using namespace std;
 
@@ -35,20 +34,20 @@ class reference {
     public:
         reference() :
         m_ref(0L) {
-#ifdef _DEBUG
+#ifdef DEBUG_REFERENCE
                 printf("%016lx is creating\n", (long)this);
 #endif
         }
         
         reference(long cur_ref) :
         m_ref(cur_ref) {
-#ifdef _DEBUG
+#ifdef DEBUG_REFERENCE
                 printf("%016lx is creating\n", (long)this);
 #endif
         }
         
         virtual ~reference() {
-#ifdef _DEBUG
+#ifdef DEBUG_REFERENCE
                 printf(".\t.\t.\t%016lx is deleting\n", (long)this);
 #endif
         }

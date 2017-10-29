@@ -37,7 +37,8 @@ namespace pf {
             list<ptr<plugin>> pls = pm->get_all_plugin();
             m_pools.clear();
             for (ptr<plugin> pl : pls) {
-                if (!pl->is_kind_of(PLUGIN_BUS)) {
+                if (!pl->is_kind_of(PLUGIN_BUS) &&
+                    !pl->is_kind_of(PLUGIN_PS)) {
                     m_pools.push_back(pl->tasks());
                 }
             }

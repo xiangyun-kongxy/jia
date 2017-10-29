@@ -21,6 +21,7 @@
 		26C79E371F9B2FDD00466DB3 /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
 		26C79E391F9B2FE200466DB3 /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
 		26C79E3D1F9B35A800466DB3 /* log_service.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = log_service.cpp; path = log/log_service.cpp; sourceTree = "<group>"; };
+		AD593DEE1FA4708000939767 /* id_response.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = id_response.hpp; path = identifier/id_response.hpp; sourceTree = "<group>"; };
 		AD5F03C91F94EBBC002742B9 /* id_simple_event.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = id_simple_event.hpp; path = identifier/id_simple_event.hpp; sourceTree = "<group>"; };
 		ADAD38ED1F94DA2300ABC6F3 /* libcommon.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libcommon.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -87,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				AD5F03C91F94EBBC002742B9 /* id_simple_event.hpp */,
+				AD593DEE1FA4708000939767 /* id_response.hpp */,
 			);
 			name = identifier;
 			sourceTree = "<group>";

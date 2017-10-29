@@ -11,11 +11,9 @@
 
 #include <config_center/config_center.hpp>
 
-#include <plugin/executor/executor.hpp>
 #include <plugin/response/simple_response.hpp>
 
 #include <errors.hpp>
-#include <class_names.hpp>
 
 using namespace pf;
 

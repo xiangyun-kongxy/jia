@@ -23,20 +23,12 @@ namespace pf {
     
     ptr<plugin> g_lifecycle = nullptr;
     ptr<plugin> g_bus = nullptr;
+    ptr<plugin> g_ps = nullptr;
 
     plugin::plugin() {
         m_status = PS_LOADING;
 
         m_status = PS_LOADED;
-    }
-
-    void plugin::on_event(ptr<event> evt) {
-        ptr<trigger> trigger = nullptr;
-        if (evt != nullptr) {
-            trigger = m_triggers[evt->name()];
-            if (trigger != nullptr)
-                trigger->happen(this, evt);
-        }
     }
 
     ptr<response> plugin::do_task(ptr<event> evt) {
@@ -56,10 +48,6 @@ namespace pf {
 
     list<ptr<identifier>> plugin::supported_event() const {
         list<ptr<identifier>> evt;
-        map<string,ptr<trigger>>::const_iterator i;
-        for(i = m_triggers.begin(); i != m_triggers.end(); ++i)
-            evt.push_back(new id_name(i->first));
-        
         
         map<string,ptr<executor>>::const_iterator it;
         for(it = m_executors.begin(); it != m_executors.end(); ++it)

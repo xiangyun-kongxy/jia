@@ -11,7 +11,6 @@
 
 #include <barren_cache/barren_cache.hpp>
 
-#include <plugin/executor/executor.hpp>
 #include <plugin/response/simple_response.hpp>
 
 #include <errors.hpp>

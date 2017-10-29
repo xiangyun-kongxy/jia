@@ -15,8 +15,6 @@
 #include <lib/object/object.hpp>
 #include <lib/object/ptr.hpp>
 
-#include <class_names.hpp>
-
 namespace kxy {
 
     /**

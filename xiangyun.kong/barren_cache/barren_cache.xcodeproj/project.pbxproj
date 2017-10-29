@@ -15,6 +15,7 @@
 		267BC0211E2941B800C6F0EE /* cache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 267BC01F1E2941B800C6F0EE /* cache.cpp */; };
 		267BC0221E2941B800C6F0EE /* cache.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 267BC0201E2941B800C6F0EE /* cache.hpp */; };
 		268A6D691F91F647000B6648 /* libipc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 268A6D681F91F647000B6648 /* libipc.dylib */; };
+		AD593DFC1FA4CE1B00939767 /* exe_save_cache_barren.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD593DFB1FA4CE1B00939767 /* exe_save_cache_barren.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,11 +27,11 @@
 		267BC00F1E29278E00C6F0EE /* libmemory.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libmemory.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libmemory.dylib"; sourceTree = "<group>"; };
 		267BC0111E29279500C6F0EE /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
 		267BC01A1E293A0500C6F0EE /* libbus.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbus.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libbus.dylib"; sourceTree = "<group>"; };
-		267BC01C1E293F9100C6F0EE /* trigger_save_cache_barren.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = trigger_save_cache_barren.hpp; path = trigger/trigger_save_cache_barren.hpp; sourceTree = "<group>"; };
 		267BC01D1E29409A00C6F0EE /* exe_load_cache_barren.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = exe_load_cache_barren.hpp; path = executor/exe_load_cache_barren.hpp; sourceTree = "<group>"; };
 		267BC01F1E2941B800C6F0EE /* cache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = cache.cpp; path = cache/cache.cpp; sourceTree = "<group>"; };
 		267BC0201E2941B800C6F0EE /* cache.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = cache.hpp; path = cache/cache.hpp; sourceTree = "<group>"; };
 		268A6D681F91F647000B6648 /* libipc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libipc.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libipc.dylib"; sourceTree = "<group>"; };
+		AD593DFB1FA4CE1B00939767 /* exe_save_cache_barren.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = exe_save_cache_barren.hpp; path = executor/exe_save_cache_barren.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +70,6 @@
 			isa = PBXGroup;
 			children = (
 				267BC01E1E29418C00C6F0EE /* cache */,
-				267BC0141E29337800C6F0EE /* trigger */,
 				267BC0131E29336B00C6F0EE /* executor */,
 				267BC0061E2926BE00C6F0EE /* barren_cache.cpp */,
 				267BC0071E2926BE00C6F0EE /* barren_cache.hpp */,
@@ -93,17 +93,10 @@
 		267BC0131E29336B00C6F0EE /* executor */ = {
 			isa = PBXGroup;
 			children = (
+				AD593DFB1FA4CE1B00939767 /* exe_save_cache_barren.hpp */,
 				267BC01D1E29409A00C6F0EE /* exe_load_cache_barren.hpp */,
 			);
 			name = executor;
-			sourceTree = "<group>";
-		};
-		267BC0141E29337800C6F0EE /* trigger */ = {
-			isa = PBXGroup;
-			children = (
-				267BC01C1E293F9100C6F0EE /* trigger_save_cache_barren.hpp */,
-			);
-			name = trigger;
 			sourceTree = "<group>";
 		};
 		267BC01E1E29418C00C6F0EE /* cache */ = {
@@ -123,6 +116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				267BC0091E2926BE00C6F0EE /* barren_cache.hpp in Headers */,
+				AD593DFC1FA4CE1B00939767 /* exe_save_cache_barren.hpp in Headers */,
 				267BC0221E2941B800C6F0EE /* cache.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

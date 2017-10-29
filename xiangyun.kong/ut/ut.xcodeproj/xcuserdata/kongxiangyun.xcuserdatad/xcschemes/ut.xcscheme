@@ -70,6 +70,20 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AD593DCC1FA4569700939767"
+               BuildableName = "libps.dylib"
+               BlueprintName = "ps"
+               ReferencedContainer = "container:../ps/ps.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "26784DF81E003A9700FCE82B"
                BuildableName = "liblifecycle.dylib"
                BlueprintName = "lifecycle"
@@ -88,6 +102,20 @@
                BuildableName = "libbus.dylib"
                BlueprintName = "bus"
                ReferencedContainer = "container:../bus/bus.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "264C473A1FA59656009DDD1B"
+               BuildableName = "libplugin_controller.dylib"
+               BlueprintName = "plugin_controller"
+               ReferencedContainer = "container:../plugin_controller/plugin_controller.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry

@@ -17,13 +17,21 @@ namespace kxy {
     
     class spin_mutex {
     public:
+        spin_mutex() {}
+        
+    private:
+        spin_mutex(const spin_mutex&) {}
+        spin_mutex& operator = (const spin_mutex&) { return *this; }
+        
+    public:
         void lock() {
-            while(flag.test_and_set(memory_order_acquire))
-                ;
+            while(flag.test_and_set(memory_order_acquire));
         }
+        
         void unlock() {
             flag.clear(memory_order_release);
         }
+        
     private:
         atomic_flag flag = ATOMIC_FLAG_INIT;
     };

@@ -13,8 +13,6 @@
 
 #include <plugin/event/simple_event.hpp>
 
-#include <class_names.hpp>
-
 using namespace pf;
 
 namespace kxy {

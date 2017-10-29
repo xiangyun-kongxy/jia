@@ -10,7 +10,6 @@
 #define id_any_h
 
 #include "identifier.hpp"
-#include <class_names.hpp>
 
 namespace kxy {
     

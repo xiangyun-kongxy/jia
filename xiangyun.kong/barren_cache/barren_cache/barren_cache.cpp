@@ -8,16 +8,11 @@
 
 #include "barren_cache.hpp"
 
-#include <lib/identifier/id_name.hpp>
-
-#include <plugin/event/simple_event.hpp>
-
-#include <barren_cache/trigger/trigger_save_cache_barren.hpp>
+#include <barren_cache/executor/exe_save_cache_barren.hpp>
 #include <barren_cache/executor/exe_load_cache_barren.hpp>
 
 #include <messages.hpp>
 #include <ipc.hpp>
-#include <class_names.hpp>
 
 namespace mind {
     
@@ -26,7 +21,7 @@ namespace mind {
         // TODO: capacity from config
         m_cache = new cache(640000);
         
-        m_triggers[M_SAVE_CACHE_BARREN] = new class save_cache_barren;
+        m_executors[M_SAVE_CACHE_BARREN] = new class save_cache_barren;
         m_executors[M_LOAD_CACHE_BARREN] = new class load_cache_barren;
     }
     

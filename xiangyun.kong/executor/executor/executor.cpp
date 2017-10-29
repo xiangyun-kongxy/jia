@@ -11,9 +11,9 @@
 
 #include <executor/executor.hpp>
 
-#include <executor/trigger/trigger_execute_barren.hpp>
-#include <executor/trigger/trigger_new_barren_function.hpp>
-#include <executor/trigger/trigger_new_compound_function.hpp>
+#include <executor/executor/exe_execute_barren.hpp>
+#include <executor/executor/exe_new_barren_function.hpp>
+#include <executor/executor/exe_new_compound_function.hpp>
 
 #include <messages.hpp>
 #include <class_names.hpp>
@@ -21,9 +21,9 @@
 namespace mind {
 
     barren_executor::barren_executor() {
-        m_triggers[M_EXECUTE_BARREN]        = new class execute_barren;
-        m_triggers[M_NEW_BARREN_FUNCTION]   = new class new_barren_function;
-        m_triggers[M_NEW_COMPOUND_FUNCTION] = new class new_compound_function;
+        m_executors[M_EXECUTE_BARREN]        = new class execute_barren;
+        m_executors[M_NEW_BARREN_FUNCTION]   = new class new_barren_function;
+        m_executors[M_NEW_COMPOUND_FUNCTION] = new class new_compound_function;
     }
 
     void barren_executor::exe_func(ptr<barren> obj) {

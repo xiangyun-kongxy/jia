@@ -12,7 +12,6 @@
 
 #include <plugin/response/response.hpp>
 #include <plugin/event/event.hpp>
-#include <plugin/trigger/trigger.hpp>
 #include <plugin/executor/executor.hpp>
 #include <plugin/plugin/plugin_status.hpp>
 
@@ -34,11 +33,6 @@ namespace pf {
         plugin();
 
     public:
-        /**
-         * implementation for processing event
-         * @param evt the event to process
-         */
-        virtual void on_event(ptr<event> evt);
         /**
          * execute pre-defined function
          * @param evt function and parameter for function
@@ -77,13 +71,11 @@ namespace pf {
         static ptr<event> current_task();
         
     protected:
-        map<string, ptr<trigger>> m_triggers;
         map<string, ptr<executor>> m_executors;
 
         plugin_status m_status;
         ptr<cqueue<ptr<object>>> m_tasks;
-
-
+        
         mutex m_mutex;
         list<pthread_t> m_threads;
     };

@@ -9,14 +9,7 @@
 #ifndef barren_io_hpp
 #define barren_io_hpp
 
-#include <string>
-
-#include <lib/object/ptr.hpp>
-
 #include <barren/barren.hpp>
-
-using namespace std;
-using namespace kxy;
 
 namespace mind {
     

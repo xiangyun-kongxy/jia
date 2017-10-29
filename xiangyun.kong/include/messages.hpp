@@ -60,4 +60,12 @@ static const string M_LOAD_CACHE_BARREN             = "load_cbarren";
 static const string M_SAVE_BARREN                   = "save_barren";
 static const string M_LOAD_BARREN                   = "load_barren";
 
+// provided by ps
+static const string M_PUBLISH                       = "publish";
+
+// provided by plugin controller
+static const string M_INC_THREAD                    = "inc_thread";
+static const string M_DEC_THREAD                    = "dec_thread";
+static const string M_SHOW_TASK_COUNT               = "show_ctask";
+
 #endif /* events_h */

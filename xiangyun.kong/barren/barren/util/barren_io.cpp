@@ -10,11 +10,8 @@
 
 #include <lib/identifier/id_name.hpp>
 
-#include <plugin/response/response.hpp>
-
 #include <ipc.hpp>
 #include <messages.hpp>
-#include <class_names.hpp>
 
 using namespace pf;
 
