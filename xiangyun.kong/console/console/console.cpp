@@ -91,7 +91,6 @@ int main(int argc, char** argv) {
                     pf::loader::unload();
                     cout << "done" << endl;
                     framework_loaded = false;
-                    sleep(2);
                 } else if (cmds.front() == "?" || cmds.front() == "Help" ||
                            cmds.front() == "h" || cmds.front() == "help" ||
                            cmds.front() == "H" || cmds.front() == "HELP") {

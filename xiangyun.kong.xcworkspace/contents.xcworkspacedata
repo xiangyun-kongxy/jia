@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <FileRef
+      location = "group:xiangyun.kong/timer/timer.xcodeproj">
+   </FileRef>
    <Group
       location = "container:"
       name = "conf">
@@ -50,9 +53,6 @@
       </FileRef>
       <FileRef
          location = "group:xiangyun.kong/include/config_keys.hpp">
-      </FileRef>
-      <FileRef
-         location = "group:xiangyun.kong/include/ut.hpp">
       </FileRef>
    </Group>
    <FileRef
