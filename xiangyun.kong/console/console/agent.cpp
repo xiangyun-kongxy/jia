@@ -82,11 +82,9 @@ void show_framework_functions(const string& function_name) {
 }
 
 void show_framework_functions() {
-    update_functions();
-    
-    map<string, list<ptr<pf::function>>>::iterator i;
-    for (i = g_functions.begin(); i != g_functions.end(); ++i) {
-        for (ptr<pf::function> func : i->second) {
+    list<ptr<plugin>> plugins = plugin_manager::instance()->get_all_plugin();
+    for (ptr<plugin> pl : plugins) {
+        for (ptr<pf::function> func : pl->supported_functions()) {
             printf("    @%-16s:%-20s ", func->provider()->name().c_str(),
                    func->name().c_str());
             for (TYPE ty : func->param_type()) {
@@ -114,6 +112,8 @@ void show_framework_functions() {
 }
 
 void call_framework_function(queue<string> cmds) {
+    update_functions();
+
     string plugin_name;
     if (cmds.front().at(0) == '@') {
         plugin_name = cmds.front();
@@ -130,7 +130,7 @@ void call_framework_function(queue<string> cmds) {
     if (i != g_functions.end()) {
         cmds.pop();
         if (i->second.size() > 1 && plugin_name == "") {
-            cout << "error: mulltiple function found."
+            cout << "error: multi-function found."
                     "plugin should be specified" << endl;
         } else {
             for (ptr<pf::function> func : i->second) {

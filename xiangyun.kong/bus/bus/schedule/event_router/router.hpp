@@ -26,6 +26,16 @@ namespace pf {
             m_forward_switchers[ID_ANY] = new sw_broadcast;
             m_forward_switchers[ID_NAME] = new sw_name;
         }
+
+        virtual ~router() {
+            delete m_default_forward;
+            map<string, switcher*>::iterator i;
+            for (i = m_forward_switchers.begin();
+                 i != m_forward_switchers.end();
+                 ++i) {
+                delete i->second;
+            }
+        }
         
     public:
         virtual void schedule(ptr<object> obj) override {
