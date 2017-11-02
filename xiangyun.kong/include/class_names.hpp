@@ -50,6 +50,7 @@ static const string PLUGIN_CONFIG_CENTER            = "cfgcenter";
 static const string PLUGIN_BARREN_EXECUTOR          = "exebarren";
 static const string PLUGIN_PS                       = "pub_sub";
 static const string PLUGIN_CONTROLLER               = "plugin_ctrl";
+static const string PLUGIN_HEARTBEAT                = "heartbeat";
 
 // task processors
 static const string EXE_LOAD_CACHE_BARREN           = "load_cbarren";
@@ -76,6 +77,8 @@ static const string EXE_INC_THREAD                  = "inc_thread";
 static const string EXE_DEC_THREAD                  = "dec_thread";
 static const string EXE_SHOW_TASK_COUNT             = "show_ctask";
 static const string EXE_SHOW_PLUGINS                = "show_plugins";
+static const string EXE_REGISTER_TIMER              = "register_timer";
+static const string EXE_UNREGISTER_TIMER            = "unregister_timer";
 
 
 // identifiers

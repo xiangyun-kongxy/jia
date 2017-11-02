@@ -244,6 +244,34 @@
                ReferencedContainer = "container:../ps/ps.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "26C910B41FAB567C007A3A25"
+               BuildableName = "libheartbeat.dylib"
+               BlueprintName = "heartbeat"
+               ReferencedContainer = "container:../heartbeat/heartbeat.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "267BBE6C1E17F0FC00C6F0EE"
+               BuildableName = "libleveldb.dylib"
+               BlueprintName = "leveldb"
+               ReferencedContainer = "container:../leveldb/leveldb.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

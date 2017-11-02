@@ -69,5 +69,9 @@ static const string M_DEC_THREAD                    = "dec_thread";
 static const string M_SHOW_TASK_COUNT               = "show_ctask";
 static const string M_SHOW_PLUGINS                  = "show_plugins";
 
+// provided by heartbeat
+static const string M_ON_TIMER                      = "on_timer";
+static const string M_REGISTER_TIMER                = "register_timer";
+static const string M_UNREGISTER_TIMER              = "unregister_timer";
 
 #endif /* events_h */
