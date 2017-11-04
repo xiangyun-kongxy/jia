@@ -32,11 +32,11 @@ namespace pf {
     }
 
     ptr<response> plugin::do_task(ptr<event> evt) {
-        ptr<executor> executor = nullptr;
         if (evt != nullptr) {
-            executor = m_executors[evt->name()];
-            if (executor != nullptr)
-                return executor->run(this, evt);
+            map<string, ptr<executor>>::iterator i;
+            i = m_executors.find(evt->name());
+            if (i != m_executors.end())
+                return i->second->run(this, evt);
         }
         return new simple_response(evt, EC_TASK_NOT_SUPPORTED,
                                    EM_TASK_NOT_SUPPORTED);
@@ -121,6 +121,10 @@ namespace pf {
 
     ptr<cqueue<ptr<object>>> plugin::tasks() {
         return m_tasks;
+    }
+    
+    long plugin::thread_count() {
+        return m_threads.size();
     }
 
     void plugin::inc_thread() {

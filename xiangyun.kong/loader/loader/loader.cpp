@@ -76,7 +76,7 @@ namespace pf {
         signal(SIGQUIT, sig_func);
         signal(SIGINT,  sig_func);
 
-        signal(SIGHUP, nullptr);
+        signal(SIGHUP, SIG_IGN);
         
     }
     

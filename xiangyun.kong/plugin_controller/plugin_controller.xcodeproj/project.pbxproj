@@ -16,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2613B8051FAD9B5900529C94 /* exe_show_thread_count.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = exe_show_thread_count.hpp; path = executor/exe_show_thread_count.hpp; sourceTree = "<group>"; };
 		264C473B1FA59656009DDD1B /* libplugin_controller.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libplugin_controller.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		264C473E1FA59656009DDD1B /* plugin_controller.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = plugin_controller.hpp; sourceTree = "<group>"; };
 		264C47421FA59656009DDD1B /* plugin_controller.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = plugin_controller.cpp; sourceTree = "<group>"; };
@@ -89,6 +90,7 @@
 				264C47521FA5AC3E009DDD1B /* exe_dec_thread.hpp */,
 				264C47551FA5B08D009DDD1B /* exe_show_task_count.hpp */,
 				264C47561FA5B480009DDD1B /* exe_show_plugins.hpp */,
+				2613B8051FAD9B5900529C94 /* exe_show_thread_count.hpp */,
 			);
 			name = executor;
 			sourceTree = "<group>";

@@ -95,9 +95,6 @@
       location = "group:xiangyun.kong/lifecycle/lifecycle.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:xiangyun.kong/loader/loader.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:xiangyun.kong/lib/lib.xcodeproj">
    </FileRef>
    <FileRef

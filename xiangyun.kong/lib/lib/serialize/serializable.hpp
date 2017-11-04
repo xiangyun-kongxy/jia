@@ -56,6 +56,7 @@ namespace kxy {
         typename type_name::const_iterator i = c.begin();       \
         while (i != c.end()) {                                  \
             *this << *i;                                        \
+            ++i;                                                \
         }                                                       \
         return *this;                                           \
     }                                                           \
@@ -77,10 +78,6 @@ namespace kxy {
         
         template<class value_type>
         def_serialize_iterator(list<value_type>);
-        template<class value_type>
-        def_serialize_iterator(queue<value_type>);
-        template<class value_type>
-        def_serialize_iterator(stack<value_type>);
         
         
         template<class key_type, class value_type>
@@ -175,30 +172,6 @@ namespace kxy {
             return *this;
         }
         
-        template<class value_type>
-        serializable& operator >> (queue<value_type>& l) {
-            long size;
-            *this >> size;
-            for (long i = 0; i < size; ++i) {
-                value_type value;
-                *this >> value;
-                l.push(value);
-            }
-            return *this;
-            
-        }
-        
-        template<class value_type>
-        serializable& operator >> (stack<value_type>& l) {
-            long size;
-            *this >> size;
-            for (long i = 0; i < size; ++i) {
-                value_type value;
-                *this >> value;
-                l.push(value);
-            }
-            return *this;
-        }
         template<class type>
         serializable& operator << (ptr<type> data) {
             m_hold_reference.insert(data);

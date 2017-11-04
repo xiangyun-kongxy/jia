@@ -36,6 +36,7 @@ namespace pf {
             exc_plugin.insert(PLUGIN_PS);
             exc_plugin.insert(PLUGIN_BUS);
             exc_plugin.insert(PLUGIN_LIFECYCLE);
+            exc_plugin.insert(PLUGIN_TERMINAL);
 
             plugin_manager* pm = plugin_manager::instance();
             dependence_manager* dm = dependence_manager::instance();
@@ -52,7 +53,7 @@ namespace pf {
                     }
                 }
                 sleep(1);
-            } while (pls.size() > 3);
+            } while (pls.size() > 4);
 
             return nullptr;
         }

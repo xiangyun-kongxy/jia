@@ -13,8 +13,6 @@ using namespace kxy;
 
 namespace pf {
     
-    ptr<plugin> g_terminal;
-    
     simple_event::simple_event(const string& name) :
     simple_event::simple_event(name, nullptr, new id_any()) {
     
@@ -35,10 +33,6 @@ namespace pf {
         m_event_name = name;
         m_param = param;
         m_dst = dst;
-
-        if (m_deliver == nullptr) {
-            m_deliver = g_terminal;
-        }
     }
 
     ptr<plugin> simple_event::deliver() const {

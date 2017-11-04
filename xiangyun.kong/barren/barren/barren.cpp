@@ -48,11 +48,21 @@ namespace mind {
     }
     
     long barren::operator[] (long i) {
-        if (i + 2 <= size()) {
-            return m_ids[i + 2];
-        } else {
-            return 0;
+        if (i >= size()) {
+            lock();
+            
+            long* ids = new long[i+3];
+            ids[0] = i + 3;
+            ids[i+2] = 0;
+            for (long n = 1; n < i + 2; ++n) {
+                ids[n] = m_ids[n];
+            }
+            delete[] m_ids;
+            m_ids = ids;
+            
+            unlock();
         }
+        return m_ids[i + 2];
     }
     
     long barren::size() const {

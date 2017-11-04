@@ -68,6 +68,7 @@ static const string M_INC_THREAD                    = "inc_thread";
 static const string M_DEC_THREAD                    = "dec_thread";
 static const string M_SHOW_TASK_COUNT               = "show_ctask";
 static const string M_SHOW_PLUGINS                  = "show_plugins";
+static const string M_SHOW_THREAD_COUNT             = "show_cthread";
 
 // provided by heartbeat
 static const string M_ON_TIMER                      = "on_timer";

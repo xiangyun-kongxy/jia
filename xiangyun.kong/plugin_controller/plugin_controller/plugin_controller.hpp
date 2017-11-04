@@ -25,6 +25,7 @@ namespace pf {
         IMPL_F(T_NONE, M_DEC_THREAD, T_STR)
         IMPL_F(T_INT, M_SHOW_TASK_COUNT, T_STR)
         IMPL_F(T_STR, M_SHOW_PLUGINS)
+        IMPL_F(T_INT, M_SHOW_THREAD_COUNT, T_STR);
         IMPL_END
         
     public:

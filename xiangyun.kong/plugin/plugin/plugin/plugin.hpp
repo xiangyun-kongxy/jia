@@ -64,6 +64,7 @@ namespace pf {
     public:
         virtual plugin_status status();
         virtual ptr<cqueue<ptr<object>>> tasks();
+        virtual long thread_count();
         virtual void inc_thread();
         virtual void dec_thread();
         

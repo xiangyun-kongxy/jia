@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		264C475C1FA5EE5E009DDD1B /* agent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 264C475A1FA5EE5E009DDD1B /* agent.cpp */; };
+		2613B8081FAD9DEB00529C94 /* terminal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2613B8061FAD9DEB00529C94 /* terminal.cpp */; };
+		2613B80A1FAD9E9C00529C94 /* entance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2613B8091FAD9E9C00529C94 /* entance.cpp */; };
+		2613B8121FADBBF800529C94 /* libbus.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2613B80F1FADBBF800529C94 /* libbus.dylib */; };
+		2613B8131FADBBF800529C94 /* liblifecycle.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2613B8101FADBBF800529C94 /* liblifecycle.dylib */; };
+		2613B8141FADBBF800529C94 /* libps.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2613B8111FADBBF800529C94 /* libps.dylib */; };
 		264C475E1FA5F202009DDD1B /* libplugin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 264C475D1FA5F202009DDD1B /* libplugin.dylib */; };
 		264C47601FA6026F009DDD1B /* libipc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 264C475F1FA6026F009DDD1B /* libipc.dylib */; };
 		264C47661FA61877009DDD1B /* libcommon.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 264C47651FA61877009DDD1B /* libcommon.dylib */; };
 		267BBE471E178DC500C6F0EE /* liblib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 267BBE421E178DC500C6F0EE /* liblib.dylib */; };
-		267BBE491E178DC500C6F0EE /* libloader.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 267BBE441E178DC500C6F0EE /* libloader.dylib */; };
-		267BBE4C1E178E2E00C6F0EE /* console.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 267BBE4B1E178E2E00C6F0EE /* console.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,8 +31,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		264C475A1FA5EE5E009DDD1B /* agent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = agent.cpp; sourceTree = "<group>"; };
-		264C475B1FA5EE5E009DDD1B /* agent.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = agent.hpp; sourceTree = "<group>"; };
+		2613B8061FAD9DEB00529C94 /* terminal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = terminal.cpp; sourceTree = "<group>"; };
+		2613B8071FAD9DEB00529C94 /* terminal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = terminal.hpp; sourceTree = "<group>"; };
+		2613B8091FAD9E9C00529C94 /* entance.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = entance.cpp; sourceTree = "<group>"; };
+		2613B80C1FADB3A500529C94 /* help.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = help.hpp; path = executors/help.hpp; sourceTree = "<group>"; };
+		2613B80D1FADB62C00529C94 /* start.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = start.hpp; path = executors/start.hpp; sourceTree = "<group>"; };
+		2613B80E1FADB86300529C94 /* stop.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = stop.hpp; path = executors/stop.hpp; sourceTree = "<group>"; };
+		2613B80F1FADBBF800529C94 /* libbus.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbus.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Release/libbus.dylib"; sourceTree = "<group>"; };
+		2613B8101FADBBF800529C94 /* liblifecycle.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblifecycle.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Release/liblifecycle.dylib"; sourceTree = "<group>"; };
+		2613B8111FADBBF800529C94 /* libps.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libps.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Release/libps.dylib"; sourceTree = "<group>"; };
+		2613B8151FADC1DD00529C94 /* run_cmd.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = run_cmd.hpp; path = executors/run_cmd.hpp; sourceTree = "<group>"; };
 		264C475D1FA5F202009DDD1B /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
 		264C475F1FA6026F009DDD1B /* libipc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libipc.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libipc.dylib"; sourceTree = "<group>"; };
 		264C47651FA61877009DDD1B /* libcommon.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommon.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Release/libcommon.dylib"; sourceTree = "<group>"; };
@@ -40,7 +50,6 @@
 		267BBE431E178DC500C6F0EE /* liblifecycle.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblifecycle.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/liblifecycle.dylib"; sourceTree = "<group>"; };
 		267BBE441E178DC500C6F0EE /* libloader.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libloader.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libloader.dylib"; sourceTree = "<group>"; };
 		267BBE451E178DC500C6F0EE /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-auhvnlcmvrvvdbddscrdalymuxic/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
-		267BBE4B1E178E2E00C6F0EE /* console.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = console.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,17 +57,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2613B8121FADBBF800529C94 /* libbus.dylib in Frameworks */,
+				2613B8131FADBBF800529C94 /* liblifecycle.dylib in Frameworks */,
+				2613B8141FADBBF800529C94 /* libps.dylib in Frameworks */,
 				264C47661FA61877009DDD1B /* libcommon.dylib in Frameworks */,
 				264C47601FA6026F009DDD1B /* libipc.dylib in Frameworks */,
 				264C475E1FA5F202009DDD1B /* libplugin.dylib in Frameworks */,
 				267BBE471E178DC500C6F0EE /* liblib.dylib in Frameworks */,
-				267BBE491E178DC500C6F0EE /* libloader.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2613B80B1FADB38900529C94 /* executors */ = {
+			isa = PBXGroup;
+			children = (
+				2613B80C1FADB3A500529C94 /* help.hpp */,
+				2613B80D1FADB62C00529C94 /* start.hpp */,
+				2613B80E1FADB86300529C94 /* stop.hpp */,
+				2613B8151FADC1DD00529C94 /* run_cmd.hpp */,
+			);
+			name = executors;
+			sourceTree = "<group>";
+		};
 		267BBE2D1E178DAE00C6F0EE = {
 			isa = PBXGroup;
 			children = (
@@ -79,9 +101,10 @@
 		267BBE381E178DAE00C6F0EE /* console */ = {
 			isa = PBXGroup;
 			children = (
-				267BBE4B1E178E2E00C6F0EE /* console.cpp */,
-				264C475A1FA5EE5E009DDD1B /* agent.cpp */,
-				264C475B1FA5EE5E009DDD1B /* agent.hpp */,
+				2613B80B1FADB38900529C94 /* executors */,
+				2613B8061FAD9DEB00529C94 /* terminal.cpp */,
+				2613B8071FAD9DEB00529C94 /* terminal.hpp */,
+				2613B8091FAD9E9C00529C94 /* entance.cpp */,
 			);
 			path = console;
 			sourceTree = "<group>";
@@ -89,6 +112,9 @@
 		267BBE401E178DC500C6F0EE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2613B80F1FADBBF800529C94 /* libbus.dylib */,
+				2613B8101FADBBF800529C94 /* liblifecycle.dylib */,
+				2613B8111FADBBF800529C94 /* libps.dylib */,
 				264C47651FA61877009DDD1B /* libcommon.dylib */,
 				264C475F1FA6026F009DDD1B /* libipc.dylib */,
 				264C475D1FA5F202009DDD1B /* libplugin.dylib */,
@@ -160,8 +186,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				267BBE4C1E178E2E00C6F0EE /* console.cpp in Sources */,
-				264C475C1FA5EE5E009DDD1B /* agent.cpp in Sources */,
+				2613B8081FAD9DEB00529C94 /* terminal.cpp in Sources */,
+				2613B80A1FAD9E9C00529C94 /* entance.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,12 +286,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = V26S23V64D;
+				GCC_ENABLE_CPP_RTTI = NO;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../loader",
 					"$(SRCROOT)/../plugin",
 					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../include",
 					"$(SRCROOT)",
+					"$(SRCROOT)/../common",
+					"$(SRCROOT)/../ps",
+					"$(SRCROOT)/../bus",
+					"$(SRCROOT)/../lifecycle",
+					"$(SRCROOT)/../loader",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -276,12 +307,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEVELOPMENT_TEAM = V26S23V64D;
+				GCC_ENABLE_CPP_RTTI = NO;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../loader",
 					"$(SRCROOT)/../plugin",
 					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../include",
 					"$(SRCROOT)",
+					"$(SRCROOT)/../common",
+					"$(SRCROOT)/../ps",
+					"$(SRCROOT)/../bus",
+					"$(SRCROOT)/../lifecycle",
+					"$(SRCROOT)/../loader",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
