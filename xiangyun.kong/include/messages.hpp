@@ -75,4 +75,7 @@ static const string M_ON_TIMER                      = "on_timer";
 static const string M_REGISTER_TIMER                = "register_timer";
 static const string M_UNREGISTER_TIMER              = "unregister_timer";
 
+
+static const string M_BARREN_EXECUTED               = "barren_executed";
+
 #endif /* events_h */

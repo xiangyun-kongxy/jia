@@ -23,8 +23,8 @@ namespace mind {
         virtual ptr<response> run(ptr<plugin> owner, ptr<event> evt) override {
             ptr<serializable> data = evt->param();
             long instruction;
-            barren_function func;
-            data >> instruction >> (long&)func;
+            bfunction func;
+            data >> instruction >> func;
             ((ptr<barren_executor>)owner)->new_barren_function(instruction, func);
 
             return nullptr;

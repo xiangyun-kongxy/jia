@@ -36,6 +36,9 @@ static const long BARREN_DIVIDE             = BARREN_SYS_BEGIN + 14;
 static const long BARREN_RECURRENCE         = BARREN_SYS_BEGIN + 15;
 static const long BARREN_REPLACE            = BARREN_SYS_BEGIN + 16;
 
+static const long BARREN_CALL               = BARREN_SYS_BEGIN + 17;
+static const long BARREN_CALL_RESULT        = BARREN_SYS_BEGIN + 18;
+
 static const long BARREN_MIND               = BARREN_SYS_BEGIN + 1024;
 static const long BARREN_QUERY              = BARREN_SYS_BEGIN + 1025;
 

@@ -44,8 +44,20 @@ namespace mind {
             m_ids[i] = it;
             ++i;
         }
-
     }
+    
+    barren::barren(const initializer_list<long>& ids) {
+        m_ids = new long[ids.size()+2];
+        m_ids[0] = ids.size() + 2;
+        m_ids[1] = get_guid();
+        
+        long i = 2;
+        for (long it : ids) {
+            m_ids[i] = it;
+            ++i;
+        }
+    }
+    
     
     long barren::operator[] (long i) {
         if (i >= size()) {

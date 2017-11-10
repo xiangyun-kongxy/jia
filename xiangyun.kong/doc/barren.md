@@ -205,12 +205,7 @@ formula: [where to search, what to search, result set]
 
 ## barren function
 
-* <size, function id, parent, define function, body, param1, param2...>
+* <size, function id, nullptr, define function, function id, param1, param2...>
 
-* <size, body, function id, define object, list, call1, call2...>
+* <size, param1, function id, call function, function id, param11, param22...>
 
-* <size, call1, body, call function, function id, param1, param2...>
-
-* <size, call2, body, call function, function id, call3, param2...>
-
-* <size, call3, body, call function, function id, param1, param2...>

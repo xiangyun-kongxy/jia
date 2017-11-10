@@ -19,7 +19,7 @@ using namespace pf;
 
 namespace mind {
 
-    typedef void (*barren_function)(ptr<barren>);
+    typedef ptr<barren> (*bfunction)(const deque<ptr<barren>>&);
     
     class barren_executor : public plugin {
     public:
@@ -28,7 +28,6 @@ namespace mind {
         IMPL_BEGIN
         IMPL_F(T_NONE, M_EXECUTE_BARREN)
         IMPL_F(T_NONE, M_NEW_BARREN_FUNCTION)
-        IMPL_F(T_NONE, M_NEW_COMPOUND_FUNCTION)
         IMPL_END
         
     public:
@@ -36,15 +35,8 @@ namespace mind {
         
     public:
         void exe_func(ptr<barren>);
-        void new_barren_function(long, barren_function);
-        void new_compound_function(long, const list<long>&);
+        void new_barren_function(long, bfunction);
 
-    private:
-        void exe_func_inner(long, ptr<barren>);
-
-    private:
-        map<long, barren_function> m_atom_functions;
-        map<long, list<long>> m_compound_functions;
     };
 }
 

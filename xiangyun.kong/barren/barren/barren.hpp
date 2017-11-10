@@ -22,6 +22,7 @@ namespace mind {
     public:
         barren(bool init = true);
         barren(const list<long>& ids);
+        barren(const initializer_list<long>& ids);
         
     public:
         virtual ~barren(){}
