@@ -10,6 +10,7 @@
 		265AF60C1FB5D75200940C8E /* libipc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 265AF60B1FB5D75200940C8E /* libipc.dylib */; };
 		26AE9B721FB430FE007222E5 /* barren_call.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26AE9B701FB430FE007222E5 /* barren_call.cpp */; };
 		26AE9B731FB430FE007222E5 /* barren_call.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 26AE9B711FB430FE007222E5 /* barren_call.hpp */; };
+		26BBC9721FB6B50F0063C1A3 /* barren_function.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26BBC9711FB6B50F0063C1A3 /* barren_function.cpp */; };
 		AD593E031FA4CE4F00939767 /* exe_execute_barren.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD593E001FA4CE4F00939767 /* exe_execute_barren.hpp */; };
 		AD593E041FA4CE4F00939767 /* exe_new_barren_function.hpp in Headers */ = {isa = PBXBuildFile; fileRef = AD593E011FA4CE4F00939767 /* exe_new_barren_function.hpp */; };
 		ADF8B82C1F89087C0027F954 /* executor.hpp in Headers */ = {isa = PBXBuildFile; fileRef = ADF8B82B1F89087C0027F954 /* executor.hpp */; };
@@ -23,6 +24,8 @@
 		265AF60B1FB5D75200940C8E /* libipc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libipc.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libipc.dylib"; sourceTree = "<group>"; };
 		26AE9B701FB430FE007222E5 /* barren_call.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = barren_call.cpp; path = function/barren_call.cpp; sourceTree = "<group>"; };
 		26AE9B711FB430FE007222E5 /* barren_call.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = barren_call.hpp; path = function/barren_call.hpp; sourceTree = "<group>"; };
+		26BBC9701FB6B46E0063C1A3 /* barren_function.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = barren_function.hpp; path = function/barren_function.hpp; sourceTree = "<group>"; };
+		26BBC9711FB6B50F0063C1A3 /* barren_function.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = barren_function.cpp; path = function/barren_function.cpp; sourceTree = "<group>"; };
 		AD593E001FA4CE4F00939767 /* exe_execute_barren.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = exe_execute_barren.hpp; path = executor/exe_execute_barren.hpp; sourceTree = "<group>"; };
 		AD593E011FA4CE4F00939767 /* exe_new_barren_function.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = exe_new_barren_function.hpp; path = executor/exe_new_barren_function.hpp; sourceTree = "<group>"; };
 		ADF8B8281F89087C0027F954 /* libexecutor.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libexecutor.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +56,8 @@
 			children = (
 				26AE9B701FB430FE007222E5 /* barren_call.cpp */,
 				26AE9B711FB430FE007222E5 /* barren_call.hpp */,
+				26BBC9701FB6B46E0063C1A3 /* barren_function.hpp */,
+				26BBC9711FB6B50F0063C1A3 /* barren_function.cpp */,
 			);
 			name = function;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26BBC9721FB6B50F0063C1A3 /* barren_function.cpp in Sources */,
 				ADF8B8301F89087C0027F954 /* executor.cpp in Sources */,
 				26AE9B721FB430FE007222E5 /* barren_call.cpp in Sources */,
 			);

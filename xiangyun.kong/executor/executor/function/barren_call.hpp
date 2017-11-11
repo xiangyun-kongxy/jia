@@ -16,8 +16,11 @@ namespace mind {
     
     class barren_call : public barren {
     public:
-        ptr<barren> call(const deque<ptr<barren>>& params);
+        ptr<barren> call();
         bool is_call() const;
+        
+    private:
+        ptr<barren> call(const deque<ptr<barren>>& params);
         
     };
 }

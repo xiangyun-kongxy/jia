@@ -29,27 +29,15 @@ namespace mind {
     }
     
     void barren_executor::exe_func(ptr<barren> obj) {
-        ptr<barren> result;
+        if (obj != nullptr) {
+            ptr<barren_call> call = obj;
+            ptr<barren> result = call->call();
         
-        ptr<barren_call> func = obj;
-        if (func->is_call()) {
-            deque<ptr<barren>> params;
-            for (long i = 3; i < func->size(); ++i) {
-                if ((**func)[i] > 0) {
-                    params.push_back(load_barren((**func)[i]));
-                } else if ((**func)[i] <= 0) {
-                    params.push_back(nullptr);
-                }
-            }
-            result = func->call(params);
-        } else  {
-            result = func;
+            ptr<barren> rr = new barren({0L,
+                BARREN_CALL_RESULT, obj->id(), result->id()});
+            save_barren(rr);
+            broadcast(M_BARREN_EXECUTED, rr);
         }
-        
-        ptr<barren> rr = new barren({0L,
-            BARREN_CALL_RESULT, obj->id(), result->id()});
-        save_barren(rr);
-        broadcast(M_BARREN_EXECUTED, rr);
     }
 
     void barren_executor::new_barren_function(long instruction,
