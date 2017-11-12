@@ -9,10 +9,19 @@
 #ifndef predefined_barren_h
 #define predefined_barren_h
 
-static const long BARREN_INVALID            = 0;
+#include <barren/barren.hpp>
 
-static const long BARREN_VARIABLE_BEGIN     = 1e0;
-static const long BARREN_VARIABLE_END       = 1e8 - 1;
+static const long BARREN_FALSE              = 0;
+static const long BARREN_TRUE               = 1;
+
+namespace mind {
+
+    extern ptr<barren> bfalse;
+    extern ptr<barren> btrue;
+    
+}
+
+
 static const long BARREN_SYS_BEGIN          = 1e8;
 static const long BARREN_SYS_END            = 1e9 - 1;
 static const long BARREN_FREE_BEGIN         = 1e9;

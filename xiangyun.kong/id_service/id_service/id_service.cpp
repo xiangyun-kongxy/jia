@@ -25,12 +25,11 @@
 #include <messages.hpp>
 #include <config_keys.hpp>
 
-#include <predefined_barren.hpp>
 
 namespace kxy {
     
     id_service::id_service() {
-        m_cur_id = BARREN_FREE_BEGIN;
+        m_cur_id = 0L;
         
         m_executors[M_FETCH_ADD_GUID]       = new class fetch_add_guid;
         m_executors[M_FETCH_ADD_GUID_BENCH] = new fetch_add_guid_bench;

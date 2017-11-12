@@ -20,6 +20,9 @@ namespace mind {
     
     class barren : public reference {
     public:
+        friend void __init_global_barren();
+        
+    public:
         barren(bool init = true);
         barren(const list<long>& ids);
         barren(const initializer_list<long>& ids);

@@ -11,6 +11,7 @@
 
 #include <barren/barren.hpp>
 #include <executor/executor.hpp>
+#include <executor/function/barren_function.hpp>
 
 namespace mind {
     
@@ -20,8 +21,9 @@ namespace mind {
         bool is_call() const;
         
     private:
-        ptr<barren> call(const deque<ptr<barren>>& params);
-        
+        ptr<barren> _call(const deque<ptr<barren>>& params);
+        deque<ptr<barren>> _init_param(const deque<ptr<barren>>& gp);
+        ptr<barren_function> _get_function(const deque<ptr<barren>>&);
     };
 }
 

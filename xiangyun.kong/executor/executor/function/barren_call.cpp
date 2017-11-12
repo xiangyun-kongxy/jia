@@ -16,74 +16,69 @@
 namespace mind {
     
     ptr<barren> barren_call::call() {
-        ptr<barren> result;
-        
-        if (is_call()) {
-            deque<ptr<barren>> params;
-            for (long i = 3; i < size(); ++i) {
-                if ((*this)[i] > 0) {
-                    params.push_back(load_barren((*this)[i]));
-                } else if ((*this)[i] <= 0) {
-                    params.push_back(nullptr);
-                }
-            }
-            result = call(params);
-        } else  {
-            result = this;
-        }
-        
-        return result;
+        return  _call(_init_param(deque<ptr<barren>>()));
     }
     
-    ptr<barren> barren_call::call(const deque<ptr<mind::barren> > &params) {
+    deque<ptr<barren>>
+    barren_call::_init_param(const deque<ptr<mind::barren> > &gp) {
+        deque<ptr<barren>> params;
+        for (long i = 3; i < size(); ++i) {
+            if ((*this)[i] < 0) {
+                if (gp.size() > -(*this)[i]) {
+                    params.push_back(gp[-(*this)[i]]);
+                } else {
+                    params.push_back(bfalse);
+                }
+            } else if ((*this)[i] == 0) {
+                params.push_back(bfalse);
+            } else {
+                ptr<barren_call> sub_call = load_barren((*this)[i]);
+                if (sub_call != nullptr) {
+                    params.push_back(sub_call->_call(gp));
+                } else {
+                    params.push_back(bfalse);
+                }
+            }
+        }
+        return params;
+    }
+    
+    ptr<barren_function>
+    barren_call::_get_function(const deque<ptr<barren>>& params) {
+        ptr<barren_function> func = load_barren((*this)[2]);
+        
+        if (func != nullptr) {
+            ptr<barren_call> call = func;
+            if (call->is_call()) {
+                func = call->_call(params);
+            }
+        } else {
+            func = bfalse;
+        }
+        
+        return func;
+    }
+    
+    ptr<barren> barren_call::_call(const deque<ptr<mind::barren> > &params) {
         if (!is_call()) {
             return this;
         }
         
-        ptr<barren_function> sub_func = load_barren((*this)[2]);
-        if (sub_func != nullptr) {
-            ptr<barren_call> call = sub_func;
-            if (call->is_call()) {
-                sub_func = call->call(params);
-            }
-        }
-        
-        if (sub_func == nullptr) {
-            return load_barren(0L);
-        } else if (!sub_func->is_function()) {
-            return sub_func;
+        ptr<barren_function> func = _get_function(params);
+        if (!func->is_function()) {
+            return func;
         }
     
-        deque<ptr<barren>> local_params;
-        for (long i = 3; i < size(); ++i) {
-            if ((*this)[i-3] < 0) {
-                if (params.size() >= i-2) {
-                    local_params.push_back(params[i-3]);
-                } else {
-                    local_params.push_back(load_barren(0L));
-                }
-            } else if ((*this)[i-3] == 0) {
-                local_params.push_back(load_barren(0L));
-            } else {
-                ptr<barren_call> sub_call = load_barren((*this)[i-3]);
-                if (sub_call != nullptr) {
-                    local_params.push_back(sub_call->call(params));
-                } else {
-                    local_params.push_back(load_barren(0L));
-                }
-            }
-        }
-
-        bfunction  func = sub_func->get_raw_function();
-        if (func != nullptr) {
-            ptr<barren_call> result = func(local_params);
+        bfunction  rfunc = func->get_raw_function();
+        if (rfunc != nullptr) {
+            ptr<barren_call> result = rfunc(_init_param(params));
             if (result->is_call()) {
-                return result->call(params);
+                return result->_call(params);
             } else {
                 return result;
             }
         } else {
-            return load_barren(0L);
+            return bfalse;
         }
     }
     

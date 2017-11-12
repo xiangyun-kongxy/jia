@@ -86,6 +86,29 @@ namespace mind {
     }
     
 
+    ptr<barren> bfalse;
+    ptr<barren> btrue;
+    
+    void __uninit_global_barren() {
+        bfalse = nullptr;
+        btrue = nullptr;
+    }
+    
+    
+    void __attribute__((constructor)) __init_global_barren() {
+        bfalse = new barren(false);
+        bfalse->m_ids = new long[2];
+        bfalse->m_ids[0] = 2;
+        bfalse->m_ids[1] = 0L;
+        
+        btrue = new barren(false);
+        btrue->m_ids = new long[2];
+        btrue->m_ids[0] = 2;
+        btrue->m_ids[1] = 1L;
+        
+        register_uninitializer("uninitilaize global barrens",
+                               __uninit_global_barren);
+    }
     
     set<long> g_locked_barren;
     pthread_mutex_t g_barren_set_sync;
@@ -100,7 +123,8 @@ namespace mind {
         pthread_mutex_init(&g_barren_set_sync, nullptr);
         pthread_cond_init(&g_cond_barren_unlocked, nullptr);
         
-        register_uninitializer("uninitialize barren sync", __uninit_barren_sync_mutex);
+        register_uninitializer("uninitialize barren sync",
+                               __uninit_barren_sync_mutex);
     }
     
     void barren::lock() {
