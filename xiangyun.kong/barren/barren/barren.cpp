@@ -58,6 +58,17 @@ namespace mind {
         }
     }
     
+    barren::barren(long id, const initializer_list<long>& others) {
+        m_ids = new long[others.size()+2];
+        m_ids[0] = others.size() + 2;
+        m_ids[1] = id;
+        
+        long i = 2;
+        for (long it : others) {
+            m_ids[i] = it;
+            ++i;
+        }
+    }
     
     long barren::operator[] (long i) {
         if (i >= size()) {
@@ -96,15 +107,8 @@ namespace mind {
     
     
     void __attribute__((constructor)) __init_global_barren() {
-        bfalse = new barren(false);
-        bfalse->m_ids = new long[2];
-        bfalse->m_ids[0] = 2;
-        bfalse->m_ids[1] = 0L;
-        
-        btrue = new barren(false);
-        btrue->m_ids = new long[2];
-        btrue->m_ids[0] = 2;
-        btrue->m_ids[1] = 1L;
+        bfalse = new barren(0L, {});
+        btrue = new barren(1L, {});
         
         register_uninitializer("uninitilaize global barrens",
                                __uninit_global_barren);

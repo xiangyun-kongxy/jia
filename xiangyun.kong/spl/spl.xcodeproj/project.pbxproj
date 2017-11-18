@@ -273,8 +273,9 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = V26S23V64D;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../lib/lib",
+					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../include",
+					"$(SRCROOT)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -285,8 +286,9 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = V26S23V64D;
 				HEADER_SEARCH_PATHS = (
-					"$(SRCROOT)/../lib/lib",
+					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../include",
+					"$(SRCROOT)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

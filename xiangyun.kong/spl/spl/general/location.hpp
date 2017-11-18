@@ -9,9 +9,8 @@
 #ifndef location_hpp
 #define location_hpp
 
-#include <stdio.h>
-#include <object/object.h>
-#include <object/ptr.h>
+#include <lib/object/object.hpp>
+#include <lib/object/ptr.hpp>
 #include "file.hpp"
 
 using namespace kxy;

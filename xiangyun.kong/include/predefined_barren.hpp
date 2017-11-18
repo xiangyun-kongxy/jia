@@ -50,6 +50,9 @@ static const long BARREN_CALL_RESULT        = BARREN_SYS_BEGIN + 18;
 static const long BARREN_DEFINE             = BARREN_SYS_BEGIN + 19;
 static const long BARREN_FUNCTION           = BARREN_SYS_BEGIN + 20;
 
+static const long BARREN_BSF                = BARREN_SYS_BEGIN + 21;
+static const long BARREN_BEF                = BARREN_SYS_BEGIN + 22;
+
 static const long BARREN_MIND               = BARREN_SYS_BEGIN + 1024;
 static const long BARREN_QUERY              = BARREN_SYS_BEGIN + 1025;
 

@@ -10,7 +10,7 @@
 #define file_hpp
 
 #include <stdio.h>
-#include <object/object.h>
+#include <lib/object/object.hpp>
 
 using namespace kxy;
 
