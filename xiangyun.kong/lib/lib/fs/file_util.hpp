@@ -9,7 +9,11 @@
 #ifndef file_util_h
 #define file_util_h
 
+#include <dirent.h>
+#include <sys/stat.h>
+
 #include <string>
+#include <list>
 
 using namespace std;
 
@@ -36,6 +40,62 @@ namespace kxy {
                 return result;
             }
             return "";
+        }
+        
+        static char* read_to_buf(const string& path) {
+            FILE* pf = fopen(path.c_str(), "r");
+            if (pf != nullptr) {
+                fseek(pf, 0, SEEK_END);
+                long size = ftell(pf);
+                fseek(pf, 0, SEEK_SET);
+                
+                char* buf = new char[size + 1];
+                
+                fgets(buf, (int)size, pf);
+                buf[size] = 0;
+                
+                fclose(pf);
+                return buf;
+            }
+            return nullptr;
+        }
+        
+        static list<string> file_in_dir(const char* path, const char* pattern) {
+            list<string> result;
+            
+            dirent* filename;
+            DIR* dir = opendir(path);
+            if (dir != nullptr) {
+                while ((filename = readdir(dir)) != nullptr) {
+                    if (strcmp(filename->d_name, ".") == 0 ||
+                        strcmp(filename->d_name, "..")) {
+                        continue;
+                    }
+                    
+                    struct stat s;
+                    lstat(filename->d_name, &s);
+                    if (S_ISDIR(s.st_mode)) {
+                        for (string file : file_in_dir(filename->d_name,
+                                                       pattern)) {
+                            result.push_back(file);
+                        }
+                    } else {
+                        const char* ptr = filename->d_name;
+                        do {
+                            ptr = strstr(ptr, pattern);
+                            if (ptr != nullptr &&
+                                strlen(ptr) == strlen(pattern)) {
+                                result.push_back(filename->d_name);
+                                break;
+                            }
+                            ++ptr;
+                        } while (ptr != nullptr);
+                    }
+                }
+                closedir(dir);
+            }
+            
+            return result;
         }
     };
 }

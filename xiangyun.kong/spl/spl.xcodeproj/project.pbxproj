@@ -7,11 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		263080A21E87AFEF002BDFAC /* token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 263080A01E87AFEF002BDFAC /* token.cpp */; };
+		2682A9E91FC004C0004F75A6 /* lscope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2682A9E81FC004C0004F75A6 /* lscope.cpp */; };
+		2682A9EC1FC006DB004F75A6 /* luser_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2682A9EA1FC006DB004F75A6 /* luser_type.cpp */; };
+		2682A9EE1FC012B3004F75A6 /* lsymbol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2682A9ED1FC012B3004F75A6 /* lsymbol.cpp */; };
+		2682A9F01FC03AEB004F75A6 /* ldir.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2682A9EF1FC03AEB004F75A6 /* ldir.cpp */; };
+		2682A9F21FC03C94004F75A6 /* lfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2682A9F11FC03C94004F75A6 /* lfile.cpp */; };
+		2682A9F51FC0486A004F75A6 /* pptoken.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2682A9F31FC0486A004F75A6 /* pptoken.cpp */; };
+		2682A9F91FC04C19004F75A6 /* bsp_pp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2682A9F71FC04C19004F75A6 /* bsp_pp.cpp */; };
+		2682A9FC1FC04DE7004F75A6 /* bsp_complier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2682A9FA1FC04DE7004F75A6 /* bsp_complier.cpp */; };
+		2682A9FE1FC04F39004F75A6 /* libbarren.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2682A9FD1FC04F39004F75A6 /* libbarren.dylib */; };
 		26D02E5E1E82BFF900472610 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D02E5D1E82BFF900472610 /* main.cpp */; };
-		513B8B2D1E87F81A008F07F1 /* location.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 513B8B2B1E87F81A008F07F1 /* location.cpp */; };
+		513B8B2D1E87F81A008F07F1 /* llocation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 513B8B2B1E87F81A008F07F1 /* llocation.cpp */; };
 		513B8B301E87F862008F07F1 /* liblib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 513B8B2F1E87F862008F07F1 /* liblib.dylib */; };
-		513B8B331E87F978008F07F1 /* file.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 513B8B311E87F978008F07F1 /* file.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,15 +34,29 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		263080A01E87AFEF002BDFAC /* token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = token.cpp; path = lexical/cpp/token.cpp; sourceTree = "<group>"; };
-		263080A11E87AFEF002BDFAC /* token.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = token.hpp; path = lexical/cpp/token.hpp; sourceTree = "<group>"; };
+		2682A9E41FBFEF2E004F75A6 /* ldir.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = ldir.hpp; path = general/ldir.hpp; sourceTree = "<group>"; };
+		2682A9E51FBFF0B6004F75A6 /* lscope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = lscope.hpp; path = general/lscope.hpp; sourceTree = "<group>"; };
+		2682A9E61FBFF243004F75A6 /* lsymbol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = lsymbol.hpp; path = general/lsymbol.hpp; sourceTree = "<group>"; };
+		2682A9E71FC00477004F75A6 /* ltype.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = ltype.hpp; path = general/ltype.hpp; sourceTree = "<group>"; };
+		2682A9E81FC004C0004F75A6 /* lscope.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = lscope.cpp; path = general/lscope.cpp; sourceTree = "<group>"; };
+		2682A9EA1FC006DB004F75A6 /* luser_type.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = luser_type.cpp; path = general/luser_type.cpp; sourceTree = "<group>"; };
+		2682A9EB1FC006DB004F75A6 /* luser_type.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = luser_type.hpp; path = general/luser_type.hpp; sourceTree = "<group>"; };
+		2682A9ED1FC012B3004F75A6 /* lsymbol.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = lsymbol.cpp; path = general/lsymbol.cpp; sourceTree = "<group>"; };
+		2682A9EF1FC03AEB004F75A6 /* ldir.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ldir.cpp; path = general/ldir.cpp; sourceTree = "<group>"; };
+		2682A9F11FC03C94004F75A6 /* lfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = lfile.cpp; path = general/lfile.cpp; sourceTree = "<group>"; };
+		2682A9F31FC0486A004F75A6 /* pptoken.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pptoken.cpp; path = general/pptoken.cpp; sourceTree = "<group>"; };
+		2682A9F41FC0486A004F75A6 /* pptoken.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = pptoken.hpp; path = general/pptoken.hpp; sourceTree = "<group>"; };
+		2682A9F71FC04C19004F75A6 /* bsp_pp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bsp_pp.cpp; path = bsp/lexical/bsp_pp.cpp; sourceTree = "<group>"; };
+		2682A9F81FC04C19004F75A6 /* bsp_pp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp.hpp; path = bsp/lexical/bsp_pp.hpp; sourceTree = "<group>"; };
+		2682A9FA1FC04DE7004F75A6 /* bsp_complier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bsp_complier.cpp; path = bsp/bsp_complier.cpp; sourceTree = "<group>"; };
+		2682A9FB1FC04DE7004F75A6 /* bsp_complier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bsp_complier.hpp; path = bsp/bsp_complier.hpp; sourceTree = "<group>"; };
+		2682A9FD1FC04F39004F75A6 /* libbarren.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbarren.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libbarren.dylib"; sourceTree = "<group>"; };
 		26D02E5A1E82BFF900472610 /* spl */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = spl; sourceTree = BUILT_PRODUCTS_DIR; };
 		26D02E5D1E82BFF900472610 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		513B8B2B1E87F81A008F07F1 /* location.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = location.cpp; path = general/location.cpp; sourceTree = "<group>"; };
-		513B8B2C1E87F81A008F07F1 /* location.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = location.hpp; path = general/location.hpp; sourceTree = "<group>"; };
+		513B8B2B1E87F81A008F07F1 /* llocation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = llocation.cpp; path = general/llocation.cpp; sourceTree = "<group>"; };
+		513B8B2C1E87F81A008F07F1 /* llocation.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = llocation.hpp; path = general/llocation.hpp; sourceTree = "<group>"; };
 		513B8B2F1E87F862008F07F1 /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-egfyecatwyimadakahcfjjljfwqz/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
-		513B8B311E87F978008F07F1 /* file.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = file.cpp; path = general/file.cpp; sourceTree = "<group>"; };
-		513B8B321E87F978008F07F1 /* file.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = file.hpp; path = general/file.hpp; sourceTree = "<group>"; };
+		513B8B321E87F978008F07F1 /* lfile.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = lfile.hpp; path = general/lfile.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2682A9FE1FC04F39004F75A6 /* libbarren.dylib in Frameworks */,
 				513B8B301E87F862008F07F1 /* liblib.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -50,6 +72,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2682A9F61FC04BA3004F75A6 /* lexical */ = {
+			isa = PBXGroup;
+			children = (
+				2682A9F71FC04C19004F75A6 /* bsp_pp.cpp */,
+				2682A9F81FC04C19004F75A6 /* bsp_pp.hpp */,
+			);
+			name = lexical;
+			sourceTree = "<group>";
+		};
 		26D02E511E82BFF900472610 = {
 			isa = PBXGroup;
 			children = (
@@ -71,36 +102,40 @@
 			isa = PBXGroup;
 			children = (
 				513B8B2A1E87F7EB008F07F1 /* general */,
-				26D02E641E82C27200472610 /* lexical */,
+				26D02E641E82C27200472610 /* bsp */,
 				26D02E5D1E82BFF900472610 /* main.cpp */,
 			);
 			path = spl;
 			sourceTree = "<group>";
 		};
-		26D02E641E82C27200472610 /* lexical */ = {
+		26D02E641E82C27200472610 /* bsp */ = {
 			isa = PBXGroup;
 			children = (
-				26D02E651E82C28400472610 /* cpp */,
+				2682A9F61FC04BA3004F75A6 /* lexical */,
+				2682A9FA1FC04DE7004F75A6 /* bsp_complier.cpp */,
+				2682A9FB1FC04DE7004F75A6 /* bsp_complier.hpp */,
 			);
-			name = lexical;
-			sourceTree = "<group>";
-		};
-		26D02E651E82C28400472610 /* cpp */ = {
-			isa = PBXGroup;
-			children = (
-				263080A01E87AFEF002BDFAC /* token.cpp */,
-				263080A11E87AFEF002BDFAC /* token.hpp */,
-			);
-			name = cpp;
+			name = bsp;
 			sourceTree = "<group>";
 		};
 		513B8B2A1E87F7EB008F07F1 /* general */ = {
 			isa = PBXGroup;
 			children = (
-				513B8B2B1E87F81A008F07F1 /* location.cpp */,
-				513B8B2C1E87F81A008F07F1 /* location.hpp */,
-				513B8B311E87F978008F07F1 /* file.cpp */,
-				513B8B321E87F978008F07F1 /* file.hpp */,
+				513B8B2B1E87F81A008F07F1 /* llocation.cpp */,
+				513B8B2C1E87F81A008F07F1 /* llocation.hpp */,
+				2682A9F11FC03C94004F75A6 /* lfile.cpp */,
+				513B8B321E87F978008F07F1 /* lfile.hpp */,
+				2682A9EF1FC03AEB004F75A6 /* ldir.cpp */,
+				2682A9E41FBFEF2E004F75A6 /* ldir.hpp */,
+				2682A9E81FC004C0004F75A6 /* lscope.cpp */,
+				2682A9E51FBFF0B6004F75A6 /* lscope.hpp */,
+				2682A9ED1FC012B3004F75A6 /* lsymbol.cpp */,
+				2682A9E61FBFF243004F75A6 /* lsymbol.hpp */,
+				2682A9E71FC00477004F75A6 /* ltype.hpp */,
+				2682A9EA1FC006DB004F75A6 /* luser_type.cpp */,
+				2682A9EB1FC006DB004F75A6 /* luser_type.hpp */,
+				2682A9F31FC0486A004F75A6 /* pptoken.cpp */,
+				2682A9F41FC0486A004F75A6 /* pptoken.hpp */,
 			);
 			name = general;
 			sourceTree = "<group>";
@@ -108,6 +143,7 @@
 		513B8B2E1E87F862008F07F1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2682A9FD1FC04F39004F75A6 /* libbarren.dylib */,
 				513B8B2F1E87F862008F07F1 /* liblib.dylib */,
 			);
 			name = Frameworks;
@@ -172,9 +208,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				26D02E5E1E82BFF900472610 /* main.cpp in Sources */,
-				513B8B331E87F978008F07F1 /* file.cpp in Sources */,
-				513B8B2D1E87F81A008F07F1 /* location.cpp in Sources */,
-				263080A21E87AFEF002BDFAC /* token.cpp in Sources */,
+				2682A9E91FC004C0004F75A6 /* lscope.cpp in Sources */,
+				2682A9F01FC03AEB004F75A6 /* ldir.cpp in Sources */,
+				2682A9F91FC04C19004F75A6 /* bsp_pp.cpp in Sources */,
+				2682A9EC1FC006DB004F75A6 /* luser_type.cpp in Sources */,
+				513B8B2D1E87F81A008F07F1 /* llocation.cpp in Sources */,
+				2682A9EE1FC012B3004F75A6 /* lsymbol.cpp in Sources */,
+				2682A9F21FC03C94004F75A6 /* lfile.cpp in Sources */,
+				2682A9FC1FC04DE7004F75A6 /* bsp_complier.cpp in Sources */,
+				2682A9F51FC0486A004F75A6 /* pptoken.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +318,7 @@
 					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../include",
 					"$(SRCROOT)",
+					"$(SRCROOT)/../barren",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -289,6 +332,7 @@
 					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../include",
 					"$(SRCROOT)",
+					"$(SRCROOT)/../barren",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

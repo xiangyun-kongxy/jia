@@ -3,6 +3,16 @@
    version = "1.0">
    <Group
       location = "container:"
+      name = "bsp">
+      <FileRef
+         location = "group:xiangyun.kong/bsp/base.bsp">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/bsp/function.bsp">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
       name = "conf">
       <FileRef
          location = "group:../../../../../mind/conf/mind.xml">
