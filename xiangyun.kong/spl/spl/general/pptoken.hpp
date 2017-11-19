@@ -11,9 +11,16 @@
 
 #include <spl/general/llocation.hpp>
 
+#include <lib/object/object.hpp>
+
+using namespace kxy;
+
 namespace spl {
     
-    class pptoken : public reference {
+    class pptoken : public object {
+    public:
+        DECLARE_TYPE(object, "pptoken");
+        
     public:
         pptoken(const string& str, ptr<llocation> location);
         

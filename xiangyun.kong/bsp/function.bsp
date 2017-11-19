@@ -1,26 +1,17 @@
 #include base.bsp
 
-(f_var, define, function, -1, -2)
-(f_epos, define, function, -1, -2)
-(f_hpos, define, function, -1, -2, -3)
-(f_all, define, function)
-(f_one, define, function)
-(f_if, define, function, -1, -2, -3)
-(f_not, define, function, -1)
-
-
-(s1, call,
-    (_, call, f_all,
-        (_, call, f_var, -2,
-            (_, call, f_epos, -1, (2))
-        ),
-        (_, call, f_all,
-            (_, call, f_var, -3,
-                (_, call, f_epos, -2, (2))
-            ),
-            (_, call, f_epos, -3, (1))
-        ),
-        (_, call, f_epos, -2, (3)),
-    ),
--1)
+// this is a comment
+(f_epos, define, function, atom_func, -1, -2)
+(f_hpos, define, function, atom_func)
+(f_ret,  define, function, atom_func, -1)
+(f_if,   define, function, atom_func, -1, -2, -3)
+(f_not,  define, function, atom_func, -1)
+(f_bs,   define, function,
+    (_,  call, f_ret, 6),
+    -1,
+    (_, call, f_epos, -1, 2),
+    (_, call, f_epos, -2, 2),
+    (_, call, f_epos, -2, 3),
+    (_, call, f_epos, -3, 1),
+    (_, call, f_hpos, -2, -3, -4, -5))
 

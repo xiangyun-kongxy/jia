@@ -7,3 +7,5 @@
 //
 
 #include "bsp_pp.hpp"
+
+#include <spl/bsp/lexical/types/bsp_pp_keywork.hpp>

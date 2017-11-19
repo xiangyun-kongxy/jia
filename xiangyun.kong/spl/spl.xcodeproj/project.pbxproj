@@ -34,6 +34,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		268177751FC17C7400B91E30 /* pp_parser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = pp_parser.hpp; path = general/pp_parser.hpp; sourceTree = "<group>"; };
+		268177791FC17E2800B91E30 /* bsp_pp_keywork.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp_keywork.hpp; path = bsp/lexical/types/bsp_pp_keywork.hpp; sourceTree = "<group>"; };
+		2681777A1FC17FCA00B91E30 /* bsp_pp_string.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp_string.hpp; path = bsp/lexical/types/bsp_pp_string.hpp; sourceTree = "<group>"; };
+		2681777B1FC17FE900B91E30 /* bsp_pp_number.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp_number.hpp; path = bsp/lexical/types/bsp_pp_number.hpp; sourceTree = "<group>"; };
+		2681777C1FC1800A00B91E30 /* bsp_pp_symbol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp_symbol.hpp; path = bsp/lexical/types/bsp_pp_symbol.hpp; sourceTree = "<group>"; };
+		2681777D1FC1802E00B91E30 /* bsp_pp_op.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = bsp_pp_op.h; path = bsp/lexical/types/bsp_pp_op.h; sourceTree = "<group>"; };
+		2681777E1FC1808300B91E30 /* bsp_pp_comment.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp_comment.hpp; path = bsp/lexical/types/bsp_pp_comment.hpp; sourceTree = "<group>"; };
 		2682A9E41FBFEF2E004F75A6 /* ldir.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = ldir.hpp; path = general/ldir.hpp; sourceTree = "<group>"; };
 		2682A9E51FBFF0B6004F75A6 /* lscope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = lscope.hpp; path = general/lscope.hpp; sourceTree = "<group>"; };
 		2682A9E61FBFF243004F75A6 /* lsymbol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = lsymbol.hpp; path = general/lsymbol.hpp; sourceTree = "<group>"; };
@@ -72,9 +79,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		268177761FC17D3500B91E30 /* types */ = {
+			isa = PBXGroup;
+			children = (
+				268177791FC17E2800B91E30 /* bsp_pp_keywork.hpp */,
+				2681777A1FC17FCA00B91E30 /* bsp_pp_string.hpp */,
+				2681777B1FC17FE900B91E30 /* bsp_pp_number.hpp */,
+				2681777C1FC1800A00B91E30 /* bsp_pp_symbol.hpp */,
+				2681777D1FC1802E00B91E30 /* bsp_pp_op.h */,
+				2681777E1FC1808300B91E30 /* bsp_pp_comment.hpp */,
+			);
+			name = types;
+			sourceTree = "<group>";
+		};
+		268177771FC17D4000B91E30 /* parsers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = parsers;
+			sourceTree = "<group>";
+		};
 		2682A9F61FC04BA3004F75A6 /* lexical */ = {
 			isa = PBXGroup;
 			children = (
+				268177771FC17D4000B91E30 /* parsers */,
+				268177761FC17D3500B91E30 /* types */,
 				2682A9F71FC04C19004F75A6 /* bsp_pp.cpp */,
 				2682A9F81FC04C19004F75A6 /* bsp_pp.hpp */,
 			);
@@ -136,6 +165,7 @@
 				2682A9EB1FC006DB004F75A6 /* luser_type.hpp */,
 				2682A9F31FC0486A004F75A6 /* pptoken.cpp */,
 				2682A9F41FC0486A004F75A6 /* pptoken.hpp */,
+				268177751FC17C7400B91E30 /* pp_parser.hpp */,
 			);
 			name = general;
 			sourceTree = "<group>";

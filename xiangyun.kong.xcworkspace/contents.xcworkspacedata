@@ -10,6 +10,9 @@
       <FileRef
          location = "group:xiangyun.kong/bsp/function.bsp">
       </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/bsp/bsp.def">
+      </FileRef>
    </Group>
    <Group
       location = "container:"
