@@ -25,7 +25,7 @@ namespace mind {
         for (long i = 3; i < size(); ++i) {
             if ((*this)[i] < 0) {
                 if (gp.size() > -(*this)[i]) {
-                    params.push_back(gp[-(*this)[i]]);
+                    params.push_back(gp[-(*this)[i] - 1]);
                 } else {
                     params.push_back(bfalse);
                 }

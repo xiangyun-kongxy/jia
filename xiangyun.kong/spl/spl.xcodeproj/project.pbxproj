@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2678535E1FC4647D004B97A6 /* bsp_pp_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2678535C1FC4647D004B97A6 /* bsp_pp_parser.cpp */; };
 		2682A9E91FC004C0004F75A6 /* lscope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2682A9E81FC004C0004F75A6 /* lscope.cpp */; };
 		2682A9EC1FC006DB004F75A6 /* luser_type.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2682A9EA1FC006DB004F75A6 /* luser_type.cpp */; };
 		2682A9EE1FC012B3004F75A6 /* lsymbol.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2682A9ED1FC012B3004F75A6 /* lsymbol.cpp */; };
 		2682A9F01FC03AEB004F75A6 /* ldir.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2682A9EF1FC03AEB004F75A6 /* ldir.cpp */; };
 		2682A9F21FC03C94004F75A6 /* lfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2682A9F11FC03C94004F75A6 /* lfile.cpp */; };
 		2682A9F51FC0486A004F75A6 /* pptoken.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2682A9F31FC0486A004F75A6 /* pptoken.cpp */; };
-		2682A9F91FC04C19004F75A6 /* bsp_pp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2682A9F71FC04C19004F75A6 /* bsp_pp.cpp */; };
 		2682A9FC1FC04DE7004F75A6 /* bsp_complier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2682A9FA1FC04DE7004F75A6 /* bsp_complier.cpp */; };
 		2682A9FE1FC04F39004F75A6 /* libbarren.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2682A9FD1FC04F39004F75A6 /* libbarren.dylib */; };
 		26D02E5E1E82BFF900472610 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26D02E5D1E82BFF900472610 /* main.cpp */; };
@@ -34,12 +34,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2678535C1FC4647D004B97A6 /* bsp_pp_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bsp_pp_parser.cpp; path = bsp/lexical/parser/bsp_pp_parser.cpp; sourceTree = "<group>"; };
+		2678535D1FC4647D004B97A6 /* bsp_pp_parser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp_parser.hpp; path = bsp/lexical/parser/bsp_pp_parser.hpp; sourceTree = "<group>"; };
 		268177751FC17C7400B91E30 /* pp_parser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = pp_parser.hpp; path = general/pp_parser.hpp; sourceTree = "<group>"; };
 		268177791FC17E2800B91E30 /* bsp_pp_keywork.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp_keywork.hpp; path = bsp/lexical/types/bsp_pp_keywork.hpp; sourceTree = "<group>"; };
 		2681777A1FC17FCA00B91E30 /* bsp_pp_string.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp_string.hpp; path = bsp/lexical/types/bsp_pp_string.hpp; sourceTree = "<group>"; };
 		2681777B1FC17FE900B91E30 /* bsp_pp_number.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp_number.hpp; path = bsp/lexical/types/bsp_pp_number.hpp; sourceTree = "<group>"; };
 		2681777C1FC1800A00B91E30 /* bsp_pp_symbol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp_symbol.hpp; path = bsp/lexical/types/bsp_pp_symbol.hpp; sourceTree = "<group>"; };
-		2681777D1FC1802E00B91E30 /* bsp_pp_op.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = bsp_pp_op.h; path = bsp/lexical/types/bsp_pp_op.h; sourceTree = "<group>"; };
+		2681777D1FC1802E00B91E30 /* bsp_pp_op.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp_op.hpp; path = bsp/lexical/types/bsp_pp_op.hpp; sourceTree = "<group>"; };
 		2681777E1FC1808300B91E30 /* bsp_pp_comment.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp_comment.hpp; path = bsp/lexical/types/bsp_pp_comment.hpp; sourceTree = "<group>"; };
 		2682A9E41FBFEF2E004F75A6 /* ldir.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = ldir.hpp; path = general/ldir.hpp; sourceTree = "<group>"; };
 		2682A9E51FBFF0B6004F75A6 /* lscope.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = lscope.hpp; path = general/lscope.hpp; sourceTree = "<group>"; };
@@ -53,8 +55,6 @@
 		2682A9F11FC03C94004F75A6 /* lfile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = lfile.cpp; path = general/lfile.cpp; sourceTree = "<group>"; };
 		2682A9F31FC0486A004F75A6 /* pptoken.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pptoken.cpp; path = general/pptoken.cpp; sourceTree = "<group>"; };
 		2682A9F41FC0486A004F75A6 /* pptoken.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = pptoken.hpp; path = general/pptoken.hpp; sourceTree = "<group>"; };
-		2682A9F71FC04C19004F75A6 /* bsp_pp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bsp_pp.cpp; path = bsp/lexical/bsp_pp.cpp; sourceTree = "<group>"; };
-		2682A9F81FC04C19004F75A6 /* bsp_pp.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp.hpp; path = bsp/lexical/bsp_pp.hpp; sourceTree = "<group>"; };
 		2682A9FA1FC04DE7004F75A6 /* bsp_complier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bsp_complier.cpp; path = bsp/bsp_complier.cpp; sourceTree = "<group>"; };
 		2682A9FB1FC04DE7004F75A6 /* bsp_complier.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bsp_complier.hpp; path = bsp/bsp_complier.hpp; sourceTree = "<group>"; };
 		2682A9FD1FC04F39004F75A6 /* libbarren.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbarren.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libbarren.dylib"; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 				2681777A1FC17FCA00B91E30 /* bsp_pp_string.hpp */,
 				2681777B1FC17FE900B91E30 /* bsp_pp_number.hpp */,
 				2681777C1FC1800A00B91E30 /* bsp_pp_symbol.hpp */,
-				2681777D1FC1802E00B91E30 /* bsp_pp_op.h */,
+				2681777D1FC1802E00B91E30 /* bsp_pp_op.hpp */,
 				2681777E1FC1808300B91E30 /* bsp_pp_comment.hpp */,
 			);
 			name = types;
@@ -95,6 +95,8 @@
 		268177771FC17D4000B91E30 /* parsers */ = {
 			isa = PBXGroup;
 			children = (
+				2678535C1FC4647D004B97A6 /* bsp_pp_parser.cpp */,
+				2678535D1FC4647D004B97A6 /* bsp_pp_parser.hpp */,
 			);
 			name = parsers;
 			sourceTree = "<group>";
@@ -104,8 +106,6 @@
 			children = (
 				268177771FC17D4000B91E30 /* parsers */,
 				268177761FC17D3500B91E30 /* types */,
-				2682A9F71FC04C19004F75A6 /* bsp_pp.cpp */,
-				2682A9F81FC04C19004F75A6 /* bsp_pp.hpp */,
 			);
 			name = lexical;
 			sourceTree = "<group>";
@@ -238,9 +238,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				26D02E5E1E82BFF900472610 /* main.cpp in Sources */,
+				2678535E1FC4647D004B97A6 /* bsp_pp_parser.cpp in Sources */,
 				2682A9E91FC004C0004F75A6 /* lscope.cpp in Sources */,
 				2682A9F01FC03AEB004F75A6 /* ldir.cpp in Sources */,
-				2682A9F91FC04C19004F75A6 /* bsp_pp.cpp in Sources */,
 				2682A9EC1FC006DB004F75A6 /* luser_type.cpp in Sources */,
 				513B8B2D1E87F81A008F07F1 /* llocation.cpp in Sources */,
 				2682A9EE1FC012B3004F75A6 /* lsymbol.cpp in Sources */,

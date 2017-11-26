@@ -19,7 +19,7 @@ using namespace std;
 using namespace mind;
 
 namespace spl {
-namespace bps {
+namespace bsp {
     
     class complier {
     public:

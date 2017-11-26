@@ -9,5 +9,18 @@
 #ifndef bsp_pp_symbol_h
 #define bsp_pp_symbol_h
 
+#include <spl/general/pptoken.hpp>
+
+namespace spl {
+namespace bsp {
+    
+    class bsp_pp_symbol : public pptoken {
+    public:
+        DECLARE_TYPE(pptoken, "bsp_pp_symbol");
+        
+    };
+    
+}
+}
 
 #endif /* bsp_pp_symbol_h */

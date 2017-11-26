@@ -18,8 +18,13 @@ namespace bsp {
     public:
         DECLARE_TYPE(pptoken, "bsp_pp_keywork");
         
+    public:
+        bsp_pp_keywork(const string& name, ptr<llocation> location) :
+        pptoken(name, location) {
+        }
     };
     
 }
 }
+
 #endif /* bsp_pp_keywork_h */

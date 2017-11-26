@@ -9,5 +9,18 @@
 #ifndef bsp_pp_comment_h
 #define bsp_pp_comment_h
 
+#include <spl/general/pptoken.hpp>
+
+namespace spl {
+namespace bsp {
+    
+    class bsp_pp_comment : public pptoken {
+    public:
+        DECLARE_TYPE(pptoken, "bsp_pp_comment");
+        
+    };
+    
+}
+}
 
 #endif /* bsp_pp_comment_h */

@@ -17,6 +17,13 @@ namespace spl {
     public:
         llocation(ptr<lfile> file, long line, long column, ptr<llocation> ll);
         
+        llocation* dup() {
+            llocation* pn;
+            pn = new llocation(m_file, m_line, m_column, m_extracted_from);
+            pn->pos() = m_pos;
+            return pn;
+        }
+        
     public:
         string name() const;
         string sname() const;
@@ -24,8 +31,9 @@ namespace spl {
     public:
         ptr<llocation> extract_from() const;
         ptr<lfile> file() const;
-        long line() const;
-        long column() const;
+        long& line();
+        long& column();
+        long& pos();
         
     private:
         ptr<llocation> m_extracted_from;
@@ -33,6 +41,7 @@ namespace spl {
         ptr<lfile> m_file;
         long m_line;
         long m_column;
+        long m_pos;
     };
     
 }

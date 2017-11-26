@@ -1,17 +1,32 @@
-#include base.bsp
+#include "base.bsp"
 
-// this is a comment
-(f_epos, define, function, atom_func, -1, -2)
-(f_hpos, define, function, atom_func)
-(f_ret,  define, function, atom_func, -1)
-(f_if,   define, function, atom_func, -1, -2, -3)
-(f_not,  define, function, atom_func, -1)
-(f_bs,   define, function,
-    (_,  call, f_ret, 6),
+// program structure
+(f_ret,  define, rfunc, -1)
+(f_if,   define, rfunc, -1, -2, -3)
+(f_while, define, rfunc, -1, -2)
+(f_dow, define, rfunc, -1, -2)
+
+// logical function
+(f_not, define, rfunc, -1)
+(f_and, define, rfunc, -1, -2)
+(f_or,  define, rfunc, -1, -2)
+(f_xor, define, cfunc,
+    (_, call, f_or,
+        (_, call, f_and, (_, call, f_not, -1), -2),
+        (_, call, f_and, (_, call, f_not, -2), -1)),
     -1,
-    (_, call, f_epos, -1, 2),
-    (_, call, f_epos, -2, 2),
-    (_, call, f_epos, -2, 3),
-    (_, call, f_epos, -3, 1),
-    (_, call, f_hpos, -2, -3, -4, -5))
+    -2)
+
+// barren structure
+(f_epos, define, rfunc, -1, -2)
+(f_hpos, define, rfunc)
+(f_bs,   define, cfunc,
+    (_,  call, f_ret, 
+        _bs_6,
+        (_bs_2, call, f_epos, -1, 2),
+        (_bs_3, call, f_epos, _bs_2, 2),
+        (_bs_4, call, f_epos, _bs_2, 3),
+        (_bs_5, call, f_epos, _bs_3, 1),
+        (_bs_6, call, f_hpos, _bs_2, _bs_3, _bs_4, _bs_5)),
+    -1)
 

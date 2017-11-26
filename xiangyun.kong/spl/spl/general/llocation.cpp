@@ -14,6 +14,7 @@ namespace spl {
         m_file = file;
         m_line = line;
         m_column = column;
+        m_pos = 0;
         m_extracted_from = ll;
     }
     
@@ -41,12 +42,16 @@ namespace spl {
         return m_file;
     }
     
-    long llocation::line() const {
+    long& llocation::line() {
         return m_line;
     }
     
-    long llocation::column() const {
+    long& llocation::column() {
         return m_column;
+    }
+    
+    long& llocation::pos() {
+        return m_pos;
     }
     
 }

@@ -16,10 +16,10 @@
 using namespace std;
 
 namespace spl {
-namespace bps {
+namespace bsp {
     
     map<long, ptr<barren>> complier::complie_path(const string& path) {
-        return complie_files(file_util::file_in_dir(path.c_str(), ".bps"));
+        return complie_files(file_util::file_in_dir(path.c_str(), ".bsp"));
     }
     
     map<long, ptr<barren>> complier::complie_file(const string& file) {
