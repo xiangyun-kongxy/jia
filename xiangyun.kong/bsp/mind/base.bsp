@@ -1,0 +1,13 @@
+(false:0)
+(ture:1)
+(object:2)
+
+(set, (list), (describe),
+    (quantity),
+    (union)
+    (difference)
+    (intersection)
+    )
+(probability)
+(relation)
+

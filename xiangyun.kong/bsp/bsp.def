@@ -5,3 +5,5 @@ comment := //[^\n]*
 list := \(((symbol|number|list),)\+\)
 symbol := [_a-zA-Z][_a-zA-Z0-9]*
 number := [-|][0-9]\+
+
+barren: (id, parent, creator, (predicate))

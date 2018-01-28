@@ -1,0 +1,14 @@
+
+(rfunc, define, type)
+(cfunc, define, type)
+
+(relation, define, pred)
+
+// relations
+(is, define, relation)
+(equal, define, relation)
+(like, define, relation)
+(kindof, define, relation)
+(oneof, define, relation)
+(in, define, relation)
+

@@ -1,0 +1,15 @@
+#include "base.bsp"
+
+// predicate is kind of type
+(pred, define, type)
+
+// define, type, parameter list
+(define, define, pred)
+
+// call, object, parameter list
+//   in module executor
+//     case type of object
+//       rfunc: xfun(parameter list)
+//       cfunc: (first parameter)(other parameter list)
+//       *: object
+(call, define, pred)

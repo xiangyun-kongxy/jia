@@ -1,0 +1,35 @@
+#include "base.bsp"
+#include "pred.bsp"
+
+// program structure
+(f_if, define, f_if, rfunc, 3)
+(f_wl, define, f_wl, rfunc, 2)
+(f_do, define, f_do, rfunc, -1)
+
+// logical function
+(f_not, define, f_not, rfunc, 1)
+(f_and, define, f_and, rfunc, 2)
+(f_or,  define, f_or, rfunc, 2)
+(f_xor, define, f_xor, rfunc, 2)
+
+// barren structure
+(f_exist, define, f_exist, rfunc, 1)
+
+(f_prt, define, f_prt, rfunc, 1)
+(f_crt, define, f_crt, rfunc, 1)
+(f_ty, define, f_ty, rfunc, 1)
+
+// quantity
+
+/*
+(f_epos, define, f_epos, rfunc, 2)
+(f_hpos, define, f_hpos, rfunc, -1)
+(f_bs,   define, f_bs, cfunc,
+    (_a,  call, f_do, 
+        (_a, call, f_epos, -1, 2),
+        (_b, call, f_epos, -1L, 2),
+        (_c, call, f_epos, -1L, 3),
+        (_d, call, f_epos, -2L, 1),
+        (_e, call, f_hpos, -1L, -2L, -3L, -4L)),
+    1)
+*/

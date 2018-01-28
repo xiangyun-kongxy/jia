@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <FileRef
+      location = "group:xiangyun.kong/curvefitting/curvefitting.xcodeproj">
+   </FileRef>
    <Group
       location = "container:"
       name = "bsp">
       <FileRef
-         location = "group:xiangyun.kong/bsp/base.bsp">
+         location = "group:xiangyun.kong/bsp/mind">
       </FileRef>
       <FileRef
-         location = "group:xiangyun.kong/bsp/function.bsp">
+         location = "group:xiangyun.kong/bsp/issue.md">
       </FileRef>
       <FileRef
          location = "group:xiangyun.kong/bsp/bsp.def">
