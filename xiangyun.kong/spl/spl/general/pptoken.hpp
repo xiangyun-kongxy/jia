@@ -25,7 +25,7 @@ namespace spl {
         pptoken(const string& str, ptr<llocation> location);
         
     public:
-        string str() const;
+        virtual string str() const;
         ptr<llocation> location() const;
             
     protected:

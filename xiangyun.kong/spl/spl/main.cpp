@@ -10,7 +10,10 @@
 #include <string>
 #include <regex>
 
+#include <spl/bsp/bsp_complier.hpp>
+
 using namespace std;
+using namespace spl;
 
 void test_regex() {
     try {
@@ -30,6 +33,9 @@ void test_regex() {
 }
 
 int main(int argc, const char * argv[]) {
-    test_regex();
+    bsp::compiler compiler;
+    compiler.add_dir("/Users/kongxiangyun/Documents/project/kxy/xiangyun.kong/bsp/mind");
+    compiler.compile();
+    compiler.show_barren();
     return 0;
 }

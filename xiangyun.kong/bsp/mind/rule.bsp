@@ -1,1 +1,12 @@
-((type, -1), true)
+#include "type.bsp"
+
+(r_whatever_is_object, is, 1V, object)
+
+(_, pred, 
+    (_, and,
+     (_, kindof, 1V, 2V),
+     (_, contain, 3V, 2V),
+    ),
+    (_, replace, 3V, 2V, 1V),
+)
+

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <FileRef
-      location = "group:xiangyun.kong/curvefitting/curvefitting.xcodeproj">
-   </FileRef>
    <Group
       location = "container:"
       name = "bsp">
@@ -88,6 +85,9 @@
    </FileRef>
    <FileRef
       location = "group:xiangyun.kong/common/common.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:xiangyun.kong/curvefitting/curvefitting.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:xiangyun.kong/executor/executor.xcodeproj">

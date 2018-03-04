@@ -19,8 +19,8 @@ namespace bsp {
         DECLARE_TYPE(pptoken, "bsp_pp_string");
         
     public:
-        bsp_pp_string(const string& name, ptr<llocation> location)
-        : pptoken(name, location) {
+        bsp_pp_string(const string& str, ptr<llocation> location)
+        : pptoken(str, location) {
             
         }
     };

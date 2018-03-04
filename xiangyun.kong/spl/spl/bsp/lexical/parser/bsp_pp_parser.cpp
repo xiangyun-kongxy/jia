@@ -8,7 +8,7 @@
 
 #include "bsp_pp_parser.hpp"
 
-#include <spl/bsp/lexical/types/bsp_pp_keywork.hpp>
+#include <spl/bsp/lexical/types/bsp_pp_keyword.hpp>
 #include <spl/bsp/lexical/types/bsp_pp_string.hpp>
 #include <spl/bsp/lexical/types/bsp_pp_number.hpp>
 #include <spl/bsp/lexical/types/bsp_pp_symbol.hpp>
@@ -47,7 +47,7 @@ namespace bsp {
         
         m_parser_map[(unsigned)'"'] = _p_parse_string;
         
-        m_parser_map[(unsigned)'-'] = _p_parse_number;
+        // m_parser_map[(unsigned)'-'] = _p_parse_number;
         m_parser_map[(unsigned)'0'] = _p_parse_number;
         m_parser_map[(unsigned)'1'] = _p_parse_number;
         m_parser_map[(unsigned)'2'] = _p_parse_number;
@@ -79,6 +79,11 @@ namespace bsp {
         }
     }
     
+    bsp_pp_parser::parser
+    bsp_pp_parser::_get_parser(ptr<spl::llocation> location) {
+        return m_parser_map[location->file()->source_code()[location->pos()]];
+    }
+    
     ptr<pptoken> bsp_pp_parser::_p_parse_keywork(ptr<llocation> location) {
         ptr<pptoken> token;
         
@@ -88,7 +93,7 @@ namespace bsp {
             location->pos() += 1;
         } else {
             ptr<llocation> ll = location->dup();
-            token = new bsp_pp_keywork("#include", ll);
+            token = new bsp_pp_keyword("#include", ll);
             
             location->column() += 8;
             location->pos() += 8;
@@ -123,6 +128,136 @@ namespace bsp {
         }
         
         return token;
+    }
+    
+    ptr<pptoken> bsp_pp_parser::_p_parse_number(ptr<spl::llocation> location) {
+        ptr<pptoken> token;
+        
+        char* source = location->file()->source_code() + location->pos();
+        char* p = source;
+        long num = 0;
+        
+        while (*p >= '0' && *p <= '9')
+            num = num * 10 + (*(p++) - '0');
+        if (*p == 'V') {
+            ++p;
+            num = (num << BNT_WIDTH) | BNT_VAR;
+        } else if (*p == 'P') {
+            ++p;
+            num = (num << BNT_WIDTH) | BNT_PARA;
+        } else if (*p == 'C') {
+            ++p;
+            num = (num << BNT_WIDTH) | BNT_PARA;
+        }
+        
+        num *= -1;
+        
+        ptr<llocation> ll = location->dup();
+        token = new bsp_pp_number(string(source, p - source), ll, num);
+        
+        location->column() += p - source;
+        location->pos() += p - source;
+        
+        return token;
+    }
+    
+    ptr<pptoken> bsp_pp_parser::_p_parse_symbol(ptr<spl::llocation> location) {
+        ptr<pptoken> token;
+        
+        char* source = location->file()->source_code() + location->pos();
+        char* p = source;
+        
+        while (m_parser_map[*p] == _p_parse_symbol)
+            ++p;
+        
+        
+        ptr<llocation> ll = location->dup();
+        token = new bsp_pp_symbol(string(source, p - source), ll);
+        
+        location->column() += p - source;
+        location->pos() += p - source;
+        
+        return token;
+    }
+    
+    ptr<pptoken> bsp_pp_parser::_p_parse_op(ptr<spl::llocation> location) {
+        ptr<pptoken> token;
+        
+        char* source = location->file()->source_code() + location->pos();
+        
+        ptr<llocation> ll = location->dup();
+        token = new bsp_pp_op(string(source, 1), ll);
+        
+        location->column() += 1;
+        location->pos() += 1;
+        
+        return token;
+    }
+    
+    ptr<pptoken> bsp_pp_parser::_p_parse_comment(ptr<spl::llocation> location) {
+        ptr<pptoken> token;
+        
+        char* source = location->file()->source_code() + location->pos();
+        char* p = source + 1;
+        
+        if (*p == '/') {
+            while (*p != '\n' && *p != 0)
+                ++p;
+        } else if (*p == '*') {
+            ++p;
+            while (*p != 0) {
+                if (*p == '*' && *p == '/') {
+                    p += 2;
+                    break;
+                }
+                ++p;
+            }
+        } else {
+            while (*p != '\n' && *p != 0)
+                ++p;
+            location->column() += p - source;
+            location->pos() += p - source;
+            
+            return nullptr;
+        }
+        
+        ptr<llocation> ll = location->dup();
+        token = new bsp_pp_comment(string(source, p - source), ll);
+        
+        location->column() += p - source;
+        location->pos() += p - source;
+        
+        return token;
+    }
+ 
+    ptr<pptoken> bsp_pp_parser::_p_parse_space(ptr<spl::llocation> location) {
+        ptr<pptoken> token;
+        
+        char* source = location->file()->source_code() + location->pos();
+        char* p = source;
+        
+        while(m_parser_map[*p] == _p_parse_space)
+            ++p;
+        
+        location->column() += p - source;
+        location->pos() += p - source;
+        
+        return nullptr;
+    }
+    
+    ptr<pptoken> bsp_pp_parser::_p_parse_err_char(ptr<spl::llocation> location) {
+        ptr<pptoken> token;
+        
+        char* source = location->file()->source_code() + location->pos();
+        char* p = source;
+        
+        while(m_parser_map[*p] == _p_parse_err_char)
+            ++p;
+        
+        location->column() += p - source;
+        location->pos() += p - source;
+        
+        return nullptr;
     }
     
 }

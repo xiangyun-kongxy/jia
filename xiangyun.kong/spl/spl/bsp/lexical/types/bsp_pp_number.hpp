@@ -18,6 +18,19 @@ namespace bsp {
     public:
         DECLARE_TYPE(pptoken, "bsp_pp_number");
         
+    public:
+        bsp_pp_number(const string& str, ptr<llocation> localtion, long num) :
+        pptoken(str, localtion) {
+            m_number = num;
+        }
+        
+    public:
+        long get() const {
+            return m_number;
+        }
+        
+    private:
+        long m_number;
     };
     
 }

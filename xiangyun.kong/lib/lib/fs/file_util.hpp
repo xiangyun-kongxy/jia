@@ -50,8 +50,7 @@ namespace kxy {
                 fseek(pf, 0, SEEK_SET);
                 
                 char* buf = new char[size + 1];
-                
-                fgets(buf, (int)size, pf);
+                fread(buf, 1, size, pf);
                 buf[size] = 0;
                 
                 fclose(pf);
@@ -68,7 +67,7 @@ namespace kxy {
             if (dir != nullptr) {
                 while ((filename = readdir(dir)) != nullptr) {
                     if (strcmp(filename->d_name, ".") == 0 ||
-                        strcmp(filename->d_name, "..")) {
+                        strcmp(filename->d_name, "..") == 0) {
                         continue;
                     }
                     

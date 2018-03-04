@@ -34,10 +34,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2671BCDE20429B6C00B55236 /* bsp_barren.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = bsp_barren.hpp; path = bsp/lexical/types/bsp_barren.hpp; sourceTree = "<group>"; };
 		2678535C1FC4647D004B97A6 /* bsp_pp_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = bsp_pp_parser.cpp; path = bsp/lexical/parser/bsp_pp_parser.cpp; sourceTree = "<group>"; };
 		2678535D1FC4647D004B97A6 /* bsp_pp_parser.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp_parser.hpp; path = bsp/lexical/parser/bsp_pp_parser.hpp; sourceTree = "<group>"; };
 		268177751FC17C7400B91E30 /* pp_parser.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = pp_parser.hpp; path = general/pp_parser.hpp; sourceTree = "<group>"; };
-		268177791FC17E2800B91E30 /* bsp_pp_keywork.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp_keywork.hpp; path = bsp/lexical/types/bsp_pp_keywork.hpp; sourceTree = "<group>"; };
+		268177791FC17E2800B91E30 /* bsp_pp_keyword.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp_keyword.hpp; path = bsp/lexical/types/bsp_pp_keyword.hpp; sourceTree = "<group>"; };
 		2681777A1FC17FCA00B91E30 /* bsp_pp_string.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp_string.hpp; path = bsp/lexical/types/bsp_pp_string.hpp; sourceTree = "<group>"; };
 		2681777B1FC17FE900B91E30 /* bsp_pp_number.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp_number.hpp; path = bsp/lexical/types/bsp_pp_number.hpp; sourceTree = "<group>"; };
 		2681777C1FC1800A00B91E30 /* bsp_pp_symbol.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = bsp_pp_symbol.hpp; path = bsp/lexical/types/bsp_pp_symbol.hpp; sourceTree = "<group>"; };
@@ -82,12 +83,13 @@
 		268177761FC17D3500B91E30 /* types */ = {
 			isa = PBXGroup;
 			children = (
-				268177791FC17E2800B91E30 /* bsp_pp_keywork.hpp */,
+				268177791FC17E2800B91E30 /* bsp_pp_keyword.hpp */,
 				2681777A1FC17FCA00B91E30 /* bsp_pp_string.hpp */,
 				2681777B1FC17FE900B91E30 /* bsp_pp_number.hpp */,
 				2681777C1FC1800A00B91E30 /* bsp_pp_symbol.hpp */,
 				2681777D1FC1802E00B91E30 /* bsp_pp_op.hpp */,
 				2681777E1FC1808300B91E30 /* bsp_pp_comment.hpp */,
+				2671BCDE20429B6C00B55236 /* bsp_barren.hpp */,
 			);
 			name = types;
 			sourceTree = "<group>";

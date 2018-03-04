@@ -18,6 +18,11 @@ namespace bsp {
     public:
         DECLARE_TYPE(pptoken, "bsp_pp_symbol");
         
+    public:
+        bsp_pp_symbol(const string& sym, ptr<llocation> loc) :
+        pptoken(sym, loc) {
+            
+        }
     };
     
 }

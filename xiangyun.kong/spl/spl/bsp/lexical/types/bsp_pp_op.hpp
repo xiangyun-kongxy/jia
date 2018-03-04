@@ -17,7 +17,11 @@ namespace bsp {
     class bsp_pp_op : public pptoken {
     public:
         DECLARE_TYPE(pptoken, "bsp_pp_op");
-        
+    public:
+        bsp_pp_op(const string& op, ptr<llocation> loc) :
+        pptoken(op, loc) {
+            
+        }
     };
     
 }

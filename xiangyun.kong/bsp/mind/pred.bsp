@@ -1,15 +1,14 @@
 #include "base.bsp"
 
 // predicate is kind of type
-(pred, define, type)
+(pred, define, pred, relation)
 
-// define, type, parameter list
-(define, define, pred)
+// relations
+(is, define, is, relation)
+(equal, define, equal, relation)
+(like, define, like, relation)
+(kindof, define, kindof, relation)
+(oneof, define, oneof, relation)
+(in, define, in, relation)
 
-// call, object, parameter list
-//   in module executor
-//     case type of object
-//       rfunc: xfun(parameter list)
-//       cfunc: (first parameter)(other parameter list)
-//       *: object
-(call, define, pred)
+

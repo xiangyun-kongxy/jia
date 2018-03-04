@@ -20,6 +20,15 @@
 ### structure of a barren
 
 ```
-barren: (id, parent, creator, relation,  predicate)
+barren: (id, parent, creator, predicates)
 predicate: function, parameter list
 ```
+
+### special item in barren with negtive
+
+1. reference
+    reference by name
+    reference by variable
+2. call function parameter
+3. number
+

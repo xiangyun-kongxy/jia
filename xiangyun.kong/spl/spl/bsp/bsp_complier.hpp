@@ -15,18 +15,39 @@
 
 #include <barren/barren.hpp>
 
+#include <spl/bsp/lexical/types/bsp_barren.hpp>
+
+#include <spl/general/lfile.hpp>
+#include <spl/general/ldir.hpp>
+
 using namespace std;
 using namespace mind;
 
 namespace spl {
 namespace bsp {
     
-    class complier {
+    class compiler {
     public:
-        static map<long, ptr<barren>> complie_path(const string& path);
-        static map<long, ptr<barren>> complie_file(const string& file);
-        static map<long, ptr<barren>> complie_files(const list<string>& files);
-        static map<long, ptr<barren>> complie_buf(char* buf);
+        compiler();
+        
+    public:
+        void add_dir(const string& path);
+        void add_file(const string& file);
+        
+    public:
+        void compile();
+        void link();
+        
+    public:
+        void show_barren();
+        
+    private:
+        void compile(ptr<lfile> file);
+        
+    private:
+        ptr<ldir> m_root;
+        map<string, ptr<lfile>> m_files;
+        list<ptr<bsp_barren>> m_barrens;
     };
     
 }

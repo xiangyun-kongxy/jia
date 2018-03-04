@@ -22,6 +22,9 @@ namespace spl {
         lfile(const string& name, ptr<ldir> path);
         ~lfile();
         
+        static list<ptr<lfile>> parse(ptr<ldir> root, const list<string>& files);
+        static ptr<lfile> parse(ptr<ldir> root, const string& file);
+        
     public:
         string name() const;
         string sname() const;

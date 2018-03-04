@@ -1,13 +1,18 @@
-(false:0)
-(ture:1)
-(object:2)
+(false)
+(ture)
 
+(define)
+(call)
+
+(object)
+(type)
+
+/*
 (set, (list), (describe),
     (quantity),
-    (union)
-    (difference)
-    (intersection)
+    (union),
+    (difference),
+    (intersection),
     )
 (probability)
-(relation)
-
+*/

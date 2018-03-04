@@ -74,22 +74,24 @@ void sinfit_training::change_func(map<double, double>& data, double dm,
     long n = 0;
     while (++n < MAX_TRY_CHANGE) {
         rand_change_func(df, dt);
-        sin->set_a(sin->get_a() + da);
-        sin->set_b(sin->get_b() + db);
-        sin->set_c(sin->get_c() + dc);
-        sin->set_d(sin->get_d() + dd);
-        
-        dm2 = mean_square(data, m_func);
-        if (accept(dm, dm2)) {
-            adjust_param(true, da, db, dc, dd);
-            break;
-        } else {
-            sin->set_a(sin->get_a() - da);
-            sin->set_b(sin->get_b() - db);
-            sin->set_c(sin->get_c() - dc);
-            sin->set_d(sin->get_d() - dd);
+        if (fabs(sin->get_b() + db) <= 20.0) {
+            sin->set_a(sin->get_a() + da);
+            sin->set_b(sin->get_b() + db);
+            sin->set_c(sin->get_c() + dc);
+            sin->set_d(sin->get_d() + dd);
             
-            adjust_param(false, da, db, dc, dd);
+            dm2 = mean_square(data, m_func);
+            if (accept(dm, dm2)) {
+                adjust_param(true, da, db, dc, dd);
+                break;
+            } else {
+                sin->set_a(sin->get_a() - da);
+                sin->set_b(sin->get_b() - db);
+                sin->set_c(sin->get_c() - dc);
+                sin->set_d(sin->get_d() - dd);
+                
+                adjust_param(false, da, db, dc, dd);
+            }
         }
     }
     if (n >= MAX_TRY_CHANGE) {

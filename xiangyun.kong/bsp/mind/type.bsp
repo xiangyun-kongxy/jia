@@ -1,14 +1,15 @@
+#include "base.bsp"
 
-(rfunc, define, type)
-(cfunc, define, type)
-
-(relation, define, pred)
+(set, define, set, type)
+(rfunc, define, rfunc, type)
+(cfunc, define, cfunc, type)
+(relation, define, relation, type)
 
 // relations
-(is, define, relation)
-(equal, define, relation)
-(like, define, relation)
-(kindof, define, relation)
-(oneof, define, relation)
-(in, define, relation)
+(is, define, is, relation)
+(equal, define, equal, relation)
+(like, define, like, relation)
+(kindof, define, kindof, relation)
+(oneof, define, oneof, relation)
+(in, define, in, relation)
 

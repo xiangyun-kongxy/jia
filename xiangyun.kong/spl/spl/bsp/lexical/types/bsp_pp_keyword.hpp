@@ -14,12 +14,12 @@
 namespace spl {
 namespace bsp {
     
-    class bsp_pp_keywork : public pptoken {
+    class bsp_pp_keyword : public pptoken {
     public:
-        DECLARE_TYPE(pptoken, "bsp_pp_keywork");
+        DECLARE_TYPE(pptoken, "bsp_pp_keyword");
         
     public:
-        bsp_pp_keywork(const string& name, ptr<llocation> location) :
+        bsp_pp_keyword(const string& name, ptr<llocation> location) :
         pptoken(name, location) {
         }
     };

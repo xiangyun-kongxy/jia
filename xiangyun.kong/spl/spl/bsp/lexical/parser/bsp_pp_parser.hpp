@@ -20,6 +20,14 @@ using namespace std;
 namespace spl {
 namespace bsp {
     
+    enum barren_number_type {
+        BNT_NONE = 0,
+        BNT_VAR = 1,
+        BNT_PARA = 2,
+        BNT_CONST = 3,
+    };
+    const int BNT_WIDTH = 4;
+    
     class bsp_pp_parser {
     public:
         static deque<ptr<pptoken>> parse(ptr<lfile> pfile);
