@@ -23,10 +23,9 @@ namespace kxy {
         virtual ptr<response> run(ptr<plugin> plugin,ptr<event> event) override {
             ptr<config_center> owner = plugin;
             ptr<serializable> data = event->param();
-            string key;
-            string config;
-            data >> key >> config;
-            owner->put(key, config);
+            string ns, key, value;
+            data >> ns >> key >> value;
+            owner->put(ns, key, value);
 
             return nullptr;
         }

@@ -27,9 +27,9 @@ namespace kxy {
         virtual ptr<response> run(ptr<plugin> plugin, ptr<event> evt) override {
             ptr<config_center> owner = plugin;
             ptr<serializable> data = evt->param();
-            string key;
-            data >> key;
-            data << owner->get(key);
+            string ns, key;
+            data >> ns >> key;
+            data << owner->get(ns, key);
             return new simple_response(evt, EC_OK, EM_OK, data);
         }
         

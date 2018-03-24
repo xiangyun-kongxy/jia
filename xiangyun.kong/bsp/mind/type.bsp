@@ -5,11 +5,3 @@
 (cfunc, define, cfunc, type)
 (relation, define, relation, type)
 
-// relations
-(is, define, is, relation)
-(equal, define, equal, relation)
-(like, define, like, relation)
-(kindof, define, kindof, relation)
-(oneof, define, oneof, relation)
-(in, define, in, relation)
-

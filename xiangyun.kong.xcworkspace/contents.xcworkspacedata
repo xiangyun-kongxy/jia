@@ -93,7 +93,13 @@
       location = "group:xiangyun.kong/executor/executor.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:xiangyun.kong/gower/gower.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:xiangyun.kong/heartbeat/heartbeat.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:xiangyun.kong/learning/learning.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:xiangyun.kong/id_service/id_service.xcodeproj">

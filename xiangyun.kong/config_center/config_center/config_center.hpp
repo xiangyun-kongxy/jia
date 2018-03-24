@@ -30,8 +30,8 @@ namespace kxy {
         config_center();
         
     public:
-        string get(const string& key);
-        void put(const string& key, const string& value);
+        string get(const string& ns, const string& key);
+        void put(const string& ns, const string& key, const string& value);
         
     private:
         static const string m_service;

@@ -15,19 +15,20 @@
 
 namespace kxy {
     
-    const string config_center::m_service = "config_service";
+    const string config_center::m_service = "config_service/";
     
     config_center::config_center() {
         m_executors[M_GET_CONFIG] = new get_config;
         m_executors[M_PUT_CONFIG] = new put_config;
     }
     
-    string config_center::get(const string &key) {
-        return kv_get(m_service, key);
+    string config_center::get(const string& ns, const string &key) {
+        return kv_get(m_service + ns, key);
     }
     
-    void config_center::put(const string &key, const string &value) {
-        kv_put(m_service, key, value);
+    void config_center::put(const string& np,
+                            const string &key, const string &value) {
+        kv_put(m_service + ns, key, value);
     }
     
     extern "C" void* init_config_center(void* conf) {

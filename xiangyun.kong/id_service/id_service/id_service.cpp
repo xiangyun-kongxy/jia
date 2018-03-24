@@ -70,7 +70,7 @@ namespace kxy {
     void id_service::load_guid() {
         ptr<serializable> rsp;
         rsp = call_plugin(new id_name(PLUGIN_CONFIG_CENTER), M_GET_CONFIG,
-                          CFG_CUR_GUID);
+                          PLUGIN_ID_SERVICE, CFG_CUR_GUID);
         if (rsp != nullptr) {
             string id;
             rsp >> id;
@@ -80,7 +80,7 @@ namespace kxy {
     
     void id_service::save_guid() {
         send_to(new id_name(PLUGIN_CONFIG_CENTER), M_PUT_CONFIG,
-                CFG_CUR_GUID, l2s(get_guid()));
+                PLUGIN_ID_SERVICE, CFG_CUR_GUID, l2s(get_guid()));
     }
     
     extern "C" {
