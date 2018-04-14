@@ -13,6 +13,8 @@
 		263C632A2066172000665E94 /* libipc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 263C63292066172000665E94 /* libipc.dylib */; };
 		263C632C2066172800665E94 /* liblib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 263C632B2066172800665E94 /* liblib.dylib */; };
 		263C632E2066174000665E94 /* libbarren.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 263C632D2066174000665E94 /* libbarren.dylib */; };
+		26FC42032081E75D006C3817 /* pattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26FC42012081E75D006C3817 /* pattern.cpp */; };
+		26FC42042081E75D006C3817 /* pattern.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 26FC42022081E75D006C3817 /* pattern.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,9 @@
 		263C63292066172000665E94 /* libipc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libipc.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libipc.dylib"; sourceTree = "<group>"; };
 		263C632B2066172800665E94 /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
 		263C632D2066174000665E94 /* libbarren.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbarren.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libbarren.dylib"; sourceTree = "<group>"; };
+		26863DEC2066A58A00FB01CE /* patterns.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = patterns.md; path = pattern/patterns.md; sourceTree = "<group>"; };
+		26FC42012081E75D006C3817 /* pattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pattern.cpp; path = pattern/pattern.cpp; sourceTree = "<group>"; };
+		26FC42022081E75D006C3817 /* pattern.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = pattern.hpp; path = pattern/pattern.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +65,8 @@
 		263C631A206616D300665E94 /* learning */ = {
 			isa = PBXGroup;
 			children = (
+				26863DE92066A32A00FB01CE /* pattern */,
+				26863DE8206660F500FB01CE /* executor */,
 				263C631B206616D300665E94 /* learning.hpp */,
 				263C631F206616D300665E94 /* learning.cpp */,
 			);
@@ -77,6 +84,39 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		26863DE8206660F500FB01CE /* executor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = executor;
+			sourceTree = "<group>";
+		};
+		26863DE92066A32A00FB01CE /* pattern */ = {
+			isa = PBXGroup;
+			children = (
+				26863DEB2066A39700FB01CE /* diff */,
+				26863DEA2066A38400FB01CE /* like */,
+				26863DEC2066A58A00FB01CE /* patterns.md */,
+				26FC42012081E75D006C3817 /* pattern.cpp */,
+				26FC42022081E75D006C3817 /* pattern.hpp */,
+			);
+			name = pattern;
+			sourceTree = "<group>";
+		};
+		26863DEA2066A38400FB01CE /* like */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = like;
+			sourceTree = "<group>";
+		};
+		26863DEB2066A39700FB01CE /* diff */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = diff;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -85,6 +125,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				263C631C206616D300665E94 /* learning.hpp in Headers */,
+				26FC42042081E75D006C3817 /* pattern.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +188,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				263C6320206616D300665E94 /* learning.cpp in Sources */,
+				26FC42032081E75D006C3817 /* pattern.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

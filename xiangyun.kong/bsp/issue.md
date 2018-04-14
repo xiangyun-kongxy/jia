@@ -5,7 +5,7 @@
 1. name to id relation is recorded in configure database.
 2. name is expanded to scope.name
 3. name should not repeated
-4. unamed barren use \_[a-z]\* instead of \_
+4. unnamed barren use \_[a-z]\* instead of \_
 5. top level barren must be named
 
 ### how to implement local parameter and global parameter
@@ -24,7 +24,7 @@ barren: (id, parent, creator, predicates)
 predicate: function, parameter list
 ```
 
-### special item in barren with negtive
+### special item in barren with negative
 
 1. reference
     reference by name

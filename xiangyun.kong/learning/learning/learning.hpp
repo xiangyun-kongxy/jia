@@ -19,6 +19,16 @@ namespace mind {
     
     class learning : public plugin
     {
+    public:
+        DECLARE_TYPE(plugin, PLUGIN_LEARNING);
+        
+        IMPL_BEGIN
+        IMPL_END
+        
+    public:
+        learning();
+        
+        
     };
 
 }

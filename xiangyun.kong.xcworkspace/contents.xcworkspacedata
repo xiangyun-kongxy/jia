@@ -3,7 +3,97 @@
    version = "1.0">
    <Group
       location = "container:"
+      name = "mind">
+      <FileRef
+         location = "group:xiangyun.kong/attestor/attestor.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/executor/executor.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/gower/gower.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/learning/learning.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "util">
+      <FileRef
+         location = "group:xiangyun.kong/gui/gui.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/console/console.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/plugin_controller/plugin_controller.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "service">
+      <FileRef
+         location = "group:xiangyun.kong/heartbeat/heartbeat.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/id_service/id_service.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/config_center/config_center.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "frame">
+      <FileRef
+         location = "group:xiangyun.kong/ipc/ipc.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/ps/ps.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/lifecycle/lifecycle.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/bus/bus.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "lib">
+      <FileRef
+         location = "group:xiangyun.kong/common/common.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/plugin/plugin.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/barren/barren.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/lib/lib.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "storage">
+      <FileRef
+         location = "group:xiangyun.kong/leveldb/leveldb.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/memory/memory.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/barren_cache/barren_cache.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
       name = "bsp">
+      <FileRef
+         location = "group:xiangyun.kong/spl/spl.xcodeproj">
+      </FileRef>
       <FileRef
          location = "group:xiangyun.kong/bsp/mind">
       </FileRef>
@@ -65,70 +155,4 @@
          location = "group:xiangyun.kong/include/config_keys.hpp">
       </FileRef>
    </Group>
-   <FileRef
-      location = "group:xiangyun.kong/attestor/attestor.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/barren/barren.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/barren_cache/barren_cache.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/bus/bus.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/config_center/config_center.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/console/console.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/common/common.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/curvefitting/curvefitting.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/executor/executor.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/gower/gower.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/heartbeat/heartbeat.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/learning/learning.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/id_service/id_service.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/ipc/ipc.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/memory/memory.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/leveldb/leveldb.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/lifecycle/lifecycle.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/lib/lib.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/plugin/plugin.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/plugin_controller/plugin_controller.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/ps/ps.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:xiangyun.kong/spl/spl.xcodeproj">
-   </FileRef>
 </Workspace>

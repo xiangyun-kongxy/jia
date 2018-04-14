@@ -53,6 +53,7 @@ static const string PLUGIN_CONTROLLER               = "plugin_ctrl";
 static const string PLUGIN_HEARTBEAT                = "heartbeat";
 static const string PLUGIN_TERMINAL                 = "terminal";
 static const string PLUGIN_GOWER                    = "gower";
+static const string PLUGIN_LEARNING                 = "learning";
 
 // task processors
 static const string EXE_LOAD_CACHE_BARREN           = "load_cbarren";

@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "26DEF1B9201DFD8D006AF4D8"
-               BuildableName = "curvefitting"
-               BlueprintName = "curvefitting"
-               ReferencedContainer = "container:curvefitting.xcodeproj">
+               BlueprintIdentifier = "26FC41D22077A63E006C3817"
+               BuildableName = "gui.app"
+               BlueprintName = "gui"
+               ReferencedContainer = "container:gui.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,21 +28,41 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "26FC41E32077A63F006C3817"
+               BuildableName = "guiTests.xctest"
+               BlueprintName = "guiTests"
+               ReferencedContainer = "container:gui.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "26FC41EE2077A63F006C3817"
+               BuildableName = "guiUITests.xctest"
+               BlueprintName = "guiUITests"
+               ReferencedContainer = "container:gui.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "26DEF1B9201DFD8D006AF4D8"
-            BuildableName = "curvefitting"
-            BlueprintName = "curvefitting"
-            ReferencedContainer = "container:curvefitting.xcodeproj">
+            BlueprintIdentifier = "26FC41D22077A63E006C3817"
+            BuildableName = "gui.app"
+            BlueprintName = "gui"
+            ReferencedContainer = "container:gui.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Release"
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -55,10 +75,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "26DEF1B9201DFD8D006AF4D8"
-            BuildableName = "curvefitting"
-            BlueprintName = "curvefitting"
-            ReferencedContainer = "container:curvefitting.xcodeproj">
+            BlueprintIdentifier = "26FC41D22077A63E006C3817"
+            BuildableName = "gui.app"
+            BlueprintName = "gui"
+            ReferencedContainer = "container:gui.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -74,10 +94,10 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "26DEF1B9201DFD8D006AF4D8"
-            BuildableName = "curvefitting"
-            BlueprintName = "curvefitting"
-            ReferencedContainer = "container:curvefitting.xcodeproj">
+            BlueprintIdentifier = "26FC41D22077A63E006C3817"
+            BuildableName = "gui.app"
+            BlueprintName = "gui"
+            ReferencedContainer = "container:gui.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
