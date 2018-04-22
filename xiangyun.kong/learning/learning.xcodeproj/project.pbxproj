@@ -15,6 +15,14 @@
 		263C632E2066174000665E94 /* libbarren.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 263C632D2066174000665E94 /* libbarren.dylib */; };
 		26FC42032081E75D006C3817 /* pattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26FC42012081E75D006C3817 /* pattern.cpp */; };
 		26FC42042081E75D006C3817 /* pattern.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 26FC42022081E75D006C3817 /* pattern.hpp */; };
+		26FC42072081EA49006C3817 /* data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26FC42052081EA49006C3817 /* data.cpp */; };
+		26FC42082081EA49006C3817 /* data.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 26FC42062081EA49006C3817 /* data.hpp */; };
+		26FC420B2081EA85006C3817 /* operater.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26FC42092081EA85006C3817 /* operater.cpp */; };
+		26FC420C2081EA85006C3817 /* operater.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 26FC420A2081EA85006C3817 /* operater.hpp */; };
+		26FC42112082286D006C3817 /* nstatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26FC420F2082286D006C3817 /* nstatus.cpp */; };
+		26FC42122082286D006C3817 /* nstatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 26FC42102082286D006C3817 /* nstatus.hpp */; };
+		26FC4217208B4253006C3817 /* rdata.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26FC4215208B4253006C3817 /* rdata.cpp */; };
+		26FC4218208B4253006C3817 /* rdata.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 26FC4216208B4253006C3817 /* rdata.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +36,15 @@
 		26863DEC2066A58A00FB01CE /* patterns.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = patterns.md; path = pattern/patterns.md; sourceTree = "<group>"; };
 		26FC42012081E75D006C3817 /* pattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = pattern.cpp; path = pattern/pattern.cpp; sourceTree = "<group>"; };
 		26FC42022081E75D006C3817 /* pattern.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = pattern.hpp; path = pattern/pattern.hpp; sourceTree = "<group>"; };
+		26FC42052081EA49006C3817 /* data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = data.cpp; path = pattern/data.cpp; sourceTree = "<group>"; };
+		26FC42062081EA49006C3817 /* data.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = data.hpp; path = pattern/data.hpp; sourceTree = "<group>"; };
+		26FC42092081EA85006C3817 /* operater.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = operater.cpp; path = pattern/operater.cpp; sourceTree = "<group>"; };
+		26FC420A2081EA85006C3817 /* operater.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = operater.hpp; path = pattern/operater.hpp; sourceTree = "<group>"; };
+		26FC420E20821E14006C3817 /* nlg_status.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = nlg_status.hpp; path = manage/nlg_status.hpp; sourceTree = "<group>"; };
+		26FC420F2082286D006C3817 /* nstatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = nstatus.cpp; path = manage/nstatus.cpp; sourceTree = "<group>"; };
+		26FC42102082286D006C3817 /* nstatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = nstatus.hpp; path = manage/nstatus.hpp; sourceTree = "<group>"; };
+		26FC4215208B4253006C3817 /* rdata.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = rdata.cpp; path = pattern/data/rdata.cpp; sourceTree = "<group>"; };
+		26FC4216208B4253006C3817 /* rdata.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = rdata.hpp; path = pattern/data/rdata.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +82,7 @@
 		263C631A206616D300665E94 /* learning */ = {
 			isa = PBXGroup;
 			children = (
+				26FC420D20821D9F006C3817 /* manage */,
 				26863DE92066A32A00FB01CE /* pattern */,
 				26863DE8206660F500FB01CE /* executor */,
 				263C631B206616D300665E94 /* learning.hpp */,
@@ -94,27 +112,43 @@
 		26863DE92066A32A00FB01CE /* pattern */ = {
 			isa = PBXGroup;
 			children = (
-				26863DEB2066A39700FB01CE /* diff */,
-				26863DEA2066A38400FB01CE /* like */,
+				26FC4214208B41CE006C3817 /* data */,
+				26FC421320830F70006C3817 /* opt */,
 				26863DEC2066A58A00FB01CE /* patterns.md */,
 				26FC42012081E75D006C3817 /* pattern.cpp */,
 				26FC42022081E75D006C3817 /* pattern.hpp */,
+				26FC42052081EA49006C3817 /* data.cpp */,
+				26FC42062081EA49006C3817 /* data.hpp */,
+				26FC42092081EA85006C3817 /* operater.cpp */,
+				26FC420A2081EA85006C3817 /* operater.hpp */,
 			);
 			name = pattern;
 			sourceTree = "<group>";
 		};
-		26863DEA2066A38400FB01CE /* like */ = {
+		26FC420D20821D9F006C3817 /* manage */ = {
 			isa = PBXGroup;
 			children = (
+				26FC420E20821E14006C3817 /* nlg_status.hpp */,
+				26FC420F2082286D006C3817 /* nstatus.cpp */,
+				26FC42102082286D006C3817 /* nstatus.hpp */,
 			);
-			name = like;
+			name = manage;
 			sourceTree = "<group>";
 		};
-		26863DEB2066A39700FB01CE /* diff */ = {
+		26FC421320830F70006C3817 /* opt */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			name = diff;
+			name = opt;
+			sourceTree = "<group>";
+		};
+		26FC4214208B41CE006C3817 /* data */ = {
+			isa = PBXGroup;
+			children = (
+				26FC4215208B4253006C3817 /* rdata.cpp */,
+				26FC4216208B4253006C3817 /* rdata.hpp */,
+			);
+			name = data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,7 +158,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26FC42082081EA49006C3817 /* data.hpp in Headers */,
+				26FC4218208B4253006C3817 /* rdata.hpp in Headers */,
+				26FC42122082286D006C3817 /* nstatus.hpp in Headers */,
 				263C631C206616D300665E94 /* learning.hpp in Headers */,
+				26FC420C2081EA85006C3817 /* operater.hpp in Headers */,
 				26FC42042081E75D006C3817 /* pattern.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,7 +225,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26FC42072081EA49006C3817 /* data.cpp in Sources */,
+				26FC42112082286D006C3817 /* nstatus.cpp in Sources */,
+				26FC420B2081EA85006C3817 /* operater.cpp in Sources */,
 				263C6320206616D300665E94 /* learning.cpp in Sources */,
+				26FC4217208B4253006C3817 /* rdata.cpp in Sources */,
 				26FC42032081E75D006C3817 /* pattern.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -299,6 +341,7 @@
 					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../plugin",
 					"$(SRCROOT)/../barren",
+					"$(SRCROOT)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -319,6 +362,7 @@
 					"$(SRCROOT)/../lib",
 					"$(SRCROOT)/../plugin",
 					"$(SRCROOT)/../barren",
+					"$(SRCROOT)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

@@ -82,7 +82,7 @@ namespace kxy {
         ty* operator->() const {
             return m_ref;
         }
-
+        
         bool operator==(const ty* _cmp) const {
             return m_ref == _cmp;
         }

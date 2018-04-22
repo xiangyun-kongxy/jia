@@ -31,4 +31,3 @@ predicate: function, parameter list
     reference by variable
 2. call function parameter
 3. number
-

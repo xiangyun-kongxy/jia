@@ -1,15 +1,35 @@
-# patterns trying to recognize
+# data trying to recognize
 
-## the same patterns
+## what is a data?
 
-* **N** continuous barrens
+1. special data - barren caches
 
-* **N** sequential barrens
+   * special input caches
+   * pattern learning cache
+   * logic learning cache
+   * logic context
+   * subject context
+  
+2. pattern in learning
 
-* **N** exist barrens without shared barrens
+## operator
 
-* **N** exist barrens with M shared barrens
+1. input
 
-* **x** and **y** has both relation **R** with **C**
+   data is used for input
+   
+2. output
 
-## the different patterns
+   output is also data. output would be stored into `pattern in learning`
+   
+## properties
+
+1. pattern is marked with usability
+
+## operators
+
+1. tensor product
+
+2. exists variable
+
+3. position variable
