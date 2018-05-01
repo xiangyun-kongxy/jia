@@ -8,16 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		263C631C206616D300665E94 /* learning.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 263C631B206616D300665E94 /* learning.hpp */; };
-		263C6320206616D300665E94 /* learning.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 263C631F206616D300665E94 /* learning.cpp */; };
 		263C63282066171700665E94 /* libplugin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 263C63272066171700665E94 /* libplugin.dylib */; };
 		263C632A2066172000665E94 /* libipc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 263C63292066172000665E94 /* libipc.dylib */; };
 		263C632C2066172800665E94 /* liblib.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 263C632B2066172800665E94 /* liblib.dylib */; };
 		263C632E2066174000665E94 /* libbarren.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 263C632D2066174000665E94 /* libbarren.dylib */; };
+		265AFE942095A539007473FF /* learning.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 263C631F206616D300665E94 /* learning.cpp */; };
 		265EED70208C8B8D001EC429 /* learning_book.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 265EED6E208C8B8D001EC429 /* learning_book.cpp */; };
 		265EED71208C8B8D001EC429 /* learning_book.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 265EED6F208C8B8D001EC429 /* learning_book.hpp */; };
-		265EED73208C8DFF001EC429 /* repeat_learning.md in Sources */ = {isa = PBXBuildFile; fileRef = 265EED72208C8DFF001EC429 /* repeat_learning.md */; };
 		265EED76208C8E38001EC429 /* const_book.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 265EED74208C8E38001EC429 /* const_book.cpp */; };
 		265EED77208C8E38001EC429 /* const_book.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 265EED75208C8E38001EC429 /* const_book.hpp */; };
+		265EED7A208CBD1B001EC429 /* writable_book.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 265EED78208CBD1B001EC429 /* writable_book.cpp */; };
+		265EED7B208CBD1B001EC429 /* writable_book.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 265EED79208CBD1B001EC429 /* writable_book.hpp */; };
+		265EEDB920959A01001EC429 /* book_manager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 265EEDB720959A01001EC429 /* book_manager.cpp */; };
+		265EEDBA20959A01001EC429 /* book_manager.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 265EEDB820959A01001EC429 /* book_manager.hpp */; };
+		265EEDC02095A43E001EC429 /* libcommon.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 265EEDBF2095A43E001EC429 /* libcommon.dylib */; };
 		26FC42112082286D006C3817 /* nstatus.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26FC420F2082286D006C3817 /* nstatus.cpp */; };
 		26FC42122082286D006C3817 /* nstatus.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 26FC42102082286D006C3817 /* nstatus.hpp */; };
 /* End PBXBuildFile section */
@@ -30,6 +34,9 @@
 		263C63292066172000665E94 /* libipc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libipc.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libipc.dylib"; sourceTree = "<group>"; };
 		263C632B2066172800665E94 /* liblib.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = liblib.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/liblib.dylib"; sourceTree = "<group>"; };
 		263C632D2066174000665E94 /* libbarren.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libbarren.dylib; path = "../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libbarren.dylib"; sourceTree = "<group>"; };
+		265AFE952095F243007473FF /* cartesian.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = cartesian.hpp; path = repeat_learning/distil/cartesian.hpp; sourceTree = "<group>"; };
+		265AFE96209608F8007473FF /* bin_combine.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = bin_combine.hpp; path = repeat_learning/distil/bin_combine.hpp; sourceTree = "<group>"; };
+		265AFE9F20989AE2007473FF /* heaping.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = heaping.hpp; path = repeat_learning/distil/heaping.hpp; sourceTree = "<group>"; };
 		265EED6C208C8A18001EC429 /* book.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = book.hpp; path = repeat_learning/book.hpp; sourceTree = "<group>"; };
 		265EED6D208C8A5D001EC429 /* distil.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = distil.hpp; path = repeat_learning/distil.hpp; sourceTree = "<group>"; };
 		265EED6E208C8B8D001EC429 /* learning_book.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = learning_book.cpp; path = repeat_learning/books/learning_book.cpp; sourceTree = "<group>"; };
@@ -37,6 +44,15 @@
 		265EED72208C8DFF001EC429 /* repeat_learning.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = repeat_learning.md; path = repeat_learning/repeat_learning.md; sourceTree = "<group>"; };
 		265EED74208C8E38001EC429 /* const_book.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = const_book.cpp; path = repeat_learning/books/const_book.cpp; sourceTree = "<group>"; };
 		265EED75208C8E38001EC429 /* const_book.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = const_book.hpp; path = repeat_learning/books/const_book.hpp; sourceTree = "<group>"; };
+		265EED78208CBD1B001EC429 /* writable_book.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = writable_book.cpp; path = repeat_learning/books/writable_book.cpp; sourceTree = "<group>"; };
+		265EED79208CBD1B001EC429 /* writable_book.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = writable_book.hpp; path = repeat_learning/books/writable_book.hpp; sourceTree = "<group>"; };
+		265EEDB62094B211001EC429 /* network_learning.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = network_learning.md; sourceTree = "<group>"; };
+		265EEDB720959A01001EC429 /* book_manager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = book_manager.cpp; path = repeat_learning/manager/book_manager.cpp; sourceTree = "<group>"; };
+		265EEDB820959A01001EC429 /* book_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = book_manager.hpp; path = repeat_learning/manager/book_manager.hpp; sourceTree = "<group>"; };
+		265EEDBC20959C9C001EC429 /* exe_add_book.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = exe_add_book.hpp; path = executor/exe_add_book.hpp; sourceTree = "<group>"; };
+		265EEDBD20959F5C001EC429 /* exe_get_book.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = exe_get_book.hpp; path = executor/exe_get_book.hpp; sourceTree = "<group>"; };
+		265EEDBE20959F75001EC429 /* exe_rm_book.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = exe_rm_book.hpp; path = executor/exe_rm_book.hpp; sourceTree = "<group>"; };
+		265EEDBF2095A43E001EC429 /* libcommon.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommon.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libcommon.dylib"; sourceTree = "<group>"; };
 		26FC420E20821E14006C3817 /* nlg_status.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = nlg_status.hpp; path = manage/nlg_status.hpp; sourceTree = "<group>"; };
 		26FC420F2082286D006C3817 /* nstatus.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = nstatus.cpp; path = manage/nstatus.cpp; sourceTree = "<group>"; };
 		26FC42102082286D006C3817 /* nstatus.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = nstatus.hpp; path = manage/nstatus.hpp; sourceTree = "<group>"; };
@@ -47,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				265EEDC02095A43E001EC429 /* libcommon.dylib in Frameworks */,
 				263C632E2066174000665E94 /* libbarren.dylib in Frameworks */,
 				263C632C2066172800665E94 /* liblib.dylib in Frameworks */,
 				263C632A2066172000665E94 /* libipc.dylib in Frameworks */,
@@ -82,6 +99,7 @@
 				26863DE8206660F500FB01CE /* executor */,
 				263C631B206616D300665E94 /* learning.hpp */,
 				263C631F206616D300665E94 /* learning.cpp */,
+				265EEDB62094B211001EC429 /* network_learning.md */,
 			);
 			path = learning;
 			sourceTree = "<group>";
@@ -89,6 +107,7 @@
 		263C63262066171700665E94 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				265EEDBF2095A43E001EC429 /* libcommon.dylib */,
 				263C632D2066174000665E94 /* libbarren.dylib */,
 				263C632B2066172800665E94 /* liblib.dylib */,
 				263C63292066172000665E94 /* libipc.dylib */,
@@ -97,9 +116,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		265EEDBB20959A0D001EC429 /* manager */ = {
+			isa = PBXGroup;
+			children = (
+				265EEDB720959A01001EC429 /* book_manager.cpp */,
+				265EEDB820959A01001EC429 /* book_manager.hpp */,
+			);
+			name = manager;
+			sourceTree = "<group>";
+		};
 		26863DE8206660F500FB01CE /* executor */ = {
 			isa = PBXGroup;
 			children = (
+				265EEDBC20959C9C001EC429 /* exe_add_book.hpp */,
+				265EEDBD20959F5C001EC429 /* exe_get_book.hpp */,
+				265EEDBE20959F75001EC429 /* exe_rm_book.hpp */,
 			);
 			name = executor;
 			sourceTree = "<group>";
@@ -107,6 +138,7 @@
 		26863DE92066A32A00FB01CE /* repeat_learning */ = {
 			isa = PBXGroup;
 			children = (
+				265EEDBB20959A0D001EC429 /* manager */,
 				26FC4214208B41CE006C3817 /* books */,
 				26FC421320830F70006C3817 /* distil */,
 				265EED6C208C8A18001EC429 /* book.hpp */,
@@ -129,6 +161,9 @@
 		26FC421320830F70006C3817 /* distil */ = {
 			isa = PBXGroup;
 			children = (
+				265AFE952095F243007473FF /* cartesian.hpp */,
+				265AFE96209608F8007473FF /* bin_combine.hpp */,
+				265AFE9F20989AE2007473FF /* heaping.hpp */,
 			);
 			name = distil;
 			sourceTree = "<group>";
@@ -140,6 +175,8 @@
 				265EED6F208C8B8D001EC429 /* learning_book.hpp */,
 				265EED74208C8E38001EC429 /* const_book.cpp */,
 				265EED75208C8E38001EC429 /* const_book.hpp */,
+				265EED78208CBD1B001EC429 /* writable_book.cpp */,
+				265EED79208CBD1B001EC429 /* writable_book.hpp */,
 			);
 			name = books;
 			sourceTree = "<group>";
@@ -152,7 +189,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				26FC42122082286D006C3817 /* nstatus.hpp in Headers */,
+				265EEDBA20959A01001EC429 /* book_manager.hpp in Headers */,
 				265EED77208C8E38001EC429 /* const_book.hpp in Headers */,
+				265EED7B208CBD1B001EC429 /* writable_book.hpp in Headers */,
 				265EED71208C8B8D001EC429 /* learning_book.hpp in Headers */,
 				263C631C206616D300665E94 /* learning.hpp in Headers */,
 			);
@@ -216,10 +255,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				265AFE942095A539007473FF /* learning.cpp in Sources */,
 				26FC42112082286D006C3817 /* nstatus.cpp in Sources */,
-				265EED73208C8DFF001EC429 /* repeat_learning.md in Sources */,
 				265EED76208C8E38001EC429 /* const_book.cpp in Sources */,
-				263C6320206616D300665E94 /* learning.cpp in Sources */,
+				265EED7A208CBD1B001EC429 /* writable_book.cpp in Sources */,
+				265EEDB920959A01001EC429 /* book_manager.cpp in Sources */,
 				265EED70208C8B8D001EC429 /* learning_book.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,7 +274,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -249,12 +289,12 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -282,7 +322,7 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -297,12 +337,12 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -312,6 +352,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -324,8 +365,8 @@
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
-				GCC_ENABLE_CPP_RTTI = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../include",
 					"$(SRCROOT)/../lib",
@@ -333,6 +374,7 @@
 					"$(SRCROOT)/../barren",
 					"$(SRCROOT)",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -345,8 +387,8 @@
 				DYLIB_CURRENT_VERSION = 1;
 				EXECUTABLE_PREFIX = lib;
 				GCC_ENABLE_CPP_EXCEPTIONS = YES;
-				GCC_ENABLE_CPP_RTTI = YES;
-				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(SRCROOT)/../include",
 					"$(SRCROOT)/../lib",
@@ -354,6 +396,7 @@
 					"$(SRCROOT)/../barren",
 					"$(SRCROOT)",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

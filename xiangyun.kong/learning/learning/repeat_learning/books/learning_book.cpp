@@ -10,11 +10,8 @@
 
 namespace mind {
     
-    learning_book::learning_book() {
-        m_version = 0;
-    }
-    
-    learning_book::~learning_book() {
+    learning_book::learning_book() :
+    writable_book(1) {
         
     }
     
@@ -28,28 +25,36 @@ namespace mind {
     
     long learning_book::size() {
         try_update_book();
-        return m_cached->size();
+        return writable_book::size();
     }
     
     long learning_book::version() {
         try_update_book();
-        return m_version;
+        return writable_book::version();
     }
     
     ptr<barren> learning_book::operator[](int pos) {
         try_update_book();
-        return (**m_cached)[pos];
+        return writable_book::operator[](pos);
     }
     
     void learning_book::try_update_book() {
         long ver = 1;
         for (ptr<book> d : m_opd) {
             if (d->version() > ver)
-                ver = d->version();
+                ver += d->version();
         }
-        if (ver > version()) {
-            m_cached = m_opt->perform(m_opd);
+        if (ver > m_version) {
+            ptr<book> cache = m_opt->perform(m_opd);
+            
+            m_lock.lock();
+            
             m_version = ver;
+            m_context.resize(cache->size());
+            for (int i = 0; i < cache->size(); ++i) 
+                m_context[i] = (**cache)[i];
+            
+            m_lock.unlock();
         }
     }
 }

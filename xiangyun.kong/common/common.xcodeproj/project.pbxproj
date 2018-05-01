@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		264C47641FA61790009DDD1B /* ut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 264C47631FA61790009DDD1B /* ut.cpp */; };
+		265AFE9A2098421E007473FF /* config_service.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 265AFE982098421E007473FF /* config_service.cpp */; };
+		265AFE9B2098421E007473FF /* config_service.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 265AFE992098421E007473FF /* config_service.hpp */; };
 		26C79E341F9B2F1D00466DB3 /* logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 26C79E321F9B2F1D00466DB3 /* logger.cpp */; };
 		26C79E351F9B2F1D00466DB3 /* logger.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 26C79E331F9B2F1D00466DB3 /* logger.hpp */; };
 		26C79E381F9B2FDD00466DB3 /* libplugin.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 26C79E371F9B2FDD00466DB3 /* libplugin.dylib */; };
@@ -18,6 +20,8 @@
 
 /* Begin PBXFileReference section */
 		264C47631FA61790009DDD1B /* ut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ut.cpp; path = ut/ut.cpp; sourceTree = "<group>"; };
+		265AFE982098421E007473FF /* config_service.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = config_service.cpp; path = config/config_service.cpp; sourceTree = "<group>"; };
+		265AFE992098421E007473FF /* config_service.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = config_service.hpp; path = config/config_service.hpp; sourceTree = "<group>"; };
 		26C79E321F9B2F1D00466DB3 /* logger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = logger.cpp; path = log/logger.cpp; sourceTree = "<group>"; };
 		26C79E331F9B2F1D00466DB3 /* logger.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = logger.hpp; path = log/logger.hpp; sourceTree = "<group>"; };
 		26C79E371F9B2FDD00466DB3 /* libplugin.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libplugin.dylib; path = "../../../../../Library/Developer/Xcode/DerivedData/xiangyun.kong-fhxpmrbzziekqfemvtednyksyvpq/Build/Products/Debug/libplugin.dylib"; sourceTree = "<group>"; };
@@ -47,6 +51,15 @@
 				264C47631FA61790009DDD1B /* ut.cpp */,
 			);
 			name = ut;
+			sourceTree = "<group>";
+		};
+		265AFE97209841B5007473FF /* config */ = {
+			isa = PBXGroup;
+			children = (
+				265AFE982098421E007473FF /* config_service.cpp */,
+				265AFE992098421E007473FF /* config_service.hpp */,
+			);
+			name = config;
 			sourceTree = "<group>";
 		};
 		26C79E311F9B2F0B00466DB3 /* log */ = {
@@ -88,6 +101,7 @@
 		ADAD38EF1F94DA2300ABC6F3 /* common */ = {
 			isa = PBXGroup;
 			children = (
+				265AFE97209841B5007473FF /* config */,
 				264C47621FA61778009DDD1B /* ut */,
 				26C79E311F9B2F0B00466DB3 /* log */,
 				ADAD38FB1F94DA3D00ABC6F3 /* identifier */,
@@ -112,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD5F03CA1F94F186002742B9 /* id_simple_event.hpp in Headers */,
+				265AFE9B2098421E007473FF /* config_service.hpp in Headers */,
 				26C79E351F9B2F1D00466DB3 /* logger.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -174,6 +189,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26C79E3E1F9B35A800466DB3 /* log_service.cpp in Sources */,
+				265AFE9A2098421E007473FF /* config_service.cpp in Sources */,
 				26C79E341F9B2F1D00466DB3 /* logger.cpp in Sources */,
 				264C47641FA61790009DDD1B /* ut.cpp in Sources */,
 			);

@@ -14,6 +14,7 @@
 #include <lib/identifier/id_name.hpp>
 #include <lib/lock/auto_lock.hpp>
 #include <lib/init/initializer.hpp>
+#include <common/config/config_service.hpp>
 
 #include <ipc.hpp>
 #include <messages.hpp>
@@ -26,54 +27,66 @@ namespace mind {
 
     barren::barren(bool init /*= true*/ ) {
         if (init) {
-            m_ids = new long[2];
-            m_ids[0] = 2;
+            m_ids = new long[4];
+            m_ids[0] = 4;
             m_ids[1] = get_guid();
+            m_ids[2] = get_creator();
+            m_ids[3] = 1;
         } else {
             m_ids = nullptr;
         }
     }
     
-    barren::barren(const list<long>& ids) {
-        m_ids = new long[ids.size()+2];
-        m_ids[0] = ids.size() + 2;
+    barren::barren(const vector<long>& ids) {
+        m_ids = new long[ids.size() + 4];
+        m_ids[0] = ids.size() + 4;
         m_ids[1] = get_guid();
+        m_ids[2] = get_creator();
+        m_ids[3] = 1;
         
-        long i = 2;
+        long i = 4;
         for (long it : ids) {
             m_ids[i] = it;
+            try_add_ref(it);
             ++i;
         }
     }
     
     barren::barren(const initializer_list<long>& ids) {
-        m_ids = new long[ids.size()+2];
-        m_ids[0] = ids.size() + 2;
+        m_ids = new long[ids.size() + 4];
+        m_ids[0] = ids.size() + 4;
         m_ids[1] = get_guid();
+        m_ids[2] = get_creator();
+        m_ids[3] = 1;
         
-        long i = 2;
+        long i = 4;
         for (long it : ids) {
             m_ids[i] = it;
+            try_add_ref(it);
             ++i;
         }
     }
     
     barren::barren(long id, const initializer_list<long>& others) {
-        m_ids = new long[others.size()+2];
-        m_ids[0] = others.size() + 2;
+        m_ids = new long[others.size() + 4];
+        m_ids[0] = others.size() + 4;
         m_ids[1] = id;
+        m_ids[2] = get_creator();
+        m_ids[3] = 1;
         
-        long i = 2;
+        long i = 4;
         for (long it : others) {
             m_ids[i] = it;
+            try_add_ref(it);
             ++i;
         }
     }
     
     long barren::operator[] (long i) {
+        m_lock.lock();
+        
+        long r;
         if (i >= size()) {
-            lock();
-            
             long* ids = new long[i+3];
             ids[0] = i + 3;
             ids[i+2] = 0;
@@ -82,98 +95,131 @@ namespace mind {
             }
             delete[] m_ids;
             m_ids = ids;
-            
-            unlock();
         }
-        return m_ids[i + 2];
-    }
-    
-    long barren::size() const {
-        return m_ids[0] - 2;
-    }
-    
-    long barren::id() const {
-        return m_ids[1];
-    }
-    
-
-    ptr<barren> bfalse;
-    ptr<barren> btrue;
-    
-    void __uninit_global_barren() {
-        bfalse = nullptr;
-        btrue = nullptr;
-    }
-    
-    
-    void __attribute__((constructor)) __init_global_barren() {
-        bfalse = new barren(0L, {});
-        btrue = new barren(1L, {});
+        r = m_ids[i + 2];
         
-        register_uninitializer("uninitilaize global barrens",
-                               __uninit_global_barren);
-    }
-    
-    set<long> g_locked_barren;
-    pthread_mutex_t g_barren_set_sync;
-    pthread_cond_t g_cond_barren_unlocked;
-    
-    void __uninit_barren_sync_mutex() {
-        pthread_cond_destroy(&g_cond_barren_unlocked);
-        pthread_mutex_destroy(&g_barren_set_sync);
-    }
-    
-    void __attribute__((constructor)) __init_barren_sync_mutex() {
-        pthread_mutex_init(&g_barren_set_sync, nullptr);
-        pthread_cond_init(&g_cond_barren_unlocked, nullptr);
+        m_lock.unlock();
         
-        register_uninitializer("uninitialize barren sync",
-                               __uninit_barren_sync_mutex);
+        return r;
     }
     
-    void barren::lock() {
-        bool locked = false;
-        do {
-            auto_lock _(&g_barren_set_sync);
-            set<long>::iterator i;
-            i = g_locked_barren.find(id());
-            if (i == g_locked_barren.end()) {
-                g_locked_barren.insert(id());
-                locked = true;
-            } else {
-                pthread_cond_wait(&g_cond_barren_unlocked, &g_barren_set_sync);
-            }
-        } while(!locked);
-    }
-    
-    void barren::unlock() {
-        do {
-            auto_lock _(&g_barren_set_sync);
-            g_locked_barren.erase(id());
-        } while (0);
+    long barren::size() {
+        m_lock.lock();
+        long r = m_ids[0] - 2;
+        m_lock.unlock();
         
-        pthread_cond_broadcast(&g_cond_barren_unlocked);
+        return r;
     }
-
+    
+    long barren::id() {
+        m_lock.lock();
+        long r = m_ids[1];
+        m_lock.unlock();
+        
+        return r;
+    }
+    
+    void barren::add_ref() {
+        m_lock.lock();
+        ++m_ids[3];
+        m_lock.unlock();
+    }
+    
+    void barren::del_ref() {
+        m_lock.lock();
+        --m_ids[3];
+        m_lock.unlock();
+    }
+    
+    long barren::get_ref() {
+        long ref;
+        
+        m_lock.lock();
+        ref = m_ids[3];
+        m_lock.unlock();
+        
+        return ref;
+    }
+    
+    void barren::try_add_ref(long num) {
+        bnum::num_type type;
+        long id = bnum::decode(num, &type);
+        if (type == bnum::num_type::NT_BARREN) {
+            ptr<barren> b = load(id);
+            if (b != nullptr)
+                b->add_ref();
+        }
+    }
+    
+    ptr<identifier> g_cache_provider = new id_name(PLUGIN_BARREN_CACHE);
+    
+    ptr<barren> barren::load(long id) {
+        ptr<barren> barren;
+        ptr<serializable> rsp;
+        rsp = call_plugin(g_cache_provider, M_LOAD_CACHE_BARREN, id);
+        if (rsp != nullptr) {
+            rsp >> barren;
+        }
+        return barren;
+    }
+    
+    void barren::save(ptr<barren> obj) {
+        send_to(g_cache_provider, M_SAVE_CACHE_BARREN, obj);
+    }
+    
+    ptr<barren> barren::load(const string& name) {
+        long id = read_config<long>(name);
+        return load(id);
+    }
+    
+    void barren::save(const string& name, ptr<barren> obj) {
+        save_config(name, obj->id());
+        save(obj);
+    }
+    
     long barren::get_guid() {
         static long cur = 0;
         static long max = 0;
+        static spin_mutex lock;
 
-        do {
-            auto_lock _(&g_barren_set_sync);
-            if (cur == max) {
-                ptr<serializable> rsp;
-                rsp = call_plugin(new id_name(PLUGIN_ID_SERVICE),
-                                  M_FETCH_ADD_GUID_BENCH, 10000L);
-                if (rsp != nullptr) {
-                    rsp >> cur;
-                    max = cur + 10000L;
-                } else {
-                    return 0;
-                }
+        long r = 0;
+        
+        lock.lock();
+        if (cur >= max) {
+            ptr<serializable> rsp;
+            rsp = call_plugin(new id_name(PLUGIN_ID_SERVICE),
+                              M_FETCH_ADD_GUID_BENCH, 10000L);
+            if (rsp != nullptr) {
+                rsp >> cur;
+                max = cur + 10000L;
             }
-            return cur++;
-        } while (0);
+        }
+        if (cur < max)
+            r = cur++;
+        lock.unlock();
+        
+        return r;
+    }
+    
+    long barren::get_creator() {
+        static map<string, long> creators;
+        
+        long id;
+        string name;
+        
+        ptr<plugin> pl = plugin::current_plugin();
+        if (pl != nullptr)
+            name = pl->name();
+        else
+            name = "unknown";
+        
+        id = creators[name];
+        if (id == 0) {
+            id = read_config<long>(name);
+            creators[name] = id;
+        }
+        
+        return id;
     }
 
 }

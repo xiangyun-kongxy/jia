@@ -13,19 +13,14 @@
 namespace mind {
     
     void barren_set::add(long id) {
-        lock();
-        
         m_ids = (long*)realloc(m_ids, (m_ids[0]+1) * sizeof(long));
         m_ids[m_ids[0]] = id;
         ++m_ids[0];
         
         save_barren(this);
-        unlock();
     }
     
     void barren_set::remove(long id) {
-        lock();
-        
         if (contain(id)) {
             long* ids = new long[m_ids[0]-1];
             ids[0] = m_ids[0] - 1;
@@ -42,20 +37,15 @@ namespace mind {
             delete [] m_ids;
             m_ids = ids;
         }
-        
-        unlock();
     }
     
-    bool barren_set::contain(long id) const {
-        ((barren_set*)this)->lock();
-        
+    bool barren_set::contain(long id) {
         for (long i = 0; i < size(); ++i) {
             if ((*(barren_set*)this)[i] == id) {
                 return true;
             }
         }
         
-        ((barren_set*)this)->unlock();
         return false;
     }
     

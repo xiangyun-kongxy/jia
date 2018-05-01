@@ -19,7 +19,7 @@ namespace mind {
     public:
         void add(long id);
         void remove(long id);
-        bool contain(long id) const;
+        bool contain(long id);
     };
 }
 

@@ -78,4 +78,8 @@ static const string M_UNREGISTER_TIMER              = "unregister_timer";
 
 static const string M_BARREN_EXECUTED               = "barren_executed";
 
+static const string M_ADD_BOOK                      = "add_book";
+static const string M_GET_BOOK                      = "get_book";
+static const string M_RM_BOOK                       = "rm_book";
+
 #endif /* events_h */

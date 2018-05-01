@@ -6,7 +6,7 @@
 
 namespace pf {
 
-    simple_response::simple_response(ptr<event> evt, long code,
+simple_response::simple_response(ptr<event> evt, long code,
                                      const string& msg,
                                      ptr<serializable> context)
     : response(evt) {

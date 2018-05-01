@@ -12,33 +12,44 @@
 #include <lib/object/reference.hpp>
 #include <lib/object/ptr.hpp>
 #include <lib/serialize/serializable.hpp>
+#include <lib/lock/spinlock.hpp>
+
+#include <barren/bnum.hpp>
 
 using namespace kxy;
 using namespace std;
 
 namespace mind {
     
+    /**
+     * barren is the base of all stored objects in mind
+     */
     class barren : public reference {
     public:
-        friend void __init_global_barren();
+        static ptr<barren> load(long id);
+        static ptr<barren> load(const string& name);
+        static void save(ptr<barren> obj);
+        static void save(const string& name, ptr<barren> obj);
+        
+    protected:
+        static long get_guid();
+        static long get_creator();
         
     public:
         barren(bool init = true);
-        barren(const list<long>& ids);
+        barren(const vector<long>& ids);
         barren(const initializer_list<long>& ids);
         barren(long id, const initializer_list<long>& others);
-        
-    public:
         virtual ~barren(){}
         
     public:
-        long id() const;
-        long size() const;
+        long id();
+        long size();
         long operator[] (long i);
         
-    public:
-        void lock();
-        void unlock();
+        void add_ref();
+        void del_ref();
+        long get_ref();
         
     public:
         
@@ -60,11 +71,15 @@ namespace mind {
             }
         });
         
-    private:
-        long get_guid();
+    protected:
+        /**
+         * @param num if num is a barren then add reference
+         */
+        void try_add_ref(long num);
         
     protected:
         long* m_ids;
+        spin_mutex m_lock;
     };
     
 }

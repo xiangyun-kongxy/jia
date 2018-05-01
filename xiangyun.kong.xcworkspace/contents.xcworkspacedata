@@ -154,5 +154,8 @@
       <FileRef
          location = "group:xiangyun.kong/include/config_keys.hpp">
       </FileRef>
+      <FileRef
+         location = "group:xiangyun.kong/include/key_barren.hpp">
+      </FileRef>
    </Group>
 </Workspace>

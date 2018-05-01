@@ -19,10 +19,10 @@
 
 ### structure of a barren
 
-```
+`
 barren: (id, parent, creator, predicates)
 predicate: function, parameter list
-```
+`
 
 ### special item in barren with negative
 

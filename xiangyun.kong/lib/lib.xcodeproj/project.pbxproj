@@ -47,6 +47,7 @@
 		261FB71E1F9B6F4D008C34CA /* initializer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = initializer.hpp; path = init/initializer.hpp; sourceTree = "<group>"; };
 		2620550B1FA1D04000E3053B /* spinlock.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = spinlock.hpp; path = lock/spinlock.hpp; sourceTree = "<group>"; };
 		2622BF441DCC61A5007332AA /* liblib.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = liblib.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		265EED7C208CC583001EC429 /* rwlock.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = rwlock.hpp; path = lock/rwlock.hpp; sourceTree = "<group>"; };
 		26784DE61E00334D00FCE82B /* thread.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = thread.hpp; path = thread/thread.hpp; sourceTree = "<group>"; };
 		26784DE81E0033C500FCE82B /* thread.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = thread.cpp; path = thread/thread.cpp; sourceTree = "<group>"; };
 		267BC04A1E2B81F600C6F0EE /* kv_service.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = kv_service.cpp; path = fs/kv_service/kv_service.cpp; sourceTree = "<group>"; };
@@ -200,6 +201,7 @@
 			children = (
 				AD265FF21F98DF9F0065E89C /* auto_lock.hpp */,
 				2620550B1FA1D04000E3053B /* spinlock.hpp */,
+				265EED7C208CC583001EC429 /* rwlock.hpp */,
 			);
 			name = lock;
 			sourceTree = "<group>";
